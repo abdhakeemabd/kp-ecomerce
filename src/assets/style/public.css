@@ -1,0 +1,33 @@
+header{
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    color: #fff;
+    border-bottom: 1px solid #ffffff70;
+    background-color: transparent;}
+header .logo{
+    max-width: 80px;}
+.home-banner {
+    position: relative;
+    padding-top: 130px;
+    height: 100vh;
+    background: url('../images/img/5.jpg') no-repeat center center;
+    background-size: cover;
+    width: 100%;
+    aspect-ratio:	4368 / 2448;}
+.home-banner::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.163);}
+.home-banner .content{
+    position: relative;
+    z-index: 1;
+}
+.home_prodcut_sec .product-card .product-img{
+    width: 100%;
+    aspect-ratio: 300/ 205;
+    object-fit: cover;
+    border-radius:6px 6px 0px 0px;}
+.home_prodcut_sec .prodcut-card .text-m{
+    font-size: 18px;}

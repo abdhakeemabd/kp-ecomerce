@@ -7,7 +7,7 @@ function HomeBanner() {
             <div className="flex justify-center">
                 <div className="w-full md:w-1/3 px-2">
                     <div className="content">
-                        <div className='text-center text-4xl font-bold text-white'>Find Best Products Around You.</div>
+                        <div className='text-center text-4xl poppins-bold text-white'>Find Best Products Around You.</div>
                     </div>
                 </div>
             </div>

@@ -20,6 +20,7 @@ const products = [
   { id: 9, title: 'Shelf', image: Product6, link: '/' },
   { id: 10, title: 'Wood Table', image: Product2, link: '/' },
   { id: 11, title: 'Stool', image: Product1, link: '/' },
+  { id: 12, title: 'Wood chair', image: Product4, link: '/' },
 
 ]
 
@@ -28,9 +29,7 @@ function HomeProduct() {
     <section className='home_prodcut_sec'>
       <div className="container mx-auto">
         <div className="mb-3">
-          <div className="text-center text-2xl font-bold text-sky-700">
-            Discover more near by you
-          </div>
+          <div className="text-2xl poppins-bold text-center text-slate-900 uppercase">Discover more near by you</div>
         </div>
 
         <div className="flex flex-wrap -mx-2">
@@ -39,7 +38,7 @@ function HomeProduct() {
               <div className="card product-card rounded-sm pb-2 relative overflow-hidden hover:shadow-lg transition-shadow duration-300">
                 <img className="product-img w-full" src={item.image} alt={item.title} />
                 <div className="cont text-center mt-2">
-                  <div className="text-m font-semibold text-black">{item.title}</div>
+                  <div className="text-m poppins-semibold text-black">{item.title}</div>
                 </div>
                 <a href={item.link} className="absolute inset-0 z-10"></a>
               </div>

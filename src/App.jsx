@@ -5,13 +5,23 @@ import './index.css'
 import Home from './pages'
 import Header from './component/header'
 import '../src/assets/style/public.css'
+import Footer from './component/footer'
+import About from './pages/about'
+import Prodcut from './pages/prodcut'
+import Contact from './pages/contact'
+import Faq from './pages/faq'
 function App() {  
   return (
     <BrowserRouter>
      <Header />
       <Routes>
         <Route index element={<Home />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/prodcut' element={<Prodcut />} />
+        <Route path='faq' element={<Faq />} />
+        <Route path='/contact' element={<Contact />} />
       </Routes>
+      <Footer/>
     </BrowserRouter>
   )
 }

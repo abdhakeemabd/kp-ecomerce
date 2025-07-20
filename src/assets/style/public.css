@@ -31,3 +31,18 @@ header .logo{
     border-radius:6px 6px 0px 0px;}
 .home_prodcut_sec .prodcut-card .text-m{
     font-size: 18px;}
+.home_feature_sec .features_slider .feature-img{
+    width: 100%;
+    aspect-ratio: 300 / 205;
+    border-radius: 5px 5px 0px 0px;}
+.home_feature_sec .features_slider{
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.home_feature_sec .features-card:hover{
+    box-shadow: 1px 16px 20px 3px rgba(30, 41, 50, 0.08);}
+
+.product_main_sec .product-card .pro-img{
+    aspect-ratio: 300/ 205;
+    width: 100%;
+}

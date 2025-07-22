@@ -7,12 +7,12 @@ import { BiCart,BiSolidCart } from "react-icons/bi";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import Img1 from '../assets/images/img/1.jpg';
-import Img2 from '../assets/images/img/2.jpg';
-import Img3 from '../assets/images/img/3.jpg';
-import Img4 from '../assets/images/img/4.jpg';
-import Img5 from '../assets/images/img/5.jpg';
-import Img6 from '../assets/images/img/6.jpg';
+import Img1 from '../assets/images/img/1.webp';
+import Img2 from '../assets/images/img/2.webp';
+import Img3 from '../assets/images/img/3.webp';
+import Img4 from '../assets/images/img/4.webp';
+import Img5 from '../assets/images/img/5.webp';
+import Img6 from '../assets/images/img/6.webp';
 
 const featureData = [
     { id: 1, title: "Wood", text: "lorem content", price: "10000", count: 123, image: Img1 },

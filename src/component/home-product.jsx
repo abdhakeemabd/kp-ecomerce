@@ -1,10 +1,10 @@
 import React from 'react'
-import Product1 from '../assets/images/img/1.jpg'
-import Product2 from '../assets/images/img/2.jpg'
-import Product3 from '../assets/images/img/3.jpg'
-import Product4 from '../assets/images/img/4.jpg'
-import Product5 from '../assets/images/img/5.jpg'
-import Product6 from '../assets/images/img/6.jpg'
+import Product1 from '../assets/images/img/1.webp'
+import Product2 from '../assets/images/img/2.webp'
+import Product3 from '../assets/images/img/3.webp'
+import Product4 from '../assets/images/img/4.webp'
+import Product5 from '../assets/images/img/5.webp'
+import Product6 from '../assets/images/img/6.webp'
 
 
 

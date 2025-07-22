@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { BiLike, BiSolidLike, BiCart, BiSolidCart } from 'react-icons/bi';
 import { PiShareFat } from 'react-icons/pi';
 
-import Img1 from '../assets/images/img/1.jpg';
-import Img2 from '../assets/images/img/2.jpg';
-import Img3 from '../assets/images/img/3.jpg';
-import Img4 from '../assets/images/img/4.jpg';
-import Img5 from '../assets/images/img/5.jpg';
-import Img6 from '../assets/images/img/6.jpg';
+import Img1 from '../assets/images/img/1.webp';
+import Img2 from '../assets/images/img/2.webp';
+import Img3 from '../assets/images/img/3.webp';
+import Img4 from '../assets/images/img/4.webp';
+import Img5 from '../assets/images/img/5.webp';
+import Img6 from '../assets/images/img/6.webp';
 
 function Products() {
   const [likes, setLikes] = useState({});

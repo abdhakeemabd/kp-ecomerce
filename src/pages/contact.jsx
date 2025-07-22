@@ -1,8 +1,11 @@
 import React from 'react'
+import ContactBanner from '../component/contact-banner'
 
 function Contact() {
   return (
-    <div>Contact</div>
+    <>
+    <ContactBanner/>
+    </>
   )
 }
 

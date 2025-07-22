@@ -1,11 +1,11 @@
 import React from 'react'
-import HomeBanner from '../component/home-banner'
 import Products from '../component/products'
+import ProductBanner from '../component/product-banner'
 
 function Prodcut() {
   return (
     <div>
-    <HomeBanner/>
+    <ProductBanner/>
     <Products/>
     </div>
   )

@@ -11,19 +11,28 @@ header .logo{
     position: relative;
     padding-top: 130px;
     height: 100vh;
-    background: url('../images/img/5.jpg') no-repeat center center;
+    background: url('../images/img/5.webp') no-repeat center center;
     background-size: cover;
     width: 100%;
     aspect-ratio:	4368 / 2448;}
-.home-banner::before{
+@media (max-width:567px){
+.home-banner{
+    height: 500px;
+}
+}
+.home-banner::before,
+.page-banner::before{
     content: "";
     position: absolute;
     inset: 0;
     background-color: rgba(0, 0, 0, 0.163);}
-.home-banner .content{
-    position: relative;
-    z-index: 1;
-}
+.home-banner .content,
+.page-banner .content{
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%);
+    left: 50%;
+    z-index: 1;}
 .home_prodcut_sec .product-card .product-img{
     width: 100%;
     aspect-ratio: 300/ 205;
@@ -42,7 +51,26 @@ header .logo{
 .home_feature_sec .features-card:hover{
     box-shadow: 1px 16px 20px 3px rgba(30, 41, 50, 0.08);}
 
+ /*  */
+ .product-banner {
+    position: relative;
+    padding-top: 130px;
+    height: auto;
+    background: url('../images/img/4.webp') no-repeat bottom center;
+    background-size: cover;
+    width: 100%;
+    aspect-ratio:	368 / 148;}
 .product_main_sec .product-card .pro-img{
     aspect-ratio: 300/ 205;
+    width: 100%;}
+
+
+/* contact */
+ .contact-banner {
+    position: relative;
+    padding-top: 130px;
+    height: auto;
+    background: url('../images/img/1.webp') no-repeat bottom center;
+    background-size: cover;
     width: 100%;
-}
+    aspect-ratio:	368 / 148;}

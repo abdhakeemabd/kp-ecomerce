@@ -50,7 +50,7 @@ function HomeFeatures() {
   };
 
   return (
-    <section className='home_feature_sec py-8'>
+    <section className='home_feature_sec py-8 overflow-hidden'>
       <div className="container mx-auto">
         <div className='text-2xl poppins-bold text-center text-slate-900 uppercase'>Best Product</div>
         <div className="features_slider mt-4">

@@ -7,7 +7,7 @@ function ContactBanner() {
             <div className="flex justify-center">
                 <div className="w-full px-2">
                     <div className="content text-center">
-                        <div className='text-center text-4xl poppins-bold text-white lh-2 leading-5 md:leading-13'>Contact</div>
+                        <div className='text-center text-4xl poppins-bold text-white leading-5 leading-13'>Contact</div>
                     </div>
                 </div>
             </div>

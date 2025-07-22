@@ -81,7 +81,7 @@ function HomeFeatures() {
                     <div>{item.count} Views</div>
                   </div>
                 </div>
-                <a className='absolute inset-0 z-1' href=""></a>
+                <a className='absolute inset-0 z-1' href="/product"></a>
               </div>
             ))}
           </Slider>

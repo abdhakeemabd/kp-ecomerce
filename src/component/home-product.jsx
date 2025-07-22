@@ -9,18 +9,18 @@ import Product6 from '../assets/images/img/6.jpg'
 
 
 const products = [
-  { id: 1, title: 'Wood', image: Product1, link: '/' },
-  { id: 2, title: 'Chair', image: Product2, link: '/' },
-  { id: 3, title: 'Table', image: Product3, link: '/' },
-  { id: 4, title: 'Lamp', image: Product4, link: '/' },
-  { id: 5, title: 'Frame', image: Product5, link: '/' },
-  { id: 6, title: 'Shelf', image: Product6, link: '/' },
-  { id: 7, title: 'Wood Table', image: Product2, link: '/' },
-  { id: 8, title: 'Stool', image: Product1, link: '/' },
-  { id: 9, title: 'Shelf', image: Product6, link: '/' },
-  { id: 10, title: 'Wood Table', image: Product2, link: '/' },
-  { id: 11, title: 'Stool', image: Product1, link: '/' },
-  { id: 12, title: 'Wood chair', image: Product4, link: '/' },
+  { id: 1, title: 'Wood', image: Product1, link: '/product' },
+  { id: 2, title: 'Chair', image: Product2, link: '/product' },
+  { id: 3, title: 'Table', image: Product3, link: '/product' },
+  { id: 4, title: 'Lamp', image: Product4, link: '/product' },
+  { id: 5, title: 'Frame', image: Product5, link: '/product' },
+  { id: 6, title: 'Shelf', image: Product6, link: '/product' },
+  { id: 7, title: 'Wood Table', image: Product2, link: '/product' },
+  { id: 8, title: 'Stool', image: Product1, link: '/product' },
+  { id: 9, title: 'Shelf', image: Product6, link: '/product' },
+  { id: 10, title: 'Wood Table', image: Product2, link: '/product' },
+  { id: 11, title: 'Stool', image: Product1, link: '/product' },
+  { id: 12, title: 'Wood chair', image: Product4, link: '/product' },
 
 ]
 

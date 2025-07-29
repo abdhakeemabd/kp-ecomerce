@@ -10,6 +10,7 @@ import About from './pages/about'
 import Prodcut from './pages/prodcut'
 import Contact from './pages/contact'
 import Faq from './pages/faq'
+import ProdcutView from './pages/prodcut-view'
 function App() {  
   return (
     <BrowserRouter>
@@ -18,6 +19,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path='/about' element={<About />} />
         <Route path='/product' element={<Prodcut />} />
+        <Route path='/product-view' element={<ProdcutView />} />
         <Route path='faq' element={<Faq />} />
         <Route path='/contact' element={<Contact />} />
       </Routes>

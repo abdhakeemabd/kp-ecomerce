@@ -87,7 +87,7 @@ function Products() {
             activeTab === tab.id ? (
               <div key={tab.id} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {tab.products.map((product) => (
-                  <div key={product.id} className="bg-white p-4 rounded-md shadow hover:shadow-lg transition">
+                  <div key={product.id} className="bg-white p-4 rounded-md shadow hover:shadow-lg transition relative">
                     <img
                       src={product.image}
                       alt={product.title}
@@ -121,6 +121,8 @@ function Products() {
                       </div>
                       <div className="text-sm text-gray-500">{product.count} Views</div>
                     </div>
+                    <a href='/product-view' className="absolute inset-0 z-10"></a>
+
                   </div>
                 ))}
               </div>

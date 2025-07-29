@@ -13,7 +13,7 @@ import Faq from './pages/faq'
 import ProdcutView from './pages/prodcut-view'
 function App() {  
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='/kp-ecomerce'>
      <Header />
       <Routes>
         <Route index element={<Home />} />

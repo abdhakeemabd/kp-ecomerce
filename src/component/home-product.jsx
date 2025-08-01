@@ -5,6 +5,7 @@ import Product3 from '../assets/images/img/3.webp'
 import Product4 from '../assets/images/img/4.webp'
 import Product5 from '../assets/images/img/5.webp'
 import Product6 from '../assets/images/img/6.webp'
+import { Link } from 'react-router-dom'
 
 
 
@@ -40,7 +41,7 @@ function HomeProduct() {
                 <div className="cont text-center mt-2">
                   <div className="text-m poppins-semibold text-black">{item.title}</div>
                 </div>
-                <a href={item.link} className="absolute inset-0 z-10"></a>
+                <Link to={item.link} className="absolute inset-0 z-10"></Link>
               </div>
             </div>
           ))}

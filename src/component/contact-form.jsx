@@ -5,7 +5,7 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 
 function ContactForm() {
   return (
-    <section className="relative z-10">
+    <section className="relative">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 mt-[-30px]">
           <div className="md:col-span-7 bg-white p-8 rounded-2xl shadow-lg">

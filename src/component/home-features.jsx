@@ -13,6 +13,7 @@ import Img3 from '../assets/images/img/3.webp';
 import Img4 from '../assets/images/img/4.webp';
 import Img5 from '../assets/images/img/5.webp';
 import Img6 from '../assets/images/img/6.webp';
+import { Link } from 'react-router-dom';
 
 const featureData = [
     { id: 1, title: "Wood", text: "lorem content", price: "10000", count: 123, image: Img1 },
@@ -81,7 +82,7 @@ function HomeFeatures() {
                     <div>{item.count} Views</div>
                   </div>
                 </div>
-                <a className='absolute inset-0 z-1' href="/product"></a>
+                <Link to="/product-view" className='absolute inset-0 z-1'></Link>
               </div>
             ))}
           </Slider>

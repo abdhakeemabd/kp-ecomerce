@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BiLike, BiSolidLike, BiCart, BiSolidCart } from 'react-icons/bi';
 import { PiShareFat } from 'react-icons/pi';
+import { Link } from 'react-router-dom';
 
 import Img1 from '../assets/images/img/1.webp';
 import Img2 from '../assets/images/img/2.webp';
@@ -66,7 +67,7 @@ function Products() {
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Tab Header */}
-          <div className="flex mb-6 overflow-x-auto">
+          <div className="flex mb-6 overflow-x-auto flex-wrap">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
@@ -121,7 +122,7 @@ function Products() {
                       </div>
                       <div className="text-sm text-gray-500">{product.count} Views</div>
                     </div>
-                    <a href='/product-view' className="absolute inset-0 z-10"></a>
+                    <Link to="/product-view" className="absolute inset-0 z-10"></Link>
 
                   </div>
                 ))}

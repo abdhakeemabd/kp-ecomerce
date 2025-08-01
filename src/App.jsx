@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route,Routes}from "react-router-dom";
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import './index.css'
 import Home from './pages'
@@ -13,7 +13,7 @@ import Faq from './pages/faq'
 import ProdcutView from './pages/prodcut-view'
 function App() {  
   return (
-    <Router>
+    <BrowserRouter>
      <Header />
       <Routes>
         <Route index element={<Home />} />
@@ -24,7 +24,7 @@ function App() {
         <Route path='/contact' element={<Contact />} />
       </Routes>
       <Footer/>
-    </Router>
+    </BrowserRouter>
   )
 }
 

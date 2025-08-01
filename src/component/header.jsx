@@ -1,28 +1,34 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Logo from '../assets/images/logo/logo.png';
 import { FaRegUser } from "react-icons/fa6";
-import { IoCloseOutline } from "react-icons/io5";
-import { IoMenuOutline } from "react-icons/io5";
+import { IoCloseOutline, IoMenuOutline } from "react-icons/io5";
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+
   return (
     <header className="bg-white shadow-md py-4 relative z-50">
-      <div className="container mx-auto px-4 flex justify-between items-center">        
+      <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="md:hidden">
           <button className='border-1 p-2 rounded-full' onClick={() => setMenuOpen(true)}>
             <IoMenuOutline size={24} />
           </button>
         </div>
+
         <div>
-          <img className="h-10" src={Logo} alt="Logo" />
+          <Link to="/">
+            <img className="h-10" src={Logo} alt="Logo" />
+          </Link>
         </div>
+
         <nav className="hidden md:flex gap-6">
-          <a href="/" className="text-white-700 hover:text-orange-500">Home</a>
-          <a href="/product" className="text-white-700 hover:text-orange-500">Product</a>
-          <a href="/contact" className="text-white-700 hover:text-orange-500">Contact</a>
+          <Link to="/" className="text-white-700 hover:text-orange-500">Home</Link>
+          <Link to="/product" className="text-white-700 hover:text-orange-500">Product</Link>
+          <Link to="/contact" className="text-white-700 hover:text-orange-500">Contact</Link>
         </nav>
+
         <div>
           <button
             className="hidden md:inline-block border-1 p-3 rounded-full"
@@ -34,6 +40,8 @@ function Header() {
           </span>
         </div>
       </div>
+
+      {/* Mobile Menu */}
       <div className={`fixed top-0 left-0 h-full w-2/3 bg-white shadow-lg transform transition-transform duration-300 ease-in-out md:hidden ${menuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         <div className="flex justify-end p-4">
           <button className='text-black' onClick={() => setMenuOpen(false)}>
@@ -41,11 +49,13 @@ function Header() {
           </button>
         </div>
         <nav className="flex flex-col gap-6 px-6">
-          <a href="/" className="text-gray-700 hover:text-orange-500" onClick={() => setMenuOpen(false)}>Home</a>
-          <a href="/product" className="text-gray-700 hover:text-orange-500" onClick={() => setMenuOpen(false)}>Product</a>
-          <a href="/contact" className="text-gray-700 hover:text-orange-500" onClick={() => setMenuOpen(false)}>Contact</a>
+          <Link to="/" className="text-gray-700 hover:text-orange-500" onClick={() => setMenuOpen(false)}>Home</Link>
+          <Link to="/product" className="text-gray-700 hover:text-orange-500" onClick={() => setMenuOpen(false)}>Product</Link>
+          <Link to="/contact" className="text-gray-700 hover:text-orange-500" onClick={() => setMenuOpen(false)}>Contact</Link>
         </nav>
       </div>
+
+      {/* User Menu */}
       <div className={`fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out hidden md:block ${userMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className="flex justify-end p-4">
           <button className='text-black' onClick={() => setUserMenuOpen(false)}>
@@ -53,9 +63,9 @@ function Header() {
           </button>
         </div>
         <div className="flex flex-col gap-4 px-6">
-          <a href="" className="text-gray-700 hover:text-orange-500" onClick={() => setUserMenuOpen(false)}>Login</a>
-          <a href="" className="text-gray-700 hover:text-orange-500" onClick={() => setUserMenuOpen(false)}>Register</a>
-          <a href="" className="text-gray-700 hover:text-orange-500" onClick={() => setUserMenuOpen(false)}>My Account</a>
+          <Link to="/login" className="text-gray-700 hover:text-orange-500" onClick={() => setUserMenuOpen(false)}>Login</Link>
+          <Link to="/register" className="text-gray-700 hover:text-orange-500" onClick={() => setUserMenuOpen(false)}>Register</Link>
+          <Link to="/account" className="text-gray-700 hover:text-orange-500" onClick={() => setUserMenuOpen(false)}>My Account</Link>
         </div>
       </div>
     </header>

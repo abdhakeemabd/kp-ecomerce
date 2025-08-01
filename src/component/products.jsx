@@ -66,34 +66,23 @@ function Products() {
     <section className="product_main_sec py-10">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          {/* Tab Header */}
           <div className="flex mb-6 overflow-x-auto flex-wrap">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 className={`px-5 py-2 text-sm font-medium capitalize transition-all duration-200 whitespace-nowrap
-                  ${activeTab === tab.id
-                    ? 'text-white bg-orange-500 rounded-sm'
-                    : 'text-gray-600 hover:text-orange-600'
-                  }`}
-              >
+                  ${activeTab === tab.id ? 'text-white bg-orange-500 rounded-sm' : 'text-gray-600 hover:text-orange-600'}`}>
                 {tab.label}
               </button>
             ))}
           </div>
-
-          {/* Product Cards */}
           {tabs.map((tab) =>
             activeTab === tab.id ? (
               <div key={tab.id} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {tab.products.map((product) => (
                   <div key={product.id} className="bg-white p-4 rounded-md shadow hover:shadow-lg transition relative">
-                    <img
-                      src={product.image}
-                      alt={product.title}
-                      className="w-full h-48 object-cover rounded-sm mb-3"
-                    />
+                    <img src={product.image} alt={product.title} className="w-full h-48 object-cover rounded-sm mb-3"/>
                     <div className="font-semibold mb-1">{product.title}</div>
                     <p className="text-gray-600 text-sm mb-1">{product.content}</p>
                     <div className="text-md font-bold text-gray-900">₹ {product.price}</div>
@@ -107,23 +96,13 @@ function Products() {
                         </button>
                         <button
                           onClick={() =>
-                            navigator.share
-                              ? navigator.share({
-                                  title: product.title,
-                                  text: product.content,
-                                  url: window.location.href,
-                                })
-                              : alert('Sharing is not supported on this browser.')
-                          }
-                          className="hover:text-blue-500"
-                        >
+                            navigator.share ? navigator.share({ title: product.title, text: product.content, url: window.location.href,}) : alert('Sharing is not supported on this browser.')} className="hover:text-blue-500">
                           <PiShareFat />
                         </button>
                       </div>
                       <div className="text-sm text-gray-500">{product.count} Views</div>
                     </div>
                     <Link to="/product-view" className="absolute inset-0 z-10"></Link>
-
                   </div>
                 ))}
               </div>

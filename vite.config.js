@@ -14,7 +14,6 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: './index.html',
-        // Add other HTML entry points if you have them
       }
     }
   }

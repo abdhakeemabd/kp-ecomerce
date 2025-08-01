@@ -7,6 +7,9 @@ header{
     background-color: transparent;}
 header .logo{
     max-width: 80px;}
+.ReactModalPortal .ReactModal__Overlay {
+    background-color: #00000075 !important;
+} 
 .home-banner {
     position: relative;
     padding-top: 130px;
@@ -26,8 +29,7 @@ header .logo{
     position: absolute;
     top: 50%;
     transform: translate(-50%);
-    left: 50%;
-    z-index: 1;}
+    left: 50%;}
 @media (max-width:567px){
 .home-banner{
     height: 500px;

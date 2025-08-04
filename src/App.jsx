@@ -12,6 +12,7 @@ import Contact from './pages/contact';
 import Faq from './pages/faq';
 import ProdcutView from './pages/prodcut-view';
 import ScrollToTop from './component/scrool-totop';
+import Profile from './component/profile';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path='/product-view' element={<ProdcutView />} />
         <Route path='/faq' element={<Faq />} />
         <Route path='/contact' element={<Contact />} />
+        <Route path='/profile' element={<Profile />} />
       </Routes>
       <Footer />
     </BrowserRouter>

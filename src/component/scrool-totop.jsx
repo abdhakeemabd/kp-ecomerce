@@ -10,7 +10,7 @@ function ScrollToTop() {
         top: 0,
         behavior: 'smooth'
       });
-    }, 2000);
+    }, 1); 
     return () => clearTimeout(timeout);
   }, [pathname]);
 
@@ -18,3 +18,4 @@ function ScrollToTop() {
 }
 
 export default ScrollToTop;
+

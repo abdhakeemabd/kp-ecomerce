@@ -28,8 +28,6 @@ function HowWork() {
   return (
     <section className="how_work_sec py-16 bg-gray-50 relative">
       <div className="container mx-auto px-4 relative">
-        
-        {/* Background Arrow Line */}
         <div className="absolute top-1/2 left-0 w-full transform -translate-y-1/2 z-0">
           <div className="flex justify-between items-center w-full px-10">
             {items.map((_, index) => (
@@ -48,24 +46,14 @@ function HowWork() {
             ))}
           </div>
         </div>
-
-        {/* Content */}
         <h2 className="text-3xl font-bold text-center mb-12 relative z-10">How It Works</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
           {items.map((item, index) => (
-            <div
-              key={index}
-              className="relative text-center p-6 bg-white rounded-xl shadow hover:shadow-lg transition duration-300 ease-in-out group"
-            >
-              {/* Number Badge */}
+            <div key={index} className="relative text-center p-6 bg-white rounded-xl shadow hover:shadow-lg transition duration-300 ease-in-out group">
               <div className="absolute top-4 left-4 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold text-sm transition transform group-hover:scale-110">
                 {index + 1}
               </div>
-
-              {/* Icon */}
               {item.icon}
-
-              {/* Content */}
               <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
               <p className="text-gray-600 text-sm">{item.description}</p>
             </div>

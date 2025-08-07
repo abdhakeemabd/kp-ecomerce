@@ -3,6 +3,8 @@ import Logo from '../assets/images/logo/logo.png';
 import { MdLocationOn } from "react-icons/md";
 import { FaPhone } from "react-icons/fa6";
 import { IoIosMail } from "react-icons/io";
+import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { BsTwitterX } from "react-icons/bs";
 
 
 import { Link } from 'react-router-dom'
@@ -14,7 +16,29 @@ function Footer() {
                 <div className='w-full lg:w-1/4 md:w-1/3 sm:w-1/2 ps-3 lg:pe-6 pe-3 mb-3 lg:mb-0'>
                     <img className='max-w-30' src={Logo} alt="Logo" />
                     <div className='font-medium text-justify text-white'>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam ducimus veniam quod eius voluptatibus illo libero, distinctio fuga consectetur reprehenderit eveniet molestiae, ullam architecto laborum obcaecati sit exercitationem ut debitis!
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam ducimus veniam quod eius voluptatibus illo libero, distinctio fuga consectetur 
+                    </div>
+                    <div className="flex gap-2 mt-3">
+                      <a href="">
+                        <div className='border-white border-1 rounded-full p-3'>
+                          <FaFacebookF/>
+                        </div>
+                      </a>
+                      <a href="">
+                        <div className='border-white border-1 rounded-full p-3'>
+                          <FaInstagram/>
+                        </div>
+                      </a>
+                      <a href="">
+                        <div className='border-white border-1 rounded-full p-3'>
+                          <BsTwitterX/>
+                        </div>
+                      </a>
+                      <a href="">
+                        <div className='border-white border-1 rounded-full p-3'>
+                          <FaLinkedinIn/>
+                        </div>
+                      </a>
                     </div>
                 </div>
                 <div className='w-full lg:w-1/4 md:w-1/3 sm:w-1/2 lg:px-5 px-3 mt-2 mb-3 lg:mb-0'>
@@ -72,7 +96,7 @@ function Footer() {
                     <ul>
                         <li className='flex mt-3 gap-3'>
                            <div className='mt-1 text-xl'> <MdLocationOn/></div>
-                            <div className='text-1xl'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis maiores blanditiis ab impedit corporis deserunt delectus nihil veniam rem nam.</div>
+                            <div className='text-1xl'>Lorem, corporis deserunt delectus nihil veniam rem nam.</div>
                         </li>
                         <li className="flex mt-3 gap-3 content-start">
                             <div className='mt-1 text-xl'><FaPhone/></div>

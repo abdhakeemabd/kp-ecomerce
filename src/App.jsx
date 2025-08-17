@@ -13,6 +13,7 @@ import Product from './pages/prodcut';
 import ProductView from './pages/prodcut-view';
 import Contact from './pages/contact';
 import Faq from './pages/faq';
+import PageNotFound from './pages/page-not-found';
 
 function App() {
   return (
@@ -27,7 +28,9 @@ function App() {
         <Route path="/faq" element={<Faq />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
+
       <Footer />
     </BrowserRouter>
   );

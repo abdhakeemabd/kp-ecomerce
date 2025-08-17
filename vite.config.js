@@ -3,9 +3,13 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  base: '/',
+  plugins: [
+    tailwindcss(),
+    react()
+  ],
   build: {
     outDir: 'dist',
-    emptyOutDir: true
+    emptyOutDir: true,
   }
 })

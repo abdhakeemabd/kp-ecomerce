@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import './index.css';
 import '../src/assets/style/public.css';
-
 import Header from './component/header';
 import Footer from './component/footer';
 import ScrollToTop from './component/scrool-totop';

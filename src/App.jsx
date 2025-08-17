@@ -9,8 +9,8 @@ import ScrollToTop from './component/scrool-totop';
 import Profile from './component/profile';
 import Home from './pages';
 import About from './pages/about';
-import Prodcut from './pages/prodcut';
-import ProdcutView from './pages/prodcut-view';
+import Product from './pages/prodcut';
+import ProductView from './pages/prodcut-view';
 import Contact from './pages/contact';
 import Faq from './pages/faq';
 
@@ -19,18 +19,15 @@ function App() {
     <BrowserRouter>
       <ScrollToTop />
       <Header />
-
       <Routes>
         <Route index element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/product" element={<Prodcut />} />
-        <Route path="/product-view" element={<ProdcutView />} />
+        <Route path="/product" element={<Product />} />
+        <Route path="/product-view" element={<ProductView />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="*" element={<Home />} />
       </Routes>
-
       <Footer />
     </BrowserRouter>
   );

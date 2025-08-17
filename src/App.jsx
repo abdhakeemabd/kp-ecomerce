@@ -10,6 +10,8 @@ import ProductView from './pages/prodcut-view';
 import Contact from './pages/contact';
 import Faq from './pages/faq';
 import Profile from './component/profile';
+import PageNotFound from './pages/404';
+
 function App() {
   return (
     <BrowserRouter>
@@ -23,10 +25,11 @@ function App() {
         <Route path="/faq" element={<Faq />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="*" element={<PageNotFound />} /> 
       </Routes>
-
       <Footer />
     </BrowserRouter>
   );
 }
+
 export default App;

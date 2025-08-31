@@ -5,6 +5,13 @@ import Product3 from '../assets/images/img/3.webp'
 import Product4 from '../assets/images/img/4.webp'
 import Product5 from '../assets/images/img/5.webp'
 import Product6 from '../assets/images/img/6.webp'
+import Bed1 from '../assets/images/product/1.webp'
+import Speaker from '../assets/images/product/speaker-1.jpg'
+import Cooler from '../assets/images/product/cooler-1.webp'
+import Fidge from '../assets/images/product/fige-1.avif'
+import Laptop from '../assets/images/product/lap-1.jpg'
+import Fan from '../assets/images/product/fan-1.avif'
+import Mixie from '../assets/images/product/mixie-3.avif'
 import { Link } from 'react-router-dom'
 
 
@@ -22,6 +29,13 @@ const products = [
   { id: 10, title: 'Wood Table', image: Product2, link: '/product' },
   { id: 11, title: 'Stool', image: Product1, link: '/product' },
   { id: 12, title: 'Wood chair', image: Product4, link: '/product' },
+  { id: 13, title: 'Mattress', image: Bed1, link: '/product' },
+  { id: 14, title: 'Speaker', image: Speaker, link: '/product' },
+  { id: 15, title: 'Cooler', image: Cooler, link: '/product' },
+  { id: 16, title: 'Fidge', image: Fidge, link: '/product' },
+  { id: 17, title: 'Laptop', image: Laptop, link: '/product' },
+  { id: 18, title: 'Fan', image: Fan, link: '/product' },
+  { id: 19, title: 'Mixie', image: Mixie, link: '/product' },
 
 ]
 
@@ -36,7 +50,7 @@ function HomeProduct() {
         <div className="flex flex-wrap -mx-2">
           {products.map((item) => (
             <div key={item.id} className="w-full lg:w-1/4 md:w-1/3 sm:w-1/2 p-3">
-              <div className="card product-card rounded-sm pb-2 relative overflow-hidden hover:shadow-lg transition-shadow duration-300">
+              <div className="card product-card rounded-sm pb-2 relative overflow-hidden hover:shadow-lg transition-shadow duration-300 border-green-700 border-1">
                 <img className="product-img w-full" src={item.image} alt={item.title} />
                 <div className="cont text-center mt-2">
                   <div className="text-m poppins-semibold text-black">{item.title}</div>

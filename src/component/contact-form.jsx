@@ -12,13 +12,13 @@ function ContactForm() {
             <h2 className="text-2xl font-bold text-gray-800 mb-6">Get in Touch</h2>
             <form className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <input type="text" placeholder="Full Name" className="border border-green-300 rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-green-400"/>
-                <input type="text" placeholder="Subject" className="border border-green-300 rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-green-400"/>
+                <input type="text" placeholder="Full Name" className="border border-[#f6e416] rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-green-400"/>
+                <input type="text" placeholder="Subject" className="border border-[#f6e416] rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-green-400"/>
               </div>
-              <input type="email" placeholder="Email" className="border border-green-300 rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-green-400"/>
-              <input type="text" placeholder="Phone Number" className="border border-green-300 rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-green-400"/>
+              <input type="email" placeholder="Email" className="border border-[#f6e416] rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-green-400"/>
+              <input type="text" placeholder="Phone Number" className="border border-[#f6e416] rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-green-400"/>
               <textarea
-                placeholder="Message" rows="4" className="border border-green-300 rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-green-400"></textarea>
+                placeholder="Message" rows="4" className="border border-[#f6e416] rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-green-400"></textarea>
               <div className="text-right">
               <button type="submit" className="bg-black text-white px-6 py-2 rounded-full hover:bg-blue-800 transition">Submit</button>
               </div>
@@ -26,7 +26,7 @@ function ContactForm() {
           </div>
           <div className="md:col-span-5 bg-black text-white p-8 space-y-8 rounded-2xl shadow-lg">
             <div className="flex items-start space-x-4">
-              <div className="w-12 h-12 rounded-full border-2 border-green-500 bg-gray-800 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-full border-2 border-[#f6e416] bg-gray-800 flex items-center justify-center">
                 <IoCallSharp className="text-white-500 text-2xl" />
               </div>
               <div>
@@ -36,7 +36,7 @@ function ContactForm() {
             </div>
             <hr className="border-gray-700" />
             <div className="flex items-start space-x-4">
-              <div className="w-12 h-12 rounded-full border-2 border-green-500 bg-gray-800 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-full border-2 border-[#f6e416] bg-gray-800 flex items-center justify-center">
                 <IoIosMail className="text-white-500 text-2xl" />
               </div>
               <div>
@@ -46,7 +46,7 @@ function ContactForm() {
             </div>
             <hr className="border-gray-700" />
             <div className="flex items-start space-x-4">
-              <div className="w-12 h-12 rounded-full border-2 border-green-500 bg-gray-800 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-full border-2 border-[#ffe600] bg-gray-800 flex items-center justify-center">
                 <FaMapMarkerAlt className="text-white-500 text-2xl" />
               </div>
               <div>

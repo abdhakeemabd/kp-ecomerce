@@ -1,8 +1,11 @@
 import React from 'react'
 import User from '../assets/images/img/1.webp'
+import ProfileBanner from './profile-banner'
 function Profile() {
   return (
-    <section className='profile_sec'>
+    <>
+      <ProfileBanner/>
+      <section className='profile_sec'>
         <div className="container">
             <div className="grid grid-col-1 md:grid-cols-12 gap-6 py-30">
                 <div className="md:col-span-4">
@@ -29,7 +32,8 @@ function Profile() {
                 </div>
             </div>
         </div>
-    </section>
+      </section>
+    </>
   )
 }
 

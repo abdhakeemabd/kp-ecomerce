@@ -51,7 +51,7 @@ function Header() {
   };
 
   return (
-    <header className="bg-white shadow-md py-4 relative z-50">
+    <header className="bg-white py-4 relative z-50">
       <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Mobile Menu Button */}
         <div className="md:hidden">
@@ -67,9 +67,9 @@ function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex gap-6">
-          <Link to="/" className="text-white hover:text-orange-500">Home</Link>
-          <Link to="/product" className="text-white hover:text-orange-500">Product</Link>
-          <Link to="/contact" className="text-white hover:text-orange-500">Contact</Link>
+          <Link to="/" className="text-white font-medium hover:text-orange-500">Home</Link>
+          <Link to="/product" className="text-white font-medium hover:text-orange-500">Product</Link>
+          <Link to="/contact" className="text-white font-medium hover:text-orange-500">Contact</Link>
         </nav>
 
         {/* User Menu */}
@@ -85,8 +85,7 @@ function Header() {
                 <Link
                   to="/profile"
                   onClick={() => setUserMenuOpen(false)}
-                  className="text-left text-gray-700 hover:text-orange-500"
-                >
+                  className="text-left text-gray-700 hover:text-orange-500">
                   My Account
                 </Link>
               </div>

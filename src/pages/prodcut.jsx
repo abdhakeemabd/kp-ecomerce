@@ -4,10 +4,10 @@ import ProductBanner from '../component/product-banner'
 
 function Prodcut() {
   return (
-    <div>
-    <ProductBanner/>
-    <Products/>
-    </div>
+    <main>
+      <ProductBanner />
+      <Products />
+    </main>
   )
 }
 

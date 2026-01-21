@@ -5,11 +5,11 @@ import HomeFeatures from '../component/home-features'
 
 const Home = () => {
   return (
-    <>
-    <HomeBanner/>
-    <HomeProduct/>
-    <HomeFeatures/>
-    </>
+    <main>
+      <HomeBanner />
+      <HomeProduct />
+      <HomeFeatures />
+    </main>
   )
 }
 

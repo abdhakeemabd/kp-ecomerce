@@ -11,9 +11,11 @@ import Faq from './pages/faq';
 import ProdcutView from './pages/prodcut-view';
 import ScrollToTop from './component/scrool-totop';
 import Profile from './component/profile';
+import NotFound from './pages/not-found';
+
 function HomeRoutes() {
   return (
-     <BrowserRouter>
+    <BrowserRouter>
       <ScrollToTop />
       <Header />
       <Routes>
@@ -24,6 +26,7 @@ function HomeRoutes() {
         <Route path='/faq' element={<Faq />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/profile' element={<Profile />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </BrowserRouter>

@@ -51,7 +51,7 @@ function HomeProduct() {
           {products.map((item) => (
             <div key={item.id} className="w-full lg:w-1/4 md:w-1/3 sm:w-1/2 p-3">
               <div className="card product-card rounded-sm pb-2 relative overflow-hidden hover:shadow-lg transition-shadow duration-300 border-green-700 border-1">
-                <img className="product-img w-full" src={item.image} alt={item.title} />
+                <img className="product-img w-full" src={item.image} alt={item.title} loading="lazy" width="300" height="205" />
                 <div className="cont text-center mt-2">
                   <div className="text-m poppins-semibold text-black">{item.title}</div>
                 </div>

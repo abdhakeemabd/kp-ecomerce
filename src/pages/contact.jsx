@@ -4,10 +4,10 @@ import ContactForm from '../component/contact-form'
 
 function Contact() {
   return (
-    <>
-    <ContactBanner/>
-    <ContactForm/>
-    </>
+    <main>
+      <ContactBanner />
+      <ContactForm />
+    </main>
   )
 }
 

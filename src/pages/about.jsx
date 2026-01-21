@@ -5,11 +5,11 @@ import HowWork from '../component/how-work'
 
 function About() {
   return (
-    <>
-    <AboutBanner/>
-    <AboutUs/>
-    <HowWork/>
-    </>
+    <main>
+      <AboutBanner />
+      <AboutUs />
+      <HowWork />
+    </main>
   )
 }
 

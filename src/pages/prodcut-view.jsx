@@ -6,11 +6,11 @@ import RelatedProduct from '../component/related-product'
 
 function ProdcutView() {
   return (
-    <>
-    <ProductBanner />
-    <ProductDetails />
-    <RelatedProduct/>
-    </>
+    <main>
+      <ProductBanner />
+      <ProductDetails />
+      <RelatedProduct />
+    </main>
   )
 }
 

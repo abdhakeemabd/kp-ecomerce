@@ -2,6 +2,7 @@ import React from 'react';
 import { IoCallSharp } from "react-icons/io5";
 import { IoIosMail } from "react-icons/io";
 import { FaMapMarkerAlt } from "react-icons/fa";
+import MapLoader from './map-loader';
 
 function ContactForm() {
   return (
@@ -12,15 +13,15 @@ function ContactForm() {
             <h2 className="text-2xl font-bold text-gray-800 mb-6">Get in Touch</h2>
             <form className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <input type="text" placeholder="Full Name" className="border border-[#f6e416] rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-green-400"/>
-                <input type="text" placeholder="Subject" className="border border-[#f6e416] rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-green-400"/>
+                <input type="text" placeholder="Full Name" className="border border-[#f6e416] rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-green-400" />
+                <input type="text" placeholder="Subject" className="border border-[#f6e416] rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-green-400" />
               </div>
-              <input type="email" placeholder="Email" className="border border-[#f6e416] rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-green-400"/>
-              <input type="text" placeholder="Phone Number" className="border border-[#f6e416] rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-green-400"/>
+              <input type="email" placeholder="Email" className="border border-[#f6e416] rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-green-400" />
+              <input type="text" placeholder="Phone Number" className="border border-[#f6e416] rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-green-400" />
               <textarea
                 placeholder="Message" rows="4" className="border border-[#f6e416] rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-green-400"></textarea>
               <div className="text-right">
-              <button type="submit" className="bg-black text-white px-6 py-2 rounded-full hover:bg-blue-800 transition">Submit</button>
+                <button type="submit" className="bg-black text-white px-6 py-2 rounded-full hover:bg-blue-800 transition">Submit</button>
               </div>
             </form>
           </div>
@@ -60,10 +61,11 @@ function ContactForm() {
       </div>
       <div className="my-10 pt-5">
         <div className="container">
-            <iframe className='rounded-xl'
+          <MapLoader
+            className='rounded-xl w-full h-[450px]'
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.175874738364!2d77.70469257578802!3d13.024469613715535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae11000bcd07cd%3A0x28024596209046f5!2sKP%20Consulting!5e0!3m2!1sen!2sin!4v1753201530246!5m2!1sen!2sin"
-            width="100%" height="450" style={{ border: 0 }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade">
-        </iframe>
+            width="100%" height="450" style={{ border: 0 }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"
+          />
         </div>
       </div>
     </section>

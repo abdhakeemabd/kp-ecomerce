@@ -46,7 +46,7 @@ function Footer() {
                     <div className="poppins-semibold text-xl text-white">Categories</div>
                     <ul className=''>
                         <li className="hover:font-medium transition duration-200 my-3">
-                          <Link to="/about" className="text-base text-white hover:text-amber-500">
+                          <Link to="/prodcut" className="text-base text-white hover:text-amber-500">
                             Chair
                           </Link>
                         </li>
@@ -56,12 +56,12 @@ function Footer() {
                           </Link>
                         </li>
                         <li className="hover:font-medium transition duration-200 my-3">
-                          <Link to="/contact" className="text-base text-white hover:text-amber-500">
+                          <Link to="/product" className="text-base text-white hover:text-amber-500">
                             Table
                           </Link>
                         </li>
                         <li className="hover:font-medium transition duration-200 my-3">
-                          <Link to="/faq" className="text-base text-white hover:text-amber-500">
+                          <Link to="/product" className="text-base text-white hover:text-amber-500">
                             Cupboard
                           </Link>
                         </li>

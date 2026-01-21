@@ -67,9 +67,9 @@ function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex gap-6">
-          <Link to="/" className="text-gray-700 hover:text-orange-500">Home</Link>
-          <Link to="/product" className="text-gray-700 hover:text-orange-500">Product</Link>
-          <Link to="/contact" className="text-gray-700 hover:text-orange-500">Contact</Link>
+          <Link to="/" className="text-white hover:text-orange-500">Home</Link>
+          <Link to="/product" className="text-white hover:text-orange-500">Product</Link>
+          <Link to="/contact" className="text-white hover:text-orange-500">Contact</Link>
         </nav>
 
         {/* User Menu */}

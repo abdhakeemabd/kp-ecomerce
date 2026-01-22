@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BiLike, BiSolidLike, BiCart, BiSolidCart } from 'react-icons/bi';
 import { PiShareFat } from 'react-icons/pi';
 import { Link } from 'react-router-dom';
-
+import King1 from '../assets/images/king/1.jpeg';
 import Img1 from '../assets/images/img/1.webp';
 import Img2 from '../assets/images/img/2.webp';
 import Img3 from '../assets/images/img/3.webp';
@@ -42,7 +42,7 @@ import Tv3 from '../assets/images/product/tv-3.avif';
 function Products() {
   const [likes, setLikes] = useState({});
   const [carts, setCarts] = useState({});
-  const [activeTab, setActiveTab] = useState('wood');
+  const [activeTab, setActiveTab] = useState('Tablet');
 
   const toggleLike = (id) => {
     setLikes((prev) => ({ ...prev, [id]: !prev[id] }));
@@ -53,6 +53,13 @@ function Products() {
   };
 
   const tabs = [
+     {
+      id: 'Tablet',
+      label: 'Tablet',
+      products: [
+        { id: 1, title: 'COBRA ROMANCE', content: 'Natural Power for Lasting Romantic Love', price: '1299', count: 123, image: King1 },
+      ],
+    },
     {
       id: 'wood',
       label: 'Wood',

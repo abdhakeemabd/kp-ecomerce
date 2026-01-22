@@ -6,7 +6,7 @@ import { BiLike } from "react-icons/bi";
 import { BiCart,BiSolidCart } from "react-icons/bi";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import King1 from '../assets/images/king/1.jpeg';
 import Img1 from '../assets/images/img/1.webp';
 import Img2 from '../assets/images/img/2.webp';
 import Img3 from '../assets/images/img/3.webp';
@@ -16,12 +16,14 @@ import Img6 from '../assets/images/img/6.webp';
 import { Link } from 'react-router-dom';
 
 const featureData = [
-    { id: 1, title: "Wood", text: "lorem content", price: "10000", count: 123, image: Img1 },
+    { id: 1, title: 'COBRA ROMANCE', text: 'Natural Power for Lasting Romantic Love', price: '1299', count: 123, image: King1 },
     { id: 2, title: "Metal", text: "lorem content", price: "10000", count: 143, image: Img2 },
     { id: 3, title: "Glass", text: "lorem content", price: "10000", count: 23, image: Img3 },
     { id: 4, title: "Glass", text: "lorem content", price: "10000", count: 53, image: Img4 },
     { id: 5, title: "Glass", text: "lorem content", price: "10000", count: 63, image: Img5 },
     { id: 6, title: "Glass", text: "lorem content", price: "10000", count: 83, image: Img6 },
+    { id: 7, title: "Wood", text: "lorem content", price: "10000", count: 123, image: Img1 },
+
 ];
 
 function RelatedProduct() {
@@ -58,7 +60,9 @@ function RelatedProduct() {
           <Slider {...settings}>
             {featureData.map(item => (
               <div className='px-3 features-card rounded-sm pb-2 relative overflow-hidden' key={item.id}>
-                <img className='feature-img w-full' src={item.image} alt={item.title} />
+                <div className='feature-img-card'>
+                  <img className='feature-img w-full' src={item.image} alt={item.title} />
+                </div>
                 <div className="cont px-3 mt-2">
                   <div className='text-xl poppins-semibold'>{item.title}</div>
                   <div className='text-md'>{item.text}</div>

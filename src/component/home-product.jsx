@@ -12,13 +12,14 @@ import Fidge from '../assets/images/product/fige-1.avif'
 import Laptop from '../assets/images/product/lap-1.jpg'
 import Fan from '../assets/images/product/fan-1.avif'
 import Mixie from '../assets/images/product/mixie-3.avif'
+import King from '../assets/images/king/1.jpeg'
 import { Link } from 'react-router-dom'
 import ImageLoader from './image-loader'
 
 
 
 const products = [
-  { id: 1, title: 'Wood', image: Product1, link: '/product' },
+  { id: 1, title: 'COBRA ROMANCE', image: King, link: '/product' },
   { id: 2, title: 'Chair', image: Product2, link: '/product' },
   { id: 3, title: 'Table', image: Product3, link: '/product' },
   { id: 4, title: 'Lamp', image: Product4, link: '/product' },
@@ -37,6 +38,9 @@ const products = [
   { id: 17, title: 'Laptop', image: Laptop, link: '/product' },
   { id: 18, title: 'Fan', image: Fan, link: '/product' },
   { id: 19, title: 'Mixie', image: Mixie, link: '/product' },
+  { id: 20, title: 'Wood', image: Product1, link: '/product' },
+
+
 
 ]
 

@@ -68,7 +68,7 @@ header .logo {
 
 .home_feature_sec .features_slider .feature-img-card {
     width: 100%;
-    aspect-ratio: 300 / 205;
+    aspect-ratio: 1 / 1;
 }
 .home_feature_sec .features_slider .feature-img-card .feature-img{
     width: 100%;

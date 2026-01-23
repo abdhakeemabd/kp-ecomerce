@@ -60,7 +60,24 @@ function HomeProduct() {
                 <div className="cont text-center mt-2">
                   <div className="text-m poppins-semibold text-black">{item.title}</div>
                 </div>
-                <Link to={`/product-view/${item.id}`} className="absolute inset-0 z-10"></Link>
+                <Link
+                  to={`/product-view/${item.id}`}
+                  state={{
+                    product: {
+                      id: item.id,
+                      title: item.title,
+                      image: item.image,
+                      gallery: [item.image],
+                      offerPrice: 'N/A',
+                      oldPrice: 'N/A',
+                      offer: 'N/A',
+                      description: `Details for ${item.title}`,
+                      subDescription: '',
+                      subContent: ''
+                    }
+                  }}
+                  className="absolute inset-0 z-10"
+                ></Link>
               </div>
             </div>
           ))}

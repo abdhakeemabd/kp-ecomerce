@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import { PiShareFat } from "react-icons/pi";
 import { BiSolidLike } from "react-icons/bi";
 import { BiLike } from "react-icons/bi";
-import { BiCart,BiSolidCart } from "react-icons/bi";
+import { BiCart, BiSolidCart } from "react-icons/bi";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import King1 from '../assets/images/king/1.jpeg';
@@ -16,13 +16,13 @@ import Img6 from '../assets/images/img/6.webp';
 import { Link } from 'react-router-dom';
 
 const featureData = [
-    { id: 1, title: 'COBRA ROMANCE', text: 'Natural Power for Lasting Romantic Love', price: '1299', count: 123, image: King1 },
-    { id: 2, title: "Metal", text: "lorem content", price: "10000", count: 143, image: Img2 },
-    { id: 3, title: "Glass", text: "lorem content", price: "10000", count: 23, image: Img3 },
-    { id: 4, title: "Glass", text: "lorem content", price: "10000", count: 53, image: Img4 },
-    { id: 5, title: "Glass", text: "lorem content", price: "10000", count: 63, image: Img5 },
-    { id: 6, title: "Glass", text: "lorem content", price: "10000", count: 83, image: Img6 },
-    { id: 7, title: "Wood", text: "lorem content", price: "10000", count: 123, image: Img1 },
+  { id: 1, title: 'COBRA ROMANCE', text: 'Natural Power for Lasting Romantic Love', price: '1299', count: 123, image: King1 },
+  { id: 2, title: "Metal", text: "lorem content", price: "10000", count: 143, image: Img2 },
+  { id: 3, title: "Glass", text: "lorem content", price: "10000", count: 23, image: Img3 },
+  { id: 4, title: "Glass", text: "lorem content", price: "10000", count: 53, image: Img4 },
+  { id: 5, title: "Glass", text: "lorem content", price: "10000", count: 63, image: Img5 },
+  { id: 6, title: "Glass", text: "lorem content", price: "10000", count: 83, image: Img6 },
+  { id: 7, title: "Wood", text: "lorem content", price: "10000", count: 123, image: Img1 },
 
 ];
 
@@ -46,9 +46,9 @@ function RelatedProduct() {
     arrows: true,
     autoplaySpeed: 3000,
     responsive: [
-      { breakpoint: 1199, settings: { slidesToShow: 3 }},
-      { breakpoint: 1024, settings: { slidesToShow: 2 }},
-      { breakpoint: 768, settings: { slidesToShow: 1 }}
+      { breakpoint: 1199, settings: { slidesToShow: 3 } },
+      { breakpoint: 1024, settings: { slidesToShow: 2 } },
+      { breakpoint: 768, settings: { slidesToShow: 1 } }
     ]
   };
 
@@ -86,7 +86,22 @@ function RelatedProduct() {
                     <div>{item.count} Views</div>
                   </div>
                 </div>
-                <Link to='/product' className='absolute inset-0 z-1'></Link>
+                <Link
+                  to={`/product-view/${item.id}`}
+                  state={{
+                    product: {
+                      ...item,
+                      offerPrice: item.price,
+                      oldPrice: parseInt(item.price) + 500,
+                      offer: '10%',
+                      gallery: [item.image],
+                      description: item.text,
+                      subDescription: item.text,
+                      subContent: item.text
+                    }
+                  }}
+                  className='absolute inset-0 z-1'
+                ></Link>
               </div>
             ))}
           </Slider>

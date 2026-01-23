@@ -53,7 +53,7 @@ function Products() {
   };
 
   const tabs = [
-     {
+    {
       id: 'Tablet',
       label: 'Tablet',
       products: [
@@ -174,7 +174,7 @@ function Products() {
               <div key={tab.id} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {tab.products.map((product) => (
                   <div key={product.id} className="bg-white p-4 rounded-md shadow hover:shadow-lg transition relative">
-                    <img src={product.image} alt={product.title} className="w-full h-48 object-contain rounded-sm mb-3"/>
+                    <img src={product.image} alt={product.title} className="w-full h-48 object-contain rounded-sm mb-3" />
                     <div className="font-semibold mb-1">{product.title}</div>
                     <p className="text-gray-600 text-sm mb-1">{product.content}</p>
                     <div className="text-md font-bold text-gray-900">₹ {product.price}</div>
@@ -188,13 +188,28 @@ function Products() {
                         </button>
                         <button
                           onClick={() =>
-                            navigator.share ? navigator.share({ title: product.title, text: product.content, url: window.location.href,}) : alert('Sharing is not supported on this browser.')} className="hover:text-blue-500">
+                            navigator.share ? navigator.share({ title: product.title, text: product.content, url: window.location.href, }) : alert('Sharing is not supported on this browser.')} className="hover:text-blue-500">
                           <PiShareFat />
                         </button>
                       </div>
                       <div className="text-sm text-gray-500">{product.count} Views</div>
                     </div>
-                    <Link to="/product-view" className="absolute inset-0 z-10"></Link>
+                    <Link
+                      to={`/product-view/${product.id}`}
+                      state={{
+                        product: {
+                          ...product,
+                          offerPrice: product.price,
+                          oldPrice: parseInt(product.price) + 500, // Dummy logic for old price
+                          offer: '10%',
+                          gallery: [product.image],
+                          description: product.content,
+                          subDescription: product.content,
+                          subContent: product.content
+                        }
+                      }}
+                      className="absolute inset-0 z-10"
+                    ></Link>
                   </div>
                 ))}
               </div>

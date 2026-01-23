@@ -60,7 +60,7 @@ function HomeProduct() {
                 <div className="cont text-center mt-2">
                   <div className="text-m poppins-semibold text-black">{item.title}</div>
                 </div>
-                <Link to={item.link} className="absolute inset-0 z-10"></Link>
+                <Link to={`/product-view/${item.id}`} className="absolute inset-0 z-10"></Link>
               </div>
             </div>
           ))}

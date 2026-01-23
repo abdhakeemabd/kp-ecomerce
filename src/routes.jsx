@@ -22,7 +22,7 @@ function HomeRoutes() {
         <Route index element={<Home />} />
         <Route path='/about' element={<About />} />
         <Route path='/product' element={<Prodcut />} />
-        <Route path='/product-view' element={<ProdcutView />} />
+        <Route path='/product-view/:id' element={<ProdcutView />} />
         <Route path='/faq' element={<Faq />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/profile' element={<Profile />} />

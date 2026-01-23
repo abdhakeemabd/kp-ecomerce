@@ -61,11 +61,12 @@ function ProductDetails() {
                 href={product.gallery?.[activeImage]}
                 data-fancybox="gallery"
                 data-caption={`${product.title} - ₹${product.offerPrice}`}
+                className="block w-full h-[500px] bg-[#f2f2f200] rounded-lg flex items-center justify-center overflow-hidden mb-4 border border-[#ebebec]"
               >
                 <img
                   src={product.gallery?.[activeImage]}
                   alt={product.title}
-                  className="w-full h-auto object-cover rounded-lg mb-4 cursor-pointer hover:opacity-90 transition-opacity duration-200"
+                  className="max-w-full max-h-full object-contain hover:scale-105 transition-transform duration-500 mix-blend-multiply"
                 />
               </a>
 
@@ -116,12 +117,12 @@ function ProductDetails() {
                   >
                     <div
                       className={`h-full bg-gray-100 rounded-lg overflow-hidden transition-all duration-200
-                        ${activeImage === index ? "ring-2 ring-indigo-500" : "hover:ring-2 hover:ring-indigo-300"}`}
+                        ${activeImage === index ? "border-2 border-[#ebebec]" : "border-2 border-transparent hover:border-[#ebebec]"}`}
                     >
                       <img
                         src={img}
                         alt="product"
-                        className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                        className="w-full h-full object-contain transition-transform duration-300 hover:scale-105"
                       />
                     </div>
                   </div>

@@ -173,8 +173,10 @@ function Products() {
             activeTab === tab.id ? (
               <div key={tab.id} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {tab.products.map((product) => (
-                  <div key={product.id} className="bg-white p-4 rounded-md shadow hover:shadow-lg transition relative">
-                    <img src={product.image} alt={product.title} className="w-full h-48 object-contain rounded-sm mb-3" />
+                  <div key={product.id} className="bg-white p-4 rounded-md shadow hover:shadow-lg transition relative border border-[#ebebec] h-full flex flex-col">
+                    <div className="w-full h-56 flex items-center justify-center bg-[#f2f2f200] rounded-sm mb-3 p-4 shrink-0 border border-[#ebebec]">
+                      <img src={product.image} alt={product.title} className="max-w-full max-h-full object-contain mix-blend-multiply" />
+                    </div>
                     <div className="font-semibold mb-1">{product.title}</div>
                     <p className="text-gray-600 text-sm mb-1">{product.content}</p>
                     <div className="text-md font-bold text-gray-900">₹ {product.price}</div>

@@ -58,7 +58,9 @@ function HomeFeatures() {
           <Slider {...settings}>
             {featureData.map(item => (
               <div className='px-3 features-card rounded-sm pb-2 relative overflow-hidden' key={item.id}>
-                <img className='feature-img w-full' src={item.image} alt={item.title} />
+                <div className='feature-img-card'>
+                  <img className='feature-img' src={item.image} alt={item.title} />
+                </div>
                 <div className="cont px-3 mt-2">
                   <div className='text-xl poppins-semibold'>{item.title}</div>
                   <div className='text-md'>{item.text}</div>

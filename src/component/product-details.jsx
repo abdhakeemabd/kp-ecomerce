@@ -40,7 +40,6 @@ function ProductDetails() {
     };
   }, []);
 
-  // ✅ BUY NOW HANDLER
   const handleBuyNow = () => {
     const message = `Hello, I want to order:\n\nProduct: ${product.title}\nPrice: ₹${product.offerPrice}\n\nPlease contact me.`;
     const whatsappUrl = `https://wa.me/919846007257?text=${encodeURIComponent(message)}`;
@@ -53,8 +52,6 @@ function ProductDetails() {
     <section className="py-10 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-
-          {/* LEFT MAIN PRODUCT */}
           <div className="md:col-span-7">
             <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
               <a

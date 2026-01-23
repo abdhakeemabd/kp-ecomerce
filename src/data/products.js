@@ -9,6 +9,7 @@ import Cobra1 from '../assets/images/king/1.jpeg';
 import Cobra2 from '../assets/images/king/2.jpeg';
 import Cobra3 from '../assets/images/king/3.jpeg';
 import Cobra4 from '../assets/images/king/4.jpeg';
+import Cobra5 from '../assets/images/king/5.png';
 
 export const products = [
     {
@@ -19,7 +20,7 @@ export const products = [
         offer: "23%",
         offerPrice: "1299",
         count: 23,
-        gallery: [Cobra1, Cobra2, Cobra3, Cobra4],
+        gallery: [Cobra1, Cobra5, Cobra2, Cobra3, Cobra4],
         description: "Cobra Romance is a premium Ayurvedic formula for natural strength and lasting intimacy. It activates within 30 minutes and delivers results for up to 4 days. Made using advanced Thanthu Paka extraction for 2.5× potency. Clinically safe with no headaches, BP spikes, or addiction. 100% private shipping with government-approved quality.",
         subDescription: "Cobra Romance is a government-approved Ayurvedic formulation designed to restore natural strength, stamina, and romantic confidence without harmful chemicals or artificial stimulants. Crafted using the advanced Thanthu Paka extraction method, it delivers 2.5× higher herbal potency for faster absorption and longer-lasting results.",
         subContent: "Cobra Romance is a premium Ayurvedic vitality formula crafted to enhance stamina, confidence, and deep romantic connection naturally. Powered by advanced Thanthu Paka extraction, it delivers faster absorption and long-lasting results without harmful chemicals or side effects."

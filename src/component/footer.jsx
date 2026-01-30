@@ -10,13 +10,13 @@ import { BsTwitterX } from "react-icons/bs";
 import { Link } from 'react-router-dom'
 function Footer() {
   return (
-    <footer className='bg-gray-500 text-white'>
+    <footer className='bg-[#0f1b2e] text-white'>
       <div className="container">
         <div className='flex flex-wrap'>
           <div className='w-full lg:w-1/4 md:w-1/3 sm:w-1/2 ps-3 lg:pe-6 pe-3 mb-3 lg:mb-0'>
-            <img className='max-w-30' src={Logo} alt="Logo" />
+            <img className='max-w-30 mb-3' src={Logo} alt="Logo" />
             <div className='font-medium text-justify text-white'>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam ducimus veniam quod eius voluptatibus illo libero, distinctio fuga consectetur
+              Eacyclic helps you find the best products near you and buy instantly. Start shopping smarter today!            
             </div>
             <div className="flex gap-2 mt-3">
               <a href="">
@@ -96,11 +96,11 @@ function Footer() {
             <ul>
               <li className='flex mt-3 gap-3'>
                 <div className='mt-1 text-xl'> <MdLocationOn /></div>
-                <div className='text-1xl'>Lorem, corporis deserunt delectus nihil veniam rem nam.</div>
+                <div className='text-1xl'>Smart works, DSR Techno cube  Silver Springs Layout, Munnekollal, Bengaluru, Karnataka 560066</div>
               </li>
               <li className="flex mt-3 gap-3 content-start">
                 <div className='mt-1 text-xl'><FaPhone /></div>
-                <a className='text-1xl text-base text-white hover:text-amber-500' href="tel:8606065001">+91 8606065001</a>
+                <a className='text-1xl text-base text-white hover:text-amber-500' href="tel:98460 07257">+91 98460 07257</a>
               </li>
               <li className="flex mt-3 gap-3 content-start">
                 <div className='mt-1 text-xl'><IoIosMail /></div>

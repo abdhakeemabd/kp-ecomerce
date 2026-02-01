@@ -36,14 +36,14 @@ function AdminLayout({ children }) {
       {/* Sidebar */}
       <aside 
         className={`${
-          sidebarOpen ? 'w-64' : 'w-20'
-        } bg-gradient-to-b from-indigo-900 to-indigo-700 text-white transition-all duration-300 flex flex-col`}
+          sidebarOpen ? 'w-24 md:w-64 translate-x-0' : '-translate-x-full md:translate-x-0 md:w-20'
+        } bg-gradient-to-b from-indigo-900 to-indigo-700 text-white transition-all duration-300 flex flex-col z-30 fixed h-full md:relative shrink-0 shadow-2xl md:shadow-none`}
       >
         {/* Logo */}
         <div className="p-4 border-b border-indigo-600">
           <div className="flex items-center justify-between">
             {sidebarOpen && (
-              <h1 className="text-xl font-bold">Admin Panel</h1>
+              <h1 className="text-xl font-bold hidden md:block">Admin Panel</h1>
             )}
             <button
               onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -61,7 +61,7 @@ function AdminLayout({ children }) {
               <FaUser />
             </div>
             {sidebarOpen && (
-              <div>
+              <div className="hidden md:block">
                 <p className="font-semibold text-sm">{adminUser?.username}</p>
                 <p className="text-xs text-indigo-300">Administrator</p>
               </div>
@@ -82,7 +82,7 @@ function AdminLayout({ children }) {
               }`}
             >
               <item.icon className="text-xl" />
-              {sidebarOpen && <span>{item.label}</span>}
+              {sidebarOpen && <span className="hidden md:block">{item.label}</span>}
             </button>
           ))}
         </nav>
@@ -94,7 +94,7 @@ function AdminLayout({ children }) {
             className="w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-indigo-200 hover:bg-red-600 hover:text-white transition"
           >
             <FaSignOutAlt className="text-xl" />
-            {sidebarOpen && <span>Logout</span>}
+            {sidebarOpen && <span className="hidden md:block">Logout</span>}
           </button>
         </div>
       </aside>
@@ -104,9 +104,19 @@ function AdminLayout({ children }) {
         {/* Top Bar */}
         <header className="bg-white shadow-sm border-b border-gray-200 px-6 py-4 relative">
           <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-bold text-gray-800">
-              {menuItems.find(item => isActive(item.path))?.label || 'Admin Panel'}
-            </h2>
+            <div className="flex items-center gap-4">
+              {!sidebarOpen && (
+                <button
+                  onClick={() => setSidebarOpen(true)}
+                  className="p-2 -ml-2 text-gray-600 hover:text-indigo-600 md:hidden"
+                >
+                  <FaBars className="text-xl" />
+                </button>
+              )}
+              <h2 className="text-xl md:text-2xl font-bold text-gray-800">
+                {menuItems.find(item => isActive(item.path))?.label || 'Admin Panel'}
+              </h2>
+            </div>
             <div className="flex items-center space-x-4">
               <span className="text-sm text-gray-600">
                 {new Date().toLocaleDateString('en-US', { 

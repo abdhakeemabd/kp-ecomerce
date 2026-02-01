@@ -1,11 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../assets/images/logo/logo.png';
-import { FaRegUser } from "react-icons/fa6";
+import { FaRegUser, FaShoppingCart } from "react-icons/fa";
 import { IoCloseOutline, IoMenuOutline } from "react-icons/io5";
 import Modal from 'react-modal';
 import OtpInput from 'react-otp-input';
 import Product1 from '../assets/images/img/1.webp';
+import { useCart } from '../context/CartContext';
 
 Modal.setAppElement('#root');
 
@@ -18,6 +19,7 @@ function Header() {
   const [phone, setPhone] = useState('');
   const [otp, setOtp] = useState('');
   const userMenuRef = useRef();
+  const { getCartItemCount } = useCart();
 
   // Close user menu when clicking outside
   useEffect(() => {
@@ -72,25 +74,38 @@ function Header() {
           <Link to="/contact" className="text-white font-medium hover:text-orange-500">Contact</Link>
         </nav>
 
-        {/* User Menu */}
-        <div className="relative" ref={userMenuRef}>
-          <button className="border p-2 md:p-3 rounded-full" onClick={() => setUserMenuOpen(!userMenuOpen)}>
-            <FaRegUser size={22} />
-          </button>
-          {userMenuOpen && (
-            <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
-              <div className="flex flex-col gap-2 p-4">
-                <button onClick={() => { openModal(); setUserMenuOpen(false); }} className="text-left text-gray-700 hover:text-orange-500">Login</button>
-                <button onClick={() => { openModal(); setUserMenuOpen(false); }} className="text-left text-gray-700 hover:text-orange-500">Register</button>
-                <Link
-                  to="/profile"
-                  onClick={() => setUserMenuOpen(false)}
-                  className="text-left text-gray-700 hover:text-orange-500">
-                  My Account
-                </Link>
+        {/* Cart and User Menu */}
+        <div className="flex items-center gap-3">
+          {/* Cart Icon */}
+          <Link to="/cart" className="relative border p-2 md:p-3 rounded-full hover:bg-gray-50 transition-colors duration-200">
+            <FaShoppingCart size={22} className="text-gray-700" />
+            {getCartItemCount() > 0 && (
+              <span className="absolute -top-1 -right-1 bg-orange-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                {getCartItemCount()}
+              </span>
+            )}
+          </Link>
+
+          {/* User Menu */}
+          <div className="relative" ref={userMenuRef}>
+            <button className="border p-2 md:p-3 rounded-full" onClick={() => setUserMenuOpen(!userMenuOpen)}>
+              <FaRegUser size={22} />
+            </button>
+            {userMenuOpen && (
+              <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+                <div className="flex flex-col gap-2 p-4">
+                  <button onClick={() => { openModal(); setUserMenuOpen(false); }} className="text-left text-gray-700 hover:text-orange-500">Login</button>
+                  <button onClick={() => { openModal(); setUserMenuOpen(false); }} className="text-left text-gray-700 hover:text-orange-500">Register</button>
+                  <Link
+                    to="/profile"
+                    onClick={() => setUserMenuOpen(false)}
+                    className="text-left text-gray-700 hover:text-orange-500">
+                    My Account
+                  </Link>
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
 
@@ -104,6 +119,9 @@ function Header() {
         <nav className="flex flex-col gap-6 px-6">
           <Link to="/" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-orange-500">Home</Link>
           <Link to="/product" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-orange-500">Product</Link>
+          <Link to="/cart" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-orange-500 flex items-center gap-2">
+            Cart {getCartItemCount() > 0 && <span className="bg-orange-500 text-white text-xs px-2 py-1 rounded-full">{getCartItemCount()}</span>}
+          </Link>
           <Link to="/contact" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-orange-500">Contact</Link>
         </nav>
       </div>

@@ -109,20 +109,28 @@ function Header() {
         </div>
       </div>
 
+      {/* Mobile Side Drawer Overlay */}
+      {menuOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden"
+          onClick={() => setMenuOpen(false)}
+        ></div>
+      )}
+
       {/* Mobile Side Drawer */}
-      <div className={`fixed top-0 left-0 h-full w-2/3 bg-white shadow-lg transform transition-transform duration-300 ease-in-out md:hidden ${menuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+      <div className={`fixed top-0 left-0 h-full w-2/3 bg-white shadow-2xl transform transition-transform duration-300 ease-in-out md:hidden z-50 ${menuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         <div className="flex justify-end p-4">
-          <button className="text-black" onClick={() => setMenuOpen(false)}>
+          <button className="text-black hover:text-orange-500 transition-colors" onClick={() => setMenuOpen(false)}>
             <IoCloseOutline size={24} />
           </button>
         </div>
         <nav className="flex flex-col gap-6 px-6">
-          <Link to="/" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-orange-500">Home</Link>
-          <Link to="/product" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-orange-500">Product</Link>
-          <Link to="/cart" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-orange-500 flex items-center gap-2">
+          <Link to="/" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-orange-500 font-medium">Home</Link>
+          <Link to="/product" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-orange-500 font-medium">Product</Link>
+          <Link to="/cart" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-orange-500 font-medium flex items-center gap-2">
             Cart {getCartItemCount() > 0 && <span className="bg-orange-500 text-white text-xs px-2 py-1 rounded-full">{getCartItemCount()}</span>}
           </Link>
-          <Link to="/contact" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-orange-500">Contact</Link>
+          <Link to="/contact" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-orange-500 font-medium">Contact</Link>
         </nav>
       </div>
 
@@ -134,8 +142,8 @@ function Header() {
           setModalOpenAnimation(false);
           setTimeout(closeModal, 300);
         }}
-        className={`relative w-full max-w-4xl mx-auto p-0 bg-white rounded-lg shadow-lg transform transition-all duration-300 ease-out overflow-hidden ${modalOpenAnimation ? 'scale-100 opacity-100' : 'scale-75 opacity-0'}`}
-        overlayClassName="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50"
+        className={`relative w-full max-w-4xl mx-auto p-0 bg-white rounded-lg shadow-2xl transform transition-all duration-300 ease-out overflow-hidden ${modalOpenAnimation ? 'scale-100 opacity-100' : 'scale-95 opacity-0'} m-4`}
+        overlayClassName="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[60]"
         contentLabel="Login Modal"
       >
         <div className="flex flex-col md:flex-row">

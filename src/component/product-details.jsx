@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
-import { products } from '../data/products';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { Fancybox as NativeFancybox } from "@fancyapps/ui";
 import { FaShoppingCart, FaBolt } from 'react-icons/fa';
+import { useCart } from '../context/CartContext';
+import { useProducts } from '../context/ProductContext';
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 function ProductDetails() {
   const { id } = useParams();
   const location = useLocation();
-  const [product, setProduct] = useState(products[0]);
+  const navigate = useNavigate();
+  const { products, getProductById } = useProducts();
+  const [product, setProduct] = useState(null);
   const [activeImage, setActiveImage] = useState(0);
+  const { addToCart } = useCart();
 
   useEffect(() => {
     const passedProduct = location.state?.product;
-    const globalProduct = products.find(p => p.id == id);
+    const globalProduct = getProductById(id);
 
     if (passedProduct && globalProduct && passedProduct.title === globalProduct.title) {
       // If passed state matches global data (by title check to avoid ID collisions), 
@@ -27,7 +31,7 @@ function ProductDetails() {
       setProduct(globalProduct);
     }
     setActiveImage(0);
-  }, [id, location.state]);
+  }, [id, location.state, products, getProductById]);
 
   useEffect(() => {
     NativeFancybox.bind("[data-fancybox]", {
@@ -39,6 +43,23 @@ function ProductDetails() {
       NativeFancybox.destroy();
     };
   }, []);
+
+  const handleAddToCart = async () => {
+    const result = await addToCart({
+      id: product.id,
+      title: product.title,
+      content: product.content,
+      price: product.offerPrice,
+      offerPrice: product.offerPrice,
+      image: product.gallery?.[0],
+      gallery: product.gallery,
+    });
+
+    if (result.success) {
+      // Navigate to cart page
+      navigate('/cart');
+    }
+  };
 
   const handleBuyNow = () => {
     const message = `Hello, I want to order:\n\nProduct: ${product.title}\nPrice: ₹${product.offerPrice}\n\nPlease contact me.`;
@@ -87,7 +108,10 @@ function ProductDetails() {
                 <div className="text-sm text-gray-500">{product.count} Views</div>
 
                 <div className="flex gap-4 mt-6">
-                  <button className="flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-md transition-colors duration-300">
+                  <button 
+                    onClick={handleAddToCart}
+                    className="flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-md transition-colors duration-300"
+                  >
                     <FaShoppingCart /> Add To Cart
                   </button>
 

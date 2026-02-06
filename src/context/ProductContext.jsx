@@ -12,61 +12,75 @@ export const ProductProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const initialLoadDone = useRef(false);
 
-  // Load products from localStorage on mount only
+  // Load products from localStorage on mount and sync with hardcoded data
   useEffect(() => {
     const savedProducts = localStorage.getItem('adminProducts');
+    const initialReversed = [...initialProducts].reverse();
+
     if (savedProducts) {
       try {
-        setProducts(JSON.parse(savedProducts));
+        const parsedProducts = JSON.parse(savedProducts);
+        let merged = Array.isArray(parsedProducts) ? [...parsedProducts] : [];
+        let hasNew = false;
+
+        // Force Sync: Ensure every product in initialProducts (the code) exists in merged
+        // We use ID as the unique key to prevent duplicates and handle products with same title
+        initialProducts.forEach(initial => {
+          const exists = merged.some(p => p.id.toString() === initial.id.toString());
+          if (!exists) {
+            merged.push(initial); 
+            hasNew = true;
+          }
+        });
+
+        if (hasNew) {
+          setProducts(merged);
+          localStorage.setItem('adminProducts', JSON.stringify(merged));
+        } else {
+          setProducts(parsedProducts);
+        }
       } catch (e) {
-        console.error('Failed to parse products from localStorage:', e);
-        setProducts(initialProducts);
+        console.error('Failed to sync products:', e);
+        setProducts(initialReversed);
       }
     } else {
-      setProducts(initialProducts);
-      localStorage.setItem('adminProducts', JSON.stringify(initialProducts));
+      setProducts(initialReversed);
+      localStorage.setItem('adminProducts', JSON.stringify(initialReversed));
     }
+
     initialLoadDone.current = true;
   }, []);
 
-  // Save products to localStorage whenever they change (after initial load)
+
+  // Save products to localStorage whenever they change
   useEffect(() => {
     if (initialLoadDone.current && products.length > 0) {
       localStorage.setItem('adminProducts', JSON.stringify(products));
     }
   }, [products]);
 
-  // Listen for storage changes from other tabs (native browser event only)
+  // Sync state between tabs
   useEffect(() => {
     const handleStorageChange = (e) => {
-      // Only respond to changes to 'adminProducts' key from OTHER tabs
       if (e.key === 'adminProducts' && e.newValue) {
         try {
           setProducts(JSON.parse(e.newValue));
         } catch (err) {
-          console.error('Failed to parse products from storage event:', err);
+          console.error('Storage sync error:', err);
         }
       }
     };
-
-    // The 'storage' event only fires in OTHER tabs, not the current one
     window.addEventListener('storage', handleStorageChange);
-
-    return () => {
-      window.removeEventListener('storage', handleStorageChange);
-    };
+    return () => window.removeEventListener('storage', handleStorageChange);
   }, []);
 
-  // Fetch products from API (optional)
   const fetchProducts = async () => {
     try {
       setLoading(true);
       setError(null);
-
       const response = await axios.get(`${API_BASE_URL}/api/v1/products`);
       setProducts(response.data);
       localStorage.setItem('adminProducts', JSON.stringify(response.data));
-
       return { success: true, data: response.data };
     } catch (err) {
       setError(err.message);
@@ -76,22 +90,11 @@ export const ProductProvider = ({ children }) => {
     }
   };
 
-  // Add new product
   const addProduct = async (productData) => {
     try {
       setLoading(true);
-      setError(null);
-
-      const newProduct = {
-        ...productData,
-        id: Date.now().toString(),
-      };
-
-      setProducts([...products, newProduct]);
-
-      // Optional: Sync with backend API
-      // await axios.post(`${API_BASE_URL}/api/v1/products`, newProduct);
-
+      const newProduct = { ...productData, id: Date.now().toString() };
+      setProducts([newProduct, ...products]);
       return { success: true, data: newProduct };
     } catch (err) {
       setError(err.message);
@@ -101,20 +104,13 @@ export const ProductProvider = ({ children }) => {
     }
   };
 
-  // Update existing product
   const updateProduct = async (productId, productData) => {
     try {
       setLoading(true);
-      setError(null);
-
       const updatedProducts = products.map(p =>
         p.id.toString() === productId.toString() ? { ...p, ...productData } : p
       );
       setProducts(updatedProducts);
-
-      // Optional: Sync with backend API
-      // await axios.put(`${API_BASE_URL}/api/v1/products/${productId}`, productData);
-
       return { success: true, data: productData };
     } catch (err) {
       setError(err.message);
@@ -124,18 +120,11 @@ export const ProductProvider = ({ children }) => {
     }
   };
 
-  // Delete product
   const deleteProduct = async (productId) => {
     try {
       setLoading(true);
-      setError(null);
-
       const filteredProducts = products.filter(p => p.id.toString() !== productId.toString());
       setProducts(filteredProducts);
-
-      // Optional: Sync with backend API
-      // await axios.delete(`${API_BASE_URL}/api/v1/products/${productId}`);
-
       return { success: true };
     } catch (err) {
       setError(err.message);
@@ -145,22 +134,30 @@ export const ProductProvider = ({ children }) => {
     }
   };
 
-  // Get product by ID
+  // Helper for LIFO sorting (Newest ID First)
+  const getSortedProducts = (productList) => {
+    return [...productList].sort((a, b) => {
+      const idA = typeof a.id === 'string' ? parseInt(a.id) : a.id;
+      const idB = typeof b.id === 'string' ? parseInt(b.id) : b.id;
+      return idB - idA;
+    });
+  };
+
+  const sortedProducts = getSortedProducts(products);
+
   const getProductById = (productId) => {
     return products.find(p => p.id.toString() === productId.toString());
   };
 
-  // Get products by category
   const getProductsByCategory = (category) => {
-    return products.filter(p => 
+    return sortedProducts.filter(p => 
       p.category?.toLowerCase() === category.toLowerCase()
     );
   };
 
-  // Search products
   const searchProducts = (query) => {
     const lowerQuery = query.toLowerCase();
-    return products.filter(p =>
+    return sortedProducts.filter(p =>
       p.title?.toLowerCase().includes(lowerQuery) ||
       p.name?.toLowerCase().includes(lowerQuery) ||
       p.content?.toLowerCase().includes(lowerQuery) ||
@@ -168,14 +165,14 @@ export const ProductProvider = ({ children }) => {
     );
   };
 
-  // Reset to initial products
   const resetProducts = () => {
-    setProducts(initialProducts);
-    localStorage.setItem('adminProducts', JSON.stringify(initialProducts));
+    const reversedInitial = [...initialProducts].reverse();
+    setProducts(reversedInitial);
+    localStorage.setItem('adminProducts', JSON.stringify(reversedInitial));
   };
 
   const value = {
-    products,
+    products: sortedProducts,
     loading,
     error,
     fetchProducts,
@@ -193,9 +190,7 @@ export const ProductProvider = ({ children }) => {
 
 export const useProducts = () => {
   const context = useContext(ProductContext);
-  if (!context) {
-    throw new Error('useProducts must be used within a ProductProvider');
-  }
+  if (!context) throw new Error('useProducts must be used within a ProductProvider');
   return context;
 };
 

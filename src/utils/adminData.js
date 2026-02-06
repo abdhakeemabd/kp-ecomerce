@@ -43,21 +43,28 @@ export const getProducts = () => {
     return 0;
   };
   
-  // Transform products to admin format
-  return storedProducts.map(product => ({
-    id: product.id,
-    name: product.title || product.name,
-    category: product.category || getCategoryFromTitle(product.title || product.name || ''),
-    price: parsePrice(product.offerPrice || product.price),
-    oldPrice: parsePrice(product.oldPrice),
-    stock: product.count || product.stock || 0,
-    image: product.gallery && product.gallery[0] ? product.gallery[0] : product.image || '',
-    description: product.description || product.content,
-    offer: product.offer,
-    content: product.content,
-    gallery: product.gallery || []
-  }));
+  // Transform products to admin format and sort by ID descending (LIFO)
+  return storedProducts
+    .map(product => ({
+      id: product.id,
+      name: product.title || product.name,
+      category: product.category || getCategoryFromTitle(product.title || product.name || ''),
+      price: parsePrice(product.offerPrice || product.price),
+      oldPrice: parsePrice(product.oldPrice),
+      stock: product.count || product.stock || 0,
+      image: product.gallery && product.gallery[0] ? product.gallery[0] : product.image || '',
+      description: product.description || product.content,
+      offer: product.offer,
+      content: product.content,
+      gallery: product.gallery || []
+    }))
+    .sort((a, b) => {
+      const idA = typeof a.id === 'string' ? parseInt(a.id) : a.id;
+      const idB = typeof b.id === 'string' ? parseInt(b.id) : b.id;
+      return idB - idA;
+    });
 };
+
 
 const getCategoryFromTitle = (title) => {
   const lowerTitle = title.toLowerCase();
@@ -71,8 +78,11 @@ const getCategoryFromTitle = (title) => {
     return 'Bedding';
   } else if (lowerTitle.includes('cobra')) {
     return 'Health & Wellness';
+  } else if (lowerTitle.includes('podi') || lowerTitle.includes('homemade')) {
+    return 'Grocery';
   }
   return 'Other';
+
 };
 
 // ============================================

@@ -1,40 +1,29 @@
 import React, { useState } from 'react';
 import Slider from "react-slick";
 import { PiShareFat } from "react-icons/pi";
-import { BiSolidLike } from "react-icons/bi";
-import { BiLike } from "react-icons/bi";
-import { BiCart, BiSolidCart } from "react-icons/bi";
+import { BiSolidLike, BiLike, BiCart, BiSolidCart } from "react-icons/bi";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import King1 from '../assets/images/king/1.jpeg';
-import Img1 from '../assets/images/img/1.webp';
-import Img2 from '../assets/images/img/2.webp';
-import Img3 from '../assets/images/img/3.webp';
-import Img4 from '../assets/images/img/4.webp';
-import Img5 from '../assets/images/img/5.webp';
-import Img6 from '../assets/images/img/6.webp';
-import { Link } from 'react-router-dom';
-
-const featureData = [
-  { id: 1, title: 'COBRA ROMANCE', text: 'Natural Power for Lasting Romantic Love', price: '1299', count: 123, image: King1 },
-  { id: 2, title: "Metal", text: "lorem content", price: "10000", count: 143, image: Img2 },
-  { id: 3, title: "Glass", text: "lorem content", price: "10000", count: 23, image: Img3 },
-  { id: 4, title: "Glass", text: "lorem content", price: "10000", count: 53, image: Img4 },
-  { id: 5, title: "Glass", text: "lorem content", price: "10000", count: 63, image: Img5 },
-  { id: 6, title: "Glass", text: "lorem content", price: "10000", count: 83, image: Img6 },
-  { id: 7, title: "Wood", text: "lorem content", price: "10000", count: 123, image: Img1 },
-
-];
+import { Link, useParams } from 'react-router-dom';
+import { useProducts } from '../context/ProductContext';
 
 function RelatedProduct() {
+  const { id } = useParams();
+  const { products } = useProducts();
   const [likes, setLikes] = useState({});
   const [carts, setCarts] = useState({});
+
+  // Filter out the current product and show others as "related"
+  // In a real app, we might filter by category
+  const relatedProducts = products.filter(p => p.id.toString() !== id?.toString()).slice(0, 8);
+  
   const toggleLike = (id) => {
     setLikes(prev => ({ ...prev, [id]: !prev[id] }));
   };
   const toggleCart = (id) => {
     setCarts(prev => ({ ...prev, [id]: !prev[id] }));
   };
+
 
   const settings = {
     dots: false,
@@ -58,32 +47,32 @@ function RelatedProduct() {
         <div className='text-2xl poppins-semibold mb-5 text-slate-900'>Related Product</div>
         <div className="features_slider mt-4">
           <Slider {...settings}>
-            {featureData.map(item => (
+            {relatedProducts.map(item => (
               <div className='px-3 features-card rounded-sm pb-2 relative overflow-hidden' key={item.id}>
                 <div className='feature-img-card'>
-                  <img className='feature-img w-full' src={item.image} alt={item.title} />
+                  <img className='feature-img w-full' src={item.image || (item.gallery && item.gallery[0])} alt={item.title} />
                 </div>
                 <div className="cont px-3 mt-2">
                   <div className='text-xl poppins-semibold'>{item.title}</div>
-                  <div className='text-md'>{item.text}</div>
-                  <div className='text-md poppins-semibold'>₹ {item.price}</div>
+                  <div className='text-md line-clamp-1'>{item.content || item.description}</div>
+                  <div className='text-md poppins-semibold'>₹ {item.offerPrice || item.price}</div>
                   <div className="bottom-card flex justify-between gap-3 mt-3">
                     <div className="flex gap-3 text-lg text-gray-800">
                       <button className='hover:text-blue-500 relative z-2' onClick={() => toggleLike(item.id)}>
-                        {likes[item.id] ? <BiSolidLike /> : <BiLike />}
+                        {likes[item.id] ? <BiSolidLike className="text-red-500" /> : <BiLike />}
                       </button>
                       <button className='hover:text-blue-500 relative z-2' onClick={() => toggleCart(item.id)}>
-                        {carts[item.id] ? <BiSolidCart /> : <BiCart />}
+                        {carts[item.id] ? <BiSolidCart className="text-orange-500" /> : <BiCart />}
                       </button>
                       <button className='hover:text-blue-500 relative z-2' onClick={() => navigator.share ? navigator.share({
                         title: item.title,
-                        text: item.text,
+                        text: item.content || item.description,
                         url: window.location.href
                       }) : alert("Share not supported on this browser.")}>
                         <PiShareFat />
                       </button>
                     </div>
-                    <div>{item.count} Views</div>
+                    <div>{item.count || item.stock || 0} Views</div>
                   </div>
                 </div>
                 <Link
@@ -91,13 +80,13 @@ function RelatedProduct() {
                   state={{
                     product: {
                       ...item,
-                      offerPrice: item.price,
-                      oldPrice: parseInt(item.price) + 500,
-                      offer: '10%',
-                      gallery: [item.image],
-                      description: item.text,
-                      subDescription: item.text,
-                      subContent: item.text
+                      offerPrice: item.offerPrice || item.price,
+                      oldPrice: item.oldPrice || (parseInt(item.offerPrice || item.price) + 500),
+                      offer: item.offer || '10%',
+                      gallery: item.gallery || [item.image],
+                      description: item.description || item.content,
+                      subDescription: item.subDescription || item.content,
+                      subContent: item.subContent || item.content
                     }
                   }}
                   className='absolute inset-0 z-1'
@@ -106,6 +95,7 @@ function RelatedProduct() {
             ))}
           </Slider>
         </div>
+
       </div>
     </section>
   );

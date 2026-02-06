@@ -11,7 +11,16 @@ import Cobra3 from '../assets/images/king/3.jpeg';
 import Cobra4 from '../assets/images/king/4.jpeg';
 import Cobra5 from '../assets/images/king/5.png';
 
+import Podi1 from '../assets/images/product/purapodi/1.jpeg';
+import Podi2 from '../assets/images/product/purapodi/2.jpeg';
+import Podi3 from '../assets/images/product/purapodi/3.jpeg';
+
+import Chair1 from '../assets/images/product/chair/1.jpeg';
+import Table1 from '../assets/images/product/table/1.jpeg';
+
+
 export const products = [
+
     {
         id: 1,
         title: 'COBRA ROMANCE',
@@ -33,11 +42,12 @@ export const products = [
         offer: "18%",
         offerPrice: "9,000",
         count: 143,
-        gallery: [Img2],
+        gallery: [Chair1],
         description: "Industrial-grade metal chair designed for both indoor and outdoor use. The rust-resistant coating ensures longevity, while the ergonomic seat provides comfort for extended periods.",
         subDescription: "Perfect for cafes, dining rooms, and patios. The stackable design allows for easy storage when not in use.",
         subContent: "Metal Frame | Rust Resistant | Stackable"
     },
+
     {
         id: 3,
         title: 'Modern Glass Table',
@@ -427,5 +437,65 @@ export const products = [
         description: "Premium QLED display with 100% color volume. Quantum HDR for deeper contrasts. Slim design with minimal bezels for immersive viewing.",
         subDescription: "The pinnacle of TV technology. QLED delivers a billion shades of color that stay true at any level of brightness.",
         subContent: "55 Inch QLED | Quantum HDR | 100% Color Vol"
+    },
+    {
+        id: 1000,
+
+        title: 'Rajabi Homemade Poora Podi',
+        content: 'Traditional South Indian Spice Blend',
+        oldPrice: '360',
+        offer: "17%",
+        offerPrice: "300",
+        count: 50,
+        gallery: [Podi2, Podi1, Podi3],
+        description: "Rajabi Homemade Poora Podi is a traditional South Indian spice blend made with carefully roasted lentils, aromatic spices, and a touch of love from our kitchen. Packed with rich flavor and natural goodness, this versatile podi pairs perfectly with hot rice, ghee, dosa, idli, or chapati. Free from preservatives and artificial additives, it delivers authentic homemade taste in every spoonful — simple, wholesome, and delicious.",
+        subDescription: "Rajabi Homemade Poora Podi is hand-crafted in small batches to ensure premium quality and fresh flavor. Each ingredient is sun-dried and slow-roasted to perfection, capturing the essence of traditional South Indian culinary heritage.",
+        subContent: "Homemade Taste | No Preservatives | Traditional Recipe"
+    },
+    {
+        id: 1001,
+
+        title: 'Teak Elegance Upholstered Dining Chair',
+        content: 'Solid Teak Wood with Upholstered Comfort',
+        oldPrice: '4500',
+        offer: "13%",
+        offerPrice: "3900",
+        count: 45,
+        gallery: [Chair1],
+        description: "This Teak Elegance Upholstered Dining Chair is crafted from solid teak wood, offering strength, durability, and timeless appeal. The softly cushioned seat and quilted backrest provide excellent comfort, while the warm wood finish adds a touch of natural charm to any dining or living space. Designed for both style and everyday use, this chair blends classic craftsmanship with modern comfort for a refined seating experience.",
+        subDescription: "The chair features a premium fabric upholstery that is both breathable and easy to clean. Its ergonomic design ensures a comfortable posture during long meals or conversations.",
+        subContent: "Solid Teak Wood | Upholstered Seat | Timeless Design"
+    },
+    {
+        id: 1002,
+
+        title: 'Teak Elegance Upholstered Dining Chair',
+        category: 'akeshya',
+        content: 'Premium Akeshya Edition Dining Chair',
+        oldPrice: '4000',
+        offer: "13%",
+        offerPrice: "3499",
+        count: 60,
+        gallery: [Chair1],
+        description: "This Teak Elegance Upholstered Dining Chair (Akeshya Edition) is crafted from solid teak wood, offering strength, durability, and timeless appeal. The softly cushioned seat and quilted backrest provide excellent comfort, while the warm wood finish adds a touch of natural charm to any dining or living space.",
+        subDescription: "Special Akeshya Edition with enhanced finish and competitive pricing. Perfect for bulk orders or high-end residential projects.",
+        subContent: "Akeshya Edition | Solid Teak | Modern Comfort"
+    },
+    {
+        id: 1003,
+        title: 'Akeshiya 6-Seater Glass Top Dining Table',
+        category: 'akeshya',
+        content: 'Premium Solid Wood with Elegant Glass Top',
+        oldPrice: '12500',
+        offer: "12%",
+        offerPrice: "10999",
+        count: 35,
+        gallery: [Table1],
+        description: "The Akeshiya 6-Seater Dining Table is crafted from premium solid wood, designed with a strong cross-leg base for stability and modern appeal. The smooth glass top enhances its elegance while offering easy maintenance and everyday durability. Perfect for family dining and gatherings, this table blends contemporary style with long-lasting craftsmanship, making it a beautiful centerpiece for any dining space.",
+        subDescription: "This contemporary dining table features a 10mm tempered glass top and a robust solid wood frame. The artistic cross-leg design provides superior stability while creating a modern aesthetic that complements any dining room decor.",
+        subContent: "6-Seater Capacity | Tempered Glass Top | Solid Wood Base"
     }
 ];
+
+
+

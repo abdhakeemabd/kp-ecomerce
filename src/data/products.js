@@ -456,20 +456,7 @@ export const products = [
         subDescription: "Rajabi Homemade Poora Podi is hand-crafted in small batches to ensure premium quality and fresh flavor. Each ingredient is sun-dried and slow-roasted to perfection, capturing the essence of traditional South Indian culinary heritage.",
         subContent: "Homemade Taste | No Preservatives | Traditional Recipe"
     },
-    {
-        id: 101,
 
-        title: 'Teak Elegance Upholstered Dining Chair',
-        content: 'Solid Teak Wood with Upholstered Comfort',
-        oldPrice: '4500',
-        offer: "13%",
-        offerPrice: "3900",
-        count: 45,
-        gallery: [ChairNew],
-        description: "This Teak Elegance Upholstered Dining Chair is crafted from solid teak wood, offering strength, durability, and timeless appeal. The softly cushioned seat and quilted backrest provide excellent comfort, while the warm wood finish adds a touch of natural charm to any dining or living space. Designed for both style and everyday use, this chair blends classic craftsmanship with modern comfort for a refined seating experience.",
-        subDescription: "The chair features a premium fabric upholstery that is both breathable and easy to clean. Its ergonomic design ensures a comfortable posture during long meals or conversations.",
-        subContent: "Solid Teak Wood | Upholstered Seat | Timeless Design"
-    },
     {
         id: 1002,
 

@@ -16,7 +16,6 @@ function HomeProduct() {
         <div className="mb-3">
           <div className="text-2xl poppins-bold text-center text-slate-900 uppercase">Discover more near by you</div>
         </div>
-
         <div className="flex flex-wrap -mx-2">
           {displayProducts.map((item) => (
             <div key={item.id} className="w-full lg:w-1/4 md:w-1/3 sm:w-1/2 p-3">

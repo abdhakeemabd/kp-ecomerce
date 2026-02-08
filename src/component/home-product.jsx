@@ -20,7 +20,7 @@ function HomeProduct() {
         <div className="flex flex-wrap -mx-2">
           {displayProducts.map((item) => (
             <div key={item.id} className="w-full lg:w-1/4 md:w-1/3 sm:w-1/2 p-3">
-              <div className="card product-card rounded-sm pb-2 relative overflow-hidden hover:shadow-lg transition-shadow duration-300 border-[#ebebec] border-1 group">
+              <div className="card product-card rounded-sm pb-2 relative overflow-hidden hover:shadow-lg transition-shadow duration-300 border-[#ebebec] border-1 group h-full">
                 <ImageLoader 
                   className="product-img w-full transition-transform duration-300 group-hover:scale-105" 
                   src={item.image || (item.gallery && item.gallery[0])} 
@@ -30,10 +30,23 @@ function HomeProduct() {
                 />
                 <div className="cont text-center mt-2">
                   <div className="text-m poppins-semibold text-black">{item.title}</div>
-                  {item.offerPrice && (
-                    <div className="text-sm font-bold text-gray-900">₹ {item.offerPrice}</div>
-                  )}
-                </div>
+                  <div className="mt-2 flex flex-col items-center">
+                    <div className="flex items-center gap-2">
+                      {item.offer && (
+                        <span className="text-lg text-green-600 font-light font-medium">-{item.offer.replace(/[^0-9]/g, '')}%</span>
+                      )}
+                      <div className="flex items-center text-black">
+                        <span className="text-lg me-1 font-medium">₹</span>
+                        <span className="text-lg font-bold leading-none">{item.offerPrice || item.price}</span>
+                      </div>
+                    </div>
+                    {item.oldPrice && (
+                      <div className="text-[11px] text-gray-500 mt-0.5">
+                        M.R.P.: <span className="line-through">₹{item.oldPrice}</span>
+                      </div>
+                    )}
+                  </div>
+                  </div>
                 <Link
                   to={`/product-view/${item.id}`}
                   state={{

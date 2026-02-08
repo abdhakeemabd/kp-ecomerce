@@ -93,7 +93,22 @@ function Products() {
                 </div>
                 <div className="font-semibold mb-1">{product.title}</div>
                 <p className="text-gray-600 text-sm mb-1 line-clamp-2">{product.content || product.description}</p>
-                <div className="text-md font-bold text-gray-900">₹ {product.offerPrice || product.price}</div>
+                <div className="mt-2">
+                  <div className="flex items-center gap-3">
+                    {product.offer && (
+                      <span className="text-2xl text-[#CC0C39] font-light">-{product.offer.replace(/[^0-9]/g, '')}%</span>
+                    )}
+                    <div className="flex items-start text-gray-900">
+                      <span className="text-sm mt-1 font-medium">₹</span>
+                      <span className="text-3xl font-medium leading-none">{product.offerPrice || product.price}</span>
+                    </div>
+                  </div>
+                  {product.oldPrice && (
+                    <div className="text-xs text-gray-500 mt-1">
+                      M.R.P.: <span className="line-through">₹{product.oldPrice}</span>
+                    </div>
+                  )}
+                </div>
                 <div className="flex justify-between items-center mt-3">
                   <div className="flex gap-3 text-lg text-gray-700">
                     <button onClick={() => toggleLike(product.id)} className="hover:text-red-500 transition-colors">

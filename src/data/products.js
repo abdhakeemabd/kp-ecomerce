@@ -46,7 +46,7 @@ export const products = [
         offer: "18%",
         offerPrice: "9,000",
         count: 143,
-        gallery: [Chair1],
+        gallery: [ChairNew],
         description: "Industrial-grade metal chair designed for both indoor and outdoor use. The rust-resistant coating ensures longevity, while the ergonomic seat provides comfort for extended periods.",
         subDescription: "Perfect for cafes, dining rooms, and patios. The stackable design allows for easy storage when not in use.",
         subContent: "Metal Frame | Rust Resistant | Stackable"

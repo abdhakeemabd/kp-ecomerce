@@ -480,7 +480,7 @@ export const products = [
         offer: "13%",
         offerPrice: "3499",
         count: 60,
-        gallery: [Chair1],
+        gallery: [ChairNew],
         description: "This Teak Elegance Upholstered Dining Chair (Akeshya Edition) is crafted from solid teak wood, offering strength, durability, and timeless appeal. The softly cushioned seat and quilted backrest provide excellent comfort, while the warm wood finish adds a touch of natural charm to any dining or living space.",
         subDescription: "Special Akeshya Edition with enhanced finish and competitive pricing. Perfect for bulk orders or high-end residential projects.",
         subContent: "Akeshya Edition | Solid Teak | Modern Comfort"

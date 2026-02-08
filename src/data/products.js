@@ -20,7 +20,7 @@ import Table1 from '../assets/images/product/table/1.jpeg';
 import Bed1 from '../assets/images/product/bed/bed-1.jpeg';
 import AakeshyaChair from '../assets/images/product/akesya/chair-1.jpeg'
 import AakeshyaCupboard from '../assets/images/product/akesya/cupboard-1.jpeg'
-
+import CurvaSofa from '../assets/images/product/chair/chair.jpeg'
 
 
 export const products = [
@@ -447,9 +447,9 @@ export const products = [
 
         title: 'Rajabi Homemade Poora Podi',
         content: 'Traditional South Indian Spice Blend',
-        oldPrice: '360',
+        oldPrice: '410',
         offer: "17%",
-        offerPrice: "300",
+        offerPrice: "360",
         count: 50,
         gallery: [Podi2, Podi1, Podi3],
         description: "Rajabi Homemade Poora Podi is a traditional South Indian spice blend made with carefully roasted lentils, aromatic spices, and a touch of love from our kitchen. Packed with rich flavor and natural goodness, this versatile podi pairs perfectly with hot rice, ghee, dosa, idli, or chapati. Free from preservatives and artificial additives, it delivers authentic homemade taste in every spoonful — simple, wholesome, and delicious.",
@@ -610,6 +610,20 @@ export const products = [
         description: "Aakeshya 4-Door Wooden Wardrobe features a strong solid wood construction with beautifully crafted panel doors that add character and elegance to any bedroom. Designed with spacious internal storage, it offers ample room for clothes, linens, and accessories while ensuring long-term durability. Its clean lines and rich natural finish make it a perfect blend of modern style and timeless craftsmanship.",
         subDescription: "The ultimate in luxury and longevity, this variant is made from genuine high-quality teak wood. Resistant to moisture and termites, it is built to last for generations with a stunning natural wood grain finish.",
         subContent: "Genuine Teak Wood | Multi-layer Storage | Termite Resistant"
+    },
+    {
+        id: 1012,
+        title: 'Curva Teak Wooden Sofa Set (3-Seater)',
+        category: 'teak',
+        content: '3-Seater | Premium Teak Wood | Ergonomic Design',
+        oldPrice: '45000',
+        offer: "22%",
+        offerPrice: "35000",
+        count: 10,
+        gallery: [CurvaSofa, Img2, Img3],
+        description: "Crafted from premium teak wood, this 3-seater sofa set features a beautifully curved slatted back and contoured seat for enhanced comfort and durability. Its smooth armrests and sturdy frame make it ideal for both living rooms and sit-out spaces, blending classic design with everyday functionality. A perfect choice for those who value natural wood elegance and long-lasting quality.",
+        subDescription: "The Curva Teak Sofa is designed with an emphasis on both aesthetics and ergonomics. The contoured seat provides superior lumbar support, while the high-grade teak wood ensures it remains a centerpiece in your home for years to come.",
+        subContent: "Premium Teak Wood | Curved Slatted Back | Durable Frame"
     }
 
 ];

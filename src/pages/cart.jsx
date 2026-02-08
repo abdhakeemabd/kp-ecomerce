@@ -129,11 +129,28 @@ function Cart() {
 
                           {/* Price */}
                           <div className="text-right">
-                            <div className="text-2xl font-bold text-gray-800">
-                              ₹{((item.offerPrice || item.price) * item.quantity).toFixed(2)}
-                            </div>
-                            <div className="text-sm text-gray-500">
-                              ₹{item.offerPrice || item.price} each
+                            <div className="flex flex-col items-end">
+                              <div className="flex items-center gap-2">
+                                {item.offer && (
+                                  <span className="text-xl text-[#CC0C39] font-light">
+                                    -{item.offer.replace(/[^0-9]/g, '')}%
+                                  </span>
+                                )}
+                                <div className="flex items-start text-black">
+                                  <span className="text-xs mt-1 font-medium italic">₹</span>
+                                  <span className="text-2xl font-bold leading-none">
+                                    {((item.offerPrice || item.price) * item.quantity).toFixed(2)}
+                                  </span>
+                                </div>
+                              </div>
+                              {item.oldPrice && (
+                                <div className="text-xs text-gray-500 mt-1">
+                                  M.R.P.: <span className="line-through">₹{(item.oldPrice * item.quantity).toFixed(2)}</span>
+                                </div>
+                              )}
+                              <div className="text-[10px] text-gray-400 mt-1">
+                                ₹{item.offerPrice || item.price} each
+                              </div>
                             </div>
                           </div>
                         </div>

@@ -17,6 +17,10 @@ import Podi3 from '../assets/images/product/purapodi/3.jpeg';
 
 import Chair1 from '../assets/images/product/chair/1.jpeg';
 import Table1 from '../assets/images/product/table/1.jpeg';
+import Bed1 from '../assets/images/product/bed/bed-1.jpeg';
+import AakeshyaChair from '../assets/images/product/akesya/chair-1.jpeg'
+import AakeshyaCupboard from '../assets/images/product/akesya/cupboard-1.jpeg'
+
 
 
 export const products = [
@@ -427,16 +431,16 @@ export const products = [
     },
     {
         id: 32,
-        title: 'Samsung',
-        content: '55-inch QLED TV',
+        title: 'Luxury Wooden Sofa Set',
+        content: "Modern Wooden Sofa Set with Upholstered Seating",
         oldPrice: '25,000',
         offer: "40%",
         offerPrice: "15,000",
         count: 83,
         gallery: [Img3],
-        description: "Premium QLED display with 100% color volume. Quantum HDR for deeper contrasts. Slim design with minimal bezels for immersive viewing.",
-        subDescription: "The pinnacle of TV technology. QLED delivers a billion shades of color that stay true at any level of brightness.",
-        subContent: "55 Inch QLED | Quantum HDR | 100% Color Vol"
+        description: "A modern wooden sofa set with soft upholstered seating, paired with a round center table and elegant pendant lighting. Designed for comfort and style, this sofa set blends natural textures with contemporary aesthetics, making it ideal for premium home interiors.",
+        subDescription: "A stylish blend of natural textures and contemporary design for premium interiors.",
+        subContent: "Modern Design | Soft Upholstery | Premium Wood"
     },
     {
         id: 1000,
@@ -494,7 +498,120 @@ export const products = [
         description: "The Akeshiya 6-Seater Dining Table is crafted from premium solid wood, designed with a strong cross-leg base for stability and modern appeal. The smooth glass top enhances its elegance while offering easy maintenance and everyday durability. Perfect for family dining and gatherings, this table blends contemporary style with long-lasting craftsmanship, making it a beautiful centerpiece for any dining space.",
         subDescription: "This contemporary dining table features a 10mm tempered glass top and a robust solid wood frame. The artistic cross-leg design provides superior stability while creating a modern aesthetic that complements any dining room decor.",
         subContent: "6-Seater Capacity | Tempered Glass Top | Solid Wood Base"
+    },
+    {
+        id: 1004,
+        title: 'Aakeshya Upholstered Wooden Bed (6.25 x 5 ft - Akeshya)',
+        category: 'akeshya',
+        content: '6.25 x 5 ft | Premium Akeshya Wood',
+        oldPrice: '16500',
+        offer: "15%",
+        offerPrice: "14000",
+        count: 42,
+        gallery: [Bed1],
+        description: "Aakeshya Upholstered Wooden Bed features a solid wooden frame paired with a softly tufted cushioned headboard for enhanced comfort and elegance. Its smooth rounded edges and sturdy base provide lasting durability while maintaining a warm, modern aesthetic. Designed to complement contemporary and classic interiors alike, this bed offers excellent support and a refined finish, making it ideal for stylish and comfortable bedrooms.",
+        subDescription: "Crafted with precision using high-quality Akeshya wood, this bed combines structural integrity with a luxurious upholstered finish. The headboard is designed for ergonomic support, perfect for reading or relaxing.",
+        subContent: "6.25 x 5 ft Capacity | Upholstered Headboard | Akeshya Wood"
+    },
+    {
+        id: 1005,
+        title: 'Aakeshya Upholstered Wooden Bed (6.25 x 6 ft - Akeshya)',
+        category: 'akeshya',
+        content: '6.25 x 6 ft | Premium Akeshya Wood',
+        oldPrice: '22500',
+        offer: "16%",
+        offerPrice: "19000",
+        count: 38,
+        gallery: [Bed1],
+        description: "Aakeshya Upholstered Wooden Bed features a solid wooden frame paired with a softly tufted cushioned headboard for enhanced comfort and elegance. Its smooth rounded edges and sturdy base provide lasting durability while maintaining a warm, modern aesthetic. Designed to complement contemporary and classic interiors alike, this bed offers excellent support and a refined finish, making it ideal for stylish and comfortable bedrooms.",
+        subDescription: "The 6.25 x 6 ft version offers extra space for ultimate comfort. Made from durable Akeshya wood with a premium fabric-tufted headboard.",
+        subContent: "6.25 x 6 ft Capacity | Upholstered Headboard | Akeshya Wood"
+    },
+    {
+        id: 1006,
+        title: 'Aakeshya Upholstered Wooden Bed (6.25 x 5 ft - Teak)',
+        category: 'teak',
+        content: '6.25 x 5 ft | Genuine Teak Wood',
+        oldPrice: '20000',
+        offer: "15%",
+        offerPrice: "17000",
+        count: 25,
+        gallery: [Bed1],
+        description: "Aakeshya Upholstered Wooden Bed features a solid wooden frame paired with a softly tufted cushioned headboard for enhanced comfort and elegance. Its smooth rounded edges and sturdy base provide lasting durability while maintaining a warm, modern aesthetic. Designed to complement contemporary and classic interiors alike, this bed offers excellent support and a refined finish, making it ideal for stylish and comfortable bedrooms.",
+        subDescription: "Experience the timeless luxury of genuine Teak wood. This variant offers superior durability and a rich natural grain, complemented by a soft tufted headboard.",
+        subContent: "6.25 x 5 ft Capacity | Upholstered Headboard | Genuine Teak"
+    },
+    {
+        id: 1007,
+        title: 'Aakeshya Upholstered Wooden Bed (6.25 x 6 ft - Teak)',
+        category: 'teak',
+        content: '6.25 x 6 ft | Genuine Teak Wood',
+        oldPrice: '28500',
+        offer: "16%",
+        offerPrice: "24000",
+        count: 30,
+        gallery: [Bed1],
+        description: "Aakeshya Upholstered Wooden Bed features a solid wooden frame paired with a softly tufted cushioned headboard for enhanced comfort and elegance. Its smooth rounded edges and sturdy base provide lasting durability while maintaining a warm, modern aesthetic. Designed to complement contemporary and classic interiors alike, this bed offers excellent support and a refined finish, making it ideal for stylish and comfortable bedrooms.",
+        subDescription: "Our premium offering: Large size 6.25 x 6 ft bed crafted from the finest Teak wood. Unmatched strength and elegance with a plush, comfortable headboard.",
+        subContent: "6.25 x 6 ft Capacity | Upholstered Headboard | Genuine Teak"
+    },
+    {
+        id: 1008,
+        title: 'Plain X Wooden Dining Chair',
+        category: 'chair',
+        content: 'Solid Wood | Cross-Back Design | Rich Wood Tone',
+        oldPrice: '1550',
+        offer: "19%",
+        offerPrice: "1250",
+        count: 50,
+        gallery: [AakeshyaChair],
+        description: "Plain X Wooden Dining Chair features a strong solid wood frame with a stylish cross-back design that adds both support and visual appeal. The smooth slatted seat ensures comfortable seating, while the sturdy legs provide long-lasting stability. Finished in a rich wood tone, this chair is ideal for dining spaces, cafes, and modern interiors, blending durability with timeless design.",
+        subDescription: "This chair is designed for both style and durability. The X-back provides excellent lumbar support, while the classic silhouette fits into any dining environment.",
+        subContent: "Solid Wood Frame | Cross-back Support | Ergonomic Seating"
+    },
+    {
+        id: 1009,
+        title: 'Plain X Wooden Dining Chair (Akeshya Wood Edition)',
+        category: 'akeshya',
+        content: 'Solid Wood | Cross-Back Design | Premium Finish',
+        oldPrice: '1700',
+        offer: "15%",
+        offerPrice: "1450",
+        count: 45,
+        gallery: [AakeshyaChair],
+        description: "Plain X Wooden Dining Chair features a strong solid wood frame with a stylish cross-back design that adds both support and visual appeal. The smooth slatted seat ensures comfortable seating, while the sturdy legs provide long-lasting stability. Finished in a rich wood tone, this chair is ideal for dining spaces, cafes, and modern interiors, blending durability with timeless design.",
+        subDescription: "Special Akeshya edition with a premium finish. The cross-back design provides superior stability and comfort for any dining setup.",
+        subContent: "Premium Akeshya Wood | Durable Structure | Stylish Design"
+    },
+    {
+        id: 1010,
+        title: 'Aakeshya 4-Door Wooden Wardrobe (Akeshya Wood)',
+        category: 'akeshya',
+        content: '4-Door | Solid Akeshya Wood | Spacious Internal Storage',
+        oldPrice: '38000',
+        offer: "15%",
+        offerPrice: "32000",
+        count: 15,
+        gallery: [AakeshyaCupboard],
+        description: "Aakeshya 4-Door Wooden Wardrobe features a strong solid wood construction with beautifully crafted panel doors that add character and elegance to any bedroom. Designed with spacious internal storage, it offers ample room for clothes, linens, and accessories while ensuring long-term durability. Its clean lines and rich natural finish make it a perfect blend of modern style and timeless craftsmanship.",
+        subDescription: "Crafted from premium Akeshya wood, this wardrobe features four massive compartments with adjustable shelving and hanging rods. The panelled doors provide a sophisticated look that complements any interior.",
+        subContent: "Solid Wood Constuction | 4-Door Design | Ample Storage"
+    },
+    {
+        id: 1011,
+        title: 'Aakeshya 4-Door Wooden Wardrobe (Premium Teak Wood)',
+        category: 'teak',
+        content: '4-Door | Genuine Teak Wood | Luxury Craftsmanship',
+        oldPrice: '58000',
+        offer: "22%",
+        offerPrice: "45000",
+        count: 10,
+        gallery: [AakeshyaCupboard],
+        description: "Aakeshya 4-Door Wooden Wardrobe features a strong solid wood construction with beautifully crafted panel doors that add character and elegance to any bedroom. Designed with spacious internal storage, it offers ample room for clothes, linens, and accessories while ensuring long-term durability. Its clean lines and rich natural finish make it a perfect blend of modern style and timeless craftsmanship.",
+        subDescription: "The ultimate in luxury and longevity, this variant is made from genuine high-quality teak wood. Resistant to moisture and termites, it is built to last for generations with a stunning natural wood grain finish.",
+        subContent: "Genuine Teak Wood | Multi-layer Storage | Termite Resistant"
     }
+
 ];
 
 

@@ -92,10 +92,21 @@ function ProductDetails() {
                 <h3 className="text-xl font-bold text-gray-800">{product.title}</h3>
                 <p className="text-gray-600">{product.content}</p>
 
-                <div className="flex gap-3 items-center">
-                  <span className="text-lg font-medium text-stone-800">₹{product.offerPrice}</span>
-                  <span className="text-lg line-through text-[#898989]">₹{product.oldPrice}</span>
-                  <span className="text-lg font-semibold text-[#388e4d]">{product.offer}</span>
+                <div className="mt-4">
+                  <div className="flex items-center gap-4">
+                    {product.offer && (
+                      <span className="text-2xl font-semibold text-green-600 font-light">-{product.offer.replace(/[^0-9]/g, '')}%</span>
+                    )}
+                    <div className="flex items-start text-gray-900">
+                      <span className="text-lg mt-2 font-medium">₹</span>
+                      <span className="text-3xl font-semibold leading-none">{product.offerPrice}</span>
+                    </div>
+                  </div>
+                  {product.oldPrice && (
+                    <div className="text-m text-gray-500 mt-2">
+                       M.R.P.: <span className="line-through text-base font-semibold">₹{product.oldPrice}</span>
+                    </div>
+                  )}
                 </div>
 
                 <div>

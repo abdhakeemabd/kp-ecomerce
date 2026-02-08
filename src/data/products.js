@@ -20,7 +20,7 @@ import Table1 from '../assets/images/product/table/1.jpeg';
 import Bed1 from '../assets/images/product/bed/bed-1.jpeg';
 import AakeshyaChair from '../assets/images/product/akesya/chair-1.jpeg'
 import AakeshyaCupboard from '../assets/images/product/akesya/cupboard-1.jpeg'
-import Chair2 from '../assets/images/product/chair/chair.jpeg'
+import CurvaSofa from '../assets/images/product/chair/chair.jpeg'
 
 
 export const products = [
@@ -620,7 +620,7 @@ export const products = [
         offer: "22%",
         offerPrice: "35000",
         count: 10,
-        gallery: [Chair2],
+        gallery: [CurvaSofa, Img2, Img3],
         description: "Crafted from premium teak wood, this 3-seater sofa set features a beautifully curved slatted back and contoured seat for enhanced comfort and durability. Its smooth armrests and sturdy frame make it ideal for both living rooms and sit-out spaces, blending classic design with everyday functionality. A perfect choice for those who value natural wood elegance and long-lasting quality.",
         subDescription: "The Curva Teak Sofa is designed with an emphasis on both aesthetics and ergonomics. The contoured seat provides superior lumbar support, while the high-grade teak wood ensures it remains a centerpiece in your home for years to come.",
         subContent: "Premium Teak Wood | Curved Slatted Back | Durable Frame"

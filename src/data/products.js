@@ -15,7 +15,7 @@ import Podi1 from '../assets/images/product/purapodi/1.jpeg';
 import Podi2 from '../assets/images/product/purapodi/2.jpeg';
 import Podi3 from '../assets/images/product/purapodi/3.jpeg';
 
-import Chair1 from '../assets/images/product/chair/1.jpeg';
+import ChairNew from '../assets/images/product/chair/1.jpeg';
 import Table1 from '../assets/images/product/table/1.jpeg';
 import Bed1 from '../assets/images/product/bed/bed-1.jpeg';
 import AakeshyaChair from '../assets/images/product/akesya/chair-1.jpeg'
@@ -457,7 +457,7 @@ export const products = [
         subContent: "Homemade Taste | No Preservatives | Traditional Recipe"
     },
     {
-        id: 1001,
+        id: 101,
 
         title: 'Teak Elegance Upholstered Dining Chair',
         content: 'Solid Teak Wood with Upholstered Comfort',
@@ -465,7 +465,7 @@ export const products = [
         offer: "13%",
         offerPrice: "3900",
         count: 45,
-        gallery: [Chair1],
+        gallery: [ChairNew],
         description: "This Teak Elegance Upholstered Dining Chair is crafted from solid teak wood, offering strength, durability, and timeless appeal. The softly cushioned seat and quilted backrest provide excellent comfort, while the warm wood finish adds a touch of natural charm to any dining or living space. Designed for both style and everyday use, this chair blends classic craftsmanship with modern comfort for a refined seating experience.",
         subDescription: "The chair features a premium fabric upholstery that is both breathable and easy to clean. Its ergonomic design ensures a comfortable posture during long meals or conversations.",
         subContent: "Solid Teak Wood | Upholstered Seat | Timeless Design"

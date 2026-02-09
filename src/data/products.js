@@ -19,10 +19,11 @@ import ChairNew from '../assets/images/product/chair/1.jpeg';
 import Table1 from '../assets/images/product/table/1.jpeg';
 import Bed1 from '../assets/images/product/bed/bed-1.jpeg';
 import AakeshyaChair from '../assets/images/product/akesya/chair-1.jpeg'
+import AakeshyaChair2 from '../assets/images/product/akesya/chair-2.jpeg'
 import AakeshyaCupboard from '../assets/images/product/akesya/cupboard-1.jpeg'
 import CurvaSofa from '../assets/images/product/chair/chair.jpeg'
 
-export const PRODUCT_DATA_VERSION = 'v2.0.2';
+export const PRODUCT_DATA_VERSION = 'v2.0.3';
 
 export const products = [
     {
@@ -524,7 +525,7 @@ export const products = [
         offer: "19%",
         offerPrice: "1250",
         count: 50,
-        gallery: [AakeshyaChair],
+        gallery: [AakeshyaChair2],
         description: "Plain X Wooden Dining Chair features a strong solid wood frame with a stylish cross-back design that adds both support and visual appeal. The smooth slatted seat ensures comfortable seating, while the sturdy legs provide long-lasting stability. Finished in a rich wood tone, this chair is ideal for dining spaces, cafes, and modern interiors, blending durability with timeless design.",
         subDescription: "This chair is designed for both style and durability. The X-back provides excellent lumbar support, while the classic silhouette fits into any dining environment.",
         subContent: "Solid Wood Frame | Cross-back Support | Ergonomic Seating"

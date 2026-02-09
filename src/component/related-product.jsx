@@ -92,18 +92,7 @@ function RelatedProduct() {
                 </div>
                 <Link
                   to={`/product-view/${item.id}`}
-                  state={{
-                    product: {
-                      ...item,
-                      offerPrice: item.offerPrice || item.price,
-                      oldPrice: item.oldPrice || (parseInt(item.offerPrice || item.price) + 500),
-                      offer: item.offer || '10%',
-                      gallery: item.gallery || [item.image],
-                      description: item.description || item.content,
-                      subDescription: item.subDescription || item.content,
-                      subContent: item.subContent || item.content
-                    }
-                  }}
+                  state={{ product: item }}
                   className='absolute inset-0 z-1'
                 ></Link>
               </div>

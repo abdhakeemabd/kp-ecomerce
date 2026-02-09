@@ -127,18 +127,7 @@ function Products() {
                 </div>
                 <Link
                   to={`/product-view/${product.id}`}
-                  state={{
-                    product: {
-                      ...product,
-                      offerPrice: product.offerPrice || product.price,
-                      oldPrice: product.oldPrice || (parseInt(product.offerPrice || product.price) + 500),
-                      offer: product.offer || '10%',
-                      gallery: product.gallery || [product.image],
-                      description: product.description || product.content,
-                      subDescription: product.subDescription || product.content,
-                      subContent: product.subContent || product.content
-                    }
-                  }}
+                  state={{ product: product }}
                   className="absolute inset-0 z-10"
                 ></Link>
               </div>

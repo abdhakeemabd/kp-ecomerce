@@ -22,56 +22,17 @@ import AakeshyaChair from '../assets/images/product/akesya/chair-1.jpeg'
 import AakeshyaCupboard from '../assets/images/product/akesya/cupboard-1.jpeg'
 import CurvaSofa from '../assets/images/product/chair/chair.jpeg'
 
+export const PRODUCT_DATA_VERSION = 'v2.0.2';
 
 export const products = [
-
     {
-        id: 1,
-        title: 'COBRA ROMANCE',
-        content: 'Strategy: Dark Luxury Aesthetics + Clinical Trust Triggers',
-        oldPrice: '1699',
-        offer: "23%",
-        offerPrice: "1299",
-        count: 23,
-        gallery: [Cobra1, Cobra5, Cobra2, Cobra3, Cobra4],
-        description: "Cobra Romance is a premium Ayurvedic formula for natural strength and lasting intimacy. It activates within 30 minutes and delivers results for up to 4 days. Made using advanced Thanthu Paka extraction for 2.5× potency. Clinically safe with no headaches, BP spikes, or addiction. 100% private shipping with government-approved quality.",
-        subDescription: "Cobra Romance is a government-approved Ayurvedic formulation designed to restore natural strength, stamina, and romantic confidence without harmful chemicals or artificial stimulants. Crafted using the advanced Thanthu Paka extraction method, it delivers 2.5× higher herbal potency for faster absorption and longer-lasting results.",
-        subContent: "Cobra Romance is a premium Ayurvedic vitality formula crafted to enhance stamina, confidence, and deep romantic connection naturally. Powered by advanced Thanthu Paka extraction, it delivers faster absorption and long-lasting results without harmful chemicals or side effects."
-    },
-    {
-        id: 2,
-        title: 'Industrial Metal Chair',
-        content: 'Durable metal construction with ergonomic design',
-        oldPrice: '11,000',
-        offer: "18%",
-        offerPrice: "9,000",
-        count: 143,
-        gallery: [ChairNew],
-        description: "Industrial-grade metal chair designed for both indoor and outdoor use. The rust-resistant coating ensures longevity, while the ergonomic seat provides comfort for extended periods.",
-        subDescription: "Perfect for cafes, dining rooms, and patios. The stackable design allows for easy storage when not in use.",
-        subContent: "Metal Frame | Rust Resistant | Stackable"
-    },
-
-    {
-        id: 3,
-        title: 'Modern Glass Table',
-        content: 'Premium tempered glass coffee table',
-        oldPrice: '12,000',
-        offer: "25%",
-        offerPrice: "9,000",
-        count: 23,
-        gallery: [Img3],
-        description: "Sleek and modern coffee table featuring a 10mm thick tempered glass top. The rounded edges ensure safety, making it a great choice for households with children.",
-        subDescription: "Add a touch of elegance to your living room. The transparent glass top creates an illusion of space, making your room look larger and brighter.",
-        subContent: "Tempered Glass | Safe Edges | Modern Look"
-    },
-    {
-        id: 4,
+        id: "1",
         title: 'LOONART Solid Sheesham',
+        category: 'Furniture',
         content: 'Premium Sheesham Wood Dining Table for 6',
-        oldPrice: '18,500',
+        oldPrice: '18500',
         offer: "45%",
-        offerPrice: "10,000",
+        offerPrice: "10000",
         count: 53,
         gallery: [Img4],
         description: "Elegant rectangular dining table crafted from high-quality solid Sheesham wood. Features a natural honey brown finish that highlights the wood grain patterns. Sturdy construction ensures durability for daily use.",
@@ -79,12 +40,13 @@ export const products = [
         subContent: "Solid Sheesham Wood | Honey Brown Finish | 6 Seater Capacity"
     },
     {
-        id: 5,
+        id: "2",
         title: 'DITHA Furniture Solid Sheesham',
+        category: 'Furniture',
         content: 'Modern Solid Wood Dining Table',
-        oldPrice: '16,000',
+        oldPrice: '16000',
         offer: "37%",
-        offerPrice: "10,000",
+        offerPrice: "10000",
         count: 63,
         gallery: [Img5],
         description: "Minimalist solid Sheesham wood table with a sleek teak finish. The compact design makes it suitable for both dining rooms and kitchen spaces. Easy to assemble and maintain.",
@@ -92,12 +54,13 @@ export const products = [
         subContent: "Solid Wood | Teak Finish | Modern Design"
     },
     {
-        id: 6,
+        id: "3",
         title: 'Decor Solid Wood 4 Seater',
+        category: 'Furniture',
         content: 'Compact 4-Seater Dining Table',
-        oldPrice: '14,500',
+        oldPrice: '14500',
         offer: "31%",
-        offerPrice: "10,000",
+        offerPrice: "10000",
         count: 83,
         gallery: [Img6],
         description: "Space-saving 4-seater dining table made from seasoned solid wood. Ideal for small apartments and cozy dining areas. Features a robust leg structure for maximum stability.",
@@ -105,12 +68,13 @@ export const products = [
         subContent: "Solid Wood | 4 Seater | Space Saving"
     },
     {
-        id: 7,
+        id: "4",
         title: 'Home Easy BS-1',
+        category: 'Furniture',
         content: 'Wall Mounted Book Shelf',
-        oldPrice: '12,500',
+        oldPrice: '12500',
         offer: "20%",
-        offerPrice: "10,000",
+        offerPrice: "10000",
         count: 53,
         gallery: [Img1],
         description: "Contemporary wall-mounted bookshelf with multiple compartments. Made from high-grade engineered wood with a wenge finish. Perfect for organizing books, decor items, and collectibles.",
@@ -118,12 +82,13 @@ export const products = [
         subContent: "Engineered Wood | Wall Mount | Zigzag Design"
     },
     {
-        id: 8,
+        id: "5",
         title: 'HOMEEASY Engineered Wood',
+        category: 'Furniture',
         content: 'Floor Standing Display Unit',
-        oldPrice: '13,000',
+        oldPrice: '13000',
         offer: "23%",
-        offerPrice: "10,000",
+        offerPrice: "10000",
         count: 63,
         gallery: [Img2],
         description: "Spacious floor-standing display shelf crafted from durable engineered wood. Features open shelves for easy access and display. Ideal for living rooms, bedrooms, and offices.",
@@ -131,12 +96,13 @@ export const products = [
         subContent: "Engineered Wood | Floor Standing | Open Shelves"
     },
     {
-        id: 9,
+        id: "6",
         title: 'TANWAR HANDICRAFT Solid',
+        category: 'Furniture',
         content: 'Handcrafted Wooden Wall Shelf',
-        oldPrice: '15,000',
+        oldPrice: '15000',
         offer: "33%",
-        offerPrice: "10,000",
+        offerPrice: "10000",
         count: 83,
         gallery: [Img3],
         description: "Exquisite handcrafted solid wood wall shelf with intricate detailing. Made by skilled artisans using traditional techniques. Adds a rustic charm to your home decor.",
@@ -144,25 +110,13 @@ export const products = [
         subContent: "Solid Wood | Handcrafted | Rustic design"
     },
     {
-        id: 10,
-        title: 'Outkraft Wardrobe',
-        content: '2-Door Wooden Wardrobe',
-        oldPrice: '18,000',
-        offer: "44%",
-        offerPrice: "10,000",
-        count: 53,
-        gallery: [Img4],
-        description: "Spacious 2-door wardrobe with ample hanging space and shelves. Made from premium quality compressed wood with a scratch-resistant finish. Includes a lockable drawer for valuables.",
-        subDescription: "Organize your clothes and accessories efficiently with this stylish wardrobe. The sleek handles and modern finish elevate the look of your bedroom.",
-        subContent: "Compressed Wood | 2-Door | Lockable Drawer"
-    },
-    {
-        id: 11,
+        id: "7",
         title: 'Ganpati Arts Sheesham',
+        category: 'Furniture',
         content: 'Solid Sheesham Wood Almirah',
-        oldPrice: '25,000',
+        oldPrice: '25000',
         offer: "60%",
-        offerPrice: "10,000",
+        offerPrice: "10000",
         count: 63,
         gallery: [Img5],
         description: "Heavy-duty solid Sheesham wood almirah with a traditional design. Features deep shelves and a full-length mirror. Highly durable and resistant to termites.",
@@ -170,12 +124,13 @@ export const products = [
         subContent: "Solid Sheesham | Full Mirror | Traditional Style"
     },
     {
-        id: 12,
+        id: "8",
         title: 'CASPIAN Wooden Almirah',
+        category: 'Furniture',
         content: 'Modern 3-Door Wardrobe',
-        oldPrice: '22,000',
+        oldPrice: '22000',
         offer: "54%",
-        offerPrice: "10,000",
+        offerPrice: "10000",
         count: 83,
         gallery: [Img6],
         description: "Large 3-door wardrobe with multiple compartments for organized storage. Constructed from high-density engineered wood. Features soft-close hinges and a sleek matte finish.",
@@ -183,12 +138,13 @@ export const products = [
         subContent: "Engineered Wood | 3-Door | Soft Close Hinges"
     },
     {
-        id: 13,
+        id: "9",
         title: 'Sleepwell',
+        category: 'Appliances',
         content: 'High-Speed Ceiling Fan',
-        oldPrice: '5,500',
+        oldPrice: '5500',
         offer: "18%",
-        offerPrice: "4,500",
+        offerPrice: "4500",
         count: 53,
         gallery: [Img2],
         description: "Energy-efficient ceiling fan with high-speed motor for superior air delivery. Features aerodynamic blades for silent operation. Anti-dust coating ensures easy manufacturing.",
@@ -196,12 +152,13 @@ export const products = [
         subContent: "High Speed | Anti-Dust | Silent Operation"
     },
     {
-        id: 14,
+        id: "10",
         title: 'Wakefit',
+        category: 'Appliances',
         content: 'Premium Decorative Fan',
-        oldPrice: '7,500',
+        oldPrice: '7500',
         offer: "20%",
-        offerPrice: "6,000",
+        offerPrice: "6000",
         count: 63,
         gallery: [Img3],
         description: "Stylish decorative ceiling fan with gold accents. Equipped with a powerful copper motor for long-lasting performance. 5-star energy rating for electricity savings.",
@@ -209,12 +166,13 @@ export const products = [
         subContent: "Decorative | Copper Motor | 5-Star Rated"
     },
     {
-        id: 15,
+        id: "11",
         title: 'Duroflex',
+        category: 'Appliances',
         content: 'Smart Remote Controlled Fan',
-        oldPrice: '6,000',
+        oldPrice: '6000',
         offer: "25%",
-        offerPrice: "4,500",
+        offerPrice: "4500",
         count: 83,
         gallery: [Img5],
         description: "Modern fan with remote control functionality. Features timer settings, sleep mode, and speed control. BLDC motor technology consumes 50% less power.",
@@ -222,12 +180,13 @@ export const products = [
         subContent: "Remote Control | BLDC Motor | Smart Features"
     },
     {
-        id: 16,
+        id: "12",
         title: 'Crompton Greaves',
+        category: 'Bedding',
         content: 'Orthopedic Memory Foam Mattress',
-        oldPrice: '12,000',
+        oldPrice: '12000',
         offer: "25%",
-        offerPrice: "9,000",
+        offerPrice: "9000",
         count: 53,
         gallery: [Img6],
         description: "Orthopedic memory foam mattress designed for back support. Adapts to your body shape for pressure relief. Breathable fabric cover keeps you cool while sleeping.",
@@ -235,12 +194,13 @@ export const products = [
         subContent: "Memory Foam | Orthopedic | Hypoallergenic"
     },
     {
-        id: 17,
+        id: "13",
         title: 'Havells',
+        category: 'Bedding',
         content: 'Dual Comfort Mattress',
-        oldPrice: '14,000',
+        oldPrice: '14000',
         offer: "28%",
-        offerPrice: "10,000",
+        offerPrice: "10000",
         count: 63,
         gallery: [Img1],
         description: "Reversible mattress with dual comfort – soft on one side and firm on the other. High-density foam ensures durability and prevents sagging.",
@@ -248,12 +208,13 @@ export const products = [
         subContent: "Dual Comfort | Reversible | High Density"
     },
     {
-        id: 18,
+        id: "14",
         title: 'Usha',
+        category: 'Bedding',
         content: 'Premium Spring Mattress',
-        oldPrice: '18,000',
+        oldPrice: '18000',
         offer: "27%",
-        offerPrice: "13,000",
+        offerPrice: "13000",
         count: 83,
         gallery: [Img4],
         description: "Luxury pocket spring mattress for zero partner disturbance. Multi-layer cushioning provides hotel-like comfort at home. Anti-microbial treatment for hygiene.",
@@ -261,12 +222,13 @@ export const products = [
         subContent: "Pocket Spring | Zero Disturbance | Anti-Microbial"
     },
     {
-        id: 19,
+        id: "15",
         title: 'Philips',
+        category: 'Appliances',
         content: '750W Mixer Grinder',
-        oldPrice: '7,000',
+        oldPrice: '7000',
         offer: "21%",
-        offerPrice: "5,500",
+        offerPrice: "5500",
         count: 53,
         gallery: [Img2],
         description: "Powerful 750W mixer grinder with 3 stainless steel jars. Features advanced air ventilation system for motor cooling. Perfect for grinding tough ingredients like turmeric and dal.",
@@ -274,12 +236,13 @@ export const products = [
         subContent: "750W Motor | 3 Jars | Stainless Steel"
     },
     {
-        id: 20,
+        id: "16",
         title: 'Preethi',
+        category: 'Appliances',
         content: '500W Compact Mixer',
-        oldPrice: '4,500',
+        oldPrice: '4500',
         offer: "33%",
-        offerPrice: "3,000",
+        offerPrice: "3000",
         count: 63,
         gallery: [Img3],
         description: "Compact 500W mixer grinder ideal for daily use. Includes 2 jars for chutney and dry grinding. Shock-proof ABS body ensures safety.",
@@ -287,12 +250,13 @@ export const products = [
         subContent: "500W Motor | Compact | Shock Proof"
     },
     {
-        id: 21,
+        id: "17",
         title: 'Bajaj',
+        category: 'Appliances',
         content: 'Heavy Duty Mixer Grinder',
-        oldPrice: '6,800',
+        oldPrice: '6800',
         offer: "19%",
-        offerPrice: "5,500",
+        offerPrice: "5500",
         count: 83,
         gallery: [Img5],
         description: "Heavy-duty mixer with 100% copper motor. Comes with 3 multifunctional jars and a whipper blade. Overload protection switch for motor safety.",
@@ -300,12 +264,13 @@ export const products = [
         subContent: "Copper Motor | Overload Protection | Multi-purpose"
     },
     {
-        id: 22,
+        id: "18",
         title: 'Bajaj',
+        category: 'Appliances',
         content: 'Pro Mixer Grinder',
-        oldPrice: '6,800',
+        oldPrice: '6800',
         offer: "19%",
-        offerPrice: "5,500",
+        offerPrice: "5500",
         count: 83,
         gallery: [Img4],
         description: "Professional grade mixer grinder with Nutri-Pro feature for retaining nutritional value. 3 speed settings with pulse function. Easy grip handles.",
@@ -313,12 +278,13 @@ export const products = [
         subContent: "Nutri-Pro | 3 Speed | Easy Grip"
     },
     {
-        id: 23,
+        id: "19",
         title: 'Symphony',
+        category: 'Appliances',
         content: 'Personal Air Cooler',
-        oldPrice: '12,500',
+        oldPrice: '12500',
         offer: "16%",
-        offerPrice: "10,500",
+        offerPrice: "10500",
         count: 53,
         gallery: [Img6],
         description: "Compact personal air cooler with honeycomb cooling pads. i-Pure technology for multi-stage air purification. Low power consumption, works on inverter.",
@@ -326,12 +292,13 @@ export const products = [
         subContent: "Personal Cooler | Air Purification | Inverter Compatible"
     },
     {
-        id: 24,
+        id: "20",
         title: 'Crompton',
+        category: 'Appliances',
         content: 'Desert Air Cooler',
-        oldPrice: '16,000',
+        oldPrice: '16000',
         offer: "18%",
-        offerPrice: "13,000",
+        offerPrice: "13000",
         count: 63,
         gallery: [Img1],
         description: "High-performance desert cooler with 75L tank capacity. Powerful air throw up to 50 feet. Motor with overload protection for durability.",
@@ -339,12 +306,13 @@ export const products = [
         subContent: "75L Capacity | Long Throw | Desert Cooler"
     },
     {
-        id: 25,
+        id: "21",
         title: 'Bajaj',
+        category: 'Appliances',
         content: 'Tower Air Cooler',
-        oldPrice: '18,500',
+        oldPrice: '18500',
         offer: "18%",
-        offerPrice: "15,000",
+        offerPrice: "15000",
         count: 83,
         gallery: [Img2],
         description: "Sleek tower cooler with high air delivery. Features chill trap technology and 4-way air deflection. Compatible with home inverters.",
@@ -352,12 +320,13 @@ export const products = [
         subContent: "Tower Design | Chill Trap | 4-Way Swing"
     },
     {
-        id: 26,
+        id: "22",
         title: 'Voltas',
+        category: 'Appliances',
         content: 'Window Air Cooler',
-        oldPrice: '22,000',
+        oldPrice: '22000',
         offer: "18%",
-        offerPrice: "18,000",
+        offerPrice: "18000",
         count: 83,
         gallery: [Img3],
         description: "Window air cooler with turbo fan technology. 50L tank capacity and continuous water supply connector. Rust-proof body for long life.",
@@ -365,12 +334,13 @@ export const products = [
         subContent: "Window Mount | Turbo Fan | Rust Proof"
     },
     {
-        id: 27,
+        id: "23",
         title: 'JBL',
+        category: 'Electronics',
         content: 'Portable Bluetooth Speaker',
-        oldPrice: '2,000',
+        oldPrice: '2000',
         offer: "35%",
-        offerPrice: "1,300",
+        offerPrice: "1300",
         count: 53,
         gallery: [Img4],
         description: "Compact portable speaker with signature JBL sound. 5 hours of playtime on a single charge. waterproof design (IPX7) for pool parties.",
@@ -378,12 +348,13 @@ export const products = [
         subContent: "Bluetooth | Waterproof | 5Hrs Battery"
     },
     {
-        id: 28,
+        id: "24",
         title: 'ZEBRONICS',
+        category: 'Electronics',
         content: 'Soundbar with Subwoofer',
-        oldPrice: '5,000',
+        oldPrice: '5000',
         offer: "40%",
-        offerPrice: "3,000",
+        offerPrice: "3000",
         count: 63,
         gallery: [Img5],
         description: "Powerful soundbar with wired subwoofer for deep bass. Supports Bluetooth, USB, AUX, and HDMI (ARC). Wall mountable design.",
@@ -391,12 +362,13 @@ export const products = [
         subContent: "Soundbar | Deep Bass | HDMI ARC"
     },
     {
-        id: 29,
+        id: "25",
         title: 'Marshall Kilburn',
+        category: 'Electronics',
         content: 'Premium Wireless Speaker',
-        oldPrice: '7,000',
+        oldPrice: '7000',
         offer: "28%",
-        offerPrice: "5,000",
+        offerPrice: "5000",
         count: 83,
         gallery: [Img6],
         description: "Iconic Marshall design with advanced wireless sound. Multi-directional sound for an immersive experience. 20+ hours of portable playtime.",
@@ -404,12 +376,13 @@ export const products = [
         subContent: "Premium Audio | 20+ Hrs Playtime | Iconic Design"
     },
     {
-        id: 30,
+        id: "26",
         title: 'Parasonic',
+        category: 'Electronics',
         content: '32-inch LED Smart TV',
-        oldPrice: '15,000',
+        oldPrice: '15000',
         offer: "30%",
-        offerPrice: "10,500",
+        offerPrice: "10500",
         count: 53,
         gallery: [Img1],
         description: "HD Ready LED Smart TV with built-in Wi-Fi and popular streaming apps. Vivid color engine for enhanced picture quality. 20W stereo speakers.",
@@ -417,12 +390,13 @@ export const products = [
         subContent: "32 Inch HD | Smart TV | Wi-Fi"
     },
     {
-        id: 31,
+        id: "27",
         title: 'LG',
+        category: 'Electronics',
         content: '43-inch 4K UHD TV',
-        oldPrice: '20,000',
+        oldPrice: '20000',
         offer: "35%",
-        offerPrice: "13,000",
+        offerPrice: "13000",
         count: 63,
         gallery: [Img2],
         description: "Stunning 4K Ultra HD display with active HDR. Quad-core processor for smooth performance. AI ThinQ smart features for voice control.",
@@ -430,12 +404,13 @@ export const products = [
         subContent: "43 Inch 4K | AI ThinQ | HDR"
     },
     {
-        id: 32,
+        id: "28",
         title: 'Luxury Wooden Sofa Set',
+        category: 'Furniture',
         content: "Modern Wooden Sofa Set with Upholstered Seating",
-        oldPrice: '25,000',
+        oldPrice: '25000',
         offer: "40%",
-        offerPrice: "15,000",
+        offerPrice: "15000",
         count: 83,
         gallery: [Img3],
         description: "A modern wooden sofa set with soft upholstered seating, paired with a round center table and elegant pendant lighting. Designed for comfort and style, this sofa set blends natural textures with contemporary aesthetics, making it ideal for premium home interiors.",
@@ -443,9 +418,9 @@ export const products = [
         subContent: "Modern Design | Soft Upholstery | Premium Wood"
     },
     {
-        id: 1000,
-
+        id: "29",
         title: 'Rajabi Homemade Poora Podi',
+        category: 'Grocery',
         content: 'Traditional South Indian Spice Blend',
         oldPrice: '410',
         offer: "17%",
@@ -456,12 +431,10 @@ export const products = [
         subDescription: "Rajabi Homemade Poora Podi is hand-crafted in small batches to ensure premium quality and fresh flavor. Each ingredient is sun-dried and slow-roasted to perfection, capturing the essence of traditional South Indian culinary heritage.",
         subContent: "Homemade Taste | No Preservatives | Traditional Recipe"
     },
-
     {
-        id: 1002,
-
+        id: "30",
         title: 'Teak Elegance Upholstered Dining Chair',
-        category: 'akeshya',
+        category: 'Furniture',
         content: 'Premium Akeshya Edition Dining Chair',
         oldPrice: '4000',
         offer: "13%",
@@ -473,9 +446,9 @@ export const products = [
         subContent: "Akeshya Edition | Solid Teak | Modern Comfort"
     },
     {
-        id: 1003,
+        id: "31",
         title: 'Akeshiya 6-Seater Glass Top Dining Table',
-        category: 'akeshya',
+        category: 'Furniture',
         content: 'Premium Solid Wood with Elegant Glass Top',
         oldPrice: '12500',
         offer: "12%",
@@ -487,9 +460,9 @@ export const products = [
         subContent: "6-Seater Capacity | Tempered Glass Top | Solid Wood Base"
     },
     {
-        id: 1004,
+        id: "32",
         title: 'Aakeshya Upholstered Wooden Bed (6.25 x 5 ft - Akeshya)',
-        category: 'akeshya',
+        category: 'Furniture',
         content: '6.25 x 5 ft | Premium Akeshya Wood',
         oldPrice: '16500',
         offer: "15%",
@@ -501,9 +474,9 @@ export const products = [
         subContent: "6.25 x 5 ft Capacity | Upholstered Headboard | Akeshya Wood"
     },
     {
-        id: 1005,
+        id: "33",
         title: 'Aakeshya Upholstered Wooden Bed (6.25 x 6 ft - Akeshya)',
-        category: 'akeshya',
+        category: 'Furniture',
         content: '6.25 x 6 ft | Premium Akeshya Wood',
         oldPrice: '22500',
         offer: "16%",
@@ -515,9 +488,9 @@ export const products = [
         subContent: "6.25 x 6 ft Capacity | Upholstered Headboard | Akeshya Wood"
     },
     {
-        id: 1006,
+        id: "34",
         title: 'Aakeshya Upholstered Wooden Bed (6.25 x 5 ft - Teak)',
-        category: 'teak',
+        category: 'Furniture',
         content: '6.25 x 5 ft | Genuine Teak Wood',
         oldPrice: '20000',
         offer: "15%",
@@ -529,9 +502,9 @@ export const products = [
         subContent: "6.25 x 5 ft Capacity | Upholstered Headboard | Genuine Teak"
     },
     {
-        id: 1007,
+        id: "35",
         title: 'Aakeshya Upholstered Wooden Bed (6.25 x 6 ft - Teak)',
-        category: 'teak',
+        category: 'Furniture',
         content: '6.25 x 6 ft | Genuine Teak Wood',
         oldPrice: '28500',
         offer: "16%",
@@ -543,9 +516,9 @@ export const products = [
         subContent: "6.25 x 6 ft Capacity | Upholstered Headboard | Genuine Teak"
     },
     {
-        id: 1008,
+        id: "36",
         title: 'Plain X Wooden Dining Chair',
-        category: 'chair',
+        category: 'Furniture',
         content: 'Solid Wood | Cross-Back Design | Rich Wood Tone',
         oldPrice: '1550',
         offer: "19%",
@@ -557,9 +530,9 @@ export const products = [
         subContent: "Solid Wood Frame | Cross-back Support | Ergonomic Seating"
     },
     {
-        id: 1009,
+        id: "37",
         title: 'Plain X Wooden Dining Chair (Akeshya Wood Edition)',
-        category: 'akeshya',
+        category: 'Furniture',
         content: 'Solid Wood | Cross-Back Design | Premium Finish',
         oldPrice: '1700',
         offer: "15%",
@@ -571,9 +544,9 @@ export const products = [
         subContent: "Premium Akeshya Wood | Durable Structure | Stylish Design"
     },
     {
-        id: 1010,
+        id: "38",
         title: 'Aakeshya 4-Door Wooden Wardrobe (Akeshya Wood)',
-        category: 'akeshya',
+        category: 'Furniture',
         content: '4-Door | Solid Akeshya Wood | Spacious Internal Storage',
         oldPrice: '38000',
         offer: "15%",
@@ -584,36 +557,46 @@ export const products = [
         subDescription: "Crafted from premium Akeshya wood, this wardrobe features four massive compartments with adjustable shelving and hanging rods. The panelled doors provide a sophisticated look that complements any interior.",
         subContent: "Solid Wood Constuction | 4-Door Design | Ample Storage"
     },
-    {
-        id: 1011,
-        title: 'Aakeshya 4-Door Wooden Wardrobe (Premium Teak Wood)',
-        category: 'teak',
-        content: '4-Door | Genuine Teak Wood | Luxury Craftsmanship',
-        oldPrice: '58000',
-        offer: "22%",
-        offerPrice: "45000",
-        count: 10,
-        gallery: [AakeshyaCupboard],
-        description: "Aakeshya 4-Door Wooden Wardrobe features a strong solid wood construction with beautifully crafted panel doors that add character and elegance to any bedroom. Designed with spacious internal storage, it offers ample room for clothes, linens, and accessories while ensuring long-term durability. Its clean lines and rich natural finish make it a perfect blend of modern style and timeless craftsmanship.",
-        subDescription: "The ultimate in luxury and longevity, this variant is made from genuine high-quality teak wood. Resistant to moisture and termites, it is built to last for generations with a stunning natural wood grain finish.",
-        subContent: "Genuine Teak Wood | Multi-layer Storage | Termite Resistant"
+     {
+        id: "39",
+        title: 'COBRA ROMANCE',
+        category: 'Health & Wellness',
+        content: 'Strategy: Dark Luxury Aesthetics + Clinical Trust Triggers',
+        oldPrice: '1699',
+        offer: "23%",
+        offerPrice: "1299",
+        count: 23,
+        gallery: [Cobra1, Cobra5, Cobra2, Cobra3, Cobra4],
+        description: "Cobra Romance is a premium Ayurvedic formula for natural strength and lasting intimacy. It activates within 30 minutes and delivers results for up to 4 days. Made using advanced Thanthu Paka extraction for 2.5× potency. Clinically safe with no headaches, BP spikes, or addiction. 100% private shipping with government-approved quality.",
+        subDescription: "Cobra Romance is a government-approved Ayurvedic formulation designed to restore natural strength, stamina, and romantic confidence without harmful chemicals or artificial stimulants. Crafted using the advanced Thanthu Paka extraction method, it delivers 2.5× higher herbal potency for faster absorption and longer-lasting results.",
+        subContent: "Cobra Romance is a premium Ayurvedic vitality formula crafted to enhance stamina, confidence, and deep romantic connection naturally. Powered by advanced Thanthu Paka extraction, it delivers faster absorption and long-lasting results without harmful chemicals or side effects."
     },
     {
-        id: 1012,
+        id: "40",
+        title: 'Industrial Metal Chair',
+        category: 'Furniture',
+        content: 'Durable metal construction with ergonomic design',
+        oldPrice: '11000',
+        offer: "18%",
+        offerPrice: "9000",
+        count: 143,
+        gallery: [ChairNew],
+        description: "Industrial-grade metal chair designed for both indoor and outdoor use. The rust-resistant coating ensures longevity, while the ergonomic seat provides comfort for extended periods.",
+        subDescription: "Perfect for cafes, dining rooms, and patios. The stackable design allows for easy storage when not in use.",
+        subContent: "Metal Frame | Rust Resistant | Stackable"
+    },
+    {
+        id: "41",
         title: 'Curva Teak Wooden Sofa Set (3-Seater)',
-        category: 'teak',
+        category: 'Furniture',
         content: '3-Seater | Premium Teak Wood | Ergonomic Design',
-        oldPrice: '45000',
-        offer: "22%",
-        offerPrice: "35000",
+        oldPrice: '10500',
+        offer: "10%",
+        offerPrice: "9500",
         count: 10,
         gallery: [CurvaSofa, Img2, Img3],
         description: "Crafted from premium teak wood, this 3-seater sofa set features a beautifully curved slatted back and contoured seat for enhanced comfort and durability. Its smooth armrests and sturdy frame make it ideal for both living rooms and sit-out spaces, blending classic design with everyday functionality. A perfect choice for those who value natural wood elegance and long-lasting quality.",
         subDescription: "The Curva Teak Sofa is designed with an emphasis on both aesthetics and ergonomics. The contoured seat provides superior lumbar support, while the high-grade teak wood ensures it remains a centerpiece in your home for years to come.",
         subContent: "Premium Teak Wood | Curved Slatted Back | Durable Frame"
-    }
-
+    },
 ];
-
-
-

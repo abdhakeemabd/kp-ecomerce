@@ -1,10 +1,13 @@
 import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
-import { products as initialProducts } from '../data/products';
+import { products as initialProducts, PRODUCT_DATA_VERSION } from '../data/products';
 import axios from 'axios';
 
 const ProductContext = createContext();
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://z71mwq0q-8000.inc1.devtunnels.ms';
+
+const ADMIN_PRODUCTS_KEY = 'adminProducts';
+const VERSION_KEY = 'productDataVersion';
 
 export const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
@@ -12,57 +15,89 @@ export const ProductProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const initialLoadDone = useRef(false);
 
-  // Load products from localStorage on mount and sync with hardcoded data
-  useEffect(() => {
-    const savedProducts = localStorage.getItem('adminProducts');
-    const initialReversed = [...initialProducts].reverse();
-
-    if (savedProducts) {
-      try {
-        const parsedProducts = JSON.parse(savedProducts);
-        let merged = Array.isArray(parsedProducts) ? [...parsedProducts] : [];
-        let hasNew = false;
-
-        // Force Sync: Ensure every product in initialProducts (the code) exists in merged
-        // We use ID as the unique key to prevent duplicates and handle products with same title
-        initialProducts.forEach(initial => {
-          const exists = merged.some(p => p.id.toString() === initial.id.toString());
-          if (!exists) {
-            merged.push(initial); 
-            hasNew = true;
-          }
-        });
-
-        if (hasNew) {
-          setProducts(merged);
-          localStorage.setItem('adminProducts', JSON.stringify(merged));
-        } else {
-          setProducts(parsedProducts);
-        }
-      } catch (e) {
-        console.error('Failed to sync products:', e);
-        setProducts(initialReversed);
+  // Helper for LIFO sorting (Newest ID First)
+  const getSortedProducts = (productList) => {
+    return [...productList].sort((a, b) => {
+      // Prioritize manually added products (long IDs) then sequential IDs
+      const valA = a.id.toString();
+      const valB = b.id.toString();
+      
+      // If one is manual and other is sequence, manual comes first (longer ID)
+      if (valA.length !== valB.length) {
+        return valB.length - valA.length;
       }
-    } else {
-      setProducts(initialReversed);
-      localStorage.setItem('adminProducts', JSON.stringify(initialReversed));
-    }
+      
+      // If same length, sort numerically/alphabetically descending
+      return valB.localeCompare(valA, undefined, { numeric: true });
+    });
+  };
 
+  // Sync Logic: Best method for keeping products.js as source of truth
+  const syncProducts = (savedProductsJson) => {
+    try {
+      const storedVersion = localStorage.getItem(VERSION_KEY);
+      const initialReversed = getSortedProducts(initialProducts);
+
+      // 1. If version mismatch, FORCE CLEAR everything and use only file data
+      if (storedVersion !== PRODUCT_DATA_VERSION) {
+        console.warn(`FORCE RESET: Version mismatch (${storedVersion} vs ${PRODUCT_DATA_VERSION}). Purging all old cache.`);
+        localStorage.removeItem(ADMIN_PRODUCTS_KEY);
+        localStorage.setItem(VERSION_KEY, PRODUCT_DATA_VERSION);
+        localStorage.setItem(ADMIN_PRODUCTS_KEY, JSON.stringify(initialReversed));
+        return initialReversed;
+      }
+
+      // 2. If no saved data, use file data
+      if (!savedProductsJson) {
+        localStorage.setItem(ADMIN_PRODUCTS_KEY, JSON.stringify(initialReversed));
+        return initialReversed;
+      }
+
+      // 3. Merging logic: Update existing, add new from file, keep user-added
+      const parsedProducts = JSON.parse(savedProductsJson);
+      const initialIds = new Set(initialProducts.map(p => p.id.toString()));
+      
+      // Start with latest data from products.js
+      let merged = [...initialProducts];
+      
+      // Keep only user-added products from storage (not in file)
+      // We identify these by their ID not being in the initialIds set
+      parsedProducts.forEach(savedP => {
+        if (!initialIds.has(savedP.id.toString())) {
+          merged.push(savedP);
+        }
+      });
+
+      const finalProducts = getSortedProducts(merged);
+      localStorage.setItem(ADMIN_PRODUCTS_KEY, JSON.stringify(finalProducts));
+      return finalProducts;
+
+    } catch (e) {
+      console.error('Failed to sync products:', e);
+      return getSortedProducts(initialProducts);
+    }
+  };
+
+  useEffect(() => {
+    const saved = localStorage.getItem(ADMIN_PRODUCTS_KEY);
+    const finalized = syncProducts(saved);
+    setProducts(finalized);
     initialLoadDone.current = true;
-  }, []);
+  }, [PRODUCT_DATA_VERSION, initialProducts]); // Re-run if version or content changes
 
 
   // Save products to localStorage whenever they change
   useEffect(() => {
     if (initialLoadDone.current && products.length > 0) {
-      localStorage.setItem('adminProducts', JSON.stringify(products));
+      localStorage.setItem(ADMIN_PRODUCTS_KEY, JSON.stringify(products));
+      localStorage.setItem(VERSION_KEY, PRODUCT_DATA_VERSION);
     }
   }, [products]);
 
   // Sync state between tabs
   useEffect(() => {
     const handleStorageChange = (e) => {
-      if (e.key === 'adminProducts' && e.newValue) {
+      if (e.key === ADMIN_PRODUCTS_KEY && e.newValue) {
         try {
           setProducts(JSON.parse(e.newValue));
         } catch (err) {
@@ -134,14 +169,6 @@ export const ProductProvider = ({ children }) => {
     }
   };
 
-  // Helper for LIFO sorting (Newest ID First)
-  const getSortedProducts = (productList) => {
-    return [...productList].sort((a, b) => {
-      const idA = typeof a.id === 'string' ? parseInt(a.id) : a.id;
-      const idB = typeof b.id === 'string' ? parseInt(b.id) : b.id;
-      return idB - idA;
-    });
-  };
 
   const sortedProducts = getSortedProducts(products);
 
@@ -166,9 +193,10 @@ export const ProductProvider = ({ children }) => {
   };
 
   const resetProducts = () => {
-    const reversedInitial = [...initialProducts].reverse();
-    setProducts(reversedInitial);
-    localStorage.setItem('adminProducts', JSON.stringify(reversedInitial));
+    const initialized = getSortedProducts(initialProducts);
+    setProducts(initialized);
+    localStorage.setItem(ADMIN_PRODUCTS_KEY, JSON.stringify(initialized));
+    localStorage.setItem(VERSION_KEY, PRODUCT_DATA_VERSION);
   };
 
   const value = {

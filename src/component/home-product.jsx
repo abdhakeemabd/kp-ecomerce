@@ -48,18 +48,7 @@ function HomeProduct() {
                   </div>
                 <Link
                   to={`/product-view/${item.id}`}
-                  state={{
-                    product: {
-                      ...item,
-                      offerPrice: item.offerPrice || item.price || 'N/A',
-                      oldPrice: item.oldPrice || 'N/A',
-                      offer: item.offer || 'N/A',
-                      gallery: item.gallery || [item.image],
-                      description: item.description || `Details for ${item.title}`,
-                      subDescription: item.subDescription || '',
-                      subContent: item.subContent || ''
-                    }
-                  }}
+                  state={{ product: item }}
                   className="absolute inset-0 z-10"
                 ></Link>
               </div>

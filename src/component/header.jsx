@@ -78,7 +78,7 @@ function Header() {
         <div className="flex items-center gap-3">
           {/* Cart Icon */}
           <Link to="/cart" className="relative border p-2 md:p-3 rounded-full hover:bg-gray-50 transition-colors duration-200">
-            <FaShoppingCart size={22} className="text-gray-700" />
+            <FaShoppingCart size={22} className="text-white" />
             {getCartItemCount() > 0 && (
               <span className="absolute -top-1 -right-1 bg-orange-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
                 {getCartItemCount()}

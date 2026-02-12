@@ -22,6 +22,8 @@ import AakeshyaChair from '../assets/images/product/akesya/chair-1.jpeg'
 import AakeshyaChair2 from '../assets/images/product/akesya/chair-2.jpeg'
 import AakeshyaCupboard from '../assets/images/product/akesya/cupboard-1.jpeg'
 import CurvaSofa from '../assets/images/product/chair/chair.jpeg'
+import Sofa1 from '../assets/images/product/sofa/sofa-1.jpeg'
+import Sofa2 from '../assets/images/product/sofa/sofa-2.jpeg'
 
 export const PRODUCT_DATA_VERSION = 'v2.0.3';
 
@@ -599,5 +601,19 @@ export const products = [
         description: "Crafted from premium teak wood, this 3-seater sofa set features a beautifully curved slatted back and contoured seat for enhanced comfort and durability. Its smooth armrests and sturdy frame make it ideal for both living rooms and sit-out spaces, blending classic design with everyday functionality. A perfect choice for those who value natural wood elegance and long-lasting quality.",
         subDescription: "The Curva Teak Sofa is designed with an emphasis on both aesthetics and ergonomics. The contoured seat provides superior lumbar support, while the high-grade teak wood ensures it remains a centerpiece in your home for years to come.",
         subContent: "Premium Teak Wood | Curved Slatted Back | Durable Frame"
+    },
+    {
+        id: "42",
+        title: 'Regal Comfort L-Shape Sofa Set',
+        category: 'Furniture',
+        content: 'L-Shape Design | Premium Upholstery | High-Density Cushioning',
+        oldPrice: '24000',
+        offer: "6%",
+        offerPrice: "22500",
+        count: 25,
+        gallery: [Sofa2, Sofa1],
+        description: "Experience true luxury with the Regal Comfort L-Shape Sofa Set, designed for spacious living and elegant interiors. Crafted with premium-quality upholstery and high-density cushioning, this sofa offers superior comfort and long-lasting durability. The sleek wooden base detailing adds a refined touch, while the wide seating space makes it perfect for family gatherings and relaxation. Its modern yet timeless design blends beautifully with both contemporary and classic home décor.",
+        subDescription: "The Regal Comfort L-Shape Sofa Set is the epitome of luxury and functionality. With its ergonomic design and spacious seating, it provides the perfect setting for hosting guests or enjoying quality family time. The premium upholstery ensures easy maintenance while the high-density foam cushioning retains its shape for years.",
+        subContent: "L-Shape Design | Premium Upholstery | Wooden Base Detailing"
     },
 ];

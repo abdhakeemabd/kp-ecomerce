@@ -24,6 +24,13 @@ import AakeshyaCupboard from '../assets/images/product/akesya/cupboard-1.jpeg'
 import CurvaSofa from '../assets/images/product/chair/chair.jpeg'
 import Sofa1 from '../assets/images/product/sofa/sofa-1.jpeg'
 import Sofa2 from '../assets/images/product/sofa/sofa-2.jpeg'
+import Dress1 from '../assets/images/product/Dress/7.jpeg'
+import Dress2 from '../assets/images/product/Dress/2.jpeg'
+import Dress3 from '../assets/images/product/Dress/3.jpeg'
+import Dress4 from '../assets/images/product/Dress/4.jpeg'
+import Dress5 from '../assets/images/product/Dress/5.jpeg'
+import Dress6 from '../assets/images/product/Dress/6.jpeg'
+import Dress7 from '../assets/images/product/Dress/1.jpeg'
 
 export const PRODUCT_DATA_VERSION = 'v2.0.3';
 
@@ -615,5 +622,19 @@ export const products = [
         description: "Experience true luxury with the Regal Comfort L-Shape Sofa Set, designed for spacious living and elegant interiors. Crafted with premium-quality upholstery and high-density cushioning, this sofa offers superior comfort and long-lasting durability. The sleek wooden base detailing adds a refined touch, while the wide seating space makes it perfect for family gatherings and relaxation. Its modern yet timeless design blends beautifully with both contemporary and classic home décor.",
         subDescription: "The Regal Comfort L-Shape Sofa Set is the epitome of luxury and functionality. With its ergonomic design and spacious seating, it provides the perfect setting for hosting guests or enjoying quality family time. The premium upholstery ensures easy maintenance while the high-density foam cushioning retains its shape for years.",
         subContent: "L-Shape Design | Premium Upholstery | Wooden Base Detailing"
+    },
+    {
+        id: "43",
+        title: 'Emerald Grace Embroidered Salwar Suit Set',
+        category: 'Fashion',
+        content: 'Elegant Teal Salwar Suit | 3-Piece & 2-Piece Options Available',
+        oldPrice: '1450',
+        offer: "31%",
+        offerPrice: "999",
+        count: 45,
+        gallery: [Dress1, Dress2, Dress3, Dress4, Dress5, Dress6, Dress7],
+        description: "This elegant teal salwar suit set is designed to bring timeless charm and graceful sophistication. The kurta features delicate embroidery accents along the neckline, hem, and borders, adding a refined traditional touch. Paired with matching straight-fit pants and a beautifully coordinated dupatta with subtle woven detailing, this outfit offers a perfect balance of simplicity and elegance. Crafted for comfort and style, it is ideal for festive occasions, family gatherings, and cultural events. The rich color and fine craftsmanship create a graceful silhouette, making it a standout addition to any ethnic wardrobe.",
+        subDescription: "Available in two options: 3-piece set (Kurta + Pants + Dupatta) at MRP ₹1450, SRP ₹999 | 2-piece set (Kurta + Pants) at MRP ₹550, SRP ₹330. Both options feature premium fabric quality and intricate embroidery work that showcases traditional craftsmanship.",
+        subContent: "3-Piece MRP ₹1450, SRP ₹999 | 2-Piece MRP ₹550, SRP ₹330 | Embroidered Design | Premium Fabric"
     },
 ];

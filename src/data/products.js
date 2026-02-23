@@ -34,7 +34,7 @@ import Dress7 from '../assets/images/product/Dress/1.jpeg'
 import Dress8 from '../assets/images/product/Dress/8.jpeg'
 import Dress9 from '../assets/images/product/Dress/9.jpeg'
 import Dress10 from '../assets/images/product/Dress/10.jpeg'
-import Plug1 from '../assets/images/product/plug/1.jpeg'
+import Plug1 from '../assets/images/product/wall-plug/1.jpeg'
 
 
 export const PRODUCT_DATA_VERSION = 'v2.0.3';

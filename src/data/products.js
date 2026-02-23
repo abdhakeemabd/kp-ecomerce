@@ -33,6 +33,7 @@ import Dress6 from '../assets/images/product/Dress/6.jpeg'
 import Dress7 from '../assets/images/product/Dress/1.jpeg'
 import Dress8 from '../assets/images/product/Dress/8.jpeg'
 import Dress9 from '../assets/images/product/Dress/9.jpeg'
+import Dress10 from '../assets/images/product/Dress/10.jpeg'
 
 export const PRODUCT_DATA_VERSION = 'v2.0.3';
 
@@ -650,5 +651,17 @@ export const products = [
         count: 45,
         gallery: [Dress8, Dress9],
         description: "Step into elegance with the Ruby Grace Embroidered Salwar Set. This stunning red kurta features delicate golden embroidery on the neckline, sleeves, and hem, adding a rich traditional charm. Paired with matching straight-fit pants and a coordinated dupatta, this set is perfect for festive occasions, family gatherings, and celebrations. Crafted from soft, breathable fabric, it ensures comfort while keeping your look graceful and classy."
+    },
+    {
+        id: "45",
+        title: 'Plum Petal Printed Salwar Set',
+        category: 'Fashion',
+        content: 'Plum Petal Printed Salwar Set 2-Piece Options Available',
+        oldPrice: '550',
+        offer: "40%",
+        offerPrice: "330",
+        count: 45,
+        gallery: [Dress10],
+        description: "Add a touch of graceful charm to your everyday ethnic style with the Plum Petal Printed Salwar Set. Designed in a rich plum shade, this elegant kurta features delicate floral-inspired prints throughout, offering a perfect blend of tradition and modern simplicity. Paired with matching straight-fit pants and a soft, lightweight dupatta, this set ensures both comfort and effortless style. Ideal for casual outings, office wear, and small gatherings."
     },
 ];

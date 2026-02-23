@@ -34,6 +34,8 @@ import Dress7 from '../assets/images/product/Dress/1.jpeg'
 import Dress8 from '../assets/images/product/Dress/8.jpeg'
 import Dress9 from '../assets/images/product/Dress/9.jpeg'
 import Dress10 from '../assets/images/product/Dress/10.jpeg'
+import Plug1 from '../assets/images/product/plug/1.jpeg'
+
 
 export const PRODUCT_DATA_VERSION = 'v2.0.3';
 
@@ -570,7 +572,7 @@ export const products = [
         subDescription: "Crafted from premium Akeshya wood, this wardrobe features four massive compartments with adjustable shelving and hanging rods. The panelled doors provide a sophisticated look that complements any interior.",
         subContent: "Solid Wood Constuction | 4-Door Design | Ample Storage"
     },
-     {
+    {
         id: "39",
         title: 'COBRA ROMANCE',
         category: 'Health & Wellness',
@@ -663,5 +665,17 @@ export const products = [
         count: 45,
         gallery: [Dress10],
         description: "Add a touch of graceful charm to your everyday ethnic style with the Plum Petal Printed Salwar Set. Designed in a rich plum shade, this elegant kurta features delicate floral-inspired prints throughout, offering a perfect blend of tradition and modern simplicity. Paired with matching straight-fit pants and a soft, lightweight dupatta, this set ensures both comfort and effortless style. Ideal for casual outings, office wear, and small gatherings."
+    },
+    {
+        id: "46",
+        title: 'Butterfly Wall Plug Anchor',
+        category: 'Hardware',
+        content: 'Butterfly Wall Plug Anchor (Plastic Hollow Wall Anchor) – 32×10mm, Heavy-Duty Fixing Plug',
+        oldPrice: '450',
+        offer: "22.22%",
+        offerPrice: "350",
+        count: 45,
+        gallery: [Plug1],
+        description: "The Butterfly Wall Plug Anchor is a strong and reliable fixing solution designed for hollow walls such as plywood, gypsum boards, MDF, and hollow doors. Its unique butterfly-wing design expands behind the surface when the screw is tightened, providing a firm grip and preventing slipping or loosening. Made from high-quality durable plastic, this wall plug ensures secure mounting for lightweight to medium-weight items like shelves, curtain rods, frames, clocks, and decorative fixtures."
     },
 ];

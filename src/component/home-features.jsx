@@ -47,7 +47,7 @@ function HomeFeatures() {
           <Slider {...settings}>
             {featureProducts.map(item => (
               <div className='px-3 features-card rounded-sm pb-2 relative overflow-hidden' key={item.id}>
-                <div className='feature-img-card'>
+                <div className='feature-img-card relative'>
                   <img className='feature-img w-full' src={item.image || (item.gallery && item.gallery[0])} alt={item.title} />
                 </div>
                 <div className="cont px-3 mt-2">

@@ -14,7 +14,7 @@ function HomeFeatures() {
 
   // Show a subset of products as "Best Products"
   const featureProducts = products.slice(0, 10);
-  
+
   const toggleLike = (id) => {
     setLikes(prev => ({ ...prev, [id]: !prev[id] }));
   };
@@ -46,64 +46,66 @@ function HomeFeatures() {
         <div className="features_slider mt-4">
           <Slider {...settings}>
             {featureProducts.map(item => (
-              <div className='px-3 features-card rounded-sm pb-2 relative overflow-hidden' key={item.id}>
-                <div className='feature-img-card relative'>
-                  <img className='feature-img w-full' src={item.image || (item.gallery && item.gallery[0])} alt={item.title} />
-                </div>
-                <div className="cont px-3 mt-2">
-                  <div className='text-xl poppins-semibold'>{item.title}</div>
-                  <div className='text-md line-clamp-1'>{item.content || item.description}</div>
-                  <div className="mt-2">
-                    <div className="flex items-center gap-3">
-                      {item.offer && (
-                        <span className="text-2xl text-[#CC0C39] font-light">-{item.offer.replace(/[^0-9]/g, '')}%</span>
+              <div className='' key={item.id}>
+                <div className='mx-3 features-card rounded-sm pb-2 relative overflow-hidden'>
+                  <div className='feature-img-card relative'>
+                    <img className='feature-img w-full' src={item.image || (item.gallery && item.gallery[0])} alt={item.title} />
+                  </div>
+                  <div className="cont px-3 mt-2">
+                    <div className='text-xl poppins-semibold'>{item.title}</div>
+                    <div className='text-md line-clamp-1'>{item.content || item.description}</div>
+                    <div className="mt-2">
+                      <div className="flex items-center gap-3">
+                        {item.offer && (
+                          <span className="text-2xl text-[#CC0C39] font-light">-{item.offer.replace(/[^0-9]/g, '')}%</span>
+                        )}
+                        <div className="flex items-start text-black">
+                          <span className="text-sm mt-1 font-medium">₹</span>
+                          <span className="text-3xl font-medium leading-none">{item.offerPrice || item.price}</span>
+                        </div>
+                      </div>
+                      {item.oldPrice && (
+                        <div className="text-xs text-gray-500 mt-1">
+                          M.R.P.: <span className="line-through">₹{item.oldPrice}</span>
+                        </div>
                       )}
-                      <div className="flex items-start text-black">
-                        <span className="text-sm mt-1 font-medium">₹</span>
-                        <span className="text-3xl font-medium leading-none">{item.offerPrice || item.price}</span>
-                      </div>
                     </div>
-                    {item.oldPrice && (
-                      <div className="text-xs text-gray-500 mt-1">
-                        M.R.P.: <span className="line-through">₹{item.oldPrice}</span>
+                    <div className="bottom-card flex justify-between gap-3 mt-3">
+                      <div className="flex gap-3 text-lg text-gray-800">
+                        <button className='hover:text-blue-500 relative z-2' onClick={() => toggleLike(item.id)}>
+                          {likes[item.id] ? <BiSolidLike className="text-red-500" /> : <BiLike />}
+                        </button>
+                        <button className='hover:text-blue-500 relative z-2' onClick={() => toggleCart(item.id)}>
+                          {carts[item.id] ? <BiSolidCart className="text-orange-500" /> : <BiCart />}
+                        </button>
+                        <button className='hover:text-blue-500 relative z-2' onClick={() => navigator.share ? navigator.share({
+                          title: item.title,
+                          text: item.content || item.description,
+                          url: window.location.href
+                        }) : alert("Share not supported on this browser.")}>
+                          <PiShareFat />
+                        </button>
                       </div>
-                    )}
-                  </div>
-                  <div className="bottom-card flex justify-between gap-3 mt-3">
-                    <div className="flex gap-3 text-lg text-gray-800">
-                      <button className='hover:text-blue-500 relative z-2' onClick={() => toggleLike(item.id)}>
-                        {likes[item.id] ? <BiSolidLike className="text-red-500" /> : <BiLike />}
-                      </button>
-                      <button className='hover:text-blue-500 relative z-2' onClick={() => toggleCart(item.id)}>
-                        {carts[item.id] ? <BiSolidCart className="text-orange-500" /> : <BiCart />}
-                      </button>
-                      <button className='hover:text-blue-500 relative z-2' onClick={() => navigator.share ? navigator.share({
-                        title: item.title,
-                        text: item.content || item.description,
-                        url: window.location.href
-                      }) : alert("Share not supported on this browser.")}>
-                        <PiShareFat />
-                      </button>
+                      <div>{item.count || item.stock || 0} Views</div>
                     </div>
-                    <div>{item.count || item.stock || 0} Views</div>
                   </div>
+                  <Link
+                    to={`/product-view/${item.id}`}
+                    state={{
+                      product: {
+                        ...item,
+                        offerPrice: item.offerPrice || item.price,
+                        oldPrice: item.oldPrice || (parseInt(item.offerPrice || item.price) + 2000),
+                        offer: item.offer || '10%',
+                        gallery: item.gallery || [item.image],
+                        description: item.description || item.content,
+                        subDescription: item.subDescription || item.content,
+                        subContent: item.subContent || item.content
+                      }
+                    }}
+                    className='absolute inset-0 z-1'
+                  ></Link>
                 </div>
-                <Link
-                  to={`/product-view/${item.id}`}
-                  state={{
-                    product: {
-                      ...item,
-                      offerPrice: item.offerPrice || item.price,
-                      oldPrice: item.oldPrice || (parseInt(item.offerPrice || item.price) + 2000),
-                      offer: item.offer || '10%',
-                      gallery: item.gallery || [item.image],
-                      description: item.description || item.content,
-                      subDescription: item.subDescription || item.content,
-                      subContent: item.subContent || item.content
-                    }
-                  }}
-                  className='absolute inset-0 z-1'
-                ></Link>
               </div>
             ))}
           </Slider>

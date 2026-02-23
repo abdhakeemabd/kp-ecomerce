@@ -672,7 +672,7 @@ export const products = [
         category: 'Hardware',
         content: 'Butterfly Wall Plug Anchor (Plastic Hollow Wall Anchor) – 32×10mm, Heavy-Duty Fixing Plug',
         oldPrice: '450',
-        offer: "22.22%",
+        offer: "22%",
         offerPrice: "350",
         count: 45,
         gallery: [Plug1],

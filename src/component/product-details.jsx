@@ -121,14 +121,14 @@ function ProductDetails() {
                 <div className="flex gap-4 mt-6">
                   <button 
                     onClick={handleAddToCart}
-                    className="flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-md transition-colors duration-300"
+                    className="flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-md transition-colors duration-300 cursor-pointer"
                   >
                     <FaShoppingCart /> Add To Cart
                   </button>
 
                   <button
                     onClick={handleBuyNow}
-                    className="flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-md transition-all duration-300 hover:shadow-md"
+                    className="flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-md transition-all duration-300 hover:shadow-md cursor-pointer"
                   >
                     <FaBolt /> Buy Now
                   </button>

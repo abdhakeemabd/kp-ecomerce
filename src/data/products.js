@@ -31,6 +31,8 @@ import Dress4 from '../assets/images/product/Dress/4.jpeg'
 import Dress5 from '../assets/images/product/Dress/5.jpeg'
 import Dress6 from '../assets/images/product/Dress/6.jpeg'
 import Dress7 from '../assets/images/product/Dress/1.jpeg'
+import Dress8 from '../assets/images/product/Dress/8.jpeg'
+import Dress9 from '../assets/images/product/Dress/9.jpeg'
 
 export const PRODUCT_DATA_VERSION = 'v2.0.3';
 
@@ -636,5 +638,17 @@ export const products = [
         description: "This elegant teal salwar suit set is designed to bring timeless charm and graceful sophistication. The kurta features delicate embroidery accents along the neckline, hem, and borders, adding a refined traditional touch. Paired with matching straight-fit pants and a beautifully coordinated dupatta with subtle woven detailing, this outfit offers a perfect balance of simplicity and elegance. Crafted for comfort and style, it is ideal for festive occasions, family gatherings, and cultural events. The rich color and fine craftsmanship create a graceful silhouette, making it a standout addition to any ethnic wardrobe.",
         subDescription: "Available in two options: 3-piece set (Kurta + Pants + Dupatta) at MRP ₹1450, SRP ₹999 | 2-piece set (Kurta + Pants) at MRP ₹550, SRP ₹330. Both options feature premium fabric quality and intricate embroidery work that showcases traditional craftsmanship.",
         subContent: "3-Piece MRP ₹1450, SRP ₹999 | 2-Piece MRP ₹550, SRP ₹330 | Embroidered Design | Premium Fabric"
+    },
+    {
+        id: "44",
+        title: 'Ruby Grace Embroidered Salwar Set',
+        category: 'Fashion',
+        content: 'Ruby Grace Embroidered Salwar Set 2-Piece Options Available',
+        oldPrice: '750',
+        offer: "26%",
+        offerPrice: "550",
+        count: 45,
+        gallery: [Dress8, Dress9],
+        description: "Step into elegance with the Ruby Grace Embroidered Salwar Set. This stunning red kurta features delicate golden embroidery on the neckline, sleeves, and hem, adding a rich traditional charm. Paired with matching straight-fit pants and a coordinated dupatta, this set is perfect for festive occasions, family gatherings, and celebrations. Crafted from soft, breathable fabric, it ensures comfort while keeping your look graceful and classy."
     },
 ];

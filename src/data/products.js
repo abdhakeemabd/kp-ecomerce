@@ -35,6 +35,15 @@ import Dress8 from '../assets/images/product/Dress/8.jpeg'
 import Dress9 from '../assets/images/product/Dress/9.jpeg'
 import Dress10 from '../assets/images/product/Dress/10.jpeg'
 import Plug1 from '../assets/images/product/wall-plug/1.jpeg'
+import IronTable1 from '../assets/images/product/unbox-holder/1.jpeg'
+import IronTable2 from '../assets/images/product/unbox-holder/2.jpeg'
+import IronTable3 from '../assets/images/product/unbox-holder/3.jpeg'
+import IronTable4 from '../assets/images/product/unbox-holder/4.jpeg'
+import IronTable5 from '../assets/images/product/unbox-holder/5.jpeg'
+import IronTable6 from '../assets/images/product/unbox-holder/6.jpeg'
+import IronTable7 from '../assets/images/product/unbox-holder/7.jpeg'
+import medicine1 from '../assets/images/product/medicie/1.jpeg'
+import medicine2 from '../assets/images/product/medicie/2.jpeg'
 
 
 export const PRODUCT_DATA_VERSION = 'v2.0.3';
@@ -677,5 +686,29 @@ export const products = [
         count: 45,
         gallery: [Plug1],
         description: "The Butterfly Wall Plug Anchor is a strong and reliable fixing solution designed for hollow walls such as plywood, gypsum boards, MDF, and hollow doors. Its unique butterfly-wing design expands behind the surface when the screw is tightened, providing a firm grip and preventing slipping or loosening. Made from high-quality durable plastic, this wall plug ensures secure mounting for lightweight to medium-weight items like shelves, curtain rods, frames, clocks, and decorative fixtures."
+    },
+    {
+        id: "47",
+        title: 'Foldable Ironing Table! 🔥',
+        category: 'Furniture',
+        content: 'Wall-Mountable Foldable Iron Table | Space-Saving Design',
+        oldPrice: '4000',
+        offer: "25%",
+        offerPrice: "3000",
+        count: 50,
+        gallery: [IronTable1, IronTable2, IronTable3, IronTable4, IronTable5, IronTable6, IronTable7],
+        description: " Our wall-mountable foldable ironing table is perfect for both homes and beauty parlors Table Size: 1220mm × 420mm Materials Used: 16mm high-quality plywood Ebco 300mm anti-corrosion table bracket Key Features: Foldable space-saving design / Can be folded away to save space Strong and stable triangle bracket (Ebco) Easy to install without any professional help Available in 3 beautiful colors Can be customized as a study table, kitchen table, or laptop desk based on customer preference Free delivery + fitting up to 20 km!"
+    },
+    {
+        id: "48",
+        title: 'Naco ABC Malt Powder',
+        category: 'Health & Wellness',
+        content: 'Energy and health in one glass',
+        oldPrice: '650',
+        offer: "8%",
+        offerPrice: "595",
+        count: 100,
+        gallery: [medicine1, medicine2],
+        description: "Do you feel tired every day? Are your children getting complete nutrition? Energy and health in one glass Naco ABC Malt Powder Suitable for both children and adults Taste and nutrition together Provides daily essential nutrition Easy to prepare Delicious and healthy choice"
     },
 ];

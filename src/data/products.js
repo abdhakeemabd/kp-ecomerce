@@ -44,6 +44,8 @@ import IronTable6 from '../assets/images/product/unbox-holder/6.jpeg'
 import IronTable7 from '../assets/images/product/unbox-holder/7.jpeg'
 import medicine1 from '../assets/images/product/medicie/1.jpeg'
 import medicine2 from '../assets/images/product/medicie/2.jpeg'
+import Thailam1 from '../assets/images/product/murivenna/1.jpeg'
+import Thailam2 from '../assets/images/product/murivenna/2.jpeg'
 
 
 export const PRODUCT_DATA_VERSION = 'v2.0.3';
@@ -710,5 +712,17 @@ export const products = [
         count: 100,
         gallery: [medicine1, medicine2],
         description: "Do you feel tired every day? Are your children getting complete nutrition? Energy and health in one glass Naco ABC Malt Powder Suitable for both children and adults Taste and nutrition together Provides daily essential nutrition Easy to prepare Delicious and healthy choice"
+    },
+    {
+        id: "49",
+        title: 'Changalam Paranda Thailam (Herbal Pain Relief Oil)',
+        category: 'Health & Wellness',
+        content: 'Traditional Ayurvedic herbal oil for pain relief',
+        oldPrice: '220',
+        offer: "9%",
+        offerPrice: "200",
+        count: 100,
+        gallery: [Thailam1, Thailam2],
+        description: "Changalam Paranda Thailam is a traditional Ayurvedic herbal oil made from natural medicinal plants, especially Changalam Paranda (Cissus quadrangularis). It is known for its powerful pain-relieving and healing properties. This oil helps reduce joint pain, muscle pain, and bone-related discomfort. Regular use supports faster recovery from injuries and improves mobility. | 100ml"
     },
 ];

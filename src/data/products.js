@@ -46,6 +46,10 @@ import medicine1 from '../assets/images/product/medicie/1.jpeg'
 import medicine2 from '../assets/images/product/medicie/2.jpeg'
 import Thailam1 from '../assets/images/product/murivenna/1.jpeg'
 import Thailam2 from '../assets/images/product/murivenna/2.jpeg'
+import SweetPotato1 from '../assets/images/product/ojeenam/1.jpeg'
+import SweetPotato2 from '../assets/images/product/ojeenam/4.jpeg'
+import Kunnankaya1 from '../assets/images/product/ojeenam/2.jpeg'
+import Healthmix1 from '../assets/images/product/ojeenam/3.jpeg'
 
 
 export const PRODUCT_DATA_VERSION = 'v2.0.3';
@@ -724,5 +728,41 @@ export const products = [
         count: 100,
         gallery: [Thailam1, Thailam2],
         description: "Changalam Paranda Thailam is a traditional Ayurvedic herbal oil made from natural medicinal plants, especially Changalam Paranda (Cissus quadrangularis). It is known for its powerful pain-relieving and healing properties. This oil helps reduce joint pain, muscle pain, and bone-related discomfort. Regular use supports faster recovery from injuries and improves mobility. | 100ml"
+    },
+    {
+        id: "50",
+        title: 'Ojeenam Foods Sweet Potato Powder',
+        category: 'Health & Wellness',
+        content: 'Ojeenam Foods Sweet Potato Powder',
+        oldPrice: '120',
+        offer: "25%",
+        offerPrice: "90",
+        count: 100,
+        gallery: [SweetPotato1, SweetPotato2],
+        description: "Ojeenam Foods Sweet Potato Powder is a natural and nutritious food supplement specially prepared for babies and toddlers. Made from carefully selected sweet potatoes, this powder is rich in fiber, vitamins, and essential nutrients that support healthy growth and development.It is easy to digest and can be prepared quickly as a smooth porridge. Ideal for introducing solid foods to your little one, it helps provide natural energy and supports overall immunity."
+    },
+    {
+        id: "51",
+        title: 'Ojeenam Foods Hungry Baby Kunnankaya Powder',
+        category: 'Health & Wellness',
+        content: 'Ojeenam Foods Hungry Baby Kunnankaya Powder',
+        oldPrice: '220',
+        offer: "18%",
+        offerPrice: "180",
+        count: 100,
+        gallery: [Kunnankaya1],
+        description: "Ojeenam Foods Hungry Baby Kunnankaya Powder is a wholesome and nutritious baby food made from premium quality raw banana (Kunnankaya). It helps improve digestion, boost immunity, and nourish growing babies naturally.This powder is rich in natural carbohydrates, fiber, and essential nutrients that support healthy weight gain and energy levels. Easy to prepare and gentle on tiny tummies."
+    },
+    {
+        id: "52",
+        title: 'Ojeenam Foods Hungry Baby Healthmix Powder (250g)',
+        category: 'Health & Wellness',
+        content: 'Ojeenam Foods Hungry Baby Healthmix Powder (250g)',
+        oldPrice: '180',
+        offer: "17%",
+        offerPrice: "150",
+        count: 100,
+        gallery: [Healthmix1],
+        description: "Ojeenam Foods Hungry Baby Healthmix Powder is a nutrient-rich blend specially designed to provide complete nourishment for babies and toddlers. Packed with natural ingredients, it offers high protein content and essential nutrients needed for healthy development.This health mix supports digestion, boosts natural energy, and helps maintain overall wellness. A perfect daily nutrition choice for growing babies."
     },
 ];

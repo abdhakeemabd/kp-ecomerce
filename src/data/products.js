@@ -50,6 +50,9 @@ import SweetPotato1 from '../assets/images/product/ojeenam/1.jpeg'
 import SweetPotato2 from '../assets/images/product/ojeenam/4.jpeg'
 import Kunnankaya1 from '../assets/images/product/ojeenam/2.jpeg'
 import Healthmix1 from '../assets/images/product/ojeenam/3.jpeg'
+import NavaraRagiPowder from '../assets/images/product/ojeenam/5.jpeg'
+import NavaraBananaMix from '../assets/images/product/ojeenam/6.jpeg'
+import NavaraRicePowder from '../assets/images/product/ojeenam/7.jpeg'
 
 
 export const PRODUCT_DATA_VERSION = 'v2.0.3';
@@ -695,7 +698,7 @@ export const products = [
     },
     {
         id: "47",
-        title: 'Foldable Ironing Table! 🔥',
+        title: 'Foldable Ironing Table!',
         category: 'Furniture',
         content: 'Wall-Mountable Foldable Iron Table | Space-Saving Design',
         oldPrice: '4000',
@@ -762,7 +765,43 @@ export const products = [
         offer: "17%",
         offerPrice: "150",
         count: 100,
-        gallery: [Healthmix1],
+        gallery: [SweetPotato2, Healthmix1],
         description: "Ojeenam Foods Hungry Baby Healthmix Powder is a nutrient-rich blend specially designed to provide complete nourishment for babies and toddlers. Packed with natural ingredients, it offers high protein content and essential nutrients needed for healthy development.This health mix supports digestion, boosts natural energy, and helps maintain overall wellness. A perfect daily nutrition choice for growing babies."
+    },
+    {
+        id: "53",
+        title: 'Ojeenam Foods Hungry Baby Sprouted Ragi Powder',
+        category: 'Health & Wellness',
+        content: 'Ojeenam Foods Hungry Baby Sprouted Ragi Powder',
+        oldPrice: '120',
+        offer: "25%",
+        offerPrice: "90",
+        count: 100,
+        gallery: [NavaraRagiPowder],
+        description: "Ojeenam Foods Hungry Baby Sprouted Ragi Powder is a wholesome and nutritious baby food made from carefully selected sprouted ragi. Rich in iron and essential nutrients, it supports healthy growth and improves digestion in babies. The sprouting process enhances nutrient absorption, making it an ideal choice for your little one’s healthy start. Perfect for preparing smooth, tasty porridge for babies."
+    },
+    {
+        id: "54",
+        title: 'Ojeenam Foods Hungry Baby Navara Banana Mix',
+        category: 'Health & Wellness',
+        content: 'Ojeenam Foods Hungry Baby Navara Banana Mix',
+        oldPrice: '80',
+        offer: "25%",
+        offerPrice: "60",
+        count: 100,
+        gallery: [NavaraBananaMix],
+        description: "Ojeenam Foods Hungry Baby Navara Banana Mix is a nutritious blend specially crafted for babies. Made with Navara rice and natural banana, this mix supports digestive health and helps boost the immune system. It is protein-rich and provides essential nutrients required for healthy development. A tasty and nourishing meal option for growing babies."
+    },
+    {
+        id: "55",
+        title: 'Ojeenam Foods Hungry Baby Navara Rice Powder',
+        category: 'Health & Wellness',
+        content: 'Ojeenam Foods Hungry Baby Navara Rice Powder',
+        oldPrice: '180',
+        offer: "22%",
+        offerPrice: "140",
+        count: 100,
+        gallery: [NavaraRicePowder],
+        description: "Ojeenam Foods Hungry Baby Navara Rice Powder is made from premium quality Navara rice, known for its high nutritional value. It is rich in fiber and iron, helping support weight gain and overall growth in babies. This easily digestible rice powder ensures healthy nutrition in every scoop and makes a perfect first food for infants."
     },
 ];

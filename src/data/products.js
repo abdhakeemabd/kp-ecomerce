@@ -53,6 +53,40 @@ import Healthmix1 from '../assets/images/product/ojeenam/3.jpeg'
 import NavaraRagiPowder from '../assets/images/product/ojeenam/5.jpeg'
 import NavaraBananaMix from '../assets/images/product/ojeenam/6.jpeg'
 import NavaraRicePowder from '../assets/images/product/ojeenam/7.jpeg'
+import Panchaloha1 from '../assets/images/product/traditional-Jewellery/punjaloha-1.jpeg'
+import Panchaloha2 from '../assets/images/product/traditional-Jewellery/punjaloha-2.jpeg'
+import Panchaloha3 from '../assets/images/product/traditional-Jewellery/punjaloha-3.jpeg'
+import Panchaloha4 from '../assets/images/product/traditional-Jewellery/punjaloha-4.jpeg'
+import Panchaloha5 from '../assets/images/product/traditional-Jewellery/punjaloha-5.jpeg'
+import PanchalohaRing1 from '../assets/images/product/traditional-Jewellery/rings/ring-1.jpeg';
+import PanchalohaRing2 from '../assets/images/product/traditional-Jewellery/rings/ring-2.jpeg';
+import PanchalohaRing3 from '../assets/images/product/traditional-Jewellery/rings/ring-3.jpeg';
+import PanchalohaRing4 from '../assets/images/product/traditional-Jewellery/rings/ring-4.jpeg';
+import PanchalohaRing5 from '../assets/images/product/traditional-Jewellery/rings/ring-5.jpeg';
+import PanchalohaRing6 from '../assets/images/product/traditional-Jewellery/rings/ring-6.jpeg';
+import PanchalohaRing7 from '../assets/images/product/traditional-Jewellery/rings/ring-7.jpeg';
+import PanchalohaRing8 from '../assets/images/product/traditional-Jewellery/rings/ring-8.jpeg';
+import PanchalohaRing9 from '../assets/images/product/traditional-Jewellery/rings/ring-9.jpeg';
+import PanchalohaRing10 from '../assets/images/product/traditional-Jewellery/rings/ring-10.jpeg';
+import PanchalohaRing11 from '../assets/images/product/traditional-Jewellery/rings/ring-11.jpeg';
+import PanchalohaRing12 from '../assets/images/product/traditional-Jewellery/rings/ring-12.jpeg';
+import PanchalohaRing13 from '../assets/images/product/traditional-Jewellery/rings/ring-13.jpeg';
+import PanchalohaRing14 from '../assets/images/product/traditional-Jewellery/rings/ring-14.jpeg';
+import PanchalohaRing15 from '../assets/images/product/traditional-Jewellery/rings/ring-15.jpeg';
+import PanchalohaRing16 from '../assets/images/product/traditional-Jewellery/rings/ring-16.jpeg';
+import PanchalohaRing17 from '../assets/images/product/traditional-Jewellery/rings/ring-17.jpeg';
+import PanchalohaRing18 from '../assets/images/product/traditional-Jewellery/rings/ring-18.jpeg';
+import PanchalohaRing19 from '../assets/images/product/traditional-Jewellery/rings/ring-19.jpeg';
+import PanchalohaRing20 from '../assets/images/product/traditional-Jewellery/rings/ring-20.jpeg';
+import PanchalohaRing21 from '../assets/images/product/traditional-Jewellery/rings/ring-21.jpeg';
+import PanchalohaRing22 from '../assets/images/product/traditional-Jewellery/rings/ring-22.jpeg';
+import PanchalohaRing23 from '../assets/images/product/traditional-Jewellery/rings/ring-23.jpeg';
+import PanchalohaRing24 from '../assets/images/product/traditional-Jewellery/rings/ring-24.jpeg';
+import PanchalohaRing25 from '../assets/images/product/traditional-Jewellery/rings/ring-25.jpeg';
+import PanchalohaRing26 from '../assets/images/product/traditional-Jewellery/rings/ring-26.jpeg';
+import PanchalohaRing27 from '../assets/images/product/traditional-Jewellery/rings/ring-27.jpeg';
+import PanchalohaRing28 from '../assets/images/product/traditional-Jewellery/rings/ring-28.jpeg';
+
 
 
 export const PRODUCT_DATA_VERSION = 'v2.0.3';
@@ -803,5 +837,65 @@ export const products = [
         count: 100,
         gallery: [NavaraRicePowder],
         description: "Ojeenam Foods Hungry Baby Navara Rice Powder is made from premium quality Navara rice, known for its high nutritional value. It is rich in fiber and iron, helping support weight gain and overall growth in babies. This easily digestible rice powder ensures healthy nutrition in every scoop and makes a perfect first food for infants."
+    },
+    {
+        id: "56",
+        title: 'Pancha Loha polished chains (24 inch)',
+        category: 'Traditional Jewellery',
+        content: 'Pancha Loha polished chains (24 inch)',
+        oldPrice: '2400',
+        offer: "12%",
+        offerPrice: "2100",
+        count: 100,
+        gallery: [Panchaloha1],
+        description: "Pancha Loha is a traditional alloy made from five metals and is widely used in spiritual jewellery and temple ornaments. This chain is ideal for wearing with pendants, especially religious or astrological pendants, making it perfect for daily wear as well as special occasions."
+    },
+    {
+        id: "57",
+        title: 'Pancha Loha Polished Designer Chain – 24 Inch',
+        category: 'Traditional Jewellery',
+        content: 'Pancha Loha Polished Designer Chain – 24 Inch',
+        oldPrice: '2400',
+        offer: "12%",
+        offerPrice: "2100",
+        count: 100,
+        gallery: [Panchaloha2, Panchaloha3, Panchaloha4, Panchaloha5],
+        description: "Add a touch of traditional elegance with this beautifully crafted Pancha Loha polished designer chain. Made from the sacred five-metal alloy known as Pancha Loha, this chain carries both cultural significance and stylish appeal. The chain features a detailed link pattern with a rich gold-polished finish that gives it a premium look. Its 24-inch length makes it perfect for wearing alone or pairing with pendants, especially spiritual or traditional pendants."
+    },
+    {
+        id: "58",
+        title: 'Pancha Loha Polished Ring – Traditional Sacred Ring  size 2.2',
+        category: 'Traditional Jewellery',
+        content: 'Pancha Loha Polished Ring – Traditional Sacred Ring  size 2.2',
+        oldPrice: '700',
+        offer: "21%",
+        offerPrice: "550",
+        count: 100,
+        gallery: [PanchalohaRing1, PanchalohaRing2, PanchalohaRing3, PanchalohaRing4, PanchalohaRing5, PanchalohaRing6, PanchalohaRing7],
+        description: "Experience the spiritual and traditional essence of Indian craftsmanship with this Pancha Loha Polished Ring Set. Crafted from the sacred alloy known as Pancha Loha (five-metal blend), these rings symbolize balance, positivity, and spiritual harmony."
+    },
+     {
+        id: "59",
+        title: 'Pancha Loha Polished Ring – Traditional Sacred Ring  size 2.2',
+        category: 'Traditional Jewellery',
+        content: 'Pancha Loha Polished Ring – Traditional Sacred Ring  size 2.2',
+        oldPrice: '1100',
+        offer: "18%",
+        offerPrice: "900",
+        count: 100,
+        gallery: [PanchalohaRing8, PanchalohaRing9, PanchalohaRing10, PanchalohaRing11, PanchalohaRing12, PanchalohaRing13, PanchalohaRing14, PanchalohaRing15, PanchalohaRing16, PanchalohaRing17, PanchalohaRing18, PanchalohaRing19, PanchalohaRing20, PanchalohaRing21, PanchalohaRing22, PanchalohaRing23, PanchalohaRing24, PanchalohaRing25, PanchalohaRing26, PanchalohaRing27],
+        description: "Experience the spiritual and traditional essence of Indian craftsmanship with this Pancha Loha Polished Ring Set. Crafted from the sacred alloy known as Pancha Loha (five-metal blend), these rings symbolize balance, positivity, and spiritual harmony."
+    },
+     {
+        id: "60",
+        title: 'Pancha Loha Polished Designer Bangle – Traditional Center Bead Design (Pair)',
+        category: 'Traditional Jewellery',
+        content: 'Pancha Loha Polished Designer Bangle – Traditional Center Bead Design (Pair)',
+        oldPrice: '1100',
+        offer: "18%",
+        offerPrice: "900",
+        count: 100,
+        gallery: [PanchalohaRing28],
+        description: "Enhance your traditional look with this Pancha Loha Polished Designer Bangle Pair, crafted with a beautiful center bead motif and classic textured pattern. Made from the sacred Pancha Loha (five-metal alloy), this bangle combines traditional craftsmanship with a rich golden polished finish."
     },
 ];

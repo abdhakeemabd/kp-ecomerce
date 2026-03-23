@@ -852,12 +852,12 @@ export const products = [
     },
     {
         id: "57",
-        title: 'Pancha Loha Polished Designer Chain – 24 Inch',
+        title: 'Pancha Loha Polished Designer Chain – 30 Inch',
         category: 'Traditional Jewellery',
-        content: 'Pancha Loha Polished Designer Chain – 24 Inch',
-        oldPrice: '2400',
-        offer: "12%",
-        offerPrice: "2100",
+        content: 'Pancha Loha Polished Designer Chain – 30 Inch',
+        oldPrice: '3000',
+        offer: "16%",
+        offerPrice: "2500",
         count: 100,
         gallery: [Panchaloha2, Panchaloha3, Panchaloha4, Panchaloha5],
         description: "Add a touch of traditional elegance with this beautifully crafted Pancha Loha polished designer chain. Made from the sacred five-metal alloy known as Pancha Loha, this chain carries both cultural significance and stylish appeal. The chain features a detailed link pattern with a rich gold-polished finish that gives it a premium look. Its 24-inch length makes it perfect for wearing alone or pairing with pendants, especially spiritual or traditional pendants."

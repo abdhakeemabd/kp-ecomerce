@@ -86,6 +86,16 @@ import PanchalohaRing25 from '../assets/images/product/traditional-Jewellery/rin
 import PanchalohaRing26 from '../assets/images/product/traditional-Jewellery/rings/ring-26.jpeg';
 import PanchalohaRing27 from '../assets/images/product/traditional-Jewellery/rings/ring-27.jpeg';
 import PanchalohaRing28 from '../assets/images/product/traditional-Jewellery/rings/ring-28.jpeg';
+import SulthanPerfume1 from '../assets/images/product/perfume/sulthan/1.jpeg';
+import SulthanPerfume2 from '../assets/images/product/perfume/sulthan/2.jpeg';
+import SulthanPerfume3 from '../assets/images/product/perfume/sulthan/3.jpeg';
+import SulthanPerfume5 from '../assets/images/product/perfume/sulthan/5.jpeg';
+import SulthanPerfume6 from '../assets/images/product/perfume/sulthan/6.jpeg';
+import SulthanPerfume7 from '../assets/images/product/perfume/sulthan/7.jpeg';
+import SulthanPerfume8 from '../assets/images/product/perfume/sulthan/8.jpeg';
+import NeemSoap from '../assets/images/product/soap/neem/neem-soap.png';
+
+
 
 
 
@@ -897,5 +907,101 @@ export const products = [
         count: 100,
         gallery: [PanchalohaRing28],
         description: "Enhance your traditional look with this Pancha Loha Polished Designer Bangle Pair, crafted with a beautiful center bead motif and classic textured pattern. Made from the sacred Pancha Loha (five-metal alloy), this bangle combines traditional craftsmanship with a rich golden polished finish."
+    },
+    {
+        id: "61",
+        title: 'Neem Soap',
+        category: 'Soap',
+        content: 'Its antibacterial and antimicrobial properties would help purify the skin.',
+        oldPrice: '200',
+        offer: "40%",
+        offerPrice: "120",
+        count: 100,
+        gallery: [NeemSoap],
+        description: "Neem soap offers numerous benefits for skincare, including its antimicrobial, anti-inflammatory, and antioxidant properties. It can be used to cleanse, soothe, and moisturize the skin, making it a valuable addition to any skincare routine."
+    },
+     {
+        id: "62",
+        title: 'Muradh Long Lasting Perfume 10 ml',
+        category: 'Perfumes',
+        content: 'Long Lasting Perfume',
+        oldPrice: '259',
+        offer: "23%",
+        offerPrice: "199",
+        count: 100,
+        gallery: [SulthanPerfume1],
+        description: "A smooth fragrance with a subtle Korean-inspired touch."
+    },
+    {
+        id: "63",
+        title: 'Shadow Long Lasting Perfume 35 ml',
+        category: 'Perfumes',
+        content: 'Shadow Long Lasting Perfume',
+        oldPrice: '859',
+        offer: "30%",
+        offerPrice: "599",
+        count: 100,
+        gallery: [SulthanPerfume2],
+        description: "A rich floral fragrance with an executive and premium character."
+    },
+    {
+        id: "64",
+        title: 'Refresh Sample Perfume 35 ml',
+        category: 'Perfumes',
+        content: 'Refresh Sample Perfume',
+        oldPrice: '859',
+        offer: "30%",
+        offerPrice: "599",
+        count: 100,
+        gallery: [SulthanPerfume3],
+        description: "A fresh fruity fragrance with a vibrant and uplifting feel."
+    },
+    {
+        id: "65",
+        title: 'Emarati - Bold Oriental Perfume 10 ml',
+        category: 'Perfumes',
+        content: 'Bold Oriental Perfume',
+        oldPrice: '259',
+        offer: "23%",
+        offerPrice: "199",
+        count: 100,
+        gallery: [SulthanPerfume6],
+        description: "A bold oriental fragrance with a classic oudh touch."
+    },
+    {
+        id: "66",
+        title: 'Identity - light and pleasant Perfume 10 ml',
+        category: 'Perfumes',
+        content: 'Light and pleasant Perfume',
+        oldPrice: '259',
+        offer: "23%",
+        offerPrice: "199",
+        count: 100,
+        gallery: [SulthanPerfume7],
+        description: "A light and pleasant fragrance inspired by Marj."
+    },
+    {
+        id: "67",
+        title: 'Refresh - fresh fruity Perfume 10 ml',
+        category: 'Perfumes',
+        content: 'Fresh fruity Perfume',
+        oldPrice: '259',
+        offer: "23%",
+        offerPrice: "199",
+        count: 100,
+        gallery: [SulthanPerfume8],
+        description: "A fresh fruity fragrance with a vibrant and uplifting feel."
+    },
+    {
+        id: "68",
+        title: 'Refresh - fresh fruity Perfume 10 ml',
+        category: 'Perfumes',
+        content: 'Fresh fruity Perfume',
+        oldPrice: '2000',
+        offer: "23%",
+        offerPrice: "1500",
+        count: 100,
+        gallery: [SulthanPerfume5],
+        description: "A fresh fruity fragrance with a vibrant and uplifting feel."
     },
 ];

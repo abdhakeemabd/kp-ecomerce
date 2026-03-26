@@ -112,6 +112,15 @@ export const products = [
         offerPrice: "10000",
         count: 53,
         gallery: [Img4],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Elegant rectangular dining table crafted from high-quality solid Sheesham wood. Features a natural honey brown finish that highlights the wood grain patterns. Sturdy construction ensures durability for daily use.",
         subDescription: "Perfect for family gatherings, this 6-seater table combines traditional craftsmanship with modern design. The termite-resistant wood and moisture-proof polish make it a long-lasting investment.",
         subContent: "Solid Sheesham Wood | Honey Brown Finish | 6 Seater Capacity"
@@ -126,6 +135,15 @@ export const products = [
         offerPrice: "10000",
         count: 63,
         gallery: [Img5],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Minimalist solid Sheesham wood table with a sleek teak finish. The compact design makes it suitable for both dining rooms and kitchen spaces. Easy to assemble and maintain.",
         subDescription: "Designed for modern homes, this table offers a perfect balance of style and functionality. The smooth surface and rounded edges ensure safety and comfort.",
         subContent: "Solid Wood | Teak Finish | Modern Design"
@@ -140,6 +158,15 @@ export const products = [
         offerPrice: "10000",
         count: 83,
         gallery: [Img6],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Space-saving 4-seater dining table made from seasoned solid wood. Ideal for small apartments and cozy dining areas. Features a robust leg structure for maximum stability.",
         subDescription: "Bring warmth to your dining area with this classic wooden table. Its chemically treated wood prevents decay and ensures a timeless look for years.",
         subContent: "Solid Wood | 4 Seater | Space Saving"
@@ -154,6 +181,15 @@ export const products = [
         offerPrice: "10000",
         count: 53,
         gallery: [Img1],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Contemporary wall-mounted bookshelf with multiple compartments. Made from high-grade engineered wood with a wenge finish. Perfect for organizing books, decor items, and collectibles.",
         subDescription: "Transform your empty walls into a functional storage space. The unique zigzag design adds a modern artistic touch to your living room or study.",
         subContent: "Engineered Wood | Wall Mount | Zigzag Design"
@@ -168,6 +204,15 @@ export const products = [
         offerPrice: "10000",
         count: 63,
         gallery: [Img2],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Spacious floor-standing display shelf crafted from durable engineered wood. Features open shelves for easy access and display. Ideal for living rooms, bedrooms, and offices.",
         subDescription: "A versatile storage solution that blends seamlessly with any interior decor. The sturdy base ensures stability even when fully loaded with books and artifacts.",
         subContent: "Engineered Wood | Floor Standing | Open Shelves"
@@ -182,6 +227,15 @@ export const products = [
         offerPrice: "10000",
         count: 83,
         gallery: [Img3],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Exquisite handcrafted solid wood wall shelf with intricate detailing. Made by skilled artisans using traditional techniques. Adds a rustic charm to your home decor.",
         subDescription: "More than just a shelf, this is a piece of art. The natural wood texture and robust construction make it perfect for displaying heavy items like planters and statues.",
         subContent: "Solid Wood | Handcrafted | Rustic design"
@@ -196,6 +250,15 @@ export const products = [
         offerPrice: "10000",
         count: 63,
         gallery: [Img5],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Heavy-duty solid Sheesham wood almirah with a traditional design. Features deep shelves and a full-length mirror. Highly durable and resistant to termites.",
         subDescription: "A timeless piece of furniture that offers both storage and style. The natural wood grain patterns give it a unique and premium look.",
         subContent: "Solid Sheesham | Full Mirror | Traditional Style"
@@ -210,6 +273,15 @@ export const products = [
         offerPrice: "10000",
         count: 83,
         gallery: [Img6],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Large 3-door wardrobe with multiple compartments for organized storage. Constructed from high-density engineered wood. Features soft-close hinges and a sleek matte finish.",
         subDescription: "The ultimate storage solution for modern families. Provides designated spaces for hangers, folded clothes, and shoes.",
         subContent: "Engineered Wood | 3-Door | Soft Close Hinges"
@@ -224,6 +296,15 @@ export const products = [
         offerPrice: "4500",
         count: 53,
         gallery: [Img2],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Energy-efficient ceiling fan with high-speed motor for superior air delivery. Features aerodynamic blades for silent operation. Anti-dust coating ensures easy manufacturing.",
         subDescription: "Beat the heat with this powerful fan. Its elegant design complements modern interiors while ensuring optimal air circulation in large rooms.",
         subContent: "High Speed | Anti-Dust | Silent Operation"
@@ -238,6 +319,15 @@ export const products = [
         offerPrice: "6000",
         count: 63,
         gallery: [Img3],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Stylish decorative ceiling fan with gold accents. Equipped with a powerful copper motor for long-lasting performance. 5-star energy rating for electricity savings.",
         subDescription: "Add a touch of luxury to your ceiling. This fan not only keeps you cool but also serves as a statement piece in your living room.",
         subContent: "Decorative | Copper Motor | 5-Star Rated"
@@ -252,6 +342,15 @@ export const products = [
         offerPrice: "4500",
         count: 83,
         gallery: [Img5],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Modern fan with remote control functionality. Features timer settings, sleep mode, and speed control. BLDC motor technology consumes 50% less power.",
         subDescription: "Experience convenience at your fingertips. The smart features allow you to control the fan without getting out of bed.",
         subContent: "Remote Control | BLDC Motor | Smart Features"
@@ -266,6 +365,15 @@ export const products = [
         offerPrice: "9000",
         count: 53,
         gallery: [Img6],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Orthopedic memory foam mattress designed for back support. Adapts to your body shape for pressure relief. Breathable fabric cover keeps you cool while sleeping.",
         subDescription: "Wake up pain-free every morning. This mattress aligns your spine correctly, ensuring a restful and rejuvenating sleep.",
         subContent: "Memory Foam | Orthopedic | Hypoallergenic"
@@ -280,6 +388,15 @@ export const products = [
         offerPrice: "10000",
         count: 63,
         gallery: [Img1],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Reversible mattress with dual comfort – soft on one side and firm on the other. High-density foam ensures durability and prevents sagging.",
         subDescription: "Customize your sleep experience with a simple flip. Use the firm side for back support and the soft side for a plush feel.",
         subContent: "Dual Comfort | Reversible | High Density"
@@ -294,6 +411,15 @@ export const products = [
         offerPrice: "13000",
         count: 83,
         gallery: [Img4],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Luxury pocket spring mattress for zero partner disturbance. Multi-layer cushioning provides hotel-like comfort at home. Anti-microbial treatment for hygiene.",
         subDescription: "Experience hotel luxury every night. The individual pocket springs isolate motion, ensuring you sleep undisturbed even if your partner moves.",
         subContent: "Pocket Spring | Zero Disturbance | Anti-Microbial"
@@ -308,6 +434,15 @@ export const products = [
         offerPrice: "5500",
         count: 53,
         gallery: [Img2],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Powerful 750W mixer grinder with 3 stainless steel jars. Features advanced air ventilation system for motor cooling. Perfect for grinding tough ingredients like turmeric and dal.",
         subDescription: "Master the art of cooking with precise grinding. The leak-proof jars and durable blades make food preparation quick and mess-free.",
         subContent: "750W Motor | 3 Jars | Stainless Steel"
@@ -322,6 +457,15 @@ export const products = [
         offerPrice: "3000",
         count: 63,
         gallery: [Img3],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Compact 500W mixer grinder ideal for daily use. Includes 2 jars for chutney and dry grinding. Shock-proof ABS body ensures safety.",
         subDescription: "Perfect for small families. Its compact design takes up minimal counter space while delivering reliable performance for everyday cooking.",
         subContent: "500W Motor | Compact | Shock Proof"
@@ -336,6 +480,15 @@ export const products = [
         offerPrice: "5500",
         count: 83,
         gallery: [Img5],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Heavy-duty mixer with 100% copper motor. Comes with 3 multifunctional jars and a whipper blade. Overload protection switch for motor safety.",
         subDescription: "Built to last. Whether it's idli batter or masala powder, this mixer handles heavy loads effortlessly.",
         subContent: "Copper Motor | Overload Protection | Multi-purpose"
@@ -350,6 +503,15 @@ export const products = [
         offerPrice: "5500",
         count: 83,
         gallery: [Img4],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Professional grade mixer grinder with Nutri-Pro feature for retaining nutritional value. 3 speed settings with pulse function. Easy grip handles.",
         subDescription: "Healthy cooking made easy. The specialized blades permit grinding without heating up the ingredients, preserving their natural taste and nutrients.",
         subContent: "Nutri-Pro | 3 Speed | Easy Grip"
@@ -364,6 +526,15 @@ export const products = [
         offerPrice: "10500",
         count: 53,
         gallery: [Img6],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Compact personal air cooler with honeycomb cooling pads. i-Pure technology for multi-stage air purification. Low power consumption, works on inverter.",
         subDescription: "Enjoy cool and clean air all day. Portable design allows you to move it easily from room to room.",
         subContent: "Personal Cooler | Air Purification | Inverter Compatible"
@@ -378,6 +549,15 @@ export const products = [
         offerPrice: "13000",
         count: 63,
         gallery: [Img1],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "High-performance desert cooler with 75L tank capacity. Powerful air throw up to 50 feet. Motor with overload protection for durability.",
         subDescription: "Ideal for large living rooms and outdoor spaces. The large water tank ensures uninterrupted cooling for long hours.",
         subContent: "75L Capacity | Long Throw | Desert Cooler"
@@ -392,6 +572,15 @@ export const products = [
         offerPrice: "15000",
         count: 83,
         gallery: [Img2],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Sleek tower cooler with high air delivery. Features chill trap technology and 4-way air deflection. Compatible with home inverters.",
         subDescription: "Save space without compromising on cooling. The stylish tower design fits perfectly in corners and narrow spaces.",
         subContent: "Tower Design | Chill Trap | 4-Way Swing"
@@ -406,6 +595,15 @@ export const products = [
         offerPrice: "18000",
         count: 83,
         gallery: [Img3],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Window air cooler with turbo fan technology. 50L tank capacity and continuous water supply connector. Rust-proof body for long life.",
         subDescription: "A perfect alternative to ACs. Fits seamlessly into windows to save floor space while providing powerful cooling.",
         subContent: "Window Mount | Turbo Fan | Rust Proof"
@@ -420,6 +618,15 @@ export const products = [
         offerPrice: "1300",
         count: 53,
         gallery: [Img4],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Compact portable speaker with signature JBL sound. 5 hours of playtime on a single charge. waterproof design (IPX7) for pool parties.",
         subDescription: "Carry your music wherever you go. The rugged waterproof design means you don't have to worry about spills or rain.",
         subContent: "Bluetooth | Waterproof | 5Hrs Battery"
@@ -434,6 +641,15 @@ export const products = [
         offerPrice: "3000",
         count: 63,
         gallery: [Img5],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Powerful soundbar with wired subwoofer for deep bass. Supports Bluetooth, USB, AUX, and HDMI (ARC). Wall mountable design.",
         subDescription: "Transform your TV viewing into a cinematic experience. The deep bass and clear vocals bring movies and music to life.",
         subContent: "Soundbar | Deep Bass | HDMI ARC"
@@ -448,6 +664,15 @@ export const products = [
         offerPrice: "5000",
         count: 83,
         gallery: [Img6],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Iconic Marshall design with advanced wireless sound. Multi-directional sound for an immersive experience. 20+ hours of portable playtime.",
         subDescription: "A speaker that looks as good as it sounds. The vintage design combined with modern technology makes it a timeless classic.",
         subContent: "Premium Audio | 20+ Hrs Playtime | Iconic Design"
@@ -462,6 +687,15 @@ export const products = [
         offerPrice: "10500",
         count: 53,
         gallery: [Img1],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "HD Ready LED Smart TV with built-in Wi-Fi and popular streaming apps. Vivid color engine for enhanced picture quality. 20W stereo speakers.",
         subDescription: "Enter the world of smart entertainment. Stream your favorite shows and movies directly on the big screen with ease.",
         subContent: "32 Inch HD | Smart TV | Wi-Fi"
@@ -476,6 +710,15 @@ export const products = [
         offerPrice: "13000",
         count: 63,
         gallery: [Img2],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Stunning 4K Ultra HD display with active HDR. Quad-core processor for smooth performance. AI ThinQ smart features for voice control.",
         subDescription: "Experience crystal clear visuals with 4x the resolution of Full HD. The smart AI features learn your preferences for a personalized experience.",
         subContent: "43 Inch 4K | AI ThinQ | HDR"
@@ -490,6 +733,15 @@ export const products = [
         offerPrice: "15000",
         count: 83,
         gallery: [Img3],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "A modern wooden sofa set with soft upholstered seating, paired with a round center table and elegant pendant lighting. Designed for comfort and style, this sofa set blends natural textures with contemporary aesthetics, making it ideal for premium home interiors.",
         subDescription: "A stylish blend of natural textures and contemporary design for premium interiors.",
         subContent: "Modern Design | Soft Upholstery | Premium Wood"
@@ -504,6 +756,15 @@ export const products = [
         offerPrice: "360",
         count: 50,
         gallery: [Podi2, Podi1, Podi3],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Rajabi Homemade Poora Podi is a traditional South Indian spice blend made with carefully roasted lentils, aromatic spices, and a touch of love from our kitchen. Packed with rich flavor and natural goodness, this versatile podi pairs perfectly with hot rice, ghee, dosa, idli, or chapati. Free from preservatives and artificial additives, it delivers authentic homemade taste in every spoonful — simple, wholesome, and delicious.",
         subDescription: "Rajabi Homemade Poora Podi is hand-crafted in small batches to ensure premium quality and fresh flavor. Each ingredient is sun-dried and slow-roasted to perfection, capturing the essence of traditional South Indian culinary heritage.",
         subContent: "Homemade Taste | No Preservatives | Traditional Recipe"
@@ -518,6 +779,15 @@ export const products = [
         offerPrice: "3499",
         count: 60,
         gallery: [ChairNew],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "This Teak Elegance Upholstered Dining Chair (Akeshya Edition) is crafted from solid teak wood, offering strength, durability, and timeless appeal. The softly cushioned seat and quilted backrest provide excellent comfort, while the warm wood finish adds a touch of natural charm to any dining or living space.",
         subDescription: "Special Akeshya Edition with enhanced finish and competitive pricing. Perfect for bulk orders or high-end residential projects.",
         subContent: "Akeshya Edition | Solid Teak | Modern Comfort"
@@ -532,6 +802,15 @@ export const products = [
         offerPrice: "10999",
         count: 35,
         gallery: [Table1],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "The Akeshiya 6-Seater Dining Table is crafted from premium solid wood, designed with a strong cross-leg base for stability and modern appeal. The smooth glass top enhances its elegance while offering easy maintenance and everyday durability. Perfect for family dining and gatherings, this table blends contemporary style with long-lasting craftsmanship, making it a beautiful centerpiece for any dining space.",
         subDescription: "This contemporary dining table features a 10mm tempered glass top and a robust solid wood frame. The artistic cross-leg design provides superior stability while creating a modern aesthetic that complements any dining room decor.",
         subContent: "6-Seater Capacity | Tempered Glass Top | Solid Wood Base"
@@ -546,6 +825,15 @@ export const products = [
         offerPrice: "14000",
         count: 42,
         gallery: [Bed1],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Aakeshya Upholstered Wooden Bed features a solid wooden frame paired with a softly tufted cushioned headboard for enhanced comfort and elegance. Its smooth rounded edges and sturdy base provide lasting durability while maintaining a warm, modern aesthetic. Designed to complement contemporary and classic interiors alike, this bed offers excellent support and a refined finish, making it ideal for stylish and comfortable bedrooms.",
         subDescription: "Crafted with precision using high-quality Akeshya wood, this bed combines structural integrity with a luxurious upholstered finish. The headboard is designed for ergonomic support, perfect for reading or relaxing.",
         subContent: "6.25 x 5 ft Capacity | Upholstered Headboard | Akeshya Wood"
@@ -560,6 +848,15 @@ export const products = [
         offerPrice: "19000",
         count: 38,
         gallery: [Bed1],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Aakeshya Upholstered Wooden Bed features a solid wooden frame paired with a softly tufted cushioned headboard for enhanced comfort and elegance. Its smooth rounded edges and sturdy base provide lasting durability while maintaining a warm, modern aesthetic. Designed to complement contemporary and classic interiors alike, this bed offers excellent support and a refined finish, making it ideal for stylish and comfortable bedrooms.",
         subDescription: "The 6.25 x 6 ft version offers extra space for ultimate comfort. Made from durable Akeshya wood with a premium fabric-tufted headboard.",
         subContent: "6.25 x 6 ft Capacity | Upholstered Headboard | Akeshya Wood"
@@ -574,6 +871,15 @@ export const products = [
         offerPrice: "17000",
         count: 25,
         gallery: [Bed1],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Aakeshya Upholstered Wooden Bed features a solid wooden frame paired with a softly tufted cushioned headboard for enhanced comfort and elegance. Its smooth rounded edges and sturdy base provide lasting durability while maintaining a warm, modern aesthetic. Designed to complement contemporary and classic interiors alike, this bed offers excellent support and a refined finish, making it ideal for stylish and comfortable bedrooms.",
         subDescription: "Experience the timeless luxury of genuine Teak wood. This variant offers superior durability and a rich natural grain, complemented by a soft tufted headboard.",
         subContent: "6.25 x 5 ft Capacity | Upholstered Headboard | Genuine Teak"
@@ -588,6 +894,15 @@ export const products = [
         offerPrice: "24000",
         count: 30,
         gallery: [Bed1],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Aakeshya Upholstered Wooden Bed features a solid wooden frame paired with a softly tufted cushioned headboard for enhanced comfort and elegance. Its smooth rounded edges and sturdy base provide lasting durability while maintaining a warm, modern aesthetic. Designed to complement contemporary and classic interiors alike, this bed offers excellent support and a refined finish, making it ideal for stylish and comfortable bedrooms.",
         subDescription: "Our premium offering: Large size 6.25 x 6 ft bed crafted from the finest Teak wood. Unmatched strength and elegance with a plush, comfortable headboard.",
         subContent: "6.25 x 6 ft Capacity | Upholstered Headboard | Genuine Teak"
@@ -602,6 +917,15 @@ export const products = [
         offerPrice: "1250",
         count: 50,
         gallery: [AakeshyaChair2],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Plain X Wooden Dining Chair features a strong solid wood frame with a stylish cross-back design that adds both support and visual appeal. The smooth slatted seat ensures comfortable seating, while the sturdy legs provide long-lasting stability. Finished in a rich wood tone, this chair is ideal for dining spaces, cafes, and modern interiors, blending durability with timeless design.",
         subDescription: "This chair is designed for both style and durability. The X-back provides excellent lumbar support, while the classic silhouette fits into any dining environment.",
         subContent: "Solid Wood Frame | Cross-back Support | Ergonomic Seating"
@@ -616,6 +940,15 @@ export const products = [
         offerPrice: "1450",
         count: 45,
         gallery: [AakeshyaChair],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Plain X Wooden Dining Chair features a strong solid wood frame with a stylish cross-back design that adds both support and visual appeal. The smooth slatted seat ensures comfortable seating, while the sturdy legs provide long-lasting stability. Finished in a rich wood tone, this chair is ideal for dining spaces, cafes, and modern interiors, blending durability with timeless design.",
         subDescription: "Special Akeshya edition with a premium finish. The cross-back design provides superior stability and comfort for any dining setup.",
         subContent: "Premium Akeshya Wood | Durable Structure | Stylish Design"
@@ -630,6 +963,15 @@ export const products = [
         offerPrice: "32000",
         count: 15,
         gallery: [AakeshyaCupboard],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Aakeshya 4-Door Wooden Wardrobe features a strong solid wood construction with beautifully crafted panel doors that add character and elegance to any bedroom. Designed with spacious internal storage, it offers ample room for clothes, linens, and accessories while ensuring long-term durability. Its clean lines and rich natural finish make it a perfect blend of modern style and timeless craftsmanship.",
         subDescription: "Crafted from premium Akeshya wood, this wardrobe features four massive compartments with adjustable shelving and hanging rods. The panelled doors provide a sophisticated look that complements any interior.",
         subContent: "Solid Wood Constuction | 4-Door Design | Ample Storage"
@@ -644,6 +986,15 @@ export const products = [
         offerPrice: "1299",
         count: 23,
         gallery: [Cobra1, Cobra5, Cobra2, Cobra3, Cobra4],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Cobra Romance is a premium Ayurvedic formula for natural strength and lasting intimacy. It activates within 30 minutes and delivers results for up to 4 days. Made using advanced Thanthu Paka extraction for 2.5× potency. Clinically safe with no headaches, BP spikes, or addiction. 100% private shipping with government-approved quality.",
         subDescription: "Cobra Romance is a government-approved Ayurvedic formulation designed to restore natural strength, stamina, and romantic confidence without harmful chemicals or artificial stimulants. Crafted using the advanced Thanthu Paka extraction method, it delivers 2.5× higher herbal potency for faster absorption and longer-lasting results.",
         subContent: "Cobra Romance is a premium Ayurvedic vitality formula crafted to enhance stamina, confidence, and deep romantic connection naturally. Powered by advanced Thanthu Paka extraction, it delivers faster absorption and long-lasting results without harmful chemicals or side effects."
@@ -658,6 +1009,15 @@ export const products = [
         offerPrice: "9000",
         count: 143,
         gallery: [ChairNew],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Industrial-grade metal chair designed for both indoor and outdoor use. The rust-resistant coating ensures longevity, while the ergonomic seat provides comfort for extended periods.",
         subDescription: "Perfect for cafes, dining rooms, and patios. The stackable design allows for easy storage when not in use.",
         subContent: "Metal Frame | Rust Resistant | Stackable"
@@ -672,6 +1032,15 @@ export const products = [
         offerPrice: "9500",
         count: 10,
         gallery: [CurvaSofa, Img2, Img3],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Crafted from premium teak wood, this 3-seater sofa set features a beautifully curved slatted back and contoured seat for enhanced comfort and durability. Its smooth armrests and sturdy frame make it ideal for both living rooms and sit-out spaces, blending classic design with everyday functionality. A perfect choice for those who value natural wood elegance and long-lasting quality.",
         subDescription: "The Curva Teak Sofa is designed with an emphasis on both aesthetics and ergonomics. The contoured seat provides superior lumbar support, while the high-grade teak wood ensures it remains a centerpiece in your home for years to come.",
         subContent: "Premium Teak Wood | Curved Slatted Back | Durable Frame"
@@ -686,6 +1055,15 @@ export const products = [
         offerPrice: "22500",
         count: 25,
         gallery: [Sofa2, Sofa1],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Experience true luxury with the Regal Comfort L-Shape Sofa Set, designed for spacious living and elegant interiors. Crafted with premium-quality upholstery and high-density cushioning, this sofa offers superior comfort and long-lasting durability. The sleek wooden base detailing adds a refined touch, while the wide seating space makes it perfect for family gatherings and relaxation. Its modern yet timeless design blends beautifully with both contemporary and classic home décor.",
         subDescription: "The Regal Comfort L-Shape Sofa Set is the epitome of luxury and functionality. With its ergonomic design and spacious seating, it provides the perfect setting for hosting guests or enjoying quality family time. The premium upholstery ensures easy maintenance while the high-density foam cushioning retains its shape for years.",
         subContent: "L-Shape Design | Premium Upholstery | Wooden Base Detailing"
@@ -700,6 +1078,15 @@ export const products = [
         offerPrice: "999",
         count: 45,
         gallery: [Dress1, Dress2, Dress3, Dress4, Dress5, Dress6, Dress7],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "This elegant teal salwar suit set is designed to bring timeless charm and graceful sophistication. The kurta features delicate embroidery accents along the neckline, hem, and borders, adding a refined traditional touch. Paired with matching straight-fit pants and a beautifully coordinated dupatta with subtle woven detailing, this outfit offers a perfect balance of simplicity and elegance. Crafted for comfort and style, it is ideal for festive occasions, family gatherings, and cultural events. The rich color and fine craftsmanship create a graceful silhouette, making it a standout addition to any ethnic wardrobe.",
         subDescription: "Available in two options: 3-piece set (Kurta + Pants + Dupatta) at MRP ₹1450, SRP ₹999 | 2-piece set (Kurta + Pants) at MRP ₹550, SRP ₹330. Both options feature premium fabric quality and intricate embroidery work that showcases traditional craftsmanship.",
         subContent: "3-Piece MRP ₹1450, SRP ₹999 | 2-Piece MRP ₹550, SRP ₹330 | Embroidered Design | Premium Fabric"
@@ -714,6 +1101,15 @@ export const products = [
         offerPrice: "550",
         count: 45,
         gallery: [Dress8, Dress9],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Step into elegance with the Ruby Grace Embroidered Salwar Set. This stunning red kurta features delicate golden embroidery on the neckline, sleeves, and hem, adding a rich traditional charm. Paired with matching straight-fit pants and a coordinated dupatta, this set is perfect for festive occasions, family gatherings, and celebrations. Crafted from soft, breathable fabric, it ensures comfort while keeping your look graceful and classy."
     },
     {
@@ -726,6 +1122,15 @@ export const products = [
         offerPrice: "330",
         count: 45,
         gallery: [Dress10],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Add a touch of graceful charm to your everyday ethnic style with the Plum Petal Printed Salwar Set. Designed in a rich plum shade, this elegant kurta features delicate floral-inspired prints throughout, offering a perfect blend of tradition and modern simplicity. Paired with matching straight-fit pants and a soft, lightweight dupatta, this set ensures both comfort and effortless style. Ideal for casual outings, office wear, and small gatherings."
     },
     {
@@ -738,6 +1143,15 @@ export const products = [
         offerPrice: "350",
         count: 45,
         gallery: [Plug1],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "The Butterfly Wall Plug Anchor is a strong and reliable fixing solution designed for hollow walls such as plywood, gypsum boards, MDF, and hollow doors. Its unique butterfly-wing design expands behind the surface when the screw is tightened, providing a firm grip and preventing slipping or loosening. Made from high-quality durable plastic, this wall plug ensures secure mounting for lightweight to medium-weight items like shelves, curtain rods, frames, clocks, and decorative fixtures."
     },
     {
@@ -750,6 +1164,15 @@ export const products = [
         offerPrice: "3000",
         count: 50,
         gallery: [IronTable1, IronTable2, IronTable3, IronTable4, IronTable5, IronTable6, IronTable7],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: " Our wall-mountable foldable ironing table is perfect for both homes and beauty parlors Table Size: 1220mm × 420mm Materials Used: 16mm high-quality plywood Ebco 300mm anti-corrosion table bracket Key Features: Foldable space-saving design / Can be folded away to save space Strong and stable triangle bracket (Ebco) Easy to install without any professional help Available in 3 beautiful colors Can be customized as a study table, kitchen table, or laptop desk based on customer preference Free delivery + fitting up to 20 km!"
     },
     {
@@ -762,6 +1185,15 @@ export const products = [
         offerPrice: "595",
         count: 100,
         gallery: [medicine1, medicine2],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Do you feel tired every day? Are your children getting complete nutrition? Energy and health in one glass Naco ABC Malt Powder Suitable for both children and adults Taste and nutrition together Provides daily essential nutrition Easy to prepare Delicious and healthy choice"
     },
     {
@@ -774,6 +1206,15 @@ export const products = [
         offerPrice: "200",
         count: 100,
         gallery: [Thailam1, Thailam2],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Changalam Paranda Thailam is a traditional Ayurvedic herbal oil made from natural medicinal plants, especially Changalam Paranda (Cissus quadrangularis). It is known for its powerful pain-relieving and healing properties. This oil helps reduce joint pain, muscle pain, and bone-related discomfort. Regular use supports faster recovery from injuries and improves mobility. | 100ml"
     },
     {
@@ -786,6 +1227,15 @@ export const products = [
         offerPrice: "90",
         count: 100,
         gallery: [SweetPotato1, SweetPotato2],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Ojeenam Foods Sweet Potato Powder is a natural and nutritious food supplement specially prepared for babies and toddlers. Made from carefully selected sweet potatoes, this powder is rich in fiber, vitamins, and essential nutrients that support healthy growth and development.It is easy to digest and can be prepared quickly as a smooth porridge. Ideal for introducing solid foods to your little one, it helps provide natural energy and supports overall immunity."
     },
     {
@@ -798,6 +1248,15 @@ export const products = [
         offerPrice: "180",
         count: 100,
         gallery: [Kunnankaya1],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Ojeenam Foods Hungry Baby Kunnankaya Powder is a wholesome and nutritious baby food made from premium quality raw banana (Kunnankaya). It helps improve digestion, boost immunity, and nourish growing babies naturally.This powder is rich in natural carbohydrates, fiber, and essential nutrients that support healthy weight gain and energy levels. Easy to prepare and gentle on tiny tummies."
     },
     {
@@ -810,6 +1269,15 @@ export const products = [
         offerPrice: "150",
         count: 100,
         gallery: [SweetPotato2, Healthmix1],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Ojeenam Foods Hungry Baby Healthmix Powder is a nutrient-rich blend specially designed to provide complete nourishment for babies and toddlers. Packed with natural ingredients, it offers high protein content and essential nutrients needed for healthy development.This health mix supports digestion, boosts natural energy, and helps maintain overall wellness. A perfect daily nutrition choice for growing babies."
     },
     {
@@ -822,6 +1290,15 @@ export const products = [
         offerPrice: "90",
         count: 100,
         gallery: [NavaraRagiPowder],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Ojeenam Foods Hungry Baby Sprouted Ragi Powder is a wholesome and nutritious baby food made from carefully selected sprouted ragi. Rich in iron and essential nutrients, it supports healthy growth and improves digestion in babies. The sprouting process enhances nutrient absorption, making it an ideal choice for your little one’s healthy start. Perfect for preparing smooth, tasty porridge for babies."
     },
     {
@@ -834,6 +1311,15 @@ export const products = [
         offerPrice: "140",
         count: 100,
         gallery: [NavaraBananaMix],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Ojeenam Foods Hungry Baby Navara Banana Mix is a nutritious blend specially crafted for babies. Made with Navara rice and natural banana, this mix supports digestive health and helps boost the immune system. It is protein-rich and provides essential nutrients required for healthy development. A tasty and nourishing meal option for growing babies."
     },
     {
@@ -846,6 +1332,15 @@ export const products = [
         offerPrice: "60",
         count: 100,
         gallery: [NavaraRicePowder],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Ojeenam Foods Hungry Baby Navara Rice Powder is made from premium quality Navara rice, known for its high nutritional value. It is rich in fiber and iron, helping support weight gain and overall growth in babies. This easily digestible rice powder ensures healthy nutrition in every scoop and makes a perfect first food for infants."
     },
     {
@@ -858,6 +1353,15 @@ export const products = [
         offerPrice: "2100",
         count: 100,
         gallery: [Panchaloha1],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Pancha Loha is a traditional alloy made from five metals and is widely used in spiritual jewellery and temple ornaments. This chain is ideal for wearing with pendants, especially religious or astrological pendants, making it perfect for daily wear as well as special occasions."
     },
     {
@@ -870,6 +1374,15 @@ export const products = [
         offerPrice: "2500",
         count: 100,
         gallery: [Panchaloha2, Panchaloha3, Panchaloha4, Panchaloha5],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Add a touch of traditional elegance with this beautifully crafted Pancha Loha polished designer chain. Made from the sacred five-metal alloy known as Pancha Loha, this chain carries both cultural significance and stylish appeal. The chain features a detailed link pattern with a rich gold-polished finish that gives it a premium look. Its 24-inch length makes it perfect for wearing alone or pairing with pendants, especially spiritual or traditional pendants."
     },
     {
@@ -882,6 +1395,15 @@ export const products = [
         offerPrice: "550",
         count: 100,
         gallery: [PanchalohaRing1, PanchalohaRing2, PanchalohaRing3, PanchalohaRing4, PanchalohaRing5, PanchalohaRing6, PanchalohaRing7],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Experience the spiritual and traditional essence of Indian craftsmanship with this Pancha Loha Polished Ring Set. Crafted from the sacred alloy known as Pancha Loha (five-metal blend), these rings symbolize balance, positivity, and spiritual harmony."
     },
      {
@@ -894,6 +1416,15 @@ export const products = [
         offerPrice: "900",
         count: 100,
         gallery: [PanchalohaRing8, PanchalohaRing9, PanchalohaRing10, PanchalohaRing11, PanchalohaRing12, PanchalohaRing13, PanchalohaRing14, PanchalohaRing15, PanchalohaRing16, PanchalohaRing17, PanchalohaRing18, PanchalohaRing19, PanchalohaRing20, PanchalohaRing21, PanchalohaRing22, PanchalohaRing23, PanchalohaRing24, PanchalohaRing25, PanchalohaRing26, PanchalohaRing27],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Experience the spiritual and traditional essence of Indian craftsmanship with this Pancha Loha Polished Ring Set. Crafted from the sacred alloy known as Pancha Loha (five-metal blend), these rings symbolize balance, positivity, and spiritual harmony."
     },
      {
@@ -906,6 +1437,15 @@ export const products = [
         offerPrice: "900",
         count: 100,
         gallery: [PanchalohaRing28],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Enhance your traditional look with this Pancha Loha Polished Designer Bangle Pair, crafted with a beautiful center bead motif and classic textured pattern. Made from the sacred Pancha Loha (five-metal alloy), this bangle combines traditional craftsmanship with a rich golden polished finish."
     },
     {
@@ -918,54 +1458,99 @@ export const products = [
         offerPrice: "120",
         count: 100,
         gallery: [NeemSoap],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "Neem soap offers numerous benefits for skincare, including its antimicrobial, anti-inflammatory, and antioxidant properties. It can be used to cleanse, soothe, and moisturize the skin, making it a valuable addition to any skincare routine."
     },
      {
         id: "62",
         title: 'Muradh Long Lasting Perfume 10 ml',
         category: 'Perfumes',
-        content: 'Long Lasting Perfume',
-        oldPrice: '259',
+        content: 'Korean Sweet Touch',
+        oldPrice: '325',
         offer: "23%",
-        offerPrice: "199",
+        offerPrice: "249",
         count: 100,
         gallery: [SulthanPerfume1],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "A smooth fragrance with a subtle Korean-inspired touch."
     },
     {
         id: "63",
         title: 'Shadow Long Lasting Perfume 35 ml',
         category: 'Perfumes',
-        content: 'Shadow Long Lasting Perfume',
+        content: 'Light fruit touch',
         oldPrice: '859',
         offer: "30%",
         offerPrice: "599",
         count: 100,
         gallery: [SulthanPerfume2],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "A rich floral fragrance with an executive and premium character."
     },
     {
         id: "64",
         title: 'Refresh Sample Perfume 35 ml',
         category: 'Perfumes',
-        content: 'Refresh Sample Perfume',
+        content: 'Light Fruity touch',
         oldPrice: '859',
         offer: "30%",
         offerPrice: "599",
         count: 100,
         gallery: [SulthanPerfume3],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "A fresh fruity fragrance with a vibrant and uplifting feel."
     },
     {
         id: "65",
         title: 'Emarati - Bold Oriental Perfume 10 ml',
         category: 'Perfumes',
-        content: 'Bold Oriental Perfume',
-        oldPrice: '259',
+        content: 'Oudh Touch',
+        oldPrice: '325',
         offer: "23%",
-        offerPrice: "199",
+        offerPrice: "249",
         count: 100,
         gallery: [SulthanPerfume6],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "A bold oriental fragrance with a classic oudh touch."
     },
     {
@@ -973,11 +1558,20 @@ export const products = [
         title: 'Identity - light and pleasant Perfume 10 ml',
         category: 'Perfumes',
         content: 'Light and pleasant Perfume',
-        oldPrice: '259',
+        oldPrice: '325',
         offer: "23%",
-        offerPrice: "199",
+        offerPrice: "249",
         count: 100,
         gallery: [SulthanPerfume7],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "A light and pleasant fragrance inspired by Marj."
     },
     {
@@ -985,23 +1579,41 @@ export const products = [
         title: 'Refresh - fresh fruity Perfume 10 ml',
         category: 'Perfumes',
         content: 'Fresh fruity Perfume',
-        oldPrice: '259',
+        oldPrice: '325',
         offer: "23%",
-        offerPrice: "199",
+        offerPrice: "249",
         count: 100,
         gallery: [SulthanPerfume8],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "A fresh fruity fragrance with a vibrant and uplifting feel."
     },
     {
         id: "68",
-        title: 'Refresh - fresh fruity Perfume 10 ml',
+        title: 'Refresh - fresh fruity Perfume 100 ml',
         category: 'Perfumes',
-        content: 'Fresh fruity Perfume',
+        content: 'Light Fruity touch',
         oldPrice: '2000',
-        offer: "23%",
-        offerPrice: "1500",
+        offer: "25%",
+        offerPrice: "1499",
         count: 100,
         gallery: [SulthanPerfume5],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Easy Returns",
+            "Easy to Order",
+            "100% Quality Assurance"
+        ],
         description: "A fresh fruity fragrance with a vibrant and uplifting feel."
     },
 ];

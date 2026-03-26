@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { Fancybox as NativeFancybox } from "@fancyapps/ui";
-import { FaShoppingCart, FaBolt } from 'react-icons/fa';
+import { FaShoppingCart, FaBolt, FaTruck, FaUndo, FaShieldAlt, FaBoxOpen } from 'react-icons/fa';
+import { MdOutlineLocalOffer, MdGppGood, MdOutlineSupportAgent } from 'react-icons/md';
 import { useCart } from '../context/CartContext';
 import { useProducts } from '../context/ProductContext';
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
@@ -109,6 +110,22 @@ function ProductDetails() {
                   )}
                 </div>
 
+                {/* Shipping & Return Badges */}
+                <div className="flex flex-wrap gap-3 mt-4 border-y border-gray-100 py-4">
+                  <div className="flex items-center gap-2 text-green-700 bg-green-50 px-3 py-1.5 rounded-full text-sm font-medium">
+                    <FaTruck size={14} />
+                    <span>{product.freeShipping ? "Free Delivery" : "Fast Delivery"}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-blue-700 bg-blue-50 px-3 py-1.5 rounded-full text-sm font-medium">
+                    <FaUndo size={14} />
+                    <span>{product.isReturnable ? "7 Day Returns" : "No Returns"}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-amber-700 bg-amber-50 px-3 py-1.5 rounded-full text-sm font-medium">
+                    <FaBoxOpen size={14} />
+                    <span>{product.deliveryPolicy || "Kerala Delivery"}</span>
+                  </div>
+                </div>
+
                 <div>
                   <h4 className="text-[#323232] font-bold text-lg mb-2">Description</h4>
                   <div className="text-sm text-gray-700 mb-3">{product.description}</div>
@@ -159,6 +176,55 @@ function ProductDetails() {
                     </div>
                   </div>
                 ))}
+              </div>
+                {/* Product Highlights Section */}
+              <div className="mt-8 border-t border-gray-100 pt-6">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-lg font-bold text-gray-900">Product Highlights</h3>
+                  <div className="p-1 bg-gray-100 rounded text-gray-500">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 15l7-7 7 7"></path></svg>
+                  </div>
+                </div>
+                
+                <div className="space-y-4">
+                  {product.highlights?.map((highlight, idx) => (
+                    <div key={idx} className="flex items-center gap-4 group">
+                      <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                         {idx % 4 === 0 && <FaTruck size={18} />}
+                         {idx % 4 === 1 && <FaUndo size={18} />}
+                         {idx % 4 === 2 && <FaShieldAlt size={18} />}
+                         {idx % 4 === 3 && <MdGppGood size={18} />}
+                      </div>
+                      <span className="text-gray-700 font-medium">{highlight}</span>
+                    </div>
+                  )) || (
+                    <>
+                      <div className="flex items-center gap-4">
+                        <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600">
+                          <FaTruck size={18} />
+                        </div>
+                        <span className="text-gray-700 font-medium">Free Shipping</span>
+                      </div>
+                      <div className="flex items-center gap-4">
+                        <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600">
+                          <FaUndo size={18} />
+                        </div>
+                        <span className="text-gray-700 font-medium">Easy Returns</span>
+                      </div>
+                    </>
+                  )}
+                </div>
+
+                <div className="mt-8 pt-6 border-t border-gray-100">
+                   <div className="flex items-center gap-3 text-sm text-gray-600 mb-2">
+                      <MdOutlineLocalOffer className="text-green-600" size={18} />
+                      <span className="font-semibold">Best Price Guaranteed</span>
+                   </div>
+                   <div className="flex items-center gap-3 text-sm text-gray-600">
+                      <MdOutlineSupportAgent className="text-blue-600" size={18} />
+                      <span className="font-semibold">24/7 Customer Support</span>
+                   </div>
+                </div>
               </div>
 
               {/* Hidden Switch Logic - kept logic if needed but hidden per original */}

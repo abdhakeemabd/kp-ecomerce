@@ -97,6 +97,9 @@ import SulthanPerfume6 from '../assets/images/product/perfume/sulthan/6.jpeg';
 import SulthanPerfume7 from '../assets/images/product/perfume/sulthan/7.jpeg';
 import SulthanPerfume8 from '../assets/images/product/perfume/sulthan/8.jpeg';
 import NeemSoap from '../assets/images/product/soap/neem/neem-soap.png';
+import PawpetalsPlanter1 from '../assets/images/product/plant/plant-1.jpeg';
+import PawpetalsPlanter2 from '../assets/images/product/plant/plant-2.jpeg';
+import PawpetalsPlanter3 from '../assets/images/product/plant/plant-3.jpeg';
 
 
 
@@ -1640,4 +1643,25 @@ export const products = [
         ],
         description: "A fresh fruity fragrance with a vibrant and uplifting feel."
     },
+    {
+        id: "70",
+        title: "Pawpetals Wall Hanging Planter with Artificial Plant – Modern Decorative Design",
+        category: "Home Decor",
+        content: "Stylish Wall Hanging Planter",
+        oldPrice: "620",
+        offer: "20%",
+        offerPrice: "499",
+        count: 100,
+        gallery: [PawpetalsPlanter1, PawpetalsPlanter2, PawpetalsPlanter3],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Modern Wall Decor",
+            "Low Maintenance Artificial Plant",
+            "100% Quality Assurance"
+        ],
+        description: "Enhance your living space with this Pawpetals Wall Hanging Planter featuring a beautifully designed metal frame and a lush artificial plant. Perfect for adding a touch of greenery without maintenance, this stylish decor piece blends seamlessly with modern interiors, making it ideal for living rooms, bedrooms, or office spaces."
+    }
 ];

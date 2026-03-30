@@ -100,7 +100,12 @@ import NeemSoap from '../assets/images/product/soap/neem/neem-soap.png';
 import PawpetalsPlanter1 from '../assets/images/product/plant/plant-1.jpeg';
 import PawpetalsPlanter2 from '../assets/images/product/plant/plant-2.jpeg';
 import PawpetalsPlanter3 from '../assets/images/product/plant/plant-3.jpeg';
-
+import PawpetalsPlant1 from '../assets/images/product/plant/plant-4.jpeg';
+import PawpetalsPlant2 from '../assets/images/product/plant/plant-5.jpeg';
+import PawpetalsPlant3 from '../assets/images/product/plant/plant-6.jpeg';
+import PawpetalsPlant4 from '../assets/images/product/plant/plant-7.jpeg';
+import PawpetalsPlant5 from '../assets/images/product/plant/plant-8.jpeg';
+import PawpetalsPlant6 from '../assets/images/product/plant/plant-9.jpeg';
 
 
 
@@ -1663,5 +1668,94 @@ export const products = [
             "100% Quality Assurance"
         ],
         description: "Enhance your living space with this Pawpetals Wall Hanging Planter featuring a beautifully designed metal frame and a lush artificial plant. Perfect for adding a touch of greenery without maintenance, this stylish decor piece blends seamlessly with modern interiors, making it ideal for living rooms, bedrooms, or office spaces."
-    }
+    },
+    {
+        id: "71",
+        title: "Pawpetals 3ft Artificial Alocasia Plant – 18 Leaves Premium Design",
+        category: "Home Decor",
+        content: "Artificial Alocasia Plant",
+        oldPrice: "399",
+        offer: "20%",
+        offerPrice: "319",
+        count: 100,
+        gallery: [PawpetalsPlant1],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "3ft Tall Decorative Plant",
+            "18 Realistic Leaves Design",
+            "Premium Quality PP Material",
+            "Low Maintenance & Durable"
+        ],
+        description: "Bring a refreshing natural touch to your home with this Pawpetals 3ft Artificial Alocasia Plant featuring 18 beautifully crafted leaves with fine detailing. Made from premium quality PP material, this plant offers a realistic look without any maintenance. Perfect for living rooms, offices, or indoor decor setups."
+    },
+    {
+        id: "72",
+        title: "Pawpetals 6ft Big Artificial Bird of Paradise Plant – Premium Realistic Tree",
+        category: "Home Decor",
+        content: "Large Artificial Bird of Paradise Plant",
+        oldPrice: "2100",
+        offer: "19%",
+        offerPrice: "1699",
+        count: 100,
+        gallery: [PawpetalsPlant2, PawpetalsPlant3, PawpetalsPlant4],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "6ft Tall Statement Plant",
+            "Realistic Tropical Design",
+            "Premium Quality Material",
+            "Perfect for Home & Office Decor"
+        ],
+        description: "Transform your space with this Pawpetals 6ft Big Artificial Bird of Paradise Plant, designed to bring a bold tropical vibe to any interior. Crafted with premium quality materials, this realistic tree plant features large, lifelike leaves that add elegance and freshness without any maintenance. Ideal for living rooms, offices, and modern decor setups."
+    },
+    {
+    id: "73",
+    title: "Pawpetals Artificial Tabletop Plants with Pot – Compact Desk & Shelf Decor",
+    category: "Home Decor",
+    content: "Mini Tabletop Artificial Plant",
+    oldPrice: "350",
+    offer: "20%",
+    offerPrice: "279",
+    count: 100,
+    gallery: [PawpetalsPlant5],
+    freeShipping: true,
+    isReturnable: true,
+    deliveryPolicy: "Free Delivery in Kerala",
+    highlights: [
+        "Free Shipping",
+        "Compact Size – Below 1 ft",
+        "Perfect for Desk & Shelf Decor",
+        "Comes with Stylish Pot",
+        "Low Maintenance & Durable"
+    ],
+    description: "Add a touch of greenery to your workspace or home with this Pawpetals Artificial Tabletop Plant. Designed for desks, shelves, and small spaces, this compact plant comes with a stylish pot and realistic detailing. Made from quality materials, it offers a fresh and elegant look without any maintenance."
+},
+{
+    id: "74",
+    title: "Pawpetals Artificial Begonia Plant with Pot – Shelf & Workspace Decor",
+    category: "Home Decor",
+    content: "Artificial Begonia Plant",
+    oldPrice: "590",
+    offer: "19%",
+    offerPrice: "475",
+    count: 100,
+    gallery: [PawpetalsPlant6],
+    freeShipping: true,
+    isReturnable: true,
+    deliveryPolicy: "Free Delivery in Kerala",
+    highlights: [
+        "Free Shipping",
+        "Realistic Begonia Leaf Design",
+        "Perfect for Shelf & Workspace",
+        "Comes with Stylish Pot",
+        "Low Maintenance & Durable"
+    ],
+    description: "Upgrade your interior decor with this Pawpetals Artificial Begonia Plant, designed with vibrant and realistic leaves just like the picture. Ideal for shelves, desks, and workspace settings, it comes with a stylish pot and requires no maintenance, making it a perfect hassle-free decor choice."
+}
+
 ];

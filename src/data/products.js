@@ -58,6 +58,9 @@ import Panchaloha2 from '../assets/images/product/traditional-Jewellery/punjaloh
 import Panchaloha3 from '../assets/images/product/traditional-Jewellery/punjaloha-3.jpeg'
 import Panchaloha4 from '../assets/images/product/traditional-Jewellery/punjaloha-4.jpeg'
 import Panchaloha5 from '../assets/images/product/traditional-Jewellery/punjaloha-5.jpeg'
+import Panchaloha6 from '../assets/images/product/traditional-Jewellery/chain-3.jpeg'
+import Panchaloha7 from '../assets/images/product/traditional-Jewellery/chain-2.jpeg'
+import Panchaloha8 from '../assets/images/product/traditional-Jewellery/chain-1.jpeg'
 import PanchalohaRing1 from '../assets/images/product/traditional-Jewellery/rings/ring-1.jpeg';
 import PanchalohaRing2 from '../assets/images/product/traditional-Jewellery/rings/ring-2.jpeg';
 import PanchalohaRing3 from '../assets/images/product/traditional-Jewellery/rings/ring-3.jpeg';
@@ -1406,7 +1409,7 @@ export const products = [
         ],
         description: "Experience the spiritual and traditional essence of Indian craftsmanship with this Pancha Loha Polished Ring Set. Crafted from the sacred alloy known as Pancha Loha (five-metal blend), these rings symbolize balance, positivity, and spiritual harmony."
     },
-     {
+    {
         id: "59",
         title: 'Pancha Loha Polished Ring – Traditional Sacred Ring  size 2.2',
         category: 'Traditional Jewellery',
@@ -1427,7 +1430,7 @@ export const products = [
         ],
         description: "Experience the spiritual and traditional essence of Indian craftsmanship with this Pancha Loha Polished Ring Set. Crafted from the sacred alloy known as Pancha Loha (five-metal blend), these rings symbolize balance, positivity, and spiritual harmony."
     },
-     {
+    {
         id: "60",
         title: 'Pancha Loha Polished Designer Bangle – Traditional Center Bead Design (Pair)',
         category: 'Traditional Jewellery',
@@ -1450,6 +1453,27 @@ export const products = [
     },
     {
         id: "61",
+        title: "Pancha Loha Polished Heart & Ring Pattern Chain – Elegant Long Design",
+        category: "Traditional Jewellery",
+        content: "Pancha Loha Polished Heart & Ring Pattern Chain – Elegant Long Design",
+        oldPrice: "1800",
+        offer: "41%",
+        offerPrice: "1050",
+        count: 100,
+        gallery: [Panchaloha6, Panchaloha7, Panchaloha8],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Stylish Heart & Ring Motif",
+            "Lightweight & Comfortable",
+            "100% Quality Assurance"
+        ],
+        description: "This Pancha Loha Polished Chain features a unique combination of heart and circular motifs, giving it a stylish and elegant appeal. Made from the traditional five-metal alloy, it offers both cultural value and modern charm. Perfect for pairing with ethnic and casual outfits."
+    },
+    {
+        id: "62",
         title: 'Neem Soap',
         category: 'Soap',
         content: 'Its antibacterial and antimicrobial properties would help purify the skin.',
@@ -1469,8 +1493,8 @@ export const products = [
         ],
         description: "Neem soap offers numerous benefits for skincare, including its antimicrobial, anti-inflammatory, and antioxidant properties. It can be used to cleanse, soothe, and moisturize the skin, making it a valuable addition to any skincare routine."
     },
-     {
-        id: "62",
+    {
+        id: "63",
         title: 'Muradh Long Lasting Perfume 10 ml',
         category: 'Perfumes',
         content: 'Korean Sweet Touch',
@@ -1491,7 +1515,7 @@ export const products = [
         description: "A smooth fragrance with a subtle Korean-inspired touch."
     },
     {
-        id: "63",
+        id: "64",
         title: 'Shadow Long Lasting Perfume 35 ml',
         category: 'Perfumes',
         content: 'Light fruit touch',
@@ -1512,7 +1536,7 @@ export const products = [
         description: "A rich floral fragrance with an executive and premium character."
     },
     {
-        id: "64",
+        id: "65",
         title: 'Refresh Sample Perfume 35 ml',
         category: 'Perfumes',
         content: 'Light Fruity touch',
@@ -1533,7 +1557,7 @@ export const products = [
         description: "A fresh fruity fragrance with a vibrant and uplifting feel."
     },
     {
-        id: "65",
+        id: "66",
         title: 'Emarati - Bold Oriental Perfume 10 ml',
         category: 'Perfumes',
         content: 'Oudh Touch',
@@ -1554,7 +1578,7 @@ export const products = [
         description: "A bold oriental fragrance with a classic oudh touch."
     },
     {
-        id: "66",
+        id: "67",
         title: 'Identity - light and pleasant Perfume 10 ml',
         category: 'Perfumes',
         content: 'Light and pleasant Perfume',
@@ -1575,7 +1599,7 @@ export const products = [
         description: "A light and pleasant fragrance inspired by Marj."
     },
     {
-        id: "67",
+        id: "68",
         title: 'Refresh - fresh fruity Perfume 10 ml',
         category: 'Perfumes',
         content: 'Fresh fruity Perfume',
@@ -1596,7 +1620,7 @@ export const products = [
         description: "A fresh fruity fragrance with a vibrant and uplifting feel."
     },
     {
-        id: "68",
+        id: "69",
         title: 'Refresh - fresh fruity Perfume 100 ml',
         category: 'Perfumes',
         content: 'Light Fruity touch',

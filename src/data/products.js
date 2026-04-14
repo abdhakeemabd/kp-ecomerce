@@ -106,6 +106,13 @@ import PawpetalsPlant3 from '../assets/images/product/plant/plant-6.jpeg';
 import PawpetalsPlant4 from '../assets/images/product/plant/plant-7.jpeg';
 import PawpetalsPlant5 from '../assets/images/product/plant/plant-8.jpeg';
 import PawpetalsPlant6 from '../assets/images/product/plant/plant-9.jpeg';
+import hardware from '../assets/images/product/hard-ware/plumbling.jpeg';
+import Hook1 from '../assets/images/product/Wall-Hooks/hook-1.jpeg';
+import Hook2 from '../assets/images/product/Wall-Hooks/hook-2.jpeg';
+import Hook3 from '../assets/images/product/Wall-Hooks/hook-3.jpeg';
+import Hook4 from '../assets/images/product/Wall-Hooks/hook-4.jpeg';
+import Hook5 from '../assets/images/product/Wall-Hooks/hook-5.jpeg';
+import Hook6 from '../assets/images/product/Wall-Hooks/hook-6.jpeg';
 
 
 
@@ -1714,48 +1721,92 @@ export const products = [
         description: "Transform your space with this Pawpetals 6ft Big Artificial Bird of Paradise Plant, designed to bring a bold tropical vibe to any interior. Crafted with premium quality materials, this realistic tree plant features large, lifelike leaves that add elegance and freshness without any maintenance. Ideal for living rooms, offices, and modern decor setups."
     },
     {
-    id: "73",
-    title: "Pawpetals Artificial Tabletop Plants with Pot – Compact Desk & Shelf Decor",
-    category: "Home Decor",
-    content: "Mini Tabletop Artificial Plant",
-    oldPrice: "350",
-    offer: "20%",
-    offerPrice: "279",
-    count: 100,
-    gallery: [PawpetalsPlant5],
-    freeShipping: true,
-    isReturnable: true,
-    deliveryPolicy: "Free Delivery in Kerala",
-    highlights: [
-        "Free Shipping",
-        "Compact Size – Below 1 ft",
-        "Perfect for Desk & Shelf Decor",
-        "Comes with Stylish Pot",
-        "Low Maintenance & Durable"
-    ],
-    description: "Add a touch of greenery to your workspace or home with this Pawpetals Artificial Tabletop Plant. Designed for desks, shelves, and small spaces, this compact plant comes with a stylish pot and realistic detailing. Made from quality materials, it offers a fresh and elegant look without any maintenance."
-},
-{
-    id: "74",
-    title: "Pawpetals Artificial Begonia Plant with Pot – Shelf & Workspace Decor",
-    category: "Home Decor",
-    content: "Artificial Begonia Plant",
-    oldPrice: "590",
-    offer: "19%",
-    offerPrice: "475",
-    count: 100,
-    gallery: [PawpetalsPlant6],
-    freeShipping: true,
-    isReturnable: true,
-    deliveryPolicy: "Free Delivery in Kerala",
-    highlights: [
-        "Free Shipping",
-        "Realistic Begonia Leaf Design",
-        "Perfect for Shelf & Workspace",
-        "Comes with Stylish Pot",
-        "Low Maintenance & Durable"
-    ],
-    description: "Upgrade your interior decor with this Pawpetals Artificial Begonia Plant, designed with vibrant and realistic leaves just like the picture. Ideal for shelves, desks, and workspace settings, it comes with a stylish pot and requires no maintenance, making it a perfect hassle-free decor choice."
-}
+        id: "73",
+        title: "Pawpetals Artificial Tabletop Plants with Pot – Compact Desk & Shelf Decor",
+        category: "Home Decor",
+        content: "Mini Tabletop Artificial Plant",
+        oldPrice: "350",
+        offer: "20%",
+        offerPrice: "279",
+        count: 100,
+        gallery: [PawpetalsPlant5],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Compact Size – Below 1 ft",
+            "Perfect for Desk & Shelf Decor",
+            "Comes with Stylish Pot",
+            "Low Maintenance & Durable"
+        ],
+        description: "Add a touch of greenery to your workspace or home with this Pawpetals Artificial Tabletop Plant. Designed for desks, shelves, and small spaces, this compact plant comes with a stylish pot and realistic detailing. Made from quality materials, it offers a fresh and elegant look without any maintenance."
+    },
+    {
+        id: "74",
+        title: "Pawpetals Artificial Begonia Plant with Pot – Shelf & Workspace Decor",
+        category: "Home Decor",
+        content: "Artificial Begonia Plant",
+        oldPrice: "590",
+        offer: "19%",
+        offerPrice: "475",
+        count: 100,
+        gallery: [PawpetalsPlant6],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Free Shipping",
+            "Realistic Begonia Leaf Design",
+            "Perfect for Shelf & Workspace",
+            "Comes with Stylish Pot",
+            "Low Maintenance & Durable"
+        ],
+        description: "Upgrade your interior decor with this Pawpetals Artificial Begonia Plant, designed with vibrant and realistic leaves just like the picture. Ideal for shelves, desks, and workspace settings, it comes with a stylish pot and requires no maintenance, making it a perfect hassle-free decor choice."
+    },
+    {
+        id: "75",
+        title: "9 In 1 Electric Spin Scrubber /Electric Spin Cleaning Brush",
+        category: "Home Appliances",
+        content: "9-in-1 Multi-Functional Electric Spin Scrubber",
+        oldPrice: "850",
+        offer: "14%",
+        offerPrice: "731",
+        count: 100,
+        gallery: [hardware],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "9-in-1 Versatile Cleaning Heads",
+            "Dual Speed Settings for Deep Cleaning",
+            "Rechargeable & Cordless Operation",
+            "Extendable Handle for Easy Reach",
+            "Heavy Duty & Durable Design"
+        ],
+        description: "The 9-in-1 Electric Spin Scrubber is the ultimate cleaning tool for your home. Featuring dual speed settings and nine replaceable heads, it effortlessly tackles dirt and grime on floors, tiles, bathrooms, and more. The cordless, rechargeable design with an extendable handle ensures you can reach every corner without strain. Experience a deeper clean with less effort."
+    },
+    {
+        id: "76",
+        title: "Zeyra Enterprises 10-Pack Heavy Duty Adhesive Wall Hooks",
+        category: "Home Utilities",
+        content: "10-Pack Heavy Duty Adhesive Wall Hooks",
+        oldPrice: "199",
+        offer: "10%",
+        offerPrice: "179",
+        count: 100,
+        gallery: [Hook1, Hook2, Hook3, Hook4, Hook5, Hook6],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "10-Pack Heavy Duty Adhesive Hooks",
+            "Stainless Steel & PVC Construction",
+            "Transparent & Waterproof Design",
+            "Oilproof & Durable for Outdoor Use",
+            "Perfect for Bathroom, Kitchen & Shower"
+        ],
+        description: "Zeyra Enterprises 10-Pack Heavy Duty Adhesive Wall Hooks are designed for maximum strength and versatility. Made from high-quality stainless steel and PVC, these transparent hooks are waterproof and oilproof, making them ideal for bathrooms, kitchens, shower doors, and outdoor use. Easy to install without drilling, they provide a reliable solution for organizing your home utility items."
+    }
 
 ];

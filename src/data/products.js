@@ -107,6 +107,7 @@ import PawpetalsPlant4 from '../assets/images/product/plant/plant-7.jpeg';
 import PawpetalsPlant5 from '../assets/images/product/plant/plant-8.jpeg';
 import PawpetalsPlant6 from '../assets/images/product/plant/plant-9.jpeg';
 import hardware from '../assets/images/product/hard-ware/plumbling.jpeg';
+import hardwareLogo from '../assets/images/product/hard-ware/logo.jpeg';
 import Hook1 from '../assets/images/product/Wall-Hooks/hook-1.jpeg';
 import Hook2 from '../assets/images/product/Wall-Hooks/hook-2.jpeg';
 import Hook3 from '../assets/images/product/Wall-Hooks/hook-3.jpeg';
@@ -1773,7 +1774,7 @@ export const products = [
         offer: "14%",
         offerPrice: "731",
         count: 100,
-        gallery: [hardware],
+        gallery: [hardware,hardwareLogo],
         freeShipping: true,
         isReturnable: true,
         deliveryPolicy: "Free Delivery in Kerala",

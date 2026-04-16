@@ -114,8 +114,13 @@ import Hook3 from '../assets/images/product/Wall-Hooks/hook-3.jpeg';
 import Hook4 from '../assets/images/product/Wall-Hooks/hook-4.jpeg';
 import Hook5 from '../assets/images/product/Wall-Hooks/hook-5.jpeg';
 import Hook6 from '../assets/images/product/Wall-Hooks/hook-6.jpeg';
-
-
+import loundryPods1 from '../assets/images/product/diawan-mart/1.jpeg';
+import loundryPods2 from '../assets/images/product/diawan-mart/2.jpeg';
+import storageBagImage from '../assets/images/product/diawan-mart/3.jpeg';
+import storageBagImage1 from '../assets/images/product/diawan-mart/4.jpeg';
+import bathroomRackImage from '../assets/images/product/diawan-mart/5.jpeg';
+import markerPenImage from '../assets/images/product/diawan-mart/6.jpeg';
+import cerealDispenserImage from '../assets/images/product/diawan-mart/7.jpeg';
 
 
 export const PRODUCT_DATA_VERSION = 'v2.0.3';
@@ -1774,7 +1779,7 @@ export const products = [
         offer: "14%",
         offerPrice: "731",
         count: 100,
-        gallery: [hardware,hardwareLogo],
+        gallery: [hardware, hardwareLogo],
         freeShipping: true,
         isReturnable: true,
         deliveryPolicy: "Free Delivery in Kerala",
@@ -1808,6 +1813,138 @@ export const products = [
             "Perfect for Bathroom, Kitchen & Shower"
         ],
         description: "Zeyra Enterprises 10-Pack Heavy Duty Adhesive Wall Hooks are designed for maximum strength and versatility. Made from high-quality stainless steel and PVC, these transparent hooks are waterproof and oilproof, making them ideal for bathrooms, kitchens, shower doors, and outdoor use. Easy to install without drilling, they provide a reliable solution for organizing your home utility items."
+    },
+    {
+        id: "77",
+        title: "Loundry Pods / Cloth Stain Removing Pods",
+        category: "Home Utilities",
+        content: "Loundry Pods / Cloth Stain Removing Pods",
+        oldPrice: "199",
+        offer: "10%",
+        offerPrice: "179",
+        count: 100,
+        gallery: [loundryPods1],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "Loundry Pods / Cloth Stain Removing Pods / Fabric Softener Capsule / Fragrance Detergent Pods For Washing Machine/ 5 in 1 Loundry Pods"
+        ],
+        description: "Loundry Pods / Cloth Stain Removing Pods / Fabric Softener Capsule / Fragrance Detergent Pods For Washing Machine/ 5 in 1 Loundry Pods"
+    },
+    {
+        id: "78",
+        title: "Laundry Pods / Cloth Stain Removing Pods",
+        category: "Home Utilities",
+        content: "5 in 1 Laundry Pods for effective stain removal and fresh fragrance",
+        oldPrice: "120",
+        offer: "30%",
+        offerPrice: "84",
+        count: 100,
+        gallery: [loundryPods2],
+        freeShipping: true,
+        isReturnable: true,
+        deliveryPolicy: "Free Delivery in Kerala",
+        highlights: [
+            "5 in 1 Laundry Pods",
+            "Powerful stain removal",
+            "Built-in fabric softener",
+            "Long-lasting fragrance",
+            "Suitable for washing machines"
+        ],
+        description: "High-quality 5 in 1 laundry pods designed for powerful stain removal, fabric care, and long-lasting freshness. Easy to use and perfect for all types of washing machines."
+    },
+    {
+        id: "79",
+        title: "66L Storage Bag Box / Cloth Organizer",
+        category: "Home Utilities",
+        content: "66 Litre foldable storage box for clothes, blankets, and toys",
+        oldPrice: "399",
+        offer: "25%",
+        offerPrice: "299",
+        count: 100,
+        gallery: [storageBagImage],
+        freeShipping: false,
+        isReturnable: false,
+        deliveryPolicy: "No Free Delivery",
+        highlights: [
+            "66 Litre large storage capacity",
+            "Durable Oxford fabric material",
+            "Strong steel frame support",
+            "Foldable and space-saving design",
+            "Ideal for clothes, blankets, toys, and bedsheets"
+        ],
+        description: "Spacious 66L storage organizer made with durable Oxford fabric and a strong steel frame. Perfect for storing clothes, blankets, toys, and more. Foldable design makes it easy to store when not in use."
+    },
+    {
+        id: "80",
+        title: "Fabric Storage Basket / Oxford Cloth Storage Box",
+        category: "Home Utilities",
+        content: "26 Litre foldable fabric storage box for clothes, jeans, and wardrobe organization",
+        oldPrice: "250",
+        offer: "28%",
+        offerPrice: "181",
+        count: 100,
+        gallery: [storageBagImage1],
+        freeShipping: false,
+        isReturnable: false,
+        deliveryPolicy: "No Free Delivery",
+        highlights: [
+            "26 Litre storage capacity",
+            "Durable Oxford cloth material",
+            "Strong steel frame support",
+            "Foldable and space-saving design",
+            "Ideal for clothes, jeans, wardrobe organization"
+        ],
+        description: "Foldable fabric storage basket made with durable Oxford cloth and a strong steel frame. Perfect for organizing clothes, jeans, and wardrobe essentials. Compact 26L design with a stylish printed finish, easy to store when not in use."
+    },
+    {
+        id: "81",
+        title: "48 Pcs Double Side Marker Pen Set / Art Markers",
+        category: "Stationery & Art Supplies",
+        content: "48 pcs dual tip alcohol marker pens for sketching, drawing, and calligraphy",
+        oldPrice: "370",
+        offer: "16%",
+        offerPrice: "311",
+        count: 100,
+        gallery: [markerPenImage],
+        freeShipping: false,
+        isReturnable: false,
+        deliveryPolicy: "No Free Delivery",
+        highlights: [
+            "48 vibrant color marker pens",
+            "Dual tip design – broad & fine tips",
+            "Smooth alcohol-based ink",
+            "Perfect for sketching, painting, and calligraphy",
+            "Quick-drying and long-lasting colors"
+        ],
+        description: "Professional 48 pcs dual-tip marker pen set designed for artists, students, and hobbyists. Features high-quality alcohol-based ink for smooth application, vibrant colors, and quick drying. Ideal for sketching, coloring, calligraphy, and creative artwork."
+    },
+    {
+        id: "82",
+        title: "6 Slot Cereal Dispenser / Wall Mount Storage Container",
+        category: "Home Utilities",
+        content: "6-grid wall-mounted dry food dispenser for cereals, rice, pulses, and grains",
+        oldPrice: "0",
+        offer: "0%",
+        offerPrice: "0",
+        count: 100,
+        gallery: [cerealDispenserImage],
+        freeShipping: false,
+        isReturnable: false,
+        deliveryPolicy: "No Free Delivery",
+        highlights: [
+            "6 separate storage compartments",
+            "Wall-mounted space-saving design",
+            "Food-grade durable plastic material",
+            "Easy dispensing with button control",
+            "Ideal for cereals, rice, pulses, and dry foods"
+        ],
+        description: "Multifunctional 6-slot cereal and grain dispenser designed for convenient kitchen storage. Features a wall-mounted, space-saving design with easy dispensing buttons for each compartment. Keeps dry food items fresh, organized, and easily accessible."
     }
+
+
+
+
 
 ];

@@ -121,7 +121,7 @@ import storageBagImage1 from '../assets/images/product/diawan-mart/4.jpeg';
 import bathroomRackImage from '../assets/images/product/diawan-mart/5.jpeg';
 import markerPenImage from '../assets/images/product/diawan-mart/6.jpeg';
 import cerealDispenserImage from '../assets/images/product/diawan-mart/7.jpeg';
-
+import drawerOrganizerImage from '../assets/images/product/diawan-mart/9.jpeg';
 
 export const PRODUCT_DATA_VERSION = 'v2.0.3';
 
@@ -1925,9 +1925,9 @@ export const products = [
         title: "6 Slot Cereal Dispenser / Wall Mount Storage Container",
         category: "Home Utilities",
         content: "6-grid wall-mounted dry food dispenser for cereals, rice, pulses, and grains",
-        oldPrice: "0",
-        offer: "0%",
-        offerPrice: "0",
+        oldPrice: "999",
+        offer: "6%",
+        offerPrice: "941",
         count: 100,
         gallery: [cerealDispenserImage],
         freeShipping: false,
@@ -1941,10 +1941,27 @@ export const products = [
             "Ideal for cereals, rice, pulses, and dry foods"
         ],
         description: "Multifunctional 6-slot cereal and grain dispenser designed for convenient kitchen storage. Features a wall-mounted, space-saving design with easy dispensing buttons for each compartment. Keeps dry food items fresh, organized, and easily accessible."
+    },
+    {
+        id: "83",
+        title: "6 Cell Drawer Organiser / Wall Mount Socks Organizer for Wardrobe / 6 Grid Undergarments Storage Holder / Punch Free Multifunctional Organiser for Lingerie, Underwear, Ties, Socks, Data Cable, Spices .",
+        category: "Home Utilities",
+        content: "Multifunctional 6-grid punch-free wall mount organizer for undergarments, socks, and small items",
+        oldPrice: "288",
+        offer: "16%",
+        offerPrice: "241",
+        count: 100,
+        gallery: [drawerOrganizerImage],
+        freeShipping: false,
+        isReturnable: false,
+        deliveryPolicy: "No Free Delivery",
+        highlights: [
+            "6 separate storage compartments",
+            "Punch-free wall mount design",
+            "Ideal for socks, underwear, ties, and more",
+            "Multipurpose storage solution",
+            "Space-saving and easily accessible"
+        ],
+        description: "Versatile 6-cell drawer and wall-mount organizer designed to keep your wardrobe and space tidy. Features a punch-free installation and 6 grids perfect for storing undergarments, lingerie, socks, ties, data cables, or even spices. A space-saving and multifunctional storage holder."
     }
-
-
-
-
-
 ];

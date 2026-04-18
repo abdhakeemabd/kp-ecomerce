@@ -1944,7 +1944,7 @@ export const products = [
     },
     {
         id: "83",
-        title: "6 Cell Drawer Organiser / Wall Mount Socks Organizer for Wardrobe / 6 Grid Undergarments Storage Holder / Punch Free Multifunctional Organiser for Lingerie, Underwear, Ties, Socks, Data Cable, Spices .",
+        title: "6 Cell Drawer Organiser / Wall Mount Socks Organizer for Wardrobe, Underwear, Ties, Socks, Data Cable, Spices .",
         category: "Home Utilities",
         content: "Multifunctional 6-grid punch-free wall mount organizer for undergarments, socks, and small items",
         oldPrice: "288",

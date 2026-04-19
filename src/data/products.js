@@ -122,7 +122,8 @@ import bathroomRackImage from '../assets/images/product/diawan-mart/5.jpeg';
 import markerPenImage from '../assets/images/product/diawan-mart/6.jpeg';
 import cerealDispenserImage from '../assets/images/product/diawan-mart/7.jpeg';
 import drawerOrganizerImage from '../assets/images/product/diawan-mart/9.jpeg';
-
+import kidsProjectorImage from '../assets/images/product/diawan-mart/10.jpeg';
+import ledFlashlightImage from '../assets/images/product/diawan-mart/11.jpeg';
 export const PRODUCT_DATA_VERSION = 'v2.0.3';
 
 export const products = [
@@ -1963,5 +1964,53 @@ export const products = [
             "Space-saving and easily accessible"
         ],
         description: "Versatile 6-cell drawer and wall-mount organizer designed to keep your wardrobe and space tidy. Features a punch-free installation and 6 grids perfect for storing undergarments, lingerie, socks, ties, data cables, or even spices. A space-saving and multifunctional storage holder."
+    },
+    {
+        id: "84",
+        title: "2-in-1 Kids Projector Flashlight Toy with Image Slides",
+        category: "Kids & Toys",
+        content: "Fun 2-in-1 projector flashlight toy for kids with multiple image slides and soft light",
+        oldPrice: "144",
+        offer: "15%",
+        offerPrice: "122",
+        count: 100,
+        gallery: [kidsProjectorImage],
+        freeShipping: false,
+        isReturnable: false,
+        deliveryPolicy: "No Free Delivery",
+        highlights: [
+            "2-in-1 projector and flashlight function",
+            "Includes multiple themed image slides",
+            "Lightweight and kid-friendly design",
+            "Easy rotating slide mechanism",
+            "Soft and safe light for children's eyes",
+            "Colorful and attractive design"
+        ],
+        description: "A fun and educational 2-in-1 kids projector flashlight toy that works as both a flashlight and mini projector. Comes with multiple image slide discs featuring fun themes like animals and space. Designed to be lightweight, safe, and easy for kids to use. Perfect for storytelling, bedtime fun, and gifting."
+    },
+    {
+        id: "85",
+        title: "Super Bright Rechargeable LED Flashlight with Digital Display Light",
+        category: "Home Utilities",
+        content: "High-intensity rechargeable LED flashlight with 4 modes, COB side light, and battery display",
+        oldPrice: "251",
+        offer: "16%",
+        offerPrice: "211",
+        count: 100,
+        gallery: [ledFlashlightImage],
+        freeShipping: false,
+        isReturnable: false,
+        deliveryPolicy: "No Free Delivery",
+        highlights: [
+            "Super bright high-intensity beam",
+            "4 LED lights for powerful illumination",
+            "USB rechargeable (no batteries needed)",
+            "4 lighting modes: High, Medium, Low, Flash",
+            "COB side light for wide-area lighting",
+            "Digital battery level display",
+            "Durable and heat-resistant body",
+            "Portable and easy to carry"
+        ],
+        description: "Super bright rechargeable LED flashlight designed for powerful illumination and long-distance visibility. Features 4 LED lights, multiple lighting modes, and a COB side light for wider coverage. Comes with a digital display to monitor battery level and supports convenient USB charging. Ideal for camping, emergencies, night walking, outdoor work, and security use."
     }
 ];

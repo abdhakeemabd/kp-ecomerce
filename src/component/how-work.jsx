@@ -5,23 +5,23 @@ function HowWork() {
   const items = [
     {
       icon: <MdSearch className="text-6xl text-primary mx-auto mb-4" />,
-      title: "Search What You Need",
-      description: "Find services, products, or information tailored to your needs with our intelligent search system."
+      title: "Find Near You",
+      description: "Discover the best products and deals available right in your neighborhood and across Kerala."
     },
     {
       icon: <MdTouchApp className="text-6xl text-primary mx-auto mb-4" />,
-      title: "Choose Your Preference",
-      description: "Browse through curated results and select the most suitable option effortlessly."
+      title: "One-Click Choice",
+      description: "Browse through our curated list and select your favorite item with just one click."
     },
     {
       icon: <MdFlashOn className="text-6xl text-primary mx-auto mb-4" />,
-      title: "Get Instant Results",
-      description: "Experience fast and reliable outcomes tailored to your preferences, delivered instantly."
+      title: "Fast Purchase",
+      description: "Experience the fastest checkout process ever. Buy instantly and skip the long forms."
     },
     {
       icon: <MdVerifiedUser className="text-6xl text-primary mx-auto mb-4" />,
-      title: "Enjoy Reliable Service",
-      description: "Our verified providers and secure platform ensure a safe and satisfying experience."
+      title: "Quick Delivery",
+      description: "Get your products delivered to your doorstep in Malappuram, Kerala, or anywhere in India."
     }
   ];
 

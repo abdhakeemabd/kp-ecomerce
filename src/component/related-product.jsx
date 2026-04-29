@@ -42,66 +42,63 @@ function RelatedProduct() {
   };
 
   return (
-    <section className='home_feature_sec py-8 overflow-hidden'>
-      <div className="container mx-auto">
-        <div className='text-2xl poppins-semibold mb-5 text-slate-900'>Best Product</div>
-        <div className="features_slider mt-4">
+    <section className='related_product_sec py-16 bg-white overflow-hidden border-t border-gray-100'>
+      <div className="container mx-auto px-4">
+        <div className="mb-10">
+          <h2 className="text-2xl font-semibold text-gray-900 uppercase tracking-tight">Best Product</h2>
+          <div className="w-16 h-1 bg-black mt-3 rounded-full"></div>
+        </div>
+        
+        <div className="features_slider -mx-3">
           <Slider {...settings}>
             {relatedProducts.map(item => (
-              <div className='' key={item.id}>
-                <div className='mx-3 features-card rounded-sm pb-2 relative overflow-hidden h-full'>
-                  <div className='feature-img-card'>
-                    <img className='feature-img w-full' src={item.image || (item.gallery && item.gallery[0])} alt={item.title} />
-                  </div>
-                  <div className="cont px-3 mt-2">
-                    <div className='text-[18px] poppins-semibold line-clamp-2'>{item.title}</div>
-                    <div className='text-md line-clamp-1'>{item.content || item.description}</div>
-                    <div className="mt-2">
-                      <div className="flex items-center gap-3">
-                        {item.offer && (
-                          <span className="text-lg text-green-600 font-light font-medium">-{item.offer.replace(/[^0-9]/g, '')}%</span>
-                        )}
-                        <div className="flex items-center text-gray-900">
-                          <span className="text-lg font-medium me-1">₹</span>
-                          <span className="text-lg font-semibold leading-none"> {item.offerPrice || item.price}</span>
-                        </div>
-                      </div>
-                      {item.oldPrice && (
-                        <div className="text-sm text-gray-500 mt-1">
-                          M.R.P.: <span className="line-through">₹{item.oldPrice}</span>
+              <div className='px-3 pb-8' key={item.id}>
+                <div className='bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full overflow-hidden relative group'>
+                  <Link to={`/product-view/${item.id}`} state={{ product: item }} className="absolute inset-0 z-0"></Link>
+                  
+                  <div className='aspect-[4/3] overflow-hidden bg-gray-50 relative z-10'>
+                     {item.offer && (
+                        <div className="absolute top-2 left-2 z-10 bg-red-600 text-white text-[9px] font-bold px-1.5 py-0.5 rounded shadow-sm">
+                          -{item.offer.replace(/[^0-9]/g, '')}%
                         </div>
                       )}
-                    </div>
-                    <div className="bottom-card flex justify-between gap-3 mt-3">
-                      <div className="flex gap-3 text-lg text-gray-800">
-                        <button className='hover:text-blue-500 relative z-2' onClick={() => toggleLike(item.id)}>
-                          {likes[item.id] ? <BiSolidLike className="text-red-500" /> : <BiLike />}
-                        </button>
-                        <button className='hover:text-blue-500 relative z-2' onClick={() => toggleCart(item.id)}>
-                          {carts[item.id] ? <BiSolidCart className="text-orange-500" /> : <BiCart />}
-                        </button>
-                        <button className='hover:text-blue-500 relative z-2' onClick={() => navigator.share ? navigator.share({
-                          title: item.title,
-                          text: item.content || item.description,
-                          url: window.location.href
-                        }) : alert("Share not supported on this browser.")}>
-                          <PiShareFat />
-                        </button>
+                    <img className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-110' src={item.image || (item.gallery && item.gallery[0])} alt={item.title} />
+                  </div>
+
+                  <div className="p-4 flex flex-col flex-1 relative z-20 pointer-events-none">
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-gray-800 text-base mb-1 line-clamp-1 group-hover:text-orange-600 transition-colors leading-snug">{item.title}</h3>
+                      <div className="flex items-baseline gap-2 mb-3">
+                        <div className="text-xl font-semibold text-gray-900 leading-none">₹{item.offerPrice || item.price}</div>
+                        {item.oldPrice && (
+                          <div className="text-xs text-gray-400 line-through">₹{item.oldPrice}</div>
+                        )}
                       </div>
-                      <div>{item.count || item.stock || 0} Views</div>
+                    </div>
+                    
+                    <div className="pt-3 border-t border-gray-50 flex justify-between items-center pointer-events-auto">
+                       <div className="flex gap-3">
+                          <button onClick={() => toggleLike(item.id)} className="text-gray-400 hover:text-red-500 transition-colors">
+                            {likes[item.id] ? <BiSolidLike className="text-red-500 text-lg" /> : <BiLike className="text-lg" />}
+                          </button>
+                          <button onClick={() => toggleCart(item.id)} className={`transition-colors ${carts[item.id] ? 'text-orange-600' : 'text-gray-400 hover:text-orange-500'}`}>
+                            {carts[item.id] ? <BiSolidCart className="text-xl" /> : <BiCart className="text-xl" />}
+                          </button>
+                        </div>
+                        <Link
+                          to={`/product-view/${item.id}`}
+                          state={{ product: item }}
+                          className="bg-black text-white text-[10px] font-semibold py-1.5 px-4 rounded hover:bg-gray-800 transition-colors uppercase tracking-wider"
+                        >
+                          Buy
+                        </Link>
                     </div>
                   </div>
-                  <Link
-                    to={`/product-view/${item.id}`}
-                    state={{ product: item }}
-                    className='absolute inset-0 z-1'
-                  ></Link>
                 </div>
               </div>
             ))}
           </Slider>
         </div>
-
       </div>
     </section>
   );

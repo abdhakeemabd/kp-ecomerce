@@ -95,8 +95,7 @@ function Footer() {
             <div className="poppins-semibold text-xl text-white">Address</div>
             <ul>
               <li className='flex mt-3 gap-3'>
-                <div className='mt-1 text-xl'> <MdLocationOn /></div>
-                <div className='text-1xl'>Smart works, DSR Techno cube  Silver Springs Layout, Munnekollal, Bengaluru, Karnataka 560066</div>
+                <div className='text-1xl'>edavannappara, malappuram district, kerala</div>
               </li>
               <li className="flex mt-3 gap-3 content-start">
                 <div className='mt-1 text-xl'><FaPhone /></div>

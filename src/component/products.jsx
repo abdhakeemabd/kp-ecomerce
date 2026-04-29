@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { BiLike, BiSolidLike, BiCart, BiSolidCart } from 'react-icons/bi';
+import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
+import { BiLike, BiSolidLike, BiCart, BiSolidCart, BiSearch } from 'react-icons/bi';
 import { PiShareFat } from 'react-icons/pi';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useProducts } from '../context/ProductContext';
 
@@ -9,23 +9,40 @@ function Products() {
   const [likes, setLikes] = useState({});
   const [carts, setCarts] = useState({});
   const [activeTab, setActiveTab] = useState('All');
-  const [expandedDescriptions, setExpandedDescriptions] = useState({});
+  const [searchTerm, setSearchTerm] = useState('');
+  const [visibleCount, setVisibleCount] = useState(20);
   const { addToCart } = useCart();
   const { products } = useProducts();
+  const location = useLocation();
+  const observer = useRef();
+
+  // Initialize search from URL
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const search = params.get('search');
+    if (search) {
+      setSearchTerm(search);
+    }
+  }, [location.search]);
+
+  // Infinite Scroll Observer
+  const lastProductElementRef = useCallback(node => {
+    if (observer.current) observer.current.disconnect();
+    observer.current = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting && visibleCount < filteredProducts.length) {
+        setVisibleCount(prevCount => prevCount + 20);
+      }
+    });
+    if (node) observer.current.observe(node);
+  }, [visibleCount, products.length, searchTerm, activeTab]);
 
   const toggleLike = (id) => {
     setLikes((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
-  const toggleDescription = (id) => {
-    setExpandedDescriptions((prev) => ({ ...prev, [id]: !prev[id] }));
-  };
-
   const toggleCart = async (product) => {
     const isInCart = carts[product.id];
-    
     if (!isInCart) {
-      // Add to cart
       const result = await addToCart({
         id: product.id,
         title: product.title,
@@ -35,104 +52,159 @@ function Products() {
         image: product.image || (product.gallery && product.gallery[0]),
         gallery: product.gallery || [product.image],
       });
-      
       if (result.success) {
         setCarts((prev) => ({ ...prev, [product.id]: true }));
       }
     } else {
-      // Visual feedback only - user can remove from cart page
       setCarts((prev) => ({ ...prev, [product.id]: false }));
     }
   };
 
-  // Group products by category
-  const groupedProducts = products.reduce((acc, product) => {
-    const category = product.category || 'Other';
-    if (!acc[category]) {
-      acc[category] = [];
-    }
-    acc[category].push(product);
-    return acc;
-  }, {});
+  const handleBuyNow = (product) => {
+    const message = `Hello, I want to order:\n\nProduct: ${product.title}\nPrice: ₹${product.offerPrice || product.price}\n\nPlease contact me.`;
+    const whatsappUrl = `https://wa.me/919846007257?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank");
+  };
 
-  // Create tabs from categories
-  const tabs = [
-    { id: 'All', label: 'All Products', products: products },
-    ...Object.keys(groupedProducts).map(category => ({
-      id: category,
-      label: category,
-      products: groupedProducts[category]
-    }))
-  ];
+  // Filter products based on search and tab
+  const filteredProducts = useMemo(() => {
+    return products.filter(product => {
+      const matchesSearch = (product.title || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (product.content || '').toLowerCase().includes(searchTerm.toLowerCase());
+      const matchesTab = activeTab === 'All' || product.category === activeTab;
+      return matchesSearch && matchesTab;
+    });
+  }, [products, searchTerm, activeTab]);
 
-  // Get active products
-  const activeProducts = activeTab === 'All' 
-    ? products 
-    : groupedProducts[activeTab] || [];
+  // Group categories for tabs
+  const categories = useMemo(() => {
+    const cats = products.reduce((acc, p) => {
+      if (p.category && !acc.includes(p.category)) acc.push(p.category);
+      return acc;
+    }, []);
+    return ['All', ...cats];
+  }, [products]);
+
+  const displayedProducts = filteredProducts.slice(0, visibleCount);
 
   return (
-    <section className="product_main_sec py-10">
+    <section className="product_main_sec py-12 bg-gray-50">
       <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex mb-6 overflow-x-auto flex-wrap">
-            {tabs.map((tab) => (
+        <div className="max-w-7xl mx-auto">
+          {/* Search and Filters */}
+          <div className="flex flex-wrap pb-4 w-full md:w-auto gap-2 justify-center">
+            {categories.map((cat) => (
               <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`px-5 py-2 text-sm font-medium capitalize transition-all duration-200 whitespace-nowrap
-                  ${activeTab === tab.id ? 'text-white bg-orange-500 rounded-sm' : 'text-gray-600 hover:text-orange-600'}`}>
-                {tab.label}
+                key={cat}
+                onClick={() => { setActiveTab(cat); setVisibleCount(20); }}
+                className={`px-6 py-2 rounded-lg text-sm font-semibold transition-all duration-300 whitespace-nowrap shadow-sm
+                    ${activeTab === cat ? 'bg-orange-600 text-white shadow-md' : 'bg-white text-gray-700 hover:bg-gray-100'}`}
+              >
+                {cat}
               </button>
             ))}
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {activeProducts.map((product) => (
-              <div key={product.id} className="bg-white p-4 rounded-md shadow hover:shadow-lg transition relative border border-[#ebebec] h-full flex flex-col">
-                <div className="w-full aspect-square flex items-center justify-center bg-[#f2f2f200] rounded-sm mb-3 p-4 shrink-0 border border-[#ebebec] overflow-hidden">
-                  <img src={product.image || (product.gallery && product.gallery[0])} alt={product.title} className="w-full h-full object-cover mix-blend-multiply" />
-                </div>
-                <div className="font-semibold mb-1">{product.title}</div>
-                <p className="text-gray-600 text-sm mb-1 line-clamp-2">{product.content || product.description}</p>
-                <div className="mt-2">
-                  <div className="flex items-center gap-3">
-                    {product.offer && (
-                      <span className="text-2xl text-[#CC0C39] font-light">-{product.offer.replace(/[^0-9]/g, '')}%</span>
-                    )}
-                    <div className="flex items-start text-gray-900">
-                      <span className="text-sm mt-1 font-medium">₹</span>
-                      <span className="text-3xl font-medium leading-none">{product.offerPrice || product.price}</span>
-                    </div>
-                  </div>
-                  {product.oldPrice && (
-                    <div className="text-xs text-gray-500 mt-1">
-                      M.R.P.: <span className="line-through">₹{product.oldPrice}</span>
-                    </div>
-                  )}
-                </div>
-                <div className="flex justify-between items-center mt-3">
-                  <div className="flex gap-3 text-lg text-gray-700">
-                    <button onClick={() => toggleLike(product.id)} className="hover:text-red-500 transition-colors">
-                      {likes[product.id] ? <BiSolidLike className="text-red-500" /> : <BiLike />}
-                    </button>
-                    <button onClick={() => toggleCart(product)} className="hover:text-orange-500 transition-colors">
-                      {carts[product.id] ? <BiSolidCart /> : <BiCart />}
-                    </button>
-                    <button
-                      onClick={() =>
-                        navigator.share ? navigator.share({ title: product.title, text: product.content, url: window.location.href, }) : alert('Sharing is not supported on this browser.')} className="hover:text-blue-500">
-                      <PiShareFat />
-                    </button>
-                  </div>
-                  <div className="text-sm text-gray-500">{product.count || product.stock || 0} Views</div>
-                </div>
-                <Link
-                  to={`/product-view/${product.id}`}
-                  state={{ product: product }}
-                  className="absolute inset-0 z-10"
-                ></Link>
-              </div>
-            ))}
+
+          <div className="relative w-full md:w-[500px] mx-auto my-8 flex justify-center">
+            <input
+              type="text"
+              placeholder="Filter these results..."
+              value={searchTerm}
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+                setVisibleCount(20);
+              }}
+              className="w-full pl-6 pr-14 py-3 bg-white text-black border border-gray-100 rounded-xl focus:ring-2 focus:ring-black focus:outline-none transition-all shadow-sm placeholder-gray-400"
+            />
+
+            <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-black p-2.5 rounded-lg hover:bg-gray-800 transition shadow-lg">
+              <BiSearch className="text-white text-xl" />
+            </button>
           </div>
+
+          {/* Product Grid */}
+          {displayedProducts.length > 0 ? (
+            <>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                {displayedProducts.map((product, index) => (
+                  <div
+                    key={product.id}
+                    ref={index === displayedProducts.length - 1 ? lastProductElementRef : null}
+                    className="group bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full overflow-hidden relative"
+                  >
+                    <Link to={`/product-view/${product.id}`} state={{ product }} className="absolute inset-0 z-0"></Link>
+
+                    {/* Badge */}
+                    {product.offer && (
+                      <div className="absolute top-3 left-3 z-10 bg-red-600 text-white text-[13px] font-bold px-1.5 py-0.5 rounded uppercase shadow-sm">
+                        -{product.offer.replace(/[^0-9]/g, '')}%
+                      </div>
+                    )}
+
+                    <div className="block overflow-hidden aspect-[4/3] bg-gray-50">
+                      <img
+                        src={product.image || (product.gallery && product.gallery[0])}
+                        alt={product.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                    </div>
+
+                    <div className="p-4 flex flex-col flex-1 relative z-20 pointer-events-none">
+                      <div className="flex-1">
+                        <div className="text-gray-400 text-[9px] uppercase font-bold tracking-widest mb-1">{product.category || 'Shop'}</div>
+                        <h3 className="font-semibold text-gray-900 text-base mb-1 line-clamp-1 group-hover:text-orange-600 transition-colors pointer-events-auto leading-snug">
+                          <Link to={`/product-view/${product.id}`} state={{ product }}>{product.title}</Link>
+                        </h3>
+                        <p className="text-gray-500 text-xs mb-3 line-clamp-2 min-h-[32px]">{product.content || product.description}</p>
+
+                        <div className="flex items-baseline gap-2 mb-3">
+                          <div className="text-xl font-semibold text-gray-900 leading-none">₹{product.offerPrice || product.price}</div>
+                          {product.oldPrice && (
+                            <div className="text-xs text-gray-400 line-through">₹{product.oldPrice}</div>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="flex items-center justify-between pt-3 border-t border-gray-50 pointer-events-auto">
+                        <div className="flex gap-3">
+                          <button onClick={() => toggleLike(product.id)} className="text-gray-400 hover:text-red-500 transition-colors">
+                            {likes[product.id] ? <BiSolidLike className="text-red-500 text-lg" /> : <BiLike className="text-lg" />}
+                          </button>
+                          <button onClick={() => toggleCart(product)} className={`transition-colors ${carts[product.id] ? 'text-orange-600' : 'text-gray-400 hover:text-orange-500'}`}>
+                            {carts[product.id] ? <BiSolidCart className="text-xl" /> : <BiCart className="text-xl" />}
+                          </button>
+                        </div>
+                        <button
+                          onClick={() => handleBuyNow(product)}
+                          className="bg-black text-white text-xs font-semibold py-2 px-5 cursor-pointer transition-colors duration-300 uppercase tracking-wider"
+                        >
+                          Buy
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {visibleCount < filteredProducts.length && (
+                <div className="flex justify-center mt-8">
+                  <div className="w-8 h-8 border-4 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
+                </div>
+              )}
+            </>
+          ) : (
+            <div className="text-center py-20 bg-white rounded-3xl shadow-sm border border-dashed border-gray-300">
+              <div className="text-gray-400 text-6xl mb-4 flex justify-center"><BiSearch /></div>
+              <h3 className="text-xl font-bold text-gray-800">No products found</h3>
+              <p className="text-gray-500 mt-2">Try adjusting your search or category filter</p>
+              <button
+                onClick={() => { setSearchTerm(''); setActiveTab('All'); }}
+                className="mt-6 text-orange-600 font-bold hover:underline"
+              >
+                Clear all filters
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </section>

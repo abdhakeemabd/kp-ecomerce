@@ -14,12 +14,10 @@ function AboutUs() {
 
           <div className="md:col-span-6">
             <h2 className="text-3xl font-bold mb-4">About Us</h2>
-            <h3 className='text-2xl font-bold mb-2'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum perferendis voluptatem ex aperiam. Saepe earum, quas libero rem culpa dolor!</h3>
+            <h3 className='text-2xl font-bold mb-2'>Eacyclic - Your Gateway to Easy Local Shopping</h3>
             <p className="text-gray-700 leading-relaxed">
-              We are a team dedicated to delivering high-quality products and services.
-              Our commitment to excellence and customer satisfaction sets us apart in the industry.
-              With a passion for innovation and a deep understanding of user needs, we strive to
-              provide value through every project we undertake.
+              At Eacyclic, we believe that shopping should be as easy as a single click. Based in Edavannappara, Malappuram, we are dedicated to bringing you the best products from near you and across India. 
+              Our mission is to introduce innovative products to the people of Kerala and beyond, ensuring a seamless and user-friendly purchase experience.
             </p>
             <button className='bg-amber-900 text-white py-3 px-4 mt-4 rounded-lg'>Explore more</button>
           </div>
@@ -29,8 +27,8 @@ function AboutUs() {
     </section>
     <section className='why_choose_sec'>
         <div className="container">
-            <div className='text-lg text-center font-bold'>Why Choose us</div>
-            <div className='text-black text-center text-2xl my-3 font-bold'>We are the best classified ads platform</div>
+            <div className='text-lg text-center font-bold'>Why Choose Eacyclic?</div>
+            <div className='text-black text-center text-2xl my-3 font-bold'>The Best E-commerce Platform for Local & National Shopping</div>
             <div className="sub-card bg-[#f9f9f9] shadow-amber-50 p-5 flex justify-between mt-4 rounded-md">
                 <div className='text-center'>
                     <div className='text-2xl font-bold text-lime-700'>27 k</div>

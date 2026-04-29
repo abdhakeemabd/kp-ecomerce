@@ -52,8 +52,7 @@ function ContactForm() {
               </div>
               <div>
                 <p className="font-semibold text-sm mb-1">Office Address</p>
-                <p>Bare shell, Battarhalli,</p>
-                <p>Bangalore, 560049</p>
+                <p>edavannappara, malappuram district, kerala</p>
               </div>
             </div>
           </div>

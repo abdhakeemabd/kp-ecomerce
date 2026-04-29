@@ -21,17 +21,15 @@ function ProductDetails() {
     const globalProduct = getProductById(id);
 
     if (passedProduct && globalProduct && passedProduct.title === globalProduct.title) {
-      // If passed state matches global data (by title check to avoid ID collisions), 
-      // use global data as it likely has richer content (e.g. full gallery).
       setProduct(globalProduct);
     } else if (passedProduct) {
-      // If only passed state exists or titles mismatch (ID collision), use passed state.
       setProduct(passedProduct);
     } else if (globalProduct) {
-      // Fallback for direct URL access.
       setProduct(globalProduct);
     }
     setActiveImage(0);
+    // Scroll to top when product changes
+    window.scrollTo(0, 0);
   }, [id, location.state, products, getProductById]);
 
   useEffect(() => {
@@ -57,7 +55,6 @@ function ProductDetails() {
     });
 
     if (result.success) {
-      // Navigate to cart page
       navigate('/cart');
     }
   };
@@ -89,18 +86,18 @@ function ProductDetails() {
                 />
               </a>
 
-              <div className="space-y-3">
-                <h3 className="text-xl font-bold text-gray-800">{product.title}</h3>
-                <p className="text-gray-600">{product.content}</p>
+              <div className="space-y-4">
+                <h1 className="text-2xl md:text-3xl font-semibold text-gray-900 leading-tight">{product.title}</h1>
+                <p className="text-gray-600 text-base leading-relaxed">{product.content}</p>
 
                 <div className="mt-4">
                   <div className="flex items-center gap-4">
                     <div className="flex items-start text-gray-900">
                       <span className="text-3xl font-medium">₹</span>
-                      <span className="text-3xl font-semibold leading-none">{product.offerPrice}</span>
+                      <span className="text-4xl font-semibold leading-none">{product.offerPrice}</span>
                     </div>
                     {product.offer && (
-                      <span className="text-2xl font-semibold text-green-600 font-light">-{product.offer.replace(/[^0-9]/g, '')}%</span>
+                      <span className="text-2xl font-semibold text-green-600">-{product.offer.replace(/[^0-9]/g, '')}%</span>
                     )}
                   </div>
                   {product.oldPrice && (
@@ -108,6 +105,12 @@ function ProductDetails() {
                        M.R.P.: <span className="line-through text-base font-semibold">₹{product.oldPrice}</span>
                     </div>
                   )}
+                </div>
+
+                {/* Persuasive Elements */}
+                <div className="flex items-center gap-2 text-red-600 font-bold text-sm animate-pulse py-2">
+                  <span className="w-2 h-2 bg-red-600 rounded-full"></span>
+                  <span>Limited Time Offer: Selling fast!</span>
                 </div>
 
                 {/* Shipping & Return Badges */}
@@ -127,28 +130,45 @@ function ProductDetails() {
                 </div>
 
                 <div>
-                  <h4 className="text-[#323232] font-bold text-lg mb-2">Description</h4>
-                  <div className="text-sm text-gray-700 mb-3">{product.description}</div>
-                  <div className="text-sm text-gray-700 mb-2">{product.subDescription}</div>
-                  <div className="text-sm text-gray-700 mb-2">{product.subContent}</div>
+                  <h4 className="text-gray-900 font-bold text-lg mb-2">About this item</h4>
+                  <div className="text-sm text-gray-700 space-y-2">
+                    <p>{product.description}</p>
+                    <p>{product.subDescription}</p>
+                    <p>{product.subContent}</p>
+                  </div>
                 </div>
 
-                <div className="text-sm text-gray-500">{product.count} Views</div>
+                <div className="text-xs text-gray-500">{product.count} people viewed this recently</div>
 
-                <div className="flex gap-4 mt-6">
+                <div className="flex flex-col sm:flex-row gap-4 mt-8">
                   <button 
                     onClick={handleAddToCart}
-                    className="flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-md transition-colors duration-300 cursor-pointer"
+                    className="flex-1 flex items-center justify-center gap-3 bg-white border-2 border-gray-900 text-gray-900 px-6 py-4 rounded-lg hover:bg-gray-50 transition-all duration-300 transform active:scale-95 group"
                   >
-                    <FaShoppingCart /> Add To Cart
+                    <FaShoppingCart className="text-xl shrink-0" />
+
+                      <span className="text-sm font-semibold">Add to Cart</span>
                   </button>
 
                   <button
                     onClick={handleBuyNow}
-                    className="flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-md transition-all duration-300 hover:shadow-md cursor-pointer"
+                    className="flex-1 flex items-center justify-center gap-3 bg-black hover:bg-gray-800 text-white px-6 py-4 rounded-lg transition-all duration-300 shadow-lg shadow-gray-200 transform hover:-translate-y-1 active:scale-95"
                   >
-                    <FaBolt /> Buy Now
+                    <FaBolt className="text-xl" />
+                    <span className="text-lg font-semibold uppercase tracking-tight">Buy Now</span>
                   </button>
+                </div>
+
+                {/* Trust Signals */}
+                <div className="mt-8 pt-6 border-t border-gray-100 grid grid-cols-2 gap-4">
+                  <div className="flex items-center gap-3">
+                    <FaShieldAlt className="text-green-600" />
+                    <div className="text-[11px] font-bold text-gray-700 uppercase tracking-wider">Secure Payment</div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <MdGppGood className="text-blue-600" />
+                    <div className="text-[11px] font-bold text-gray-700 uppercase tracking-wider">Verified Quality</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -161,80 +181,40 @@ function ProductDetails() {
                 {product.gallery?.map((img, index) => (
                   <div
                     key={index}
-                    className="aspect-[1/1] cursor-pointer"
+                    className="aspect-square cursor-pointer"
                     onClick={() => setActiveImage(index)}
                   >
                     <div
-                      className={`h-full bg-gray-100 rounded-lg overflow-hidden transition-all duration-200
-                        ${activeImage === index ? "border-2 border-[#ebebec]" : "border-2 border-transparent hover:border-[#ebebec]"}`}
+                      className={`h-full bg-gray-100 rounded-lg overflow-hidden transition-all duration-200 border-2
+                        ${activeImage === index ? "border-gray-900 shadow-sm" : "border-transparent hover:border-gray-200"}`}
                     >
                       <img
                         src={img}
-                        alt="product"
+                        alt={`Gallery ${index}`}
                         className="w-full h-full object-contain transition-transform duration-300 hover:scale-105"
                       />
                     </div>
                   </div>
                 ))}
               </div>
-                {/* Product Highlights Section */}
+              
               <div className="mt-8 border-t border-gray-100 pt-6">
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-bold text-gray-900">Product Highlights</h3>
-                  <div className="p-1 bg-gray-100 rounded text-gray-500">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 15l7-7 7 7"></path></svg>
-                  </div>
-                </div>
-                
+                <h3 className="text-lg font-bold text-gray-900 mb-4">Product Highlights</h3>
                 <div className="space-y-4">
-                  {product.highlights?.map((highlight, idx) => (
+                  {(product.highlights || ["Free Shipping", "Easy Returns", "Secure Checkout"]).map((highlight, idx) => (
                     <div key={idx} className="flex items-center gap-4 group">
-                      <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
-                         {idx % 4 === 0 && <FaTruck size={18} />}
-                         {idx % 4 === 1 && <FaUndo size={18} />}
-                         {idx % 4 === 2 && <FaShieldAlt size={18} />}
-                         {idx % 4 === 3 && <MdGppGood size={18} />}
+                      <div className="w-10 h-10 rounded-lg bg-gray-50 flex items-center justify-center text-gray-900 group-hover:bg-gray-900 group-hover:text-white transition-colors duration-300">
+                         {idx % 3 === 0 && <FaTruck size={18} />}
+                         {idx % 3 === 1 && <FaUndo size={18} />}
+                         {idx % 3 === 2 && <FaShieldAlt size={18} />}
                       </div>
                       <span className="text-gray-700 font-medium">{highlight}</span>
                     </div>
-                  )) || (
-                    <>
-                      <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600">
-                          <FaTruck size={18} />
-                        </div>
-                        <span className="text-gray-700 font-medium">Free Shipping</span>
-                      </div>
-                      <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600">
-                          <FaUndo size={18} />
-                        </div>
-                        <span className="text-gray-700 font-medium">Easy Returns</span>
-                      </div>
-                    </>
-                  )}
-                </div>
-
-                <div className="mt-8 pt-6 border-t border-gray-100">
-                   <div className="flex items-center gap-3 text-sm text-gray-600 mb-2">
-                      <MdOutlineLocalOffer className="text-green-600" size={18} />
-                      <span className="font-semibold">Best Price Guaranteed</span>
-                   </div>
-                   <div className="flex items-center gap-3 text-sm text-gray-600">
-                      <MdOutlineSupportAgent className="text-blue-600" size={18} />
-                      <span className="font-semibold">24/7 Customer Support</span>
-                   </div>
+                  ))}
                 </div>
               </div>
-
-              {/* Hidden Switch Logic - kept logic if needed but hidden per original */}
-              <div className="hidden">
-                {/* Original switch buttons removed as they relied on array index which is no longer the primary state */}
-              </div>
-
             </div>
           </div>
-
         </div>
       </div>
     </section>

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Logo from '../assets/images/logo/logo.png';
 import { FaRegUser, FaShoppingCart } from "react-icons/fa";
 import { IoCloseOutline, IoMenuOutline } from "react-icons/io5";
@@ -20,6 +20,14 @@ function Header() {
   const [otp, setOtp] = useState('');
   const userMenuRef = useRef();
   const { getCartItemCount } = useCart();
+  const location = useLocation();
+
+  const isActive = (path) => {
+    if (path === '/product') {
+      return location.pathname === '/product' || location.pathname.startsWith('/product-view/');
+    }
+    return location.pathname === path;
+  };
 
   // Close user menu when clicking outside
   useEffect(() => {
@@ -53,7 +61,7 @@ function Header() {
   };
 
   return (
-    <header className="bg-white py-4 relative z-50">
+    <header className="bg-white py-4 relative z-50 shadow-sm">
       <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Mobile Menu Button */}
         <div className="md:hidden">
@@ -63,22 +71,49 @@ function Header() {
         </div>
 
         {/* Logo */}
-        <Link to="/">
+        <Link to="/" className="shrink-0">
           <img className="h-10" src={Logo} alt="Logo" />
         </Link>
 
+        {/* Search Bar - Desktop */}
+        <div className="hidden lg:flex flex-1 max-w-md mx-8">
+          <div className="relative w-full">
+            <input
+              type="text"
+              placeholder="Search for products..."
+              className="w-full border border-gray-300 rounded-full py-2.5 px-6 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200"
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  window.location.href = `/product?search=${e.target.value}`;
+                }
+              }}
+            />
+            <button 
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-black"
+              onClick={(e) => {
+                const input = e.currentTarget.previousSibling;
+                window.location.href = `/product?search=${input.value}`;
+              }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex gap-6">
-          <Link to="/" className="text-white font-medium hover:text-orange-500">Home</Link>
-          <Link to="/product" className="text-white font-medium hover:text-orange-500">Product</Link>
-          <Link to="/contact" className="text-white font-medium hover:text-orange-500">Contact</Link>
+        <nav className="hidden md:flex gap-10 items-center">
+          <Link to="/" className={`font-semibold transition-all duration-300 py-1 ${isActive('/') ? 'text-orange-600 border-b-2 border-orange-600' : 'text-gray-800 hover:text-orange-600'}`}>Home</Link>
+          <Link to="/product" className={`font-semibold transition-all duration-300 py-1 ${isActive('/product') ? 'text-orange-600 border-b-2 border-orange-600' : 'text-gray-800 hover:text-orange-600'}`}>Product</Link>
+          <Link to="/contact" className={`font-semibold transition-all duration-300 py-1 ${isActive('/contact') ? 'text-orange-600 border-b-2 border-orange-600' : 'text-gray-800 hover:text-orange-600'}`}>Contact</Link>
         </nav>
 
         {/* Cart and User Menu */}
         <div className="flex items-center gap-3">
           {/* Cart Icon */}
           <Link to="/cart" className="relative border p-2 md:p-3 rounded-full hover:bg-gray-50 transition-colors duration-200">
-            <FaShoppingCart size={22} className="text-white" />
+            <FaShoppingCart size={22} className="text-gray-700" />
             {getCartItemCount() > 0 && (
               <span className="absolute -top-1 -right-1 bg-orange-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
                 {getCartItemCount()}
@@ -125,12 +160,12 @@ function Header() {
           </button>
         </div>
         <nav className="flex flex-col gap-6 px-6">
-          <Link to="/" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-orange-500 font-medium">Home</Link>
-          <Link to="/product" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-orange-500 font-medium">Product</Link>
-          <Link to="/cart" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-orange-500 font-medium flex items-center gap-2">
+          <Link to="/" onClick={() => setMenuOpen(false)} className={`font-medium transition-colors ${isActive('/') ? 'text-orange-600' : 'text-gray-700 hover:text-orange-500'}`}>Home</Link>
+          <Link to="/product" onClick={() => setMenuOpen(false)} className={`font-medium transition-colors ${isActive('/product') ? 'text-orange-600' : 'text-gray-700 hover:text-orange-500'}`}>Product</Link>
+          <Link to="/cart" onClick={() => setMenuOpen(false)} className={`font-medium transition-colors flex items-center gap-2 ${isActive('/cart') ? 'text-orange-600' : 'text-gray-700 hover:text-orange-500'}`}>
             Cart {getCartItemCount() > 0 && <span className="bg-orange-500 text-white text-xs px-2 py-1 rounded-full">{getCartItemCount()}</span>}
           </Link>
-          <Link to="/contact" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-orange-500 font-medium">Contact</Link>
+          <Link to="/contact" onClick={() => setMenuOpen(false)} className={`font-medium transition-colors ${isActive('/contact') ? 'text-orange-600' : 'text-gray-700 hover:text-orange-500'}`}>Contact</Link>
         </nav>
       </div>
 

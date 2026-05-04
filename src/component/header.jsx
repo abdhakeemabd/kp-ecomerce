@@ -80,6 +80,7 @@ function Header() {
           <div className="relative w-full">
             <input
               type="text"
+              aria-label="Search for products"
               placeholder="Search for products..."
               className="w-full border border-gray-300 rounded-full py-2.5 px-6 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200"
               onKeyDown={(e) => {
@@ -188,6 +189,7 @@ function Header() {
           </div>
           <div className="w-full md:w-1/2 p-6 relative">
             <button
+              aria-label="Close login modal"
               className="absolute right-3 top-3 text-black hover:text-gray-600"
               onClick={() => {
                 setModalOpenAnimation(false);
@@ -227,7 +229,7 @@ function Header() {
                   value={otp}
                   onChange={setOtp}
                   numInputs={6}
-                  renderInput={(props) => <input {...props} />}
+                  renderInput={(props) => <input {...props} aria-label="OTP Digit" />}
                   inputStyle={{
                     width: "2.5rem",
                     height: "2.5rem",

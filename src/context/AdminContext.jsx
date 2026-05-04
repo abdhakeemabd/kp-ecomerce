@@ -14,6 +14,8 @@ export const AdminProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [adminUser, setAdminUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [darkMode, setDarkMode] = useState(localStorage.getItem('adminDarkMode') === 'true');
+  const [themeColor, setThemeColor] = useState(localStorage.getItem('adminThemeColor') || 'indigo');
 
   // Check if admin is already logged in
   useEffect(() => {
@@ -31,8 +33,22 @@ export const AdminProvider = ({ children }) => {
     setLoading(false);
   }, []);
 
+  // Theme effects
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    localStorage.setItem('adminDarkMode', darkMode);
+  }, [darkMode]);
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', themeColor);
+    localStorage.setItem('adminThemeColor', themeColor);
+  }, [themeColor]);
+
   const login = (username, password) => {
-    // Admin credentials
     if (username === 'admin_nisam' && password === 'Nizam@5001#') {
       const admin = {
         username: 'admin_nisam',
@@ -53,8 +69,14 @@ export const AdminProvider = ({ children }) => {
     localStorage.removeItem('adminUser');
   };
 
+  const toggleDarkMode = () => setDarkMode(!darkMode);
+  const changeTheme = (color) => setThemeColor(color);
+
   return (
-    <AdminContext.Provider value={{ isAuthenticated, adminUser, login, logout, loading }}>
+    <AdminContext.Provider value={{ 
+      isAuthenticated, adminUser, login, logout, loading,
+      darkMode, toggleDarkMode, themeColor, changeTheme 
+    }}>
       {children}
     </AdminContext.Provider>
   );

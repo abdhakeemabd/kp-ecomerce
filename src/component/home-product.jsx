@@ -24,14 +24,14 @@ function HomeProduct() {
     <section className='home_prodcut_sec py-16 bg-white'>
       <div className="container mx-auto px-4">
         <div className="mb-12 text-center">
-          <h2 className="text-3xl font-black text-gray-900 uppercase tracking-tight">Discover Near By You</h2>
+          <h2 className="text-3xl font-black text-gray-900 uppercase tracking-tight">Discover Near By You with Eacyclic</h2>
           <div className="w-20 h-1.5 bg-orange-600 mx-auto mt-4 mb-8 rounded-full"></div>
           
           {/* Section Search */}
           <div className="max-w-xl mx-auto relative group">
             <input 
               type="text" 
-              placeholder="What are you looking for today?" 
+              placeholder="What are you looking for today on Eacyclic?" 
               className="w-full pl-6 pr-16 py-4 bg-gray-50 border-2 border-gray-100 rounded-xl focus:border-orange-500 focus:ring-0 transition-all duration-300 shadow-sm group-hover:shadow-md outline-none text-lg"
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {

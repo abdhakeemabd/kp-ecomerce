@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+  import React, { useState } from 'react';
 import Slider from "react-slick";
 import { PiShareFat } from "react-icons/pi";
 import { BiSolidLike, BiLike, BiCart, BiSolidCart } from "react-icons/bi";
@@ -43,9 +43,9 @@ function HomeFeatures() {
     <section className='home_feature_sec py-20 bg-gradient-to-b from-gray-50 to-white overflow-hidden'>
       <div className="container mx-auto px-4">
         <div className="mb-12 text-center">
-          <h2 className="text-3xl font-black text-gray-900 uppercase tracking-tight">Best Selection</h2>
+          <h2 className="text-3xl font-black text-gray-900 uppercase tracking-tight">Best Eacyclic Selection</h2>
           <div className="w-20 h-1.5 bg-black mx-auto mt-4 rounded-full"></div>
-          <p className="text-gray-500 mt-4 font-medium">Handpicked premium products just for you</p>
+          <p className="text-gray-500 mt-4 font-medium">Handpicked premium products just for you on Eacyclic</p>
         </div>
         
         <div className="features_slider -mx-3">

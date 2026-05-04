@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { FaArrowLeft, FaSearch, FaTruck, FaCheck, FaClock } from 'react-icons/fa';
+import AdminLayout from '../../component/AdminLayout';
+import { motion } from 'framer-motion';
+import { 
+  Search, Truck, CheckCircle, Clock, 
+  MapPin, User, Package, Navigation, 
+  AlertCircle, ChevronRight
+} from 'lucide-react';
 import { deliveryAPI, ordersAPI } from '../../utils/api';
 
 function AdminDelivery() {
-  const navigate = useNavigate();
   const [deliveries, setDeliveries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -17,12 +21,10 @@ function AdminDelivery() {
   const fetchDeliveries = async () => {
     try {
       setLoading(true);
-      // Try to fetch deliveries, fallback to orders with delivery info
       try {
         const response = await deliveryAPI.getAll();
         setDeliveries(response.data || []);
       } catch {
-        // Fallback: get orders and filter for shipped/delivered
         const ordersResponse = await ordersAPI.getAll();
         const deliveryOrders = (ordersResponse.data || [])
           .filter(order => ['shipped', 'delivered'].includes(order.status))
@@ -52,7 +54,6 @@ function AdminDelivery() {
       fetchDeliveries();
     } catch (error) {
       console.error('Error updating delivery status:', error);
-      alert('Error updating delivery status. Please try again.');
     }
   };
 
@@ -61,169 +62,144 @@ function AdminDelivery() {
       delivery.tracking_number?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       delivery.customer_name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       delivery.order_id?.toString().includes(searchTerm);
-    
     const matchesStatus = filterStatus === 'all' || delivery.status === filterStatus;
-    
     return matchesSearch && matchesStatus;
   });
 
-  const getStatusColor = (status) => {
-    const colors = {
-      pending: 'bg-yellow-100 text-yellow-800 border-yellow-300',
-      in_transit: 'bg-blue-100 text-blue-800 border-blue-300',
-      out_for_delivery: 'bg-purple-100 text-purple-800 border-purple-300',
-      delivered: 'bg-green-100 text-green-800 border-green-300',
-      failed: 'bg-red-100 text-red-800 border-red-300'
+  const getStatusStyle = (status) => {
+    const styles = {
+      pending: 'bg-amber-500/10 text-amber-500',
+      in_transit: 'bg-blue-500/10 text-blue-500',
+      out_for_delivery: 'bg-purple-500/10 text-purple-500',
+      delivered: 'bg-emerald-500/10 text-emerald-500',
+      failed: 'bg-rose-500/10 text-rose-500'
     };
-    return colors[status] || 'bg-gray-100 text-gray-800 border-gray-300';
-  };
-
-  const getStatusIcon = (status) => {
-    if (status === 'delivered') return <FaCheck className="text-green-600" />;
-    if (status === 'in_transit' || status === 'out_for_delivery') return <FaTruck className="text-blue-600" />;
-    return <FaClock className="text-yellow-600" />;
+    return styles[status] || 'bg-gray-500/10 text-gray-500';
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
-      {/* Header */}
-      <header className="bg-white shadow-md">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex justify-between items-center">
-            <div className="flex items-center space-x-4">
-              <button
-                onClick={() => navigate('/admin/dashboard')}
-                className="p-2 hover:bg-gray-100 rounded-lg transition"
-              >
-                <FaArrowLeft className="text-gray-600" />
-              </button>
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                Delivery Management
-              </h1>
-            </div>
+    <AdminLayout>
+      <div className="space-y-8">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <h1 className="text-3xl font-bold dark:text-white">Delivery Logistics</h1>
+            <p className="text-gray-500 dark:text-gray-400 mt-1">Monitor shipments and delivery status</p>
           </div>
-        </div>
-      </header>
-
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Filters */}
-        <div className="mb-6 space-y-4">
-          <div className="relative">
-            <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-            <input
-              type="text"
-              placeholder="Search by tracking number, customer name, or order ID..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-            />
-          </div>
-
-          <div className="flex flex-wrap gap-2">
+          <div className="flex bg-white dark:bg-gray-800 p-1.5 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-x-auto no-scrollbar">
             {['all', 'pending', 'in_transit', 'out_for_delivery', 'delivered', 'failed'].map((status) => (
               <button
                 key={status}
                 onClick={() => setFilterStatus(status)}
-                className={`px-4 py-2 rounded-lg font-medium transition ${
-                  filterStatus === status
-                    ? 'bg-indigo-600 text-white'
-                    : 'bg-white text-gray-700 hover:bg-gray-100'
+                className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap
+                  ${filterStatus === status
+                    ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20'
+                    : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-200'
                 }`}
               >
-                {status.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
+                {status.replace('_', ' ')}
               </button>
             ))}
           </div>
         </div>
 
-        {/* Deliveries Grid */}
+        <div className="relative group max-w-xl">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-indigo-500 transition-colors" size={20} />
+          <input
+            type="text"
+            placeholder="Search tracking #, customer or order ID..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full pl-12 pr-6 py-3.5 bg-white dark:bg-gray-800 border-none rounded-[1.5rem] focus:ring-2 focus:ring-indigo-500 shadow-sm dark:text-white text-sm"
+          />
+        </div>
+
         {loading ? (
-          <div className="flex items-center justify-center py-12">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-4 border-indigo-600"></div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[1, 2, 3].map(i => (
+              <div key={i} className="h-64 rounded-[2rem] bg-white dark:bg-gray-800 animate-pulse" />
+            ))}
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredDeliveries.map((delivery) => (
-              <div key={delivery.id} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300">
-                <div className="flex items-start justify-between mb-4">
+            {filteredDeliveries.map((delivery, i) => (
+              <motion.div 
+                layout
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: i * 0.05 }}
+                key={delivery.id} 
+                className="glass-card rounded-[2rem] p-6 hover:shadow-xl transition-all border border-gray-100 dark:border-gray-800 group"
+              >
+                <div className="flex items-start justify-between mb-6">
                   <div className="flex items-center space-x-3">
-                    <div className="p-3 bg-indigo-100 rounded-full">
-                      {getStatusIcon(delivery.status)}
+                    <div className="w-12 h-12 rounded-2xl bg-indigo-50 dark:bg-indigo-900/20 flex items-center justify-center text-indigo-600">
+                      <Truck size={24} />
                     </div>
                     <div>
-                      <p className="text-sm text-gray-600">Tracking #</p>
-                      <p className="font-bold text-gray-800">{delivery.tracking_number}</p>
+                      <p className="text-[10px] text-gray-400 uppercase font-black tracking-widest">Tracking Number</p>
+                      <p className="font-bold dark:text-white group-hover:text-indigo-500 transition-colors">{delivery.tracking_number}</p>
                     </div>
                   </div>
-                  <span className={`px-3 py-1 text-xs font-semibold rounded-full border ${getStatusColor(delivery.status)}`}>
-                    {delivery.status?.split('_').join(' ')}
+                  <span className={`px-3 py-1.5 rounded-xl text-[10px] font-black uppercase tracking-widest ${getStatusStyle(delivery.status)}`}>
+                    {delivery.status?.replace('_', ' ')}
                   </span>
                 </div>
 
-                <div className="space-y-3 mb-4">
-                  <div>
-                    <p className="text-sm text-gray-600">Order ID</p>
-                    <p className="font-medium">#{delivery.order_id}</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-600">Customer</p>
-                    <p className="font-medium">{delivery.customer_name || 'N/A'}</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-600">Shipping Address</p>
-                    <p className="font-medium text-sm">{delivery.shipping_address || 'N/A'}</p>
-                  </div>
-                  {delivery.estimated_delivery && (
+                <div className="space-y-4 mb-6">
+                  <div className="flex items-start space-x-3">
+                    <Package size={16} className="mt-1 text-gray-400" />
                     <div>
-                      <p className="text-sm text-gray-600">Estimated Delivery</p>
-                      <p className="font-medium">{new Date(delivery.estimated_delivery).toLocaleDateString()}</p>
+                      <p className="text-[10px] text-gray-400 uppercase font-black tracking-widest">Order Info</p>
+                      <p className="text-sm font-bold dark:text-gray-200">Order #{delivery.order_id}</p>
                     </div>
-                  )}
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <User size={16} className="mt-1 text-gray-400" />
+                    <div>
+                      <p className="text-[10px] text-gray-400 uppercase font-black tracking-widest">Customer</p>
+                      <p className="text-sm font-bold dark:text-gray-200">{delivery.customer_name || 'N/A'}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <MapPin size={16} className="mt-1 text-gray-400" />
+                    <div>
+                      <p className="text-[10px] text-gray-400 uppercase font-black tracking-widest">Destination</p>
+                      <p className="text-xs dark:text-gray-300 line-clamp-1">{delivery.shipping_address || 'N/A'}</p>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="border-t pt-4">
-                  <p className="text-xs text-gray-500 mb-3">Update Status</p>
-                  <div className="grid grid-cols-2 gap-2">
-                    {delivery.status !== 'in_transit' && (
-                      <button
-                        onClick={() => handleStatusUpdate(delivery.id, 'in_transit')}
-                        className="px-3 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition text-sm"
-                      >
-                        In Transit
-                      </button>
-                    )}
-                    {delivery.status !== 'out_for_delivery' && (
-                      <button
-                        onClick={() => handleStatusUpdate(delivery.id, 'out_for_delivery')}
-                        className="px-3 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition text-sm"
-                      >
-                        Out for Delivery
-                      </button>
-                    )}
-                    {delivery.status !== 'delivered' && (
-                      <button
-                        onClick={() => handleStatusUpdate(delivery.id, 'delivered')}
-                        className="px-3 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition text-sm"
-                      >
-                        Delivered
-                      </button>
-                    )}
+                <div className="pt-6 border-t border-gray-100 dark:border-gray-800">
+                  <p className="text-[10px] text-gray-400 uppercase font-black tracking-widest mb-3">Update Progress</p>
+                  <div className="flex flex-wrap gap-2">
+                    {['in_transit', 'out_for_delivery', 'delivered'].map((status) => (
+                      delivery.status !== status && (
+                        <button
+                          key={status}
+                          onClick={() => handleStatusUpdate(delivery.id, status)}
+                          className="px-3 py-2 bg-gray-50 dark:bg-gray-800/50 text-gray-500 dark:text-gray-400 hover:bg-indigo-600 hover:text-white transition-all rounded-xl text-[10px] font-black uppercase tracking-widest"
+                        >
+                          {status.replace('_', ' ')}
+                        </button>
+                      )
+                    ))}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         )}
 
         {!loading && filteredDeliveries.length === 0 && (
-          <div className="text-center py-12">
-            <FaTruck className="mx-auto text-6xl text-gray-300 mb-4" />
-            <p className="text-gray-500 text-lg">No deliveries found</p>
+          <div className="text-center py-20">
+            <div className="w-20 h-20 bg-gray-50 dark:bg-gray-800/50 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Navigation size={32} className="text-gray-300" />
+            </div>
+            <p className="text-gray-500 font-bold uppercase tracking-widest text-xs">No deliveries matching criteria</p>
           </div>
         )}
-      </main>
-    </div>
+      </div>
+    </AdminLayout>
   );
 }
-
 export default AdminDelivery;

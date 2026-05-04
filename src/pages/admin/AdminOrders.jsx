@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { FaArrowLeft, FaSearch, FaEye, FaCheck, FaTimes, FaTruck } from 'react-icons/fa';
+import AdminLayout from '../../component/AdminLayout';
+import { motion, AnimatePresence } from 'framer-motion';
+import { 
+  Search, Eye, CheckCircle, XCircle, Truck, 
+  Calendar, User, Mail, Phone, MapPin, 
+  ShoppingBag, CreditCard, ChevronRight, X
+} from 'lucide-react';
 import { ordersAPI } from '../../utils/api';
 
 function AdminOrders() {
-  const navigate = useNavigate();
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -38,7 +42,6 @@ function AdminOrders() {
       }
     } catch (error) {
       console.error('Error updating order status:', error);
-      alert('Error updating order status. Please try again.');
     }
   };
 
@@ -60,259 +63,285 @@ function AdminOrders() {
       order.id?.toString().includes(searchTerm) ||
       order.customer_name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       order.customer_email?.toLowerCase().includes(searchTerm.toLowerCase());
-    
     const matchesStatus = filterStatus === 'all' || order.status === filterStatus;
-    
     return matchesSearch && matchesStatus;
   });
 
-  const getStatusColor = (status) => {
-    const colors = {
-      pending: 'bg-yellow-100 text-yellow-800 border-yellow-300',
-      processing: 'bg-blue-100 text-blue-800 border-blue-300',
-      shipped: 'bg-purple-100 text-purple-800 border-purple-300',
-      delivered: 'bg-green-100 text-green-800 border-green-300',
-      cancelled: 'bg-red-100 text-red-800 border-red-300'
+  const getStatusStyle = (status) => {
+    const styles = {
+      pending: 'bg-amber-500/10 text-amber-500',
+      processing: 'bg-blue-500/10 text-blue-500',
+      shipped: 'bg-purple-500/10 text-purple-500',
+      delivered: 'bg-emerald-500/10 text-emerald-500',
+      cancelled: 'bg-rose-500/10 text-rose-500'
     };
-    return colors[status] || 'bg-gray-100 text-gray-800 border-gray-300';
+    return styles[status] || 'bg-gray-500/10 text-gray-500';
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
-      {/* Header */}
-      <header className="bg-white shadow-md">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex justify-between items-center">
-            <div className="flex items-center space-x-4">
-              <button
-                onClick={() => navigate('/admin/dashboard')}
-                className="p-2 hover:bg-gray-100 rounded-lg transition"
-              >
-                <FaArrowLeft className="text-gray-600" />
-              </button>
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                Order Management
-              </h1>
-            </div>
+    <AdminLayout>
+      <div className="space-y-8">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <h1 className="text-3xl font-bold dark:text-white">Order Management</h1>
+            <p className="text-gray-500 dark:text-gray-400 mt-1">Track and process your customer orders</p>
           </div>
-        </div>
-      </header>
-
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Filters */}
-        <div className="mb-6 space-y-4">
-          <div className="relative">
-            <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-            <input
-              type="text"
-              placeholder="Search by order ID, customer name, or email..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-            />
-          </div>
-
-          <div className="flex flex-wrap gap-2">
+          <div className="flex bg-white dark:bg-gray-800 p-1.5 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-x-auto no-scrollbar">
             {['all', 'pending', 'processing', 'shipped', 'delivered', 'cancelled'].map((status) => (
               <button
                 key={status}
                 onClick={() => setFilterStatus(status)}
-                className={`px-4 py-2 rounded-lg font-medium transition ${
-                  filterStatus === status
-                    ? 'bg-indigo-600 text-white'
-                    : 'bg-white text-gray-700 hover:bg-gray-100'
+                className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap
+                  ${filterStatus === status
+                    ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20'
+                    : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-200'
                 }`}
               >
-                {status.charAt(0).toUpperCase() + status.slice(1)}
+                {status}
               </button>
             ))}
           </div>
         </div>
 
-        {/* Orders Table */}
+        <div className="relative group max-w-xl">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-indigo-500 transition-colors" size={20} />
+          <input
+            type="text"
+            placeholder="Search by ID, name or email..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full pl-12 pr-6 py-3.5 bg-white dark:bg-gray-800 border-none rounded-[1.5rem] focus:ring-2 focus:ring-indigo-500 shadow-sm dark:text-white text-sm"
+          />
+        </div>
+
         {loading ? (
-          <div className="flex items-center justify-center py-12">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-4 border-indigo-600"></div>
+          <div className="space-y-4">
+            {[1, 2, 3, 4, 5].map(i => (
+              <div key={i} className="h-20 rounded-2xl bg-white dark:bg-gray-800 animate-pulse" />
+            ))}
           </div>
         ) : (
-          <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+          <div className="glass-card rounded-[2.5rem] overflow-hidden">
             <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
+              <table className="w-full">
+                <thead>
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Order ID
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Customer
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Total
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Status
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Date
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Actions
-                    </th>
+                    <th>Order Info</th>
+                    <th>Customer</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                  {filteredOrders.map((order) => (
-                    <tr key={order.id} className="hover:bg-gray-50 transition">
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                        #{order.id}
+                <tbody>
+                  {filteredOrders.map((order, i) => (
+                    <motion.tr 
+                      layout
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.05 * i }}
+                      key={order.id}
+                    >
+                      <td>
+                        <div className="flex items-center">
+                          <div className="w-10 h-10 rounded-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center mr-3 text-indigo-500">
+                            <ShoppingBag size={18} />
+                          </div>
+                          <div>
+                            <p className="font-bold dark:text-white">#{order.id}</p>
+                            <p className="text-[10px] text-gray-400 uppercase tracking-widest font-black">Standard Shipping</p>
+                          </div>
+                        </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm font-medium text-gray-900">{order.customer_name || 'N/A'}</div>
-                        <div className="text-sm text-gray-500">{order.customer_email || 'N/A'}</div>
+                      <td>
+                        <p className="font-semibold dark:text-gray-200">{order.customer_name || 'Guest User'}</p>
+                        <p className="text-[10px] text-gray-500">{order.customer_email || 'No email'}</p>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">
-                        ${order.total?.toFixed(2) || '0.00'}
+                      <td>
+                        <p className="font-black dark:text-white text-lg">${order.total?.toFixed(2)}</p>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <span className={`px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full border ${getStatusColor(order.status)}`}>
+                      <td>
+                        <span className={`px-3 py-1.5 rounded-xl text-[10px] font-black uppercase tracking-widest ${getStatusStyle(order.status)}`}>
                           {order.status}
                         </span>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {new Date(order.created_at).toLocaleDateString()}
+                      <td>
+                        <div className="flex items-center text-xs text-gray-500">
+                          <Calendar size={14} className="mr-1.5 text-indigo-500" />
+                          {new Date(order.created_at).toLocaleDateString()}
+                        </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
+                      <td>
                         <button
                           onClick={() => viewOrderDetails(order.id)}
-                          className="inline-flex items-center px-3 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
+                          className="p-2.5 bg-gray-100 dark:bg-gray-800 text-gray-400 hover:text-indigo-500 hover:bg-indigo-50 transition-all rounded-xl group"
                         >
-                          <FaEye className="mr-1" /> View
+                          <Eye size={18} className="group-hover:scale-110 transition-transform" />
                         </button>
                       </td>
-                    </tr>
+                    </motion.tr>
                   ))}
                 </tbody>
               </table>
             </div>
-
             {filteredOrders.length === 0 && (
-              <div className="text-center py-12">
-                <p className="text-gray-500 text-lg">No orders found</p>
+              <div className="text-center py-20">
+                <div className="w-20 h-20 bg-gray-50 dark:bg-gray-800/50 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <ShoppingBag size={32} className="text-gray-300" />
+                </div>
+                <p className="text-gray-500 font-bold uppercase tracking-widest text-xs">No orders found</p>
               </div>
             )}
           </div>
         )}
-      </main>
 
-      {/* Order Details Modal */}
-      {showModal && selectedOrder && (
-        <div className="fixed inset-0 bg-[#03030373] bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4">
-              <h2 className="text-2xl font-bold text-gray-800">Order Details - #{selectedOrder.id}</h2>
-            </div>
-            
-            <div className="p-6 space-y-6">
-              {/* Customer Information */}
-              <div className="bg-gray-50 rounded-lg p-4">
-                <h3 className="text-lg font-semibold text-gray-800 mb-3">Customer Information</h3>
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <p className="text-sm text-gray-600">Name</p>
-                    <p className="font-medium">{selectedOrder.customer_name || 'N/A'}</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-600">Email</p>
-                    <p className="font-medium">{selectedOrder.customer_email || 'N/A'}</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-600">Phone</p>
-                    <p className="font-medium">{selectedOrder.customer_phone || 'N/A'}</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-600">Address</p>
-                    <p className="font-medium">{selectedOrder.shipping_address || 'N/A'}</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Order Items */}
-              <div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-3">Order Items</h3>
-                <div className="space-y-2">
-                  {selectedOrder.items?.map((item, index) => (
-                    <div key={index} className="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
-                      <div>
-                        <p className="font-medium">{item.product_name}</p>
-                        <p className="text-sm text-gray-600">Quantity: {item.quantity}</p>
-                      </div>
-                      <p className="font-bold">${(item.price * item.quantity).toFixed(2)}</p>
+        <AnimatePresence>
+          {showModal && selectedOrder && (
+            <>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setShowModal(false)}
+                className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100]"
+              />
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                className="fixed inset-0 flex items-center justify-center z-[101] p-4 pointer-events-none"
+              >
+                <div className="bg-white dark:bg-gray-900 rounded-[2.5rem] shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden pointer-events-auto flex flex-col border border-gray-100 dark:border-gray-800">
+                  <div className="p-8 flex items-center justify-between bg-gray-50/50 dark:bg-gray-800/30">
+                    <div>
+                      <h2 className="text-2xl font-black dark:text-white flex items-center">
+                        <ShoppingBag className="mr-3 text-indigo-500" />
+                        Order Details
+                        <span className="ml-3 text-indigo-600 dark:text-indigo-400">#{selectedOrder.id}</span>
+                      </h2>
+                      <p className="text-sm text-gray-500 mt-1">Placed on {new Date(selectedOrder.created_at).toLocaleDateString()}</p>
                     </div>
-                  )) || (
-                    <p className="text-gray-500">No items available</p>
-                  )}
-                </div>
-              </div>
-
-              {/* Order Summary */}
-              <div className="bg-gray-50 rounded-lg p-4">
-                <h3 className="text-lg font-semibold text-gray-800 mb-3">Order Summary</h3>
-                <div className="space-y-2">
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Subtotal</span>
-                    <span className="font-medium">${selectedOrder.subtotal?.toFixed(2) || '0.00'}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Shipping</span>
-                    <span className="font-medium">${selectedOrder.shipping_cost?.toFixed(2) || '0.00'}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Tax</span>
-                    <span className="font-medium">${selectedOrder.tax?.toFixed(2) || '0.00'}</span>
-                  </div>
-                  <div className="border-t pt-2 flex justify-between">
-                    <span className="font-bold text-lg">Total</span>
-                    <span className="font-bold text-lg text-indigo-600">${selectedOrder.total?.toFixed(2) || '0.00'}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Status Update */}
-              <div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-3">Update Status</h3>
-                <div className="flex flex-wrap gap-2">
-                  {['pending', 'processing', 'shipped', 'delivered', 'cancelled'].map((status) => (
                     <button
-                      key={status}
-                      onClick={() => handleStatusUpdate(selectedOrder.id, status)}
-                      disabled={selectedOrder.status === status}
-                      className={`px-4 py-2 rounded-lg font-medium transition ${
-                        selectedOrder.status === status
-                          ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                          : 'bg-indigo-600 text-white hover:bg-indigo-700'
-                      }`}
+                      onClick={() => setShowModal(false)}
+                      className="p-3 rounded-2xl bg-white dark:bg-gray-800 text-gray-400 hover:text-rose-500 transition-colors shadow-sm"
                     >
-                      {status.charAt(0).toUpperCase() + status.slice(1)}
+                      <X size={20} />
                     </button>
-                  ))}
-                </div>
-              </div>
+                  </div>
+                  
+                  <div className="p-8 overflow-y-auto custom-scrollbar flex-1 space-y-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      {/* Customer Info */}
+                      <div className="space-y-4">
+                        <h3 className="text-[10px] uppercase font-black text-gray-400 tracking-widest flex items-center">
+                          <User size={14} className="mr-2" /> Customer Information
+                        </h3>
+                        <div className="bg-gray-50 dark:bg-gray-800/50 rounded-3xl p-6 space-y-4">
+                          <div className="flex items-center space-x-3">
+                            <div className="w-10 h-10 rounded-xl bg-white dark:bg-gray-800 flex items-center justify-center text-indigo-500 shadow-sm font-bold">
+                              {selectedOrder.customer_name?.[0] || 'G'}
+                            </div>
+                            <div>
+                              <p className="font-bold dark:text-white">{selectedOrder.customer_name || 'Guest User'}</p>
+                              <p className="text-xs text-gray-500">{selectedOrder.customer_email || 'No email provided'}</p>
+                            </div>
+                          </div>
+                          <div className="grid grid-cols-2 gap-4 pt-2">
+                            <div className="flex items-start space-x-2">
+                              <Phone size={14} className="mt-1 text-gray-400" />
+                              <span className="text-xs dark:text-gray-300">{selectedOrder.customer_phone || 'N/A'}</span>
+                            </div>
+                            <div className="flex items-start space-x-2">
+                              <MapPin size={14} className="mt-1 text-gray-400" />
+                              <span className="text-xs dark:text-gray-300 line-clamp-2">{selectedOrder.shipping_address || 'N/A'}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
 
-              {/* Actions */}
-              <div className="flex space-x-3 pt-4">
-                <button
-                  onClick={() => setShowModal(false)}
-                  className="flex-1 px-4 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition font-medium"
-                >
-                  Close
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
+                      {/* Summary */}
+                      <div className="space-y-4">
+                        <h3 className="text-[10px] uppercase font-black text-gray-400 tracking-widest flex items-center">
+                          <CreditCard size={14} className="mr-2" /> Payment Summary
+                        </h3>
+                        <div className="bg-gray-50 dark:bg-gray-800/50 rounded-3xl p-6 space-y-3">
+                          <div className="flex justify-between text-sm">
+                            <span className="text-gray-500">Subtotal</span>
+                            <span className="font-bold dark:text-white">${selectedOrder.subtotal?.toFixed(2)}</span>
+                          </div>
+                          <div className="flex justify-between text-sm">
+                            <span className="text-gray-500">Shipping</span>
+                            <span className="font-bold dark:text-white">${selectedOrder.shipping_cost?.toFixed(2)}</span>
+                          </div>
+                          <div className="flex justify-between text-sm">
+                            <span className="text-gray-500">Tax</span>
+                            <span className="font-bold dark:text-white">${selectedOrder.tax?.toFixed(2)}</span>
+                          </div>
+                          <div className="border-t border-gray-200 dark:border-gray-700 pt-3 flex justify-between">
+                            <span className="font-black text-indigo-600">Total</span>
+                            <span className="font-black text-xl dark:text-white">${selectedOrder.total?.toFixed(2)}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Order Items */}
+                    <div className="space-y-4">
+                      <h3 className="text-[10px] uppercase font-black text-gray-400 tracking-widest flex items-center">
+                        <ShoppingBag size={14} className="mr-2" /> Order Items ({selectedOrder.items?.length || 0})
+                      </h3>
+                      <div className="space-y-3">
+                        {selectedOrder.items?.map((item, idx) => (
+                          <div key={idx} className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-800/50 rounded-2xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                            <div className="flex items-center space-x-4">
+                              <div className="w-12 h-12 rounded-xl bg-white dark:bg-gray-900 flex items-center justify-center text-indigo-500 shadow-sm">
+                                <Package size={20} />
+                              </div>
+                              <div>
+                                <p className="font-bold dark:text-white text-sm">{item.product_name}</p>
+                                <p className="text-[10px] text-gray-500 uppercase font-black tracking-widest">Qty: {item.quantity} × ${item.price}</p>
+                              </div>
+                            </div>
+                            <span className="font-black dark:text-white">${(item.price * item.quantity).toFixed(2)}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Status Management */}
+                    <div className="space-y-4">
+                      <h3 className="text-[10px] uppercase font-black text-gray-400 tracking-widest flex items-center">
+                        <Truck size={14} className="mr-2" /> Update Order Status
+                      </h3>
+                      <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
+                        {['pending', 'processing', 'shipped', 'delivered', 'cancelled'].map((status) => {
+                          const isActive = selectedOrder.status === status;
+                          return (
+                            <button
+                              key={status}
+                              onClick={() => handleStatusUpdate(selectedOrder.id, status)}
+                              className={`px-4 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all
+                                ${isActive 
+                                  ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' 
+                                  : 'bg-gray-50 dark:bg-gray-800 text-gray-500 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 hover:text-indigo-600'}`}
+                            >
+                              {status}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
+      </div>
+    </AdminLayout>
   );
 }
+
 
 export default AdminOrders;

@@ -31,6 +31,7 @@ function HomeProduct() {
           <div className="max-w-xl mx-auto relative group">
             <input 
               type="text" 
+              aria-label="Search products"
               placeholder="What are you looking for today on Eacyclic?" 
               className="w-full pl-6 pr-16 py-4 bg-gray-50 border-2 border-gray-100 rounded-xl focus:border-orange-500 focus:ring-0 transition-all duration-300 shadow-sm group-hover:shadow-md outline-none text-lg"
               onKeyDown={(e) => {
@@ -61,7 +62,7 @@ function HomeProduct() {
               ref={index === displayProducts.length - 1 ? lastProductElementRef : null}
               className="group bg-white rounded-xl hover:shadow-md transition-all duration-300 flex flex-col h-full overflow-hidden relative"
             >
-              <Link to={`/product-view/${item.id}`} state={{ product: item }} className="absolute inset-0 z-0"></Link>
+              <Link to={`/product-view/${item.id}`} state={{ product: item }} aria-label={`View details for ${item.title}`} className="absolute inset-0 z-0"></Link>
               
               <div className="aspect-[4/3] overflow-hidden bg-gray-50 relative z-10">
                  {item.offer && (

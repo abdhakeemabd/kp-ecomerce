@@ -25,7 +25,7 @@ function HomeFeatures() {
 
   const settings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     speed: 800,
     slidesToShow: 4,
     slidesToScroll: 1,
@@ -53,7 +53,7 @@ function HomeFeatures() {
             {featureProducts.map(item => (
               <div className='px-3 pb-10' key={item.id}>
                 <div className='bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col h-full overflow-hidden relative group border border-transparent hover:border-gray-100'>
-                  <Link to={`/product-view/${item.id}`} state={{ product: item }} className="absolute inset-0 z-0"></Link>
+                  <Link to={`/product-view/${item.id}`} state={{ product: item }} aria-label={`View details for ${item.title}`} className="absolute inset-0 z-0"></Link>
                   
                   <div className='aspect-[4/3] overflow-hidden bg-gray-50 relative z-10'>
                      {item.offer && (

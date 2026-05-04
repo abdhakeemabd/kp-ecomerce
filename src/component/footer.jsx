@@ -16,7 +16,7 @@ function Footer() {
           <div className='w-full lg:w-1/4 md:w-1/3 sm:w-1/2 ps-3 lg:pe-6 pe-3 mb-3 lg:mb-0'>
             <img className='max-w-30 mb-3' src={Logo} alt="Logo" />
             <div className='font-medium text-justify text-white'>
-              Eacyclic helps you find the best products near you and buy instantly. Start shopping smarter today!            
+              Eacyclic helps you find the best products near you and buy instantly. The Eacyclic platform makes it easy to start shopping smarter today!            
             </div>
             <div className="flex gap-2 mt-3">
               <a href="">

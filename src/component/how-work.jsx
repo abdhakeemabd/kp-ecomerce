@@ -6,7 +6,7 @@ function HowWork() {
     {
       icon: <MdSearch className="text-6xl text-primary mx-auto mb-4" />,
       title: "Find Near You",
-      description: "Discover the best products and deals available right in your neighborhood and across Kerala."
+      description: "Discover the best products and deals available on Eacyclic right in your neighborhood and across Kerala."
     },
     {
       icon: <MdTouchApp className="text-6xl text-primary mx-auto mb-4" />,
@@ -16,7 +16,7 @@ function HowWork() {
     {
       icon: <MdFlashOn className="text-6xl text-primary mx-auto mb-4" />,
       title: "Fast Purchase",
-      description: "Experience the fastest checkout process ever. Buy instantly and skip the long forms."
+      description: "Experience the fastest checkout process ever with Eacyclic. Buy instantly and skip the long forms."
     },
     {
       icon: <MdVerifiedUser className="text-6xl text-primary mx-auto mb-4" />,
@@ -46,7 +46,7 @@ function HowWork() {
             ))}
           </div>
         </div>
-        <h2 className="text-3xl font-bold text-center mb-12 relative z-10">How It Works</h2>
+        <h2 className="text-3xl font-bold text-center mb-12 relative z-10">How Eacyclic Works</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
           {items.map((item, index) => (
             <div key={index} className="relative text-center p-6 bg-white rounded-xl shadow hover:shadow-lg transition duration-300 ease-in-out group">

@@ -18,11 +18,12 @@ import { CartProvider } from './context/CartContext';
 import { UserProvider } from './context/UserContext';
 import { ProductProvider } from './context/ProductContext';
 import AdminLogin from './pages/admin/AdminLogin';
-import NewAdminDashboard from './pages/admin/NewAdminDashboard';
-import NewAdminProducts from './pages/admin/NewAdminProducts';
-import NewAdminOrders from './pages/admin/NewAdminOrders';
-import NewAdminDelivery from './pages/admin/NewAdminDelivery';
-import NewAdminContacts from './pages/admin/NewAdminContacts';
+import AdminDashboard from './pages/admin/AdminDashboard';
+import AdminProducts from './pages/admin/AdminProducts';
+import AdminOrders from './pages/admin/AdminOrders';
+import AdminDelivery from './pages/admin/AdminDelivery';
+import AdminContacts from './pages/admin/AdminContacts';
+import AdminProfile from './pages/admin/AdminProfile';
 import OrderDetails from './pages/admin/OrderDetails';
 import ProtectedRoute from './component/ProtectedRoute';
 import AdminRedirect from './component/AdminRedirect';
@@ -54,7 +55,7 @@ function HomeRoutes() {
                 path='/admin/dashboard' 
                 element={
                   <ProtectedRoute>
-                    <NewAdminDashboard />
+                    <AdminDashboard />
                   </ProtectedRoute>
                 } 
               />
@@ -62,7 +63,7 @@ function HomeRoutes() {
                 path='/admin/products' 
                 element={
                   <ProtectedRoute>
-                    <NewAdminProducts />
+                    <AdminProducts />
                   </ProtectedRoute>
                 } 
               />
@@ -70,7 +71,7 @@ function HomeRoutes() {
                 path='/admin/orders' 
                 element={
                   <ProtectedRoute>
-                    <NewAdminOrders />
+                    <AdminOrders />
                   </ProtectedRoute>
                 } 
               />
@@ -86,7 +87,7 @@ function HomeRoutes() {
                 path='/admin/delivery' 
                 element={
                   <ProtectedRoute>
-                    <NewAdminDelivery />
+                    <AdminDelivery />
                   </ProtectedRoute>
                 } 
               />
@@ -94,7 +95,15 @@ function HomeRoutes() {
                 path='/admin/contacts' 
                 element={
                   <ProtectedRoute>
-                    <NewAdminContacts />
+                    <AdminContacts />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path='/admin/profile' 
+                element={
+                  <ProtectedRoute>
+                    <AdminProfile />
                   </ProtectedRoute>
                 } 
               />

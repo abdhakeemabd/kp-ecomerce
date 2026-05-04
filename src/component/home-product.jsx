@@ -40,13 +40,14 @@ function HomeProduct() {
               }}
             />
             <button 
+              aria-label="Search"
               className="absolute right-3 top-1/2 -translate-y-1/2 bg-black text-white p-3 rounded-lg hover:bg-gray-800 transition-colors"
               onClick={(e) => {
                 const input = e.currentTarget.previousSibling;
                 window.location.href = `/product?search=${input.value}`;
               }}
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
             </button>
@@ -80,12 +81,12 @@ function HomeProduct() {
                   <div className="flex items-baseline gap-2 mb-3">
                     <div className="text-xl font-semibold text-gray-900 leading-none">₹{item.offerPrice || item.price}</div>
                     {item.oldPrice && (
-                      <div className="text-xs text-gray-400 line-through">₹{item.oldPrice}</div>
+                      <div className="text-xs text-gray-500 line-through">₹{item.oldPrice}</div>
                     )}
                   </div>
                 </div>
                 <div className="pt-3 border-t border-gray-50 flex justify-between items-center pointer-events-auto">
-                  <div className="text-[10px] text-gray-400 font-medium tracking-wide">{item.count || 0} Views</div>
+                  <div className="text-[10px] text-gray-500 font-medium tracking-wide">{item.count || 0} Views</div>
                   <Link
                     to={`/product-view/${item.id}`}
                     state={{ product: item }}

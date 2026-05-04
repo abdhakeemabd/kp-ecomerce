@@ -19,22 +19,22 @@ function Footer() {
               Eacyclic helps you find the best products near you and buy instantly. The Eacyclic platform makes it easy to start shopping smarter today!            
             </div>
             <div className="flex gap-2 mt-3">
-              <a href="">
+              <a href="#" aria-label="Facebook">
                 <div className='border-white border-1 rounded-full p-3'>
                   <FaFacebookF />
                 </div>
               </a>
-              <a href="">
+              <a href="#" aria-label="Instagram">
                 <div className='border-white border-1 rounded-full p-3'>
                   <FaInstagram />
                 </div>
               </a>
-              <a href="">
+              <a href="#" aria-label="Twitter">
                 <div className='border-white border-1 rounded-full p-3'>
                   <BsTwitterX />
                 </div>
               </a>
-              <a href="">
+              <a href="#" aria-label="LinkedIn">
                 <div className='border-white border-1 rounded-full p-3'>
                   <FaLinkedinIn />
                 </div>

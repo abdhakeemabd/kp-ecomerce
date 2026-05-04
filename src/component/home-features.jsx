@@ -70,17 +70,17 @@ function HomeFeatures() {
                       <div className="flex items-baseline gap-2 mb-4">
                         <div className="text-xl font-semibold text-gray-900 leading-none">₹{item.offerPrice || item.price}</div>
                         {item.oldPrice && (
-                          <div className="text-xs text-gray-400 line-through">₹{item.oldPrice}</div>
+                          <div className="text-xs text-gray-500 line-through">₹{item.oldPrice}</div>
                         )}
                       </div>
                     </div>
                     
                     <div className="pt-4 border-t border-gray-50 flex justify-between items-center pointer-events-auto">
-                       <div className="flex gap-4">
-                          <button onClick={() => toggleLike(item.id)} className="text-gray-400 hover:text-red-500 transition-colors">
+                        <div className="flex gap-4">
+                          <button aria-label="Like product" onClick={() => toggleLike(item.id)} className="text-gray-500 hover:text-red-500 transition-colors p-2">
                             {likes[item.id] ? <BiSolidLike className="text-red-500 text-xl" /> : <BiLike className="text-xl" />}
                           </button>
-                          <button onClick={() => toggleCart(item.id)} className={`transition-colors ${carts[item.id] ? 'text-orange-600' : 'text-gray-400 hover:text-orange-500'}`}>
+                          <button aria-label="Add to cart" onClick={() => toggleCart(item.id)} className={`transition-colors p-2 ${carts[item.id] ? 'text-orange-600' : 'text-gray-500 hover:text-orange-500'}`}>
                             {carts[item.id] ? <BiSolidCart className="text-2xl" /> : <BiCart className="text-2xl" />}
                           </button>
                         </div>

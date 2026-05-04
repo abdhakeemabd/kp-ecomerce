@@ -65,13 +65,13 @@ function Header() {
       <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Mobile Menu Button */}
         <div className="md:hidden">
-          <button className="border p-2 rounded-full" onClick={() => setMenuOpen(true)}>
+          <button aria-label="Open Menu" className="border p-2 rounded-full" onClick={() => setMenuOpen(true)}>
             <IoMenuOutline size={24} />
           </button>
         </div>
 
         {/* Logo */}
-        <Link to="/" className="shrink-0">
+        <Link to="/" className="shrink-0" aria-label="Homepage">
           <img className="h-10" src={Logo} alt="Logo" />
         </Link>
 
@@ -89,13 +89,14 @@ function Header() {
               }}
             />
             <button 
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-black"
+              aria-label="Search"
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-black"
               onClick={(e) => {
                 const input = e.currentTarget.previousSibling;
                 window.location.href = `/product?search=${input.value}`;
               }}
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
             </button>
@@ -112,7 +113,7 @@ function Header() {
         {/* Cart and User Menu */}
         <div className="flex items-center gap-3">
           {/* Cart Icon */}
-          <Link to="/cart" className="relative border p-2 md:p-3 rounded-full hover:bg-gray-50 transition-colors duration-200">
+          <Link to="/cart" aria-label="Shopping Cart" className="relative border p-2 md:p-3 rounded-full hover:bg-gray-50 transition-colors duration-200">
             <FaShoppingCart size={22} className="text-gray-700" />
             {getCartItemCount() > 0 && (
               <span className="absolute -top-1 -right-1 bg-orange-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
@@ -123,7 +124,7 @@ function Header() {
 
           {/* User Menu */}
           <div className="relative" ref={userMenuRef}>
-            <button className="border p-2 md:p-3 rounded-full" onClick={() => setUserMenuOpen(!userMenuOpen)}>
+            <button aria-label="User Menu" className="border p-2 md:p-3 rounded-full" onClick={() => setUserMenuOpen(!userMenuOpen)}>
               <FaRegUser size={22} />
             </button>
             {userMenuOpen && (
@@ -155,7 +156,7 @@ function Header() {
       {/* Mobile Side Drawer */}
       <div className={`fixed top-0 left-0 h-full w-2/3 bg-white shadow-2xl transform transition-transform duration-300 ease-in-out md:hidden z-50 ${menuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         <div className="flex justify-end p-4">
-          <button className="text-black hover:text-orange-500 transition-colors" onClick={() => setMenuOpen(false)}>
+          <button aria-label="Close Menu" className="text-black hover:text-orange-500 transition-colors" onClick={() => setMenuOpen(false)}>
             <IoCloseOutline size={24} />
           </button>
         </div>

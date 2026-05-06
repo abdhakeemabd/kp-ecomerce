@@ -91,7 +91,7 @@ function Header() {
             />
             <button 
               aria-label="Search"
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-black"
+              className="absolute right-3 top-1/2 -translate-y-1/2 p-2 text-gray-500 hover:text-black"
               onClick={(e) => {
                 const input = e.currentTarget.previousSibling;
                 window.location.href = `/product?search=${input.value}`;
@@ -106,9 +106,9 @@ function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex gap-10 items-center">
-          <Link to="/" className={`font-semibold transition-all duration-300 py-1 ${isActive('/') ? 'text-orange-600 border-b-2 border-orange-600' : 'text-gray-800 hover:text-orange-600'}`}>Home</Link>
-          <Link to="/product" className={`font-semibold transition-all duration-300 py-1 ${isActive('/product') ? 'text-orange-600 border-b-2 border-orange-600' : 'text-gray-800 hover:text-orange-600'}`}>Product</Link>
-          <Link to="/contact" className={`font-semibold transition-all duration-300 py-1 ${isActive('/contact') ? 'text-orange-600 border-b-2 border-orange-600' : 'text-gray-800 hover:text-orange-600'}`}>Contact</Link>
+          <Link to="/" className={`font-semibold transition-all duration-300 py-1 ${isActive('/') ? 'text-red-600 border-b-2 border-red-600' : 'text-gray-800 hover:text-red-600'}`}>Home</Link>
+          <Link to="/product" className={`font-semibold transition-all duration-300 py-1 ${isActive('/product') ? 'text-red-600 border-b-2 border-red-600' : 'text-gray-800 hover:text-red-600'}`}>Product</Link>
+          <Link to="/contact" className={`font-semibold transition-all duration-300 py-1 ${isActive('/contact') ? 'text-red-600 border-b-2 border-red-600' : 'text-gray-800 hover:text-red-600'}`}>Contact</Link>
         </nav>
 
         {/* Cart and User Menu */}
@@ -117,7 +117,7 @@ function Header() {
           <Link to="/cart" aria-label="Shopping Cart" className="relative border p-2 md:p-3 rounded-full hover:bg-gray-50 transition-colors duration-200">
             <FaShoppingCart size={22} className="text-gray-700" />
             {getCartItemCount() > 0 && (
-              <span className="absolute -top-1 -right-1 bg-orange-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
                 {getCartItemCount()}
               </span>
             )}

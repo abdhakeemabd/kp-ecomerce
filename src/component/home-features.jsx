@@ -1,4 +1,4 @@
-  import React, { useState } from 'react';
+import React, { useState } from 'react';
 import Slider from "react-slick";
 import { PiShareFat } from "react-icons/pi";
 import { BiSolidLike, BiLike, BiCart, BiSolidCart } from "react-icons/bi";
@@ -6,9 +6,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from 'react-router-dom';
 import { useProducts } from '../context/ProductContext';
+import ImageLoader from './image-loader';
+import ProductSkeleton from './product-skeleton';
 
 function HomeFeatures() {
-  const { products } = useProducts();
+  const { products, loading } = useProducts();
   const [likes, setLikes] = useState({});
   const [carts, setCarts] = useState({});
 
@@ -48,21 +50,24 @@ function HomeFeatures() {
           <p className="text-gray-500 mt-4 font-medium">Handpicked premium products just for you on Eacyclic</p>
         </div>
         
-        <div className="features_slider -mx-3">
-          <Slider {...settings}>
-            {featureProducts.map(item => (
-              <div className='px-3 pb-10' key={item.id}>
-                <div className='bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col h-full overflow-hidden relative group border border-transparent hover:border-gray-100'>
-                  <Link to={`/product-view/${item.id}`} state={{ product: item }} aria-label={`View details for ${item.title}`} className="absolute inset-0 z-0"></Link>
-                  
-                  <div className='aspect-[4/3] overflow-hidden bg-gray-50 relative z-10'>
-                     {item.offer && (
-                        <div className="absolute top-3 left-3 z-10 bg-red-600 text-white text-[10px] font-bold px-2 py-1 rounded shadow-lg uppercase">
-                          -{item.offer.replace(/[^0-9]/g, '')}%
-                        </div>
-                      )}
-                    <img className='w-full h-full object-cover transition-transform duration-700 group-hover:scale-110' src={item.image || (item.gallery && item.gallery[0])} alt={item.title} />
-                  </div>
+        {loading && featureProducts.length === 0 ? (
+          <ProductSkeleton count={4} />
+        ) : (
+          <div className="features_slider -mx-3">
+            <Slider {...settings}>
+              {featureProducts.map(item => (
+                <div className='px-3 pb-10' key={item.id}>
+                  <div className='bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col h-full overflow-hidden relative group border border-transparent hover:border-gray-100'>
+                    <Link to={`/product-view/${item.id}`} state={{ product: item }} aria-label={`View details for ${item.title}`} className="absolute inset-0 z-0"></Link>
+                    
+                    <div className='aspect-[4/3] overflow-hidden bg-gray-50 relative z-10'>
+                       {item.offer && (
+                          <div className="absolute top-3 left-3 z-10 bg-red-600 text-white text-[10px] font-bold px-2 py-1 rounded shadow-lg uppercase">
+                            -{item.offer.replace(/[^0-9]/g, '')}%
+                          </div>
+                        )}
+                      <ImageLoader className='transition-transform duration-700 group-hover:scale-110' src={item.image || (item.gallery && item.gallery[0])} alt={item.title} />
+                    </div>
 
                   <div className="p-5 flex flex-col flex-1 relative z-20 pointer-events-none">
                     <div className="flex-1">
@@ -98,6 +103,7 @@ function HomeFeatures() {
             ))}
           </Slider>
         </div>
+        )}
       </div>
     </section>
   );

@@ -2,9 +2,10 @@ import React, { useState, useRef, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import ImageLoader from './image-loader'
 import { useProducts } from '../context/ProductContext'
+import ProductSkeleton from './product-skeleton'
 
 function HomeProduct() {
-  const { products } = useProducts();
+  const { products, loading } = useProducts();
   const [visibleCount, setVisibleCount] = useState(20);
   const observer = useRef();
 
@@ -55,13 +56,16 @@ function HomeProduct() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {displayProducts.map((item, index) => (
-            <div 
-              key={item.id} 
-              ref={index === displayProducts.length - 1 ? lastProductElementRef : null}
-              className="group bg-white rounded-xl hover:shadow-md transition-all duration-300 flex flex-col h-full overflow-hidden relative"
-            >
+        {loading && displayProducts.length === 0 ? (
+          <ProductSkeleton count={8} />
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {displayProducts.map((item, index) => (
+              <div 
+                key={item.id} 
+                ref={index === displayProducts.length - 1 ? lastProductElementRef : null}
+                className="group bg-white rounded-xl hover:shadow-md transition-all duration-300 flex flex-col h-full overflow-hidden relative"
+              >
               <Link to={`/product-view/${item.id}`} state={{ product: item }} aria-label={`View details for ${item.title}`} className="absolute inset-0 z-0"></Link>
               
               <div className="aspect-[4/3] overflow-hidden bg-gray-50 relative z-10">
@@ -100,6 +104,7 @@ function HomeProduct() {
             </div>
           ))}
         </div>
+        )}
 
         {visibleCount < products.length && (
           <div className="flex justify-center mt-12">

@@ -5,6 +5,7 @@ import { FaShoppingCart, FaBolt, FaTruck, FaUndo, FaShieldAlt, FaBoxOpen } from 
 import { MdOutlineLocalOffer, MdGppGood, MdOutlineSupportAgent } from 'react-icons/md';
 import { useCart } from '../context/CartContext';
 import { useProducts } from '../context/ProductContext';
+import ImageLoader from './image-loader';
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 function ProductDetails() {
@@ -79,10 +80,12 @@ function ProductDetails() {
                 data-caption={`${product.title} - ₹${product.offerPrice}`}
                 className="block w-full h-[500px] bg-[#f2f2f200] rounded-lg flex items-center justify-center overflow-hidden mb-4 border border-[#ebebec]"
               >
-                <img
+                <ImageLoader
                   src={product.gallery?.[activeImage]}
                   alt={product.title}
-                  className="max-w-full max-h-full object-contain hover:scale-105 transition-transform duration-500 mix-blend-multiply"
+                  aspectRatio=""
+                  wrapperClassName="w-full h-full"
+                  imgClassName="max-w-full max-h-full object-contain hover:scale-105 transition-transform duration-500 mix-blend-multiply"
                 />
               </a>
 
@@ -188,10 +191,11 @@ function ProductDetails() {
                       className={`h-full bg-gray-100 rounded-lg overflow-hidden transition-all duration-200 border-2
                         ${activeImage === index ? "border-gray-900 shadow-sm" : "border-transparent hover:border-gray-200"}`}
                     >
-                      <img
+                      <ImageLoader
                         src={img}
                         alt={`Gallery ${index}`}
-                        className="w-full h-full object-contain transition-transform duration-300 hover:scale-105"
+                        aspectRatio="aspect-square"
+                        imgClassName="w-full h-full object-contain transition-transform duration-300 hover:scale-105"
                       />
                     </div>
                   </div>

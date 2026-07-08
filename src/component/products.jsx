@@ -4,6 +4,8 @@ import { PiShareFat } from 'react-icons/pi';
 import { Link, useLocation } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useProducts } from '../context/ProductContext';
+import ImageLoader from './image-loader';
+import ProductSkeleton from './product-skeleton';
 
 function Products() {
   const [likes, setLikes] = useState({});
@@ -12,7 +14,7 @@ function Products() {
   const [searchTerm, setSearchTerm] = useState('');
   const [visibleCount, setVisibleCount] = useState(20);
   const { addToCart } = useCart();
-  const { products } = useProducts();
+  const { products, loading } = useProducts();
   const location = useLocation();
   const observer = useRef();
 
@@ -98,7 +100,7 @@ function Products() {
                 key={cat}
                 onClick={() => { setActiveTab(cat); setVisibleCount(20); }}
                 className={`px-6 py-2 rounded-lg text-sm font-semibold transition-all duration-300 whitespace-nowrap shadow-sm cursor-pointer
-                    ${activeTab === cat ? 'bg-orange-600 text-white shadow-md' : 'bg-white text-gray-700 hover:bg-gray-100'}`}
+101:                     ${activeTab === cat ? 'bg-orange-600 text-white shadow-md' : 'bg-white text-gray-700 hover:bg-gray-100'}`}
               >
                 {cat}
               </button>
@@ -160,7 +162,9 @@ function Products() {
           </div>
 
           {/* Product Grid */}
-          {displayedProducts.length > 0 ? (
+          {loading && displayedProducts.length === 0 ? (
+            <ProductSkeleton count={8} />
+          ) : displayedProducts.length > 0 ? (
             <>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {displayedProducts.map((product, index) => (
@@ -178,11 +182,11 @@ function Products() {
                       </div>
                     )}
 
-                    <div className="block overflow-hidden aspect-[4/3] bg-gray-50">
-                      <img
+                    <div className="block overflow-hidden aspect-[4/3] bg-gray-50 relative z-10">
+                      <ImageLoader
                         src={product.image || (product.gallery && product.gallery[0])}
                         alt={product.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        className="transition-transform duration-500 group-hover:scale-110"
                       />
                     </div>
 

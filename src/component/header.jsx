@@ -260,7 +260,7 @@ function Header() {
       {/* Mobile Side Drawer Overlay */}
       {menuOpen && (
         <div 
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden"
+          className="fixed inset-0 bg-black/50 z-40 md:hidden"
           onClick={() => setMenuOpen(false)}
         ></div>
       )}
@@ -291,7 +291,7 @@ function Header() {
           setTimeout(closeModal, 300);
         }}
         className={`relative w-full max-w-4xl mx-auto p-0 bg-white rounded-2xl shadow-2xl transform transition-all duration-300 ease-out overflow-hidden ${modalOpenAnimation ? 'scale-100 opacity-100' : 'scale-95 opacity-0'} m-4`}
-        overlayClassName="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[60] p-4"
+        overlayClassName="fixed inset-0 bg-black/60 flex items-center justify-center z-[60] p-4"
         contentLabel="Account Modal"
       >
         <div className="flex flex-col md:flex-row h-full max-h-[90vh] overflow-y-auto md:overflow-visible">
@@ -308,7 +308,7 @@ function Header() {
           <div className="w-full md:w-1/2 p-8 relative flex flex-col justify-center bg-white">
             <button
               aria-label="Close modal"
-              className="absolute right-4 top-4 text-gray-400 hover:text-black transition-colors"
+              className="absolute right-4 top-4 text-gray-400 hover:text-black transition-all hover:rotate-90 duration-200"
               onClick={() => {
                 setModalOpenAnimation(false);
                 setTimeout(closeModal, 300);
@@ -378,7 +378,7 @@ function Header() {
                 <button
                   type="submit"
                   disabled={authLoading}
-                  className="bg-black hover:bg-gray-800 text-white font-bold py-3.5 px-6 rounded-xl w-full transition-all flex items-center justify-center shadow-lg cursor-pointer"
+                  className="bg-black hover:bg-gray-800 text-white font-bold py-3.5 px-6 rounded-xl w-full transition-all duration-300 transform active:scale-[0.98] hover:shadow-xl hover:-translate-y-0.5 flex items-center justify-center shadow-lg cursor-pointer"
                 >
                   {authLoading ? (
                     <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
@@ -449,7 +449,7 @@ function Header() {
                 <button
                   type="submit"
                   disabled={authLoading}
-                  className="bg-black hover:bg-gray-800 text-white font-bold py-3.5 px-6 rounded-xl w-full transition-all flex items-center justify-center shadow-lg cursor-pointer"
+                  className="bg-black hover:bg-gray-800 text-white font-bold py-3.5 px-6 rounded-xl w-full transition-all duration-300 transform active:scale-[0.98] hover:shadow-xl hover:-translate-y-0.5 flex items-center justify-center shadow-lg cursor-pointer"
                 >
                   {authLoading ? (
                     <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>

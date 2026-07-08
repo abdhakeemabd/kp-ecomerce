@@ -4,16 +4,28 @@
     0% {
         background-position: -200% 0;
     }
-
     100% {
         background-position: 200% 0;
     }
 }
 
 .skeleton {
-    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background: linear-gradient(90deg, rgba(243, 244, 246, 0.5) 25%, rgba(229, 231, 235, 0.9) 50%, rgba(243, 244, 246, 0.5) 75%);
     background-size: 200% 100%;
-    animation: shimmer 1.5s infinite;
+    animation: shimmer 1.6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.animate-float {
+    animation: float 4s ease-in-out infinite;
 }
 
 .fade-in {

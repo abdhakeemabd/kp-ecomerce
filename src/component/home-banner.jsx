@@ -79,7 +79,7 @@ function HomeBanner() {
               <button
                 key={tag}
                 onClick={() => navigate(`/product?category=${tag}`)}
-                className="bg-white/5 hover:bg-white/10 border border-white/10 text-white text-sm px-4 py-1.5 rounded-full backdrop-blur-sm transition-all duration-300 hover:border-orange-500/50"
+                className="bg-white/5 hover:bg-white/10 border border-white/10 text-white text-sm px-4 py-1.5 rounded-full transition-all duration-300 hover:border-orange-500/50"
               >
                 {tag}
               </button>

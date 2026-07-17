@@ -93,8 +93,8 @@ function HomeProduct() {
                 <div className="pt-3 border-t border-gray-50 flex justify-between items-center pointer-events-auto">
                   <div className="text-[10px] text-gray-500 font-medium tracking-wide">{item.count || 0} Views</div>
                   <Link
-                    to={`/product-view/${item.id}`}
-                    state={{ product: item }}
+                    to={`/checkout`}
+                    state={{ product: item, quantity: 1 }}
                     className="bg-black text-white text-xs font-semibold py-2 px-5 rounded hover:bg-gray-800 transition-colors uppercase tracking-wider"
                   >
                     Buy

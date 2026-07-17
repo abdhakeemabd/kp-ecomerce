@@ -16,6 +16,8 @@ export const BaseTable = ({
   emptyMessage = "No items found",
   emptySubMessage = "Try adjusting your filters.",
   className = "",
+  isLoading,
+  skeletonCount,
   ...props 
 }) => {
   return (

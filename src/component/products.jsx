@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { BiLike, BiSolidLike, BiCart, BiSolidCart, BiSearch } from 'react-icons/bi';
 import { PiShareFat } from 'react-icons/pi';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useProducts } from '../context/ProductContext';
 import ImageLoader from './image-loader';
@@ -16,6 +16,7 @@ function Products() {
   const { addToCart } = useCart();
   const { products, loading } = useProducts();
   const location = useLocation();
+  const navigate = useNavigate();
   const observer = useRef();
 
   // Group categories for tabs
@@ -82,9 +83,7 @@ function Products() {
   };
 
   const handleBuyNow = (product) => {
-    const message = `Hello, I want to order:\n\nProduct: ${product.title}\nPrice: ₹${product.offerPrice || product.price}\n\nPlease contact me.`;
-    const whatsappUrl = `https://wa.me/919846007257?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, "_blank");
+    navigate('/checkout', { state: { product, quantity: 1 } });
   };
 
   const displayedProducts = filteredProducts.slice(0, visibleCount);

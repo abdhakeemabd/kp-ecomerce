@@ -11,7 +11,7 @@ import { BaseTable } from '../../components/shadcn-custom/BaseTable';
 import { BaseDropdown } from '../../components/shadcn-custom/BaseDropdown';
 import { useSearchParams } from 'react-router-dom';
 
-function AdminDelivery() {
+function AdminShipped() {
   const [deliveries, setDeliveries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -59,9 +59,9 @@ function AdminDelivery() {
       localOrders.forEach(o => { if (o.id) mergedMap.set(o.id.toString(), o); });
       const combinedOrders = Array.from(mergedMap.values());
 
-      // Filter to only delivered or failed items
+      // Filter to only shipped items (not delivered)
       const deliveryOrders = combinedOrders
-        .filter(order => ['delivered', 'failed'].includes(order.status))
+        .filter(order => ['shipped', 'in_transit', 'out_for_delivery'].includes(order.status))
         .map(order => ({
           id: order.id,
           order_id: order.id,
@@ -155,10 +155,10 @@ function AdminDelivery() {
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div>
                 <h1 className="text-2xl font-bold text-foreground flex items-center">
-                  <Package className="mr-3 text-primary" />
-                  Delivered Orders
+                  <Truck className="mr-3 text-primary" />
+                  Shipped Orders
                 </h1>
-                <p className="text-muted-foreground text-sm mt-1">View successfully delivered orders and failed delivery attempts</p>
+                <p className="text-muted-foreground text-sm mt-1">Track dispatched orders and update their transit progress</p>
               </div>
             </div>
 
@@ -188,9 +188,10 @@ function AdminDelivery() {
                     }}
                     className="bg-transparent border-none text-sm text-foreground outline-none cursor-pointer pr-4 uppercase tracking-wider font-semibold"
                   >
-                    <option value="all">All Delivered</option>
-                    <option value="delivered">Delivered</option>
-                    <option value="failed">Failed</option>
+                    <option value="all">All Shipped</option>
+                    <option value="shipped">Shipped</option>
+                    <option value="in_transit">In Transit</option>
+                    <option value="out_for_delivery">Out for Delivery</option>
                   </select>
                 </div>
               </div>
@@ -274,9 +275,25 @@ function AdminDelivery() {
                       label="Update"
                       items={[
                         { 
-                          label: 'Revert to Shipped', 
-                          onClick: () => handleStatusUpdate(delivery.id, 'shipped'),
+                          label: 'In Transit', 
+                          onClick: () => handleStatusUpdate(delivery.id, 'in_transit'),
                           icon: <Truck size={14} className="mr-2" />
+                        },
+                        { 
+                          label: 'Out for Delivery', 
+                          onClick: () => handleStatusUpdate(delivery.id, 'out_for_delivery'),
+                          icon: <Navigation size={14} className="mr-2" />
+                        },
+                        { type: 'separator' },
+                        { 
+                          label: 'Mark Delivered', 
+                          onClick: () => handleStatusUpdate(delivery.id, 'delivered'),
+                          icon: <CheckCircle size={14} className="mr-2 text-emerald-500" />
+                        },
+                        { 
+                          label: 'Mark Failed', 
+                          onClick: () => handleStatusUpdate(delivery.id, 'failed'),
+                          icon: <AlertCircle size={14} className="mr-2 text-destructive" />
                         }
                       ]}
                     />
@@ -333,4 +350,4 @@ function AdminDelivery() {
   );
 }
 
-export default AdminDelivery;
+export default AdminShipped;

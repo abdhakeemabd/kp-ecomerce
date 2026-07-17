@@ -61,9 +61,7 @@ function ProductDetails() {
   };
 
   const handleBuyNow = () => {
-    const message = `Hello, I want to order:\n\nProduct: ${product.title}\nPrice: ₹${product.offerPrice}\n\nPlease contact me.`;
-    const whatsappUrl = `https://wa.me/919846007257?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, "_blank");
+    navigate('/checkout', { state: { product, quantity: 1 } });
   };
 
   if (!product) return <div>Loading...</div>;

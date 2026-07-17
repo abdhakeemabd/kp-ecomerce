@@ -241,6 +241,7 @@ function Profile() {
                       <input
                         type="tel"
                         name="phone"
+                        maxLength="10"
                         value={formData.phone}
                         onChange={handleInputChange}
                         className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-orange-500 focus:outline-none transition-colors duration-200"

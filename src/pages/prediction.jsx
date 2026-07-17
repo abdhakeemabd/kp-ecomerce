@@ -258,6 +258,7 @@ const PredictionPage = () => {
                     <input 
                       type="tel" 
                       name="phone"
+                      maxLength="10"
                       required
                       value={formData.phone}
                       onChange={handleInputChange}

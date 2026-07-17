@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useUser } from '../context/UserContext';
 import ProfileBanner from './profile-banner';
-import { FaEdit, FaSave, FaTimes, FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaBirthdayCake, FaVenusMars } from 'react-icons/fa';
+import { FaEdit, FaSave, FaTimes, FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaBirthdayCake, FaVenusMars, FaCheckCircle, FaExclamationCircle } from 'react-icons/fa';
 
 function Profile() {
   const { user, updateUserProfile, loading } = useUser();
@@ -106,11 +106,20 @@ function Profile() {
       <ProfileBanner />
       <section className='profile_sec py-10 bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen'>
         <div className="container mx-auto px-4">
-          {/* Success Message */}
+          {/* Success / Local Warning Message */}
           {saveMessage && (
-            <div className="max-w-4xl mx-auto mb-6">
-              <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg shadow-md animate-fade-in">
-                {saveMessage}
+            <div className="max-w-4xl mx-auto mb-6 transition-all duration-300">
+              <div className={`border px-5 py-4 rounded-2xl shadow-sm flex items-center gap-3.5 animate-fadeIn ${
+                saveMessage.toLowerCase().includes('locally')
+                  ? 'bg-amber-50 border-amber-200 text-amber-800'
+                  : 'bg-green-50 border-green-200 text-green-800'
+              }`}>
+                {saveMessage.toLowerCase().includes('locally') ? (
+                  <FaExclamationCircle className="text-amber-500 text-xl shrink-0" />
+                ) : (
+                  <FaCheckCircle className="text-green-500 text-xl shrink-0" />
+                )}
+                <span className="font-semibold text-sm">{saveMessage}</span>
               </div>
             </div>
           )}

@@ -4,6 +4,8 @@ import { PiShareFat } from 'react-icons/pi';
 import { Link, useLocation } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useProducts } from '../context/ProductContext';
+import ImageLoader from './image-loader';
+import ProductSkeleton from './product-skeleton';
 
 function Products() {
   const [likes, setLikes] = useState({});
@@ -12,9 +14,28 @@ function Products() {
   const [searchTerm, setSearchTerm] = useState('');
   const [visibleCount, setVisibleCount] = useState(20);
   const { addToCart } = useCart();
-  const { products } = useProducts();
+  const { products, loading } = useProducts();
   const location = useLocation();
   const observer = useRef();
+
+  // Group categories for tabs
+  const categories = useMemo(() => {
+    const cats = products.reduce((acc, p) => {
+      if (p.category && !acc.includes(p.category)) acc.push(p.category);
+      return acc;
+    }, []);
+    return ['All', ...cats];
+  }, [products]);
+
+  // Filter products based on search and tab
+  const filteredProducts = useMemo(() => {
+    return products.filter(product => {
+      const matchesSearch = (product.title || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (product.content || '').toLowerCase().includes(searchTerm.toLowerCase());
+      const matchesTab = activeTab === 'All' || product.category === activeTab;
+      return matchesSearch && matchesTab;
+    });
+  }, [products, searchTerm, activeTab]);
 
   // Initialize search from URL
   useEffect(() => {
@@ -49,7 +70,7 @@ function Products() {
         content: product.content,
         price: product.price || product.offerPrice,
         offerPrice: product.offerPrice || product.price,
-        image: product.image || (product.gallery && product.gallery[0]),
+        image: product.image_url || product.image || (product.gallery && product.gallery[0]),
         gallery: product.gallery || [product.image],
       });
       if (result.success) {
@@ -66,43 +87,61 @@ function Products() {
     window.open(whatsappUrl, "_blank");
   };
 
-  // Filter products based on search and tab
-  const filteredProducts = useMemo(() => {
-    return products.filter(product => {
-      const matchesSearch = (product.title || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
-        (product.content || '').toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesTab = activeTab === 'All' || product.category === activeTab;
-      return matchesSearch && matchesTab;
-    });
-  }, [products, searchTerm, activeTab]);
-
-  // Group categories for tabs
-  const categories = useMemo(() => {
-    const cats = products.reduce((acc, p) => {
-      if (p.category && !acc.includes(p.category)) acc.push(p.category);
-      return acc;
-    }, []);
-    return ['All', ...cats];
-  }, [products]);
-
   const displayedProducts = filteredProducts.slice(0, visibleCount);
 
   return (
     <section className="product_main_sec py-12 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
-          {/* Search and Filters */}
-          <div className="flex flex-wrap pb-4 w-full md:w-auto gap-2 justify-center">
+          {/* Desktop Categories List */}
+          <div className="hidden md:flex flex-wrap pb-4 w-full md:w-auto gap-2 justify-center">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => { setActiveTab(cat); setVisibleCount(20); }}
-                className={`px-6 py-2 rounded-lg text-sm font-semibold transition-all duration-300 whitespace-nowrap shadow-sm
-                    ${activeTab === cat ? 'bg-orange-600 text-white shadow-md' : 'bg-white text-gray-700 hover:bg-gray-100'}`}
+                className={`px-6 py-2 rounded-lg text-sm font-semibold transition-all duration-300 whitespace-nowrap shadow-sm cursor-pointer
+101:                     ${activeTab === cat ? 'bg-orange-600 text-white shadow-md' : 'bg-white text-gray-700 hover:bg-gray-100'}`}
               >
                 {cat}
               </button>
             ))}
+          </div>
+
+          {/* Mobile Category Carousel Selector */}
+          <div className="flex md:hidden items-center justify-between w-full max-w-md mx-auto mb-6 bg-gray-100 rounded-full px-4 py-2 shadow-sm border border-gray-200">
+            <button
+              onClick={() => {
+                const currentIndex = categories.indexOf(activeTab);
+                const prevIdx = (currentIndex - 1 + categories.length) % categories.length;
+                setActiveTab(categories[prevIdx]);
+                setVisibleCount(20);
+              }}
+              className="p-2 text-gray-800 hover:bg-gray-200 rounded-full transition-colors flex items-center justify-center cursor-pointer"
+              aria-label="Previous category"
+            >
+              <svg className="w-4 h-4 stroke-[3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+              </svg>
+            </button>
+            
+            <span className="font-bold text-gray-900 text-sm tracking-wide">
+              {activeTab}
+            </span>
+            
+            <button
+              onClick={() => {
+                const currentIndex = categories.indexOf(activeTab);
+                const nextIdx = (currentIndex + 1) % categories.length;
+                setActiveTab(categories[nextIdx]);
+                setVisibleCount(20);
+              }}
+              className="p-2 text-gray-800 hover:bg-gray-200 rounded-full transition-colors flex items-center justify-center cursor-pointer"
+              aria-label="Next category"
+            >
+              <svg className="w-4 h-4 stroke-[3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+              </svg>
+            </button>
           </div>
 
           <div className="relative w-full md:w-[500px] mx-auto my-8 flex justify-center">
@@ -123,7 +162,9 @@ function Products() {
           </div>
 
           {/* Product Grid */}
-          {displayedProducts.length > 0 ? (
+          {loading && displayedProducts.length === 0 ? (
+            <ProductSkeleton count={8} />
+          ) : displayedProducts.length > 0 ? (
             <>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {displayedProducts.map((product, index) => (
@@ -141,11 +182,11 @@ function Products() {
                       </div>
                     )}
 
-                    <div className="block overflow-hidden aspect-[4/3] bg-gray-50">
-                      <img
-                        src={product.image || (product.gallery && product.gallery[0])}
+                    <div className="block overflow-hidden aspect-[4/3] bg-gray-50 relative z-10">
+                      <ImageLoader
+                        src={product.image_url || product.image || (product.gallery && product.gallery[0])}
                         alt={product.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        className="transition-transform duration-500 group-hover:scale-110"
                       />
                     </div>
 

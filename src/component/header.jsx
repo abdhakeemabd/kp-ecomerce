@@ -1,26 +1,41 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Logo from '../assets/images/logo/logo.png';
-import { FaRegUser, FaShoppingCart } from "react-icons/fa";
+import { FaRegUser, FaShoppingCart, FaUserCircle, FaWifi, FaLock, FaEnvelope, FaPhone, FaUser } from "react-icons/fa";
 import { IoCloseOutline, IoMenuOutline } from "react-icons/io5";
 import Modal from 'react-modal';
-import OtpInput from 'react-otp-input';
 import Product1 from '../assets/images/img/1.webp';
 import { useCart } from '../context/CartContext';
+import { useUser } from '../context/UserContext';
 
 Modal.setAppElement('#root');
 
 function Header() {
+  const { user, login, register, logout, isAuthenticated, isOfflineMode, loading: authLoading } = useUser();
   const [menuOpen, setMenuOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [modalOpenAnimation, setModalOpenAnimation] = useState(false);
-  const [isOtpMode, setIsOtpMode] = useState(false);
-  const [phone, setPhone] = useState('');
-  const [otp, setOtp] = useState('');
+  
+  // Modal state ('login' | 'register')
+  const [activeTab, setActiveTab] = useState('login');
+  
+  // Credentials
+  const [loginIdentifier, setLoginIdentifier] = useState(''); // email or phone
+  const [loginPassword, setLoginPassword] = useState('');
+  
+  const [regName, setRegName] = useState('');
+  const [regEmail, setRegEmail] = useState('');
+  const [regPhone, setRegPhone] = useState('');
+  const [regPassword, setRegPassword] = useState('');
+  
+  const [authError, setAuthError] = useState('');
+  const [authSuccessMsg, setAuthSuccessMsg] = useState('');
+
   const userMenuRef = useRef();
   const { getCartItemCount } = useCart();
   const location = useLocation();
+  const isPredictionActive = new Date() < new Date('2026-07-20T00:00:00');
 
   const isActive = (path) => {
     if (path === '/product') {
@@ -41,27 +56,82 @@ function Header() {
   }, []);
 
   // Modal controls
-  const openModal = () => setIsOpen(true);
+  const openModal = () => {
+    setAuthError('');
+    setAuthSuccessMsg('');
+    setIsOpen(true);
+  };
   const afterOpenModal = () => setTimeout(() => setModalOpenAnimation(true), 10);
   const closeModal = () => {
     setIsOpen(false);
     setModalOpenAnimation(false);
-    setIsOtpMode(false);
-    setPhone('');
-    setOtp('');
+    setLoginIdentifier('');
+    setLoginPassword('');
+    setRegName('');
+    setRegEmail('');
+    setRegPhone('');
+    setRegPassword('');
+    setAuthError('');
+    setAuthSuccessMsg('');
   };
 
-  const handleRequestOtp = () => {
-    const indianPhoneRegex = /^[1-9][0-9]{9}$/;
-    if (indianPhoneRegex.test(phone)) {
-      setIsOtpMode(true);
+  const handleLoginSubmit = async (e) => {
+    e.preventDefault();
+    setAuthError('');
+    setAuthSuccessMsg('');
+
+    if (!loginIdentifier || !loginPassword) {
+      setAuthError('Please enter both username/phone/email and password.');
+      return;
+    }
+
+    const credentials = {
+      phone: !loginIdentifier.includes('@') ? loginIdentifier : undefined,
+      email: loginIdentifier.includes('@') ? loginIdentifier : undefined,
+      password: loginPassword
+    };
+
+    const result = await login(credentials);
+    if (result.success) {
+      setAuthSuccessMsg(result.isOffline ? 'Logged in offline successfully!' : 'Logged in successfully!');
+      setTimeout(() => {
+        closeModal();
+      }, 1000);
     } else {
-      alert("Please enter a valid 10-digit Indian phone number that doesn't start with 0.");
+      setAuthError(result.error || 'Login failed. Please check credentials.');
+    }
+  };
+
+  const handleRegisterSubmit = async (e) => {
+    e.preventDefault();
+    setAuthError('');
+    setAuthSuccessMsg('');
+
+    if (!regName || !regEmail || !regPhone || !regPassword) {
+      setAuthError('All registration fields are required.');
+      return;
+    }
+
+    const userData = {
+      name: regName,
+      email: regEmail,
+      phone: regPhone,
+      password: regPassword
+    };
+
+    const result = await register(userData);
+    if (result.success) {
+      setAuthSuccessMsg(result.isOffline ? 'Registered locally (Offline mode active)!' : 'Registered successfully!');
+      setTimeout(() => {
+        closeModal();
+      }, 1000);
+    } else {
+      setAuthError(result.error || 'Registration failed.');
     }
   };
 
   return (
-    <header className="bg-white py-4 relative z-50 shadow-sm">
+    <header className="bg-white py-4 relative z-50 shadow-sm border-b border-gray-100">
       <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Mobile Menu Button */}
         <div className="md:hidden">
@@ -108,11 +178,22 @@ function Header() {
         <nav className="hidden md:flex gap-10 items-center">
           <Link to="/" className={`font-semibold transition-all duration-300 py-1 ${isActive('/') ? 'text-red-600 border-b-2 border-red-600' : 'text-gray-800 hover:text-red-600'}`}>Home</Link>
           <Link to="/product" className={`font-semibold transition-all duration-300 py-1 ${isActive('/product') ? 'text-red-600 border-b-2 border-red-600' : 'text-gray-800 hover:text-red-600'}`}>Product</Link>
+          {isPredictionActive && (
+            <Link to="/prediction" className={`font-semibold transition-all duration-300 py-1 ${isActive('/prediction') ? 'text-red-600 border-b-2 border-red-600' : 'text-gray-800 hover:text-red-600'}`}>Prediction</Link>
+          )}
           <Link to="/contact" className={`font-semibold transition-all duration-300 py-1 ${isActive('/contact') ? 'text-red-600 border-b-2 border-red-600' : 'text-gray-800 hover:text-red-600'}`}>Contact</Link>
         </nav>
 
         {/* Cart and User Menu */}
         <div className="flex items-center gap-3">
+          {/* Offline Mode General indicator */}
+          {isOfflineMode && isAuthenticated && (
+            <div className="hidden md:flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-amber-800 border border-amber-200 text-xs font-semibold">
+              <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+              Offline Mode
+            </div>
+          )}
+
           {/* Cart Icon */}
           <Link to="/cart" aria-label="Shopping Cart" className="relative border p-2 md:p-3 rounded-full hover:bg-gray-50 transition-colors duration-200">
             <FaShoppingCart size={22} className="text-gray-700" />
@@ -125,21 +206,55 @@ function Header() {
 
           {/* User Menu */}
           <div className="relative" ref={userMenuRef}>
-            <button aria-label="User Menu" className="border p-2 md:p-3 rounded-full" onClick={() => setUserMenuOpen(!userMenuOpen)}>
+            <button aria-label="User Menu" className={`border p-2 md:p-3 rounded-full flex items-center justify-center ${isAuthenticated ? 'border-orange-500 text-orange-600' : 'border-gray-200 text-gray-700'}`} onClick={() => setUserMenuOpen(!userMenuOpen)}>
               <FaRegUser size={22} />
             </button>
             {userMenuOpen && (
-              <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
-                <div className="flex flex-col gap-2 p-4">
-                  <button onClick={() => { openModal(); setUserMenuOpen(false); }} className="text-left text-gray-700 hover:text-orange-500">Login</button>
-                  <button onClick={() => { openModal(); setUserMenuOpen(false); }} className="text-left text-gray-700 hover:text-orange-500">Register</button>
-                  <Link
-                    to="/profile"
-                    onClick={() => setUserMenuOpen(false)}
-                    className="text-left text-gray-700 hover:text-orange-500">
-                    My Account
-                  </Link>
-                </div>
+              <div className="absolute right-0 mt-2 w-56 bg-white border border-gray-200 rounded-xl shadow-xl z-50 overflow-hidden">
+                {isAuthenticated ? (
+                  <div className="flex flex-col">
+                    <div className="px-4 py-3 bg-gray-50 border-b border-gray-100">
+                      <div className="font-semibold text-gray-900 truncate">{user?.name}</div>
+                      <div className="text-xs text-gray-500 truncate">{user?.email || user?.phone}</div>
+                      {isOfflineMode && (
+                        <span className="inline-flex items-center gap-1 mt-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200">
+                          <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+                          Offline Session
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex flex-col p-2 gap-1">
+                      <Link
+                        to="/profile"
+                        onClick={() => setUserMenuOpen(false)}
+                        className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
+                      >
+                        My Account
+                      </Link>
+                      <button
+                        onClick={() => { logout(); setUserMenuOpen(false); }}
+                        className="w-full text-left px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg transition-colors font-semibold"
+                      >
+                        Logout
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="flex flex-col p-2 gap-1">
+                    <button 
+                      onClick={() => { setActiveTab('login'); openModal(); setUserMenuOpen(false); }} 
+                      className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium"
+                    >
+                      Login
+                    </button>
+                    <button 
+                      onClick={() => { setActiveTab('register'); openModal(); setUserMenuOpen(false); }} 
+                      className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium"
+                    >
+                      Register
+                    </button>
+                  </div>
+                )}
               </div>
             )}
           </div>
@@ -149,7 +264,7 @@ function Header() {
       {/* Mobile Side Drawer Overlay */}
       {menuOpen && (
         <div 
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden"
+          className="fixed inset-0 bg-black/50 z-40 md:hidden"
           onClick={() => setMenuOpen(false)}
         ></div>
       )}
@@ -168,10 +283,13 @@ function Header() {
             Cart {getCartItemCount() > 0 && <span className="bg-orange-500 text-white text-xs px-2 py-1 rounded-full">{getCartItemCount()}</span>}
           </Link>
           <Link to="/contact" onClick={() => setMenuOpen(false)} className={`font-medium transition-colors ${isActive('/contact') ? 'text-orange-600' : 'text-gray-700 hover:text-orange-500'}`}>Contact</Link>
+          {isPredictionActive && (
+            <Link to="/prediction" onClick={() => setMenuOpen(false)} className={`font-medium transition-colors ${isActive('/prediction') ? 'text-orange-600' : 'text-gray-700 hover:text-orange-500'}`}>Prediction</Link>
+          )}
         </nav>
       </div>
 
-      {/* Modal for Login / OTP */}
+      {/* Modal for Login / Register */}
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
@@ -179,76 +297,181 @@ function Header() {
           setModalOpenAnimation(false);
           setTimeout(closeModal, 300);
         }}
-        className={`relative w-full max-w-4xl mx-auto p-0 bg-white rounded-lg shadow-2xl transform transition-all duration-300 ease-out overflow-hidden ${modalOpenAnimation ? 'scale-100 opacity-100' : 'scale-95 opacity-0'} m-4`}
-        overlayClassName="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[60]"
-        contentLabel="Login Modal"
+        className={`relative w-full max-w-4xl mx-auto p-0 bg-white rounded-2xl shadow-2xl transform transition-all duration-300 ease-out overflow-hidden ${modalOpenAnimation ? 'scale-100 opacity-100' : 'scale-95 opacity-0'} m-4`}
+        overlayClassName="fixed inset-0 bg-black/60 flex items-center justify-center z-[60] p-4"
+        contentLabel="Account Modal"
       >
-        <div className="flex flex-col md:flex-row">
-          <div className="hidden md:block md:w-1/2 bg-gray-200">
-            <img src={Product1} alt="Modal Visual" className="w-full h-full object-cover" />
+        <div className="flex flex-col md:flex-row h-full max-h-[90vh] overflow-y-auto md:overflow-visible">
+          {/* Visual left panel */}
+          <div className="hidden md:block md:w-1/2 bg-gray-900 relative min-h-[500px]">
+            <img src={Product1} alt="Modal Visual" className="w-full h-full object-cover opacity-80" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent p-10 flex flex-col justify-end">
+              <h2 className="text-white text-3xl font-bold mb-2">Eacyclic Marketplace</h2>
+              <p className="text-gray-200 text-sm">Discover and purchase curated premium goods directly with seamless WhatsApp checkout fallbacks.</p>
+            </div>
           </div>
-          <div className="w-full md:w-1/2 p-6 relative">
+
+          {/* Form right panel */}
+          <div className="w-full md:w-1/2 p-8 relative flex flex-col justify-center bg-white">
             <button
-              aria-label="Close login modal"
-              className="absolute right-3 top-3 text-black hover:text-gray-600"
+              aria-label="Close modal"
+              className="absolute right-4 top-4 text-gray-400 hover:text-black transition-all hover:rotate-90 duration-200"
               onClick={() => {
                 setModalOpenAnimation(false);
                 setTimeout(closeModal, 300);
               }}
             >
-              <IoCloseOutline className="text-2xl" />
+              <IoCloseOutline className="text-3xl" />
             </button>
 
-            {!isOtpMode ? (
-              <>
-                <h2 className="text-xl font-semibold mb-2 mt-6">Hello, Welcome back!</h2>
-                <p className="text-md mb-4">We will send you a confirmation code to your phone number</p>
-                <label htmlFor="phone-number" className="block mb-1 font-medium">WhatsApp Number</label>
-                <input
-                  id="phone-number"
-                  className="border border-gray-300 p-2 w-full rounded mb-4"
-                  placeholder="Enter your phone"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                />
-                <button
-                  type="button"
-                  className="bg-orange-500 text-white px-6 py-2 rounded-lg w-full"
-                  onClick={handleRequestOtp}
-                >
-                  Request OTP
-                </button>
-              </>
-            ) : (
-              <>
-                <p className="text-md mb-2 font-semibold mt-6">
-                  We are automatically detecting a SMS sent to your WhatsApp number ******{phone.slice(-4)}
-                </p>
-                <h3 className="text-lg font-semibold mb-2">Enter Verification Code</h3>
-                <OtpInput
-                  value={otp}
-                  onChange={setOtp}
-                  numInputs={6}
-                  renderInput={(props) => <input {...props} aria-label="OTP Digit" />}
-                  inputStyle={{
-                    width: "2.5rem",
-                    height: "2.5rem",
-                    margin: "0 0.25rem",
-                    fontSize: "1.25rem",
-                    borderRadius: 4,
-                    border: "1px solid #ccc",
-                  }}
-                  containerStyle="justify-center mb-4"
-                />
-                <button
-                  className="bg-green-600 text-white px-6 py-2 rounded w-full mt-2"
-                  type="button"
-                  onClick={() => alert("OTP Submitted: " + otp)}
-                >
-                  Verify OTP
-                </button>
-              </>
+            {/* Switcher Tab header */}
+            <div className="flex gap-4 border-b border-gray-100 pb-4 mb-6">
+              <button 
+                onClick={() => { setActiveTab('login'); setAuthError(''); }}
+                className={`text-lg font-bold pb-2 transition-all border-b-2 ${activeTab === 'login' ? 'border-orange-500 text-orange-600' : 'border-transparent text-gray-400'}`}
+              >
+                Sign In
+              </button>
+              <button 
+                onClick={() => { setActiveTab('register'); setAuthError(''); }}
+                className={`text-lg font-bold pb-2 transition-all border-b-2 ${activeTab === 'register' ? 'border-orange-500 text-orange-600' : 'border-transparent text-gray-400'}`}
+              >
+                Create Account
+              </button>
+            </div>
+
+            {/* Error / Success Feedback */}
+            {authError && (
+              <div className="mb-4 p-3 bg-red-50 border-l-4 border-red-500 text-red-700 text-xs font-semibold rounded">
+                {authError}
+              </div>
             )}
+            {authSuccessMsg && (
+              <div className="mb-4 p-3 bg-green-50 border-l-4 border-green-500 text-green-700 text-xs font-semibold rounded">
+                {authSuccessMsg}
+              </div>
+            )}
+
+            {activeTab === 'login' ? (
+              <form onSubmit={handleLoginSubmit} className="space-y-4">
+                <div>
+                  <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Email or Phone Number</label>
+                  <div className="relative">
+                    <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-gray-400"><FaEnvelope size={14} /></span>
+                    <input
+                      type="text"
+                      className="border border-gray-200 pl-10 pr-4 py-3 w-full rounded-xl focus:ring-2 focus:ring-orange-500 focus:outline-none transition-all placeholder-gray-400"
+                      placeholder="name@email.com or phone"
+                      value={loginIdentifier}
+                      onChange={(e) => setLoginIdentifier(e.target.value)}
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Password</label>
+                  <div className="relative">
+                    <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-gray-400"><FaLock size={14} /></span>
+                    <input
+                      type="password"
+                      className="border border-gray-200 pl-10 pr-4 py-3 w-full rounded-xl focus:ring-2 focus:ring-orange-500 focus:outline-none transition-all placeholder-gray-400"
+                      placeholder="••••••••"
+                      value={loginPassword}
+                      onChange={(e) => setLoginPassword(e.target.value)}
+                    />
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={authLoading}
+                  className="bg-black hover:bg-gray-800 text-white font-bold py-3.5 px-6 rounded-xl w-full transition-all duration-300 transform active:scale-[0.98] hover:shadow-xl hover:-translate-y-0.5 flex items-center justify-center shadow-lg cursor-pointer"
+                >
+                  {authLoading ? (
+                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                  ) : (
+                    'Log In'
+                  )}
+                </button>
+              </form>
+            ) : (
+              <form onSubmit={handleRegisterSubmit} className="space-y-4">
+                <div>
+                  <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Full Name</label>
+                  <div className="relative">
+                    <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-gray-400"><FaUser size={14} /></span>
+                    <input
+                      type="text"
+                      className="border border-gray-200 pl-10 pr-4 py-3 w-full rounded-xl focus:ring-2 focus:ring-orange-500 focus:outline-none transition-all placeholder-gray-400"
+                      placeholder="John Doe"
+                      value={regName}
+                      onChange={(e) => setRegName(e.target.value)}
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Email Address</label>
+                    <div className="relative">
+                      <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-gray-400"><FaEnvelope size={14} /></span>
+                      <input
+                        type="email"
+                        className="border border-gray-200 pl-10 pr-4 py-3 w-full rounded-xl focus:ring-2 focus:ring-orange-500 focus:outline-none transition-all placeholder-gray-400 text-sm"
+                        placeholder="john@example.com"
+                        value={regEmail}
+                        onChange={(e) => setRegEmail(e.target.value)}
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Phone Number</label>
+                    <div className="relative">
+                      <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-gray-400"><FaPhone size={14} /></span>
+                      <input
+                        type="text"
+                        className="border border-gray-200 pl-10 pr-4 py-3 w-full rounded-xl focus:ring-2 focus:ring-orange-500 focus:outline-none transition-all placeholder-gray-400 text-sm"
+                        placeholder="10-digit number"
+                        value={regPhone}
+                        onChange={(e) => setRegPhone(e.target.value)}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Password</label>
+                  <div className="relative">
+                    <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-gray-400"><FaLock size={14} /></span>
+                    <input
+                      type="password"
+                      className="border border-gray-200 pl-10 pr-4 py-3 w-full rounded-xl focus:ring-2 focus:ring-orange-500 focus:outline-none transition-all placeholder-gray-400"
+                      placeholder="••••••••"
+                      value={regPassword}
+                      onChange={(e) => setRegPassword(e.target.value)}
+                    />
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={authLoading}
+                  className="bg-black hover:bg-gray-800 text-white font-bold py-3.5 px-6 rounded-xl w-full transition-all duration-300 transform active:scale-[0.98] hover:shadow-xl hover:-translate-y-0.5 flex items-center justify-center shadow-lg cursor-pointer"
+                >
+                  {authLoading ? (
+                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                  ) : (
+                    'Register Account'
+                  )}
+                </button>
+              </form>
+            )}
+
+            {/* Offline Helper Warning */}
+            <div className="mt-6 pt-4 border-t border-gray-100 flex items-center gap-2 text-xs text-gray-400 font-medium">
+              <FaWifi className="shrink-0 animate-pulse text-amber-500" />
+              <span>Offline-ready protection: data saves locally if servers are offline.</span>
+            </div>
           </div>
         </div>
       </Modal>

@@ -86,7 +86,7 @@ function Cart() {
                       {/* Product Image */}
                       <div className="w-32 h-32 flex-shrink-0 bg-gray-100 rounded-lg overflow-hidden border border-gray-200">
                         <img
-                          src={item.image || item.gallery?.[0]}
+                          src={item.image_url || item.image || item.gallery?.[0]}
                           alt={item.title}
                           className="w-full h-full object-cover"
                         />

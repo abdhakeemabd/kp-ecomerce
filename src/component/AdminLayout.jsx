@@ -5,8 +5,50 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   LayoutDashboard, Package, ShoppingCart, Truck, Mail, 
   LogOut, Sun, Moon, Palette, Menu, X, ChevronRight,
-  User, Settings, Bell, Search
+  User, Settings, Bell, Search, Trophy
 } from 'lucide-react';
+
+const NavItem = ({ item, isCollapsed, isActive, navigate, setIsMobileMenuOpen }) => {
+  const Icon = item.icon;
+
+  return (
+    <button
+      onClick={() => {
+        navigate(item.path);
+        setIsMobileMenuOpen(false);
+      }}
+      className={`w-full flex items-center p-3 mb-2 rounded-xl transition-all duration-200 group relative
+        ${isActive 
+          ? 'bg-gradient-to-r from-indigo-600/10 to-purple-600/10 text-indigo-600 dark:text-indigo-400 font-semibold' 
+          : 'text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800'
+        }`}
+    >
+      <div className={`p-2 rounded-lg ${isActive ? 'bg-white dark:bg-gray-900 shadow-sm' : ''}`}>
+        <Icon size={20} className={isActive ? item.color : ''} />
+      </div>
+      {!isCollapsed && (
+        <motion.span
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="ml-3 whitespace-nowrap"
+        >
+          {item.name}
+        </motion.span>
+      )}
+      {isActive && !isCollapsed && (
+        <motion.div
+          layoutId="activeNav"
+          className="absolute right-2 w-1.5 h-1.5 rounded-full bg-indigo-600"
+        />
+      )}
+      {isCollapsed && (
+        <div className="absolute left-full ml-4 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-50 whitespace-nowrap">
+          {item.name}
+        </div>
+      )}
+    </button>
+  );
+};
 
 const AdminLayout = ({ children }) => {
   const { adminUser, logout, darkMode, toggleDarkMode, themeColor, changeTheme } = useAdmin();
@@ -22,6 +64,7 @@ const AdminLayout = ({ children }) => {
     { name: 'Orders', icon: ShoppingCart, path: '/admin/orders', color: 'text-emerald-500' },
     { name: 'Delivery', icon: Truck, path: '/admin/delivery', color: 'text-amber-500' },
     { name: 'Messages', icon: Mail, path: '/admin/contacts', color: 'text-pink-500' },
+    { name: 'Predictions', icon: Trophy, path: '/admin/predictions', color: 'text-orange-500' },
   ];
 
   const themes = [
@@ -35,49 +78,6 @@ const AdminLayout = ({ children }) => {
   const sidebarVariants = {
     open: { width: '280px', transition: { type: 'spring', stiffness: 300, damping: 30 } },
     closed: { width: '80px', transition: { type: 'spring', stiffness: 300, damping: 30 } }
-  };
-
-  const NavItem = ({ item, isCollapsed }) => {
-    const isActive = location.pathname === item.path;
-    const Icon = item.icon;
-
-    return (
-      <button
-        onClick={() => {
-          navigate(item.path);
-          setIsMobileMenuOpen(false);
-        }}
-        className={`w-full flex items-center p-3 mb-2 rounded-xl transition-all duration-200 group relative
-          ${isActive 
-            ? 'bg-gradient-to-r from-indigo-600/10 to-purple-600/10 text-indigo-600 dark:text-indigo-400 font-semibold' 
-            : 'text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800'
-          }`}
-      >
-        <div className={`p-2 rounded-lg ${isActive ? 'bg-white dark:bg-gray-900 shadow-sm' : ''}`}>
-          <Icon size={20} className={isActive ? item.color : ''} />
-        </div>
-        {!isCollapsed && (
-          <motion.span
-            initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="ml-3 whitespace-nowrap"
-          >
-            {item.name}
-          </motion.span>
-        )}
-        {isActive && !isCollapsed && (
-          <motion.div
-            layoutId="activeNav"
-            className="absolute right-2 w-1.5 h-1.5 rounded-full bg-indigo-600"
-          />
-        )}
-        {isCollapsed && (
-          <div className="absolute left-full ml-4 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-50 whitespace-nowrap">
-            {item.name}
-          </div>
-        )}
-      </button>
-    );
   };
 
   return (
@@ -121,7 +121,14 @@ const AdminLayout = ({ children }) => {
 
         <nav className="flex-1 px-4 mt-4">
           {menuItems.map((item) => (
-            <NavItem key={item.path} item={item} isCollapsed={!isSidebarOpen} />
+            <NavItem 
+              key={item.path} 
+              item={item} 
+              isCollapsed={!isSidebarOpen} 
+              isActive={location.pathname === item.path}
+              navigate={navigate}
+              setIsMobileMenuOpen={setIsMobileMenuOpen}
+            />
           ))}
         </nav>
 
@@ -163,7 +170,7 @@ const AdminLayout = ({ children }) => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden"
+              className="fixed inset-0 bg-black/50 z-40 lg:hidden"
             />
             <motion.aside
               initial={{ x: '-100%' }}
@@ -181,7 +188,14 @@ const AdminLayout = ({ children }) => {
                 </div>
                 <nav>
                   {menuItems.map((item) => (
-                    <NavItem key={item.path} item={item} isCollapsed={false} />
+                    <NavItem 
+                      key={item.path} 
+                      item={item} 
+                      isCollapsed={false} 
+                      isActive={location.pathname === item.path}
+                      navigate={navigate}
+                      setIsMobileMenuOpen={setIsMobileMenuOpen}
+                    />
                   ))}
                 </nav>
                 <div className="mt-auto pt-10 border-t border-gray-100 dark:border-gray-800">
@@ -278,7 +292,7 @@ const AdminLayout = ({ children }) => {
         </header>
 
         {/* Content Area */}
-        <main className="flex-1 overflow-y-auto p-4 md:p-8 custom-scrollbar">
+        <main className="flex-1 overflow-y-auto p-2 md:p-3 custom-scrollbar">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

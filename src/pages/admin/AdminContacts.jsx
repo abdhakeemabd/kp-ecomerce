@@ -199,7 +199,7 @@ function AdminContacts() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => setShowModal(false)}
-                className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100]"
+                className="fixed inset-0 bg-black/60 z-[100]"
               />
               <motion.div
                 initial={{ opacity: 0, scale: 0.9, y: 20 }}

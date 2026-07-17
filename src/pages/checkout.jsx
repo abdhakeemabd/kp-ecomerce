@@ -138,7 +138,7 @@ function Checkout() {
                   </div>
                   <div className="space-y-1.5">
                     <label className="text-sm font-semibold text-gray-700">Phone Number <span className="text-red-500">*</span></label>
-                    <input required type="tel" name="phone" value={formData.phone} onChange={handleInputChange} className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all" placeholder="Enter Your Phone Number" />
+                    <input required type="tel" maxLength="10" name="phone" value={formData.phone} onChange={handleInputChange} className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all" placeholder="Enter Your Phone Number" />
                   </div>
                 </div>
 

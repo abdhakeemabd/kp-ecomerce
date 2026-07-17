@@ -72,7 +72,7 @@ function ContactForm() {
                 <input type="text" name="subject" value={formData.subject} onChange={handleChange} required aria-label="Subject" placeholder="Subject" className="border border-[#f6e416] rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-green-400" />
               </div>
               <input type="email" name="email" value={formData.email} onChange={handleChange} required aria-label="Email Address" placeholder="Email" className="border border-[#f6e416] rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-green-400" />
-              <input type="text" name="phone" value={formData.phone} onChange={handleChange} aria-label="Phone Number" placeholder="Phone Number" className="border border-[#f6e416] rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-green-400" />
+              <input type="tel" maxLength="10" name="phone" value={formData.phone} onChange={handleChange} aria-label="Phone Number" placeholder="Phone Number" className="border border-[#f6e416] rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-green-400" />
               <textarea
                 name="message" value={formData.message} onChange={handleChange} required
                 aria-label="Message" placeholder="Message" rows="4" className="border border-[#f6e416] rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-green-400"></textarea>

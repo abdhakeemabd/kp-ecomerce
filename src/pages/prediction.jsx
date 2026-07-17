@@ -13,6 +13,11 @@ const countryCodes = [
   { code: '+1', country: 'US/CA' },
   { code: '+44', country: 'UK' },
   { code: '+971', country: 'AE' },
+  { code: '+966', country: 'SA' },
+  { code: '+974', country: 'QA' },
+  { code: '+965', country: 'KW' },
+  { code: '+968', country: 'OM' },
+  { code: '+973', country: 'BH' },
   { code: '+61', country: 'AU' },
 ];
 

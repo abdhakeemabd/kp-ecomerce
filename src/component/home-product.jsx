@@ -76,7 +76,7 @@ function HomeProduct() {
                   )}
                 <ImageLoader 
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
-                  src={item.image || (item.gallery && item.gallery[0])} 
+                  src={item.image_url || item.image || (item.gallery && item.gallery[0])} 
                   alt={item.title} 
                 />
               </div>

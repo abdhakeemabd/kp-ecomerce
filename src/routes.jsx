@@ -23,6 +23,7 @@ const ProdcutView = lazy(() => import('./pages/prodcut-view'));
 const Profile = lazy(() => import('./component/profile'));
 const Cart = lazy(() => import('./pages/cart'));
 const NotFound = lazy(() => import('./pages/not-found'));
+const PredictionPage = lazy(() => import('./pages/prediction'));
 
 // Lazy loaded admin pages
 const AdminLogin = lazy(() => import('./pages/admin/AdminLogin'));
@@ -33,6 +34,7 @@ const AdminDelivery = lazy(() => import('./pages/admin/AdminDelivery'));
 const AdminContacts = lazy(() => import('./pages/admin/AdminContacts'));
 const AdminProfile = lazy(() => import('./pages/admin/AdminProfile'));
 const OrderDetails = lazy(() => import('./pages/admin/OrderDetails'));
+const AdminPredictions = lazy(() => import('./pages/admin/AdminPredictions'));
 
 // Layout wrapper for public pages
 function PublicLayout({ children }) {
@@ -67,6 +69,7 @@ function HomeRoutes() {
                   <Route path='/admin/delivery' element={<ProtectedRoute><AdminDelivery /></ProtectedRoute>} />
                   <Route path='/admin/contacts' element={<ProtectedRoute><AdminContacts /></ProtectedRoute>} />
                   <Route path='/admin/profile' element={<ProtectedRoute><AdminProfile /></ProtectedRoute>} />
+                  <Route path='/admin/predictions' element={<ProtectedRoute><AdminPredictions /></ProtectedRoute>} />
 
                   {/* Public Routes - With Header/Footer */}
                   <Route path='/' element={<PublicLayout><Home /></PublicLayout>} />
@@ -77,6 +80,7 @@ function HomeRoutes() {
                   <Route path='/faq' element={<PublicLayout><Faq /></PublicLayout>} />
                   <Route path='/contact' element={<PublicLayout><Contact /></PublicLayout>} />
                   <Route path='/profile' element={<PublicLayout><Profile /></PublicLayout>} />
+                  <Route path='/prediction' element={<PublicLayout><PredictionPage /></PublicLayout>} />
                   <Route path="*" element={<PublicLayout><NotFound /></PublicLayout>} />
                 </Routes>
               </Suspense>

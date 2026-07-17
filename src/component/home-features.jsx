@@ -66,7 +66,7 @@ function HomeFeatures() {
                             -{item.offer.replace(/[^0-9]/g, '')}%
                           </div>
                         )}
-                      <ImageLoader className='transition-transform duration-700 group-hover:scale-110' src={item.image || (item.gallery && item.gallery[0])} alt={item.title} />
+                      <ImageLoader className='transition-transform duration-700 group-hover:scale-110' src={item.image_url || item.image || (item.gallery && item.gallery[0])} alt={item.title} />
                     </div>
 
                   <div className="p-5 flex flex-col flex-1 relative z-20 pointer-events-none">

@@ -70,7 +70,7 @@ function Products() {
         content: product.content,
         price: product.price || product.offerPrice,
         offerPrice: product.offerPrice || product.price,
-        image: product.image || (product.gallery && product.gallery[0]),
+        image: product.image_url || product.image || (product.gallery && product.gallery[0]),
         gallery: product.gallery || [product.image],
       });
       if (result.success) {
@@ -184,7 +184,7 @@ function Products() {
 
                     <div className="block overflow-hidden aspect-[4/3] bg-gray-50 relative z-10">
                       <ImageLoader
-                        src={product.image || (product.gallery && product.gallery[0])}
+                        src={product.image_url || product.image || (product.gallery && product.gallery[0])}
                         alt={product.title}
                         className="transition-transform duration-500 group-hover:scale-110"
                       />

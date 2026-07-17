@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Search, MapPin, TrendingUp } from 'lucide-react'
+import { Search, MapPin, TrendingUp, Trophy } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 
 function HomeBanner() {
@@ -85,6 +85,27 @@ function HomeBanner() {
               </button>
             ))}
           </motion.div>
+
+          {/* Conditional Prediction Banner Button */}
+          {new Date() < new Date('2026-07-20T00:00:00') && (
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="mt-10 flex justify-center"
+            >
+              <button
+                onClick={() => navigate('/prediction')}
+                className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500 text-white font-bold py-3.5 px-8 rounded-full shadow-[0_0_20px_rgba(249,115,22,0.4)] hover:shadow-[0_0_30px_rgba(249,115,22,0.7)] hover:scale-105 transition-all duration-300"
+              >
+                <Trophy className="w-5 h-5 text-yellow-200 group-hover:rotate-12 transition-transform" />
+                <span>Predict World Cup 2026 Winner</span>
+                <span className="absolute -top-4 -right-4 bg-green-500 text-white text-[11px] font-black px-3 py-1.5 rounded-full uppercase tracking-wider animate-bounce shadow-lg shadow-green-500/40 border-2 border-white">
+                  Win ₹500 Voucher!
+                </span>
+              </button>
+            </motion.div>
+          )}
         </div>
       </div>
     </section>

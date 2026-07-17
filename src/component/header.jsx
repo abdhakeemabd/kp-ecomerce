@@ -35,6 +35,7 @@ function Header() {
   const userMenuRef = useRef();
   const { getCartItemCount } = useCart();
   const location = useLocation();
+  const isPredictionActive = new Date() < new Date('2026-07-20T00:00:00');
 
   const isActive = (path) => {
     if (path === '/product') {
@@ -177,6 +178,9 @@ function Header() {
         <nav className="hidden md:flex gap-10 items-center">
           <Link to="/" className={`font-semibold transition-all duration-300 py-1 ${isActive('/') ? 'text-red-600 border-b-2 border-red-600' : 'text-gray-800 hover:text-red-600'}`}>Home</Link>
           <Link to="/product" className={`font-semibold transition-all duration-300 py-1 ${isActive('/product') ? 'text-red-600 border-b-2 border-red-600' : 'text-gray-800 hover:text-red-600'}`}>Product</Link>
+          {isPredictionActive && (
+            <Link to="/prediction" className={`font-semibold transition-all duration-300 py-1 ${isActive('/prediction') ? 'text-red-600 border-b-2 border-red-600' : 'text-gray-800 hover:text-red-600'}`}>Prediction</Link>
+          )}
           <Link to="/contact" className={`font-semibold transition-all duration-300 py-1 ${isActive('/contact') ? 'text-red-600 border-b-2 border-red-600' : 'text-gray-800 hover:text-red-600'}`}>Contact</Link>
         </nav>
 
@@ -279,6 +283,9 @@ function Header() {
             Cart {getCartItemCount() > 0 && <span className="bg-orange-500 text-white text-xs px-2 py-1 rounded-full">{getCartItemCount()}</span>}
           </Link>
           <Link to="/contact" onClick={() => setMenuOpen(false)} className={`font-medium transition-colors ${isActive('/contact') ? 'text-orange-600' : 'text-gray-700 hover:text-orange-500'}`}>Contact</Link>
+          {isPredictionActive && (
+            <Link to="/prediction" onClick={() => setMenuOpen(false)} className={`font-medium transition-colors ${isActive('/prediction') ? 'text-orange-600' : 'text-gray-700 hover:text-orange-500'}`}>Prediction</Link>
+          )}
         </nav>
       </div>
 

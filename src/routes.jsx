@@ -24,6 +24,7 @@ const Profile = lazy(() => import('./component/profile'));
 const Cart = lazy(() => import('./pages/cart'));
 const NotFound = lazy(() => import('./pages/not-found'));
 const PredictionPage = lazy(() => import('./pages/prediction'));
+const Checkout = lazy(() => import('./pages/checkout'));
 
 // Lazy loaded admin pages
 const AdminLogin = lazy(() => import('./pages/admin/AdminLogin'));
@@ -31,6 +32,7 @@ const AdminDashboard = lazy(() => import('./pages/admin/AdminDashboard'));
 const AdminProducts = lazy(() => import('./pages/admin/AdminProducts'));
 const AdminOrders = lazy(() => import('./pages/admin/AdminOrders'));
 const AdminDelivery = lazy(() => import('./pages/admin/AdminDelivery'));
+const AdminShipped = lazy(() => import('./pages/admin/AdminShipped'));
 const AdminContacts = lazy(() => import('./pages/admin/AdminContacts'));
 const AdminProfile = lazy(() => import('./pages/admin/AdminProfile'));
 const OrderDetails = lazy(() => import('./pages/admin/OrderDetails'));
@@ -65,6 +67,7 @@ function HomeRoutes() {
                   <Route path='/admin/dashboard' element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
                   <Route path='/admin/products' element={<ProtectedRoute><AdminProducts /></ProtectedRoute>} />
                   <Route path='/admin/orders' element={<ProtectedRoute><AdminOrders /></ProtectedRoute>} />
+                  <Route path='/admin/shipped' element={<ProtectedRoute><AdminShipped /></ProtectedRoute>} />
                   <Route path='/admin/orders/:orderId' element={<ProtectedRoute><OrderDetails /></ProtectedRoute>} />
                   <Route path='/admin/delivery' element={<ProtectedRoute><AdminDelivery /></ProtectedRoute>} />
                   <Route path='/admin/contacts' element={<ProtectedRoute><AdminContacts /></ProtectedRoute>} />
@@ -81,6 +84,7 @@ function HomeRoutes() {
                   <Route path='/contact' element={<PublicLayout><Contact /></PublicLayout>} />
                   <Route path='/profile' element={<PublicLayout><Profile /></PublicLayout>} />
                   <Route path='/prediction' element={<PublicLayout><PredictionPage /></PublicLayout>} />
+                  <Route path='/checkout' element={<PublicLayout><Checkout /></PublicLayout>} />
                   <Route path="*" element={<PublicLayout><NotFound /></PublicLayout>} />
                 </Routes>
               </Suspense>

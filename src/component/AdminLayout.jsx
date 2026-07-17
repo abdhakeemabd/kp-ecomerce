@@ -62,7 +62,8 @@ const AdminLayout = ({ children }) => {
     { name: 'Dashboard', icon: LayoutDashboard, path: '/admin/dashboard', color: 'text-blue-500' },
     { name: 'Products', icon: Package, path: '/admin/products', color: 'text-indigo-500' },
     { name: 'Orders', icon: ShoppingCart, path: '/admin/orders', color: 'text-emerald-500' },
-    { name: 'Delivery', icon: Truck, path: '/admin/delivery', color: 'text-amber-500' },
+    { name: 'Shipped', icon: Truck, path: '/admin/shipped', color: 'text-cyan-500' },
+    { name: 'Delivered', icon: Package, path: '/admin/delivery', color: 'text-amber-500' },
     { name: 'Messages', icon: Mail, path: '/admin/contacts', color: 'text-pink-500' },
     { name: 'Predictions', icon: Trophy, path: '/admin/predictions', color: 'text-orange-500' },
   ];

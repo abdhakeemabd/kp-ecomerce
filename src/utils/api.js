@@ -31,6 +31,7 @@ export const ordersAPI = {
 
 // Contact/Get in Touch API
 export const contactAPI = {
+  create: (data) => api.post('/contacts', data),
   getAll: () => api.get('/contacts'),
   getById: (id) => api.get(`/contacts/${id}`),
   delete: (id) => api.delete(`/contacts/${id}`),

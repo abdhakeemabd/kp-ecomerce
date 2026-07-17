@@ -4,9 +4,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Search, Mail, MailOpen, Trash2, 
   Phone, User, Calendar, MessageSquare, 
-  X, CheckCircle, Info
+  X, Info, Layers, Eye, ChevronLeft, ChevronRight
 } from 'lucide-react';
 import { contactAPI } from '../../utils/api';
+import { BaseTable } from '../../components/shadcn-custom/BaseTable';
+import { BaseDropdown } from '../../components/shadcn-custom/BaseDropdown';
+import { useSearchParams } from 'react-router-dom';
 
 function AdminContacts() {
   const [contacts, setContacts] = useState([]);
@@ -16,15 +19,50 @@ function AdminContacts() {
   const [selectedContact, setSelectedContact] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initialPage = parseInt(searchParams.get('page')) || 1;
+  const [currentPage, setCurrentPage] = useState(initialPage);
+  const [itemsPerPage] = useState(25);
+
   useEffect(() => {
     fetchContacts();
   }, []);
 
+  useEffect(() => {
+    setSearchParams(prev => {
+      if (currentPage === 1) prev.delete('page');
+      else prev.set('page', currentPage);
+      return prev;
+    }, { replace: true });
+  }, [currentPage, setSearchParams]);
+
   const fetchContacts = async () => {
     try {
       setLoading(true);
-      const response = await contactAPI.getAll();
-      setContacts(response.data || []);
+      let apiContacts = [];
+      try {
+        const response = await contactAPI.getAll();
+        apiContacts = response.data || [];
+      } catch (e) {
+        console.warn('API fetch failed');
+      }
+      
+      let localContacts = [];
+      try {
+        localContacts = JSON.parse(localStorage.getItem('adminContacts') || '[]');
+      } catch (e) {
+        console.warn('Local fetch failed');
+      }
+
+      // Merge by ID
+      const mergedMap = new Map();
+      apiContacts.forEach(c => { if (c.id) mergedMap.set(c.id.toString(), c); });
+      localContacts.forEach(c => { if (c.id) mergedMap.set(c.id.toString(), c); });
+      const combinedContacts = Array.from(mergedMap.values());
+      
+      // Sort newest first
+      combinedContacts.sort((a, b) => new Date(b.created_at || 0) - new Date(a.created_at || 0));
+      setContacts(combinedContacts);
     } catch (error) {
       console.error('Error fetching contacts:', error);
       setContacts([]);
@@ -36,22 +74,28 @@ function AdminContacts() {
   const handleMarkAsRead = async (contactId) => {
     try {
       await contactAPI.markAsRead(contactId);
-      fetchContacts();
     } catch (error) {
-      console.error('Error marking contact as read:', error);
+      console.warn('Error marking contact as read (likely CORS). Updating localStorage.');
+      const localContacts = JSON.parse(localStorage.getItem('adminContacts') || '[]');
+      const updated = localContacts.map(c => c.id === contactId ? { ...c, is_read: true } : c);
+      localStorage.setItem('adminContacts', JSON.stringify(updated));
     }
+    fetchContacts();
   };
 
   const handleDelete = async (contactId) => {
     if (window.confirm('Are you sure you want to delete this message?')) {
       try {
         await contactAPI.delete(contactId);
-        fetchContacts();
-        if (selectedContact?.id === contactId) {
-          setShowModal(false);
-        }
       } catch (error) {
-        console.error('Error deleting contact:', error);
+        console.warn('Error deleting contact (likely CORS). Updating localStorage.');
+        const localContacts = JSON.parse(localStorage.getItem('adminContacts') || '[]');
+        const updated = localContacts.filter(c => c.id !== contactId);
+        localStorage.setItem('adminContacts', JSON.stringify(updated));
+      }
+      fetchContacts();
+      if (selectedContact?.id === contactId) {
+        setShowModal(false);
       }
     }
   };
@@ -76,120 +120,211 @@ function AdminContacts() {
     return matchesSearch && matchesRead;
   });
 
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const paginatedContacts = filteredContacts.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(filteredContacts.length / itemsPerPage);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  const getPageNumbers = () => {
+    const maxPagesToShow = 5;
+    let startPage = Math.max(1, currentPage - Math.floor(maxPagesToShow / 2));
+    let endPage = startPage + maxPagesToShow - 1;
+    if (endPage > totalPages) {
+      endPage = totalPages;
+      startPage = Math.max(1, endPage - maxPagesToShow + 1);
+    }
+    return Array.from({ length: (endPage - startPage) + 1 }, (_, i) => startPage + i);
+  };
+
+  const tableHeaders = [
+    { label: '#' },
+    { label: 'Sender Info' },
+    { label: 'Subject' },
+    { label: 'Date Received' },
+    { label: 'Status' },
+    { label: 'Actions', className: 'text-center' }
+  ];
+
   return (
     <AdminLayout>
-      <div className="space-y-8">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div>
-            <h1 className="text-3xl font-bold dark:text-white">Customer Inquiries</h1>
-            <p className="text-gray-500 dark:text-gray-400 mt-1">Manage feedback and support messages</p>
-          </div>
-          <div className="flex bg-white dark:bg-gray-800 p-1.5 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
-            {['all', 'unread', 'read'].map((filter) => (
-              <button
-                key={filter}
-                onClick={() => setFilterRead(filter)}
-                className={`px-6 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all
-                  ${filterRead === filter
-                    ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20'
-                    : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-200'
-                }`}
-              >
-                {filter}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="relative group max-w-xl">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-indigo-500 transition-colors" size={20} />
-          <input
-            type="text"
-            placeholder="Search by sender, email or subject..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-12 pr-6 py-3.5 bg-white dark:bg-gray-800 border-none rounded-[1.5rem] focus:ring-2 focus:ring-indigo-500 shadow-sm dark:text-white text-sm"
-          />
-        </div>
-
-        {loading ? (
-          <div className="space-y-4">
-            {[1, 2, 3].map(i => (
-              <div key={i} className="h-28 rounded-3xl bg-white dark:bg-gray-800 animate-pulse" />
-            ))}
-          </div>
-        ) : (
-          <div className="space-y-4">
-            {filteredContacts.map((contact, i) => (
-              <motion.div
-                layout
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.05 }}
-                key={contact.id}
-                onClick={() => viewContactDetails(contact)}
-                className={`glass-card rounded-3xl p-6 hover:shadow-xl transition-all cursor-pointer border-2 ${
-                  !contact.is_read 
-                    ? 'border-indigo-500/20 dark:border-indigo-500/30' 
-                    : 'border-transparent dark:border-gray-800/50'
-                } group`}
-              >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-6 flex-1">
-                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-colors ${
-                      !contact.is_read 
-                        ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' 
-                        : 'bg-gray-100 dark:bg-gray-800 text-gray-400'
-                    }`}>
-                      {!contact.is_read ? <Mail size={24} /> : <MailOpen size={24} />}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center space-x-3 mb-1">
-                        <h3 className={`font-black dark:text-white truncate ${!contact.is_read ? 'text-lg' : 'text-base'}`}>
-                          {contact.name}
-                        </h3>
-                        {!contact.is_read && (
-                          <span className="px-2 py-0.5 bg-indigo-500 text-white text-[8px] font-black uppercase tracking-tighter rounded-full">New Message</span>
-                        )}
-                      </div>
-                      <p className="text-xs text-gray-400 font-medium mb-2">{contact.email}</p>
-                      <p className={`text-sm line-clamp-1 ${!contact.is_read ? 'text-indigo-600 dark:text-indigo-400 font-bold' : 'text-gray-500 dark:text-gray-400'}`}>
-                        {contact.subject || 'Inquiry regarding services'}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-6">
-                    <div className="hidden md:flex flex-col items-end text-right">
-                      <p className="text-[10px] text-gray-400 font-black uppercase tracking-widest flex items-center">
-                        <Calendar size={10} className="mr-1" />
-                        {new Date(contact.created_at).toLocaleDateString()}
-                      </p>
-                    </div>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleDelete(contact.id);
-                      }}
-                      className="p-3 text-gray-400 hover:text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-900/20 rounded-2xl transition-all"
-                    >
-                      <Trash2 size={20} />
-                    </button>
-                    <ChevronRight size={20} className="text-gray-300 group-hover:text-indigo-500 transition-colors" />
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        )}
-
-        {!loading && filteredContacts.length === 0 && (
-          <div className="text-center py-20">
-            <div className="w-20 h-20 bg-gray-50 dark:bg-gray-800/50 rounded-full flex items-center justify-center mx-auto mb-4">
-              <MessageSquare size={32} className="text-gray-300" />
+      <div className="space-y-6 px-4 md:px-8 py-6 w-full max-w-[1600px] mx-auto">
+        <div className="bg-card text-card-foreground rounded-3xl shadow-md border border-border overflow-hidden">
+          
+          <div className="p-6 border-b border-border space-y-6">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div>
+                <h1 className="text-2xl font-bold text-foreground flex items-center">
+                  <MessageSquare className="mr-3 text-primary" />
+                  Customer Inquiries
+                </h1>
+                <p className="text-muted-foreground text-sm mt-1">Manage feedback, questions and support messages</p>
+              </div>
             </div>
-            <p className="text-gray-500 font-bold uppercase tracking-widest text-xs">Inbox is empty</p>
+
+            <div className="flex flex-col md:flex-row gap-4 justify-between items-center z-10 relative bg-muted/30 p-3 rounded-xl border border-border/50">
+              <div className="relative group w-full md:w-1/3">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground group-focus-within:text-primary transition-colors" size={16} />
+                <input
+                  type="text"
+                  placeholder="Search by sender, email or subject..."
+                  value={searchTerm}
+                  onChange={(e) => {
+                    setSearchTerm(e.target.value);
+                    setCurrentPage(1);
+                  }}
+                  className="w-full pl-9 pr-4 py-2 bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-foreground text-sm transition-all outline-none"
+                />
+              </div>
+
+              <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
+                <div className="relative flex items-center bg-background border border-border rounded-lg px-3 py-2">
+                  <Layers size={14} className="text-muted-foreground mr-2" />
+                  <select 
+                    value={filterRead}
+                    onChange={(e) => {
+                      setFilterRead(e.target.value);
+                      setCurrentPage(1);
+                    }}
+                    className="bg-transparent border-none text-sm text-foreground outline-none cursor-pointer pr-4 uppercase tracking-wider font-semibold"
+                  >
+                    <option value="all">All Messages</option>
+                    <option value="unread">Unread</option>
+                    <option value="read">Read</option>
+                  </select>
+                </div>
+              </div>
+            </div>
           </div>
-        )}
+
+          <div className="p-0">
+            <BaseTable 
+              headers={tableHeaders} 
+              isLoading={loading} 
+              skeletonCount={5}
+              data={paginatedContacts}
+              emptyMessage="No inquiries found."
+              emptySubMessage="Adjust your search or wait for new messages."
+              renderRow={(contact, i) => (
+                <tr key={contact.id} className={`border-b border-border/50 hover:bg-muted/30 transition-colors ${!contact.is_read ? 'bg-primary/5' : ''}`}>
+                  <td className="px-4 py-6 align-middle text-sm text-muted-foreground font-medium">
+                    {(currentPage - 1) * itemsPerPage + i + 1}
+                  </td>
+                  
+                  {/* Sender Info */}
+                  <td className="px-2 py-6 align-middle">
+                    <div className="flex items-start space-x-3">
+                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${!contact.is_read ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'}`}>
+                        {!contact.is_read ? <Mail size={18} /> : <MailOpen size={18} />}
+                      </div>
+                      <div>
+                        <p className="font-bold text-foreground text-sm">{contact.name}</p>
+                        <p className="text-xs text-muted-foreground flex items-center mt-0.5">
+                          {contact.email}
+                        </p>
+                      </div>
+                    </div>
+                  </td>
+                  
+                  {/* Subject */}
+                  <td className="px-2 py-6 align-middle max-w-[200px]">
+                    <p className={`font-semibold text-sm line-clamp-1 ${!contact.is_read ? 'text-primary' : 'text-foreground'}`}>
+                      {contact.subject || 'No subject provided'}
+                    </p>
+                    <p className="text-xs text-muted-foreground mt-1 line-clamp-1">
+                      {contact.message}
+                    </p>
+                  </td>
+                  
+                  {/* Date Received */}
+                  <td className="px-2 py-6 align-middle">
+                    <p className="text-sm font-semibold text-foreground">
+                      {new Date(contact.created_at).toLocaleDateString()}
+                    </p>
+                    <p className="text-[10px] text-muted-foreground uppercase tracking-widest mt-0.5">
+                      {new Date(contact.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                    </p>
+                  </td>
+                  
+                  {/* Status */}
+                  <td className="px-2 py-6 align-middle">
+                    <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border ${!contact.is_read ? 'bg-amber-500/10 text-amber-600 border-amber-500/30' : 'bg-emerald-500/10 text-emerald-600 border-emerald-500/30'}`}>
+                      {!contact.is_read ? 'Unread' : 'Read'}
+                    </span>
+                  </td>
+                  
+                  {/* Actions */}
+                  <td className="px-4 py-6 align-middle text-center flex justify-center">
+                    <BaseDropdown 
+                      label="Actions"
+                      items={[
+                        { 
+                          label: 'View Message', 
+                          onClick: () => viewContactDetails(contact),
+                          icon: <Eye size={14} className="mr-2" />
+                        },
+                        { 
+                          label: 'Mark as Read', 
+                          onClick: () => handleMarkAsRead(contact.id),
+                          icon: <MailOpen size={14} className="mr-2" />,
+                          hidden: contact.is_read
+                        },
+                        { 
+                          label: 'Delete Message', 
+                          onClick: () => handleDelete(contact.id),
+                          icon: <Trash2 size={14} className="mr-2 text-destructive" />,
+                          className: 'text-destructive focus:text-destructive'
+                        }
+                      ].filter(item => !item.hidden)}
+                    />
+                  </td>
+                </tr>
+              )}
+            />
+          </div>
+
+          {!loading && filteredContacts.length > 0 && (
+            <div className="p-4 border-t border-border bg-muted/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <span className="text-sm text-muted-foreground font-medium">
+                Showing {indexOfFirstItem + 1} to {Math.min(indexOfLastItem, filteredContacts.length)} of {filteredContacts.length} inquiries
+              </span>
+              
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => paginate(currentPage - 1)}
+                  disabled={currentPage === 1}
+                  className="p-2 rounded-lg border border-border text-foreground hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                >
+                  <ChevronLeft size={16} />
+                </button>
+                
+                <div className="flex gap-1">
+                  {getPageNumbers().map(number => (
+                    <button
+                      key={number}
+                      onClick={() => paginate(number)}
+                      className={`w-8 h-8 rounded-lg text-sm font-medium transition-all ${
+                        currentPage === number 
+                          ? 'bg-primary text-primary-foreground shadow-sm' 
+                          : 'text-foreground hover:bg-muted border border-transparent'
+                      }`}
+                    >
+                      {number}
+                    </button>
+                  ))}
+                </div>
+
+                <button
+                  onClick={() => paginate(currentPage + 1)}
+                  disabled={currentPage === totalPages}
+                  className="p-2 rounded-lg border border-border text-foreground hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                >
+                  <ChevronRight size={16} />
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
 
         <AnimatePresence>
           {showModal && selectedContact && (
@@ -207,20 +342,20 @@ function AdminContacts() {
                 exit={{ opacity: 0, scale: 0.9, y: 20 }}
                 className="fixed inset-0 flex items-center justify-center z-[101] p-4 pointer-events-none"
               >
-                <div className="bg-white dark:bg-gray-900 rounded-[2.5rem] shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-hidden pointer-events-auto flex flex-col border border-gray-100 dark:border-gray-800">
-                  <div className="p-8 flex items-center justify-between bg-gray-50/50 dark:bg-gray-800/30">
+                <div className="bg-background rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-hidden pointer-events-auto flex flex-col border border-border">
+                  <div className="p-8 flex items-center justify-between bg-muted/30">
                     <div className="flex items-center space-x-4">
-                      <div className="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center shadow-lg shadow-indigo-600/20">
+                      <div className="w-12 h-12 rounded-2xl bg-primary text-primary-foreground flex items-center justify-center shadow-lg shadow-primary/20">
                         <User size={24} />
                       </div>
                       <div>
-                        <h2 className="text-xl font-black dark:text-white">{selectedContact.name}</h2>
-                        <p className="text-xs text-indigo-500 font-bold">{selectedContact.email}</p>
+                        <h2 className="text-xl font-bold text-foreground">{selectedContact.name}</h2>
+                        <p className="text-sm text-primary font-semibold">{selectedContact.email}</p>
                       </div>
                     </div>
                     <button
                       onClick={() => setShowModal(false)}
-                      className="p-3 rounded-2xl bg-white dark:bg-gray-800 text-gray-400 hover:text-rose-500 transition-colors shadow-sm"
+                      className="p-2 rounded-xl bg-background border border-border text-muted-foreground hover:text-destructive hover:border-destructive transition-colors"
                     >
                       <X size={20} />
                     </button>
@@ -228,34 +363,34 @@ function AdminContacts() {
                   
                   <div className="p-8 overflow-y-auto custom-scrollbar flex-1 space-y-8">
                     <div className="grid grid-cols-2 gap-4">
-                      <div className="bg-gray-50 dark:bg-gray-800/50 rounded-2xl p-4">
-                        <p className="text-[10px] text-gray-400 uppercase font-black tracking-widest mb-1 flex items-center">
+                      <div className="bg-muted/50 rounded-2xl p-4 border border-border/50">
+                        <p className="text-[10px] text-muted-foreground uppercase font-bold tracking-widest mb-1 flex items-center">
                           <Phone size={10} className="mr-1" /> Contact
                         </p>
-                        <p className="font-bold dark:text-white text-sm">{selectedContact.phone || 'N/A'}</p>
+                        <p className="font-semibold text-foreground text-sm">{selectedContact.phone || 'N/A'}</p>
                       </div>
-                      <div className="bg-gray-50 dark:bg-gray-800/50 rounded-2xl p-4">
-                        <p className="text-[10px] text-gray-400 uppercase font-black tracking-widest mb-1 flex items-center">
+                      <div className="bg-muted/50 rounded-2xl p-4 border border-border/50">
+                        <p className="text-[10px] text-muted-foreground uppercase font-bold tracking-widest mb-1 flex items-center">
                           <Calendar size={10} className="mr-1" /> Received
                         </p>
-                        <p className="font-bold dark:text-white text-sm">{new Date(selectedContact.created_at).toLocaleString()}</p>
+                        <p className="font-semibold text-foreground text-sm">{new Date(selectedContact.created_at).toLocaleString()}</p>
                       </div>
                     </div>
 
                     <div className="space-y-2">
-                      <p className="text-[10px] text-gray-400 uppercase font-black tracking-widest mb-1">Subject</p>
-                      <h3 className="text-2xl font-black dark:text-white leading-tight">
+                      <p className="text-[10px] text-muted-foreground uppercase font-bold tracking-widest mb-1">Subject</p>
+                      <h3 className="text-xl font-bold text-foreground leading-tight">
                         {selectedContact.subject || 'No subject provided'}
                       </h3>
                     </div>
 
                     <div className="space-y-4">
-                      <p className="text-[10px] text-gray-400 uppercase font-black tracking-widest mb-1 flex items-center">
+                      <p className="text-[10px] text-muted-foreground uppercase font-bold tracking-widest mb-1 flex items-center">
                         <Info size={10} className="mr-1" /> Message Content
                       </p>
-                      <div className="bg-indigo-50/30 dark:bg-indigo-900/10 rounded-3xl p-8 border border-indigo-100/50 dark:border-indigo-500/10">
-                        <p className="text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-wrap text-lg italic">
-                          "{selectedContact.message}"
+                      <div className="bg-primary/5 rounded-2xl p-6 border border-primary/10">
+                        <p className="text-foreground leading-relaxed whitespace-pre-wrap text-base">
+                          {selectedContact.message}
                         </p>
                       </div>
                     </div>
@@ -263,13 +398,13 @@ function AdminContacts() {
                     <div className="flex space-x-4 pt-4">
                       <button
                         onClick={() => handleDelete(selectedContact.id)}
-                        className="flex-1 px-8 py-4 bg-rose-500 text-white rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-rose-600 transition-all shadow-xl shadow-rose-500/20 flex items-center justify-center"
+                        className="flex-1 px-6 py-3 bg-destructive text-destructive-foreground rounded-xl font-bold uppercase tracking-wider text-xs hover:bg-destructive/90 transition-all flex items-center justify-center"
                       >
-                        <Trash2 size={18} className="mr-2" /> Delete Permanently
+                        <Trash2 size={16} className="mr-2" /> Delete Permanently
                       </button>
                       <button
                         onClick={() => setShowModal(false)}
-                        className="px-8 py-4 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-gray-200 transition-all"
+                        className="px-8 py-3 bg-muted text-muted-foreground rounded-xl font-bold uppercase tracking-wider text-xs hover:bg-muted/80 transition-all border border-border"
                       >
                         Close
                       </button>
@@ -284,4 +419,5 @@ function AdminContacts() {
     </AdminLayout>
   );
 }
+
 export default AdminContacts;

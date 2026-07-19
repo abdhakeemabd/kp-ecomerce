@@ -274,7 +274,7 @@ const PredictionPage = () => {
                        <div className="absolute top-0 left-[-10%] w-[120%] h-[80%] opacity-90 transition-transform duration-500 group-hover:scale-105 pointer-events-none">
                          <div className="absolute inset-0 bg-gradient-to-t from-[#080d16] via-[#080d16]/30 to-transparent z-10" />
                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#080d16] z-10" />
-                         <img src={MessiCardImg} className="w-full h-full object-cover object-top opacity-70" style={{ maskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)' }} />
+                         <img src={MessiCardImg} className="w-full h-full object-cover object-top opacity-70" style={{ WebkitMaskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)', maskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)' }} />
                        </div>
                        
                        {/* Content at Bottom */}
@@ -300,14 +300,18 @@ const PredictionPage = () => {
             </div>
             
             {/* Mobile Fallback for Argentina */}
-            <div className="flex-1 w-full bg-transparent rounded-3xl relative overflow-hidden group z-10 md:hidden h-[340px] shadow-[0_0_30px_rgba(30,58,138,0.3)]">
+            <div className="w-full bg-gradient-to-br from-[#121c2c] to-[#080d16] rounded-3xl relative overflow-hidden group z-10 md:hidden h-[340px] shadow-[0_0_30px_rgba(30,58,138,0.3)] flex flex-col">
                {/* Team Glow */}
                <div className="absolute top-0 left-0 w-full h-full bg-blue-500/10 blur-[80px] pointer-events-none"></div>
+               {/* Top Left Flag */}
+               <div className="absolute top-5 left-5 z-20 bg-black/30 backdrop-blur-md rounded-2xl p-2.5 border border-white/10 shadow-lg">
+                 <img src="https://flagcdn.com/w80/ar.png" className="w-9 h-9 object-contain drop-shadow-md" alt="Argentina Flag" />
+               </div>
                {/* Player Image */}
                <div className="absolute top-0 left-[-10%] w-[120%] h-[80%] opacity-90 transition-transform duration-500 group-hover:scale-105 pointer-events-none">
                  <div className="absolute inset-0 bg-gradient-to-t from-[#080d16] via-[#080d16]/30 to-transparent z-10" />
                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#080d16] z-10" />
-                 <img src={MessiCardImg} className="w-full h-full object-cover object-top opacity-70" style={{ maskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)' }} />
+                 <img src={MessiCardImg} className="w-full h-full object-cover object-top opacity-70" style={{ WebkitMaskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)', maskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)' }} />
                </div>
                {/* Content at Bottom */}
                <div className="absolute bottom-6 left-0 w-full flex flex-col items-center z-20">
@@ -332,7 +336,7 @@ const PredictionPage = () => {
               {/* Clipping wrapper for straight right edge */}
               <div className="absolute inset-0 -left-[120px] overflow-hidden rounded-r-[24px]">
                 {/* Skewed Card */}
-                <div className="absolute top-0 bottom-0 -right-[100px] left-[120px] origin-bottom-right transform skew-x-12 bg-transparent rounded-[24px] shadow-[0_0_30px_rgba(127,29,29,0.3)] overflow-hidden group">
+                <div className="absolute top-0 bottom-0 -right-[100px] left-[120px] origin-bottom-right transform skew-x-12 bg-gradient-to-bl from-[#2c1212] to-[#160808] rounded-[24px] shadow-[0_0_30px_rgba(127,29,29,0.3)] overflow-hidden group">
                      {/* Unskew Content */}
                      <div className="absolute top-0 bottom-0 right-[100px] left-0 transform -skew-x-12 origin-bottom-right">
                        {/* Team Glow */}
@@ -347,7 +351,7 @@ const PredictionPage = () => {
                        <div className="absolute top-0 right-[-10%] w-[120%] h-[80%] opacity-90 transition-transform duration-500 group-hover:scale-105 pointer-events-none">
                          <div className="absolute inset-0 bg-gradient-to-t from-[#120404] via-[#120404]/30 to-transparent z-10" />
                          <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#120404] z-10" />
-                         <img src={YamalCardImg} className="w-full h-full object-cover object-top opacity-70" style={{ maskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)' }} />
+                         <img src={YamalCardImg} className="w-full h-full object-cover object-top opacity-70" style={{ WebkitMaskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)', maskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)' }} />
                        </div>
                        
                        {/* Content at Bottom */}
@@ -373,14 +377,18 @@ const PredictionPage = () => {
             </div>
             
             {/* Mobile Fallback for Spain */}
-            <div className="flex-1 w-full bg-transparent rounded-3xl relative overflow-hidden group z-0 md:hidden h-[340px] shadow-[0_0_30px_rgba(127,29,29,0.3)]">
+            <div className="w-full bg-gradient-to-bl from-[#2c1212] to-[#160808] rounded-3xl relative overflow-hidden group z-0 md:hidden h-[340px] shadow-[0_0_30px_rgba(127,29,29,0.3)] flex flex-col">
                {/* Team Glow */}
                <div className="absolute top-0 right-0 w-full h-full bg-red-500/10 blur-[80px] pointer-events-none"></div>
+               {/* Top Right Flag */}
+               <div className="absolute top-5 right-5 z-20 bg-black/30 backdrop-blur-md rounded-2xl p-2.5 border border-white/10 shadow-lg">
+                 <img src="https://flagcdn.com/w80/es.png" className="w-9 h-9 object-contain drop-shadow-md" alt="Spain Flag" />
+               </div>
                {/* Player Image */}
                <div className="absolute top-0 right-[-10%] w-[120%] h-[80%] opacity-90 transition-transform duration-500 group-hover:scale-105 pointer-events-none">
                  <div className="absolute inset-0 bg-gradient-to-t from-[#120404] via-[#120404]/30 to-transparent z-10" />
                  <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#120404] z-10" />
-                 <img src={YamalCardImg} className="w-full h-full object-cover object-top opacity-70" style={{ maskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)' }} />
+                 <img src={YamalCardImg} className="w-full h-full object-cover object-top opacity-70" style={{ WebkitMaskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)', maskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)' }} />
                </div>
                {/* Content at Bottom */}
                <div className="absolute bottom-6 left-0 w-full flex flex-col items-center z-20">
@@ -413,7 +421,7 @@ const PredictionPage = () => {
                 {/* Argentina Penalty (Left) */}
                 <div className="flex-1 w-full relative h-[180px] hidden md:block">
                   <div className="absolute inset-0 -right-[100px] overflow-hidden rounded-l-[16px] z-10">
-                    <div className="absolute top-0 bottom-0 -left-[80px] right-[100px] origin-bottom-left transform skew-x-12 bg-transparent rounded-[16px] shadow-[0_0_20px_rgba(30,58,138,0.3)] overflow-hidden group">
+                    <div className="absolute top-0 bottom-0 -left-[80px] right-[100px] origin-bottom-left transform skew-x-12 bg-gradient-to-br from-[#121c2c] to-[#080d16] rounded-[16px] shadow-[0_0_20px_rgba(30,58,138,0.3)] overflow-hidden group">
                          <div className="absolute top-0 bottom-0 left-[80px] right-0 transform -skew-x-12 origin-bottom-left">
                            <div className="absolute top-0 left-0 w-full h-full bg-blue-500/10 blur-[40px] pointer-events-none"></div>
                            <div className="absolute top-3 left-3 z-20 bg-black/30 backdrop-blur-md rounded-lg p-1.5 border border-white/10 shadow-lg">
@@ -422,7 +430,7 @@ const PredictionPage = () => {
                            <div className="absolute top-[-20%] left-[-10%] w-[120%] h-[140%] opacity-90 pointer-events-none">
                              <div className="absolute inset-0 bg-gradient-to-t from-[#080d16] via-[#080d16]/50 to-transparent z-10" />
                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#080d16] z-10" />
-                             <img src={MessiCardImg} className="w-full h-full object-cover object-[center_top] opacity-40" style={{ maskImage: 'linear-gradient(to bottom, black 40%, transparent 100%)' }} />
+                             <img src={MessiCardImg} className="w-full h-full object-cover object-[center_top] opacity-40" style={{ WebkitMaskImage: 'linear-gradient(to bottom, black 40%, transparent 100%)', maskImage: 'linear-gradient(to bottom, black 40%, transparent 100%)' }} />
                            </div>
                            <div className="absolute bottom-3 left-0 w-full flex flex-col items-center z-20 pr-6">
                              <div className="flex items-center justify-between bg-[#151720]/90 backdrop-blur-md rounded-[12px] p-1 w-[140px] border border-white/5 shadow-2xl relative">
@@ -442,12 +450,15 @@ const PredictionPage = () => {
                   </div>
 
                 {/* Mobile Fallback Penalty Argentina */}
-                <div className="flex-1 w-full bg-transparent rounded-2xl relative overflow-hidden z-10 md:hidden h-[180px] shadow-[0_0_20px_rgba(30,58,138,0.3)]">
+                <div className="w-full bg-gradient-to-br from-[#121c2c] to-[#080d16] rounded-2xl relative overflow-hidden z-10 md:hidden h-[180px] shadow-[0_0_20px_rgba(30,58,138,0.3)] flex flex-col">
                   <div className="absolute top-0 left-0 w-full h-full bg-blue-500/10 blur-[40px] pointer-events-none"></div>
+                  <div className="absolute top-3 left-3 z-20 bg-black/30 backdrop-blur-md rounded-lg p-1.5 border border-white/10 shadow-lg">
+                    <img src="https://flagcdn.com/w80/ar.png" className="w-5 h-5 object-contain drop-shadow-md" alt="Argentina Flag" />
+                  </div>
                   <div className="absolute top-[-20%] left-[-10%] w-[120%] h-[140%] opacity-90 pointer-events-none">
                      <div className="absolute inset-0 bg-gradient-to-t from-[#080d16] via-[#080d16]/50 to-transparent z-10" />
                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#080d16] z-10" />
-                     <img src={MessiCardImg} className="w-full h-full object-cover object-[center_top] opacity-40" style={{ maskImage: 'linear-gradient(to bottom, black 40%, transparent 100%)' }} />
+                     <img src={MessiCardImg} className="w-full h-full object-cover object-[center_top] opacity-40" style={{ WebkitMaskImage: 'linear-gradient(to bottom, black 40%, transparent 100%)', maskImage: 'linear-gradient(to bottom, black 40%, transparent 100%)' }} />
                   </div>
                   <div className="absolute bottom-3 left-0 w-full flex flex-col items-center z-20">
                      <div className="flex items-center justify-between bg-[#151720]/90 backdrop-blur-md rounded-[12px] p-1 w-[140px] border border-white/5 shadow-2xl relative">
@@ -467,7 +478,7 @@ const PredictionPage = () => {
                 {/* Spain Penalty (Right) */}
                 <div className="flex-1 w-full relative h-[180px] hidden md:block">
                   <div className="absolute inset-0 -left-[100px] overflow-hidden rounded-r-[16px] z-10">
-                    <div className="absolute top-0 bottom-0 -right-[80px] left-[100px] origin-bottom-right transform skew-x-12 bg-transparent rounded-[16px] shadow-[0_0_20px_rgba(127,29,29,0.3)] overflow-hidden group">
+                    <div className="absolute top-0 bottom-0 -right-[80px] left-[100px] origin-bottom-right transform skew-x-12 bg-gradient-to-bl from-[#2c1212] to-[#160808] rounded-[16px] shadow-[0_0_20px_rgba(127,29,29,0.3)] overflow-hidden group">
                          <div className="absolute top-0 bottom-0 right-[80px] left-0 transform -skew-x-12 origin-bottom-right">
                            <div className="absolute top-0 right-0 w-full h-full bg-red-500/10 blur-[40px] pointer-events-none"></div>
                            <div className="absolute top-3 right-3 z-20 bg-black/30 backdrop-blur-md rounded-lg p-1.5 border border-white/10 shadow-lg">
@@ -476,7 +487,7 @@ const PredictionPage = () => {
                            <div className="absolute top-[-20%] right-[-10%] w-[120%] h-[140%] opacity-90 pointer-events-none">
                              <div className="absolute inset-0 bg-gradient-to-t from-[#120404] via-[#120404]/50 to-transparent z-10" />
                              <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#120404] z-10" />
-                             <img src={YamalCardImg} className="w-full h-full object-cover object-[center_top] opacity-40" style={{ maskImage: 'linear-gradient(to bottom, black 40%, transparent 100%)' }} />
+                             <img src={YamalCardImg} className="w-full h-full object-cover object-[center_top] opacity-40" style={{ WebkitMaskImage: 'linear-gradient(to bottom, black 40%, transparent 100%)', maskImage: 'linear-gradient(to bottom, black 40%, transparent 100%)' }} />
                            </div>
                            <div className="absolute bottom-3 left-0 w-full flex flex-col items-center z-20 pl-6">
                              <div className="flex items-center justify-between bg-[#1f1515]/90 backdrop-blur-md rounded-[12px] p-1 w-[140px] border border-white/5 shadow-2xl relative">
@@ -496,12 +507,15 @@ const PredictionPage = () => {
                   </div>
 
                 {/* Mobile Fallback Penalty Spain */}
-                <div className="flex-1 w-full bg-transparent rounded-2xl relative overflow-hidden z-0 md:hidden h-[180px] shadow-[0_0_20px_rgba(127,29,29,0.3)]">
+                <div className="w-full bg-gradient-to-bl from-[#2c1212] to-[#160808] rounded-2xl relative overflow-hidden z-0 md:hidden h-[180px] shadow-[0_0_20px_rgba(127,29,29,0.3)] flex flex-col">
                   <div className="absolute top-0 right-0 w-full h-full bg-red-500/10 blur-[40px] pointer-events-none"></div>
+                  <div className="absolute top-3 right-3 z-20 bg-black/30 backdrop-blur-md rounded-lg p-1.5 border border-white/10 shadow-lg">
+                    <img src="https://flagcdn.com/w80/es.png" className="w-5 h-5 object-contain drop-shadow-md" alt="Spain Flag" />
+                  </div>
                   <div className="absolute top-[-20%] right-[-10%] w-[120%] h-[140%] opacity-90 pointer-events-none">
                      <div className="absolute inset-0 bg-gradient-to-t from-[#120404] via-[#120404]/50 to-transparent z-10" />
                      <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#120404] z-10" />
-                     <img src={YamalCardImg} className="w-full h-full object-cover object-[center_top] opacity-40" style={{ maskImage: 'linear-gradient(to bottom, black 40%, transparent 100%)' }} />
+                     <img src={YamalCardImg} className="w-full h-full object-cover object-[center_top] opacity-40" style={{ WebkitMaskImage: 'linear-gradient(to bottom, black 40%, transparent 100%)', maskImage: 'linear-gradient(to bottom, black 40%, transparent 100%)' }} />
                   </div>
                   <div className="absolute bottom-3 left-0 w-full flex flex-col items-center z-20">
                      <div className="flex items-center justify-between bg-[#1f1515]/90 backdrop-blur-md rounded-[12px] p-1 w-[140px] border border-white/5 shadow-2xl relative">

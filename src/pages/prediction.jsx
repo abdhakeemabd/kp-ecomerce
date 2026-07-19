@@ -162,38 +162,31 @@ const PredictionPage = () => {
       if (isFirebaseConfigured && db) {
         try {
           await addDoc(collection(db, "predictions"), predictionData);
+          setIsModalOpen(false);
+          setIsSuccessModalOpen(true);
         } catch (firebaseErr) {
           console.error("Firebase push failed", firebaseErr);
+          Swal.fire('Error', 'Failed to save to Cloud Database.', 'error');
         }
       } else {
         const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://z71mwq0q-8000.inc1.devtunnels.ms';
-        await axios.post(`${API_BASE_URL}/api/v1/predictions/`, predictionData).catch(err => {
-          console.warn("Backend not available, saving offline mock");
-        });
+        try {
+          await axios.post(`${API_BASE_URL}/api/v1/predictions/`, predictionData, {
+            headers: {
+              'X-Tunnel-Skip-AntiPhishing-Page': 'True'
+            }
+          });
+          setIsModalOpen(false);
+          setIsSuccessModalOpen(true);
+        } catch (err) {
+          console.error("Backend API error:", err);
+          Swal.fire('Connection Error', 'Failed to connect to the backend server. Please ensure the server is online.', 'error');
+        }
       }
 
-      submittedPhones.push(fullPhone);
-      localStorage.setItem('predictedPhones', JSON.stringify(submittedPhones));
-      
-      const allPredictions = JSON.parse(localStorage.getItem('predictionsData') || '[]');
-      allPredictions.push({
-        id: `pred_${Date.now()}`,
-        ...predictionData
-      });
-      localStorage.setItem('predictionsData', JSON.stringify(allPredictions));
-
-      setIsModalOpen(false);
-      setIsSuccessModalOpen(true);
-
     } catch (error) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Something went wrong while submitting your prediction.',
-        background: '#111',
-        color: '#fff',
-        confirmButtonColor: '#ea580c'
-      });
+      console.error('Error submitting prediction:', error);
+      Swal.fire('Error', 'Something went wrong. Please try again.', 'error');
     } finally {
       setIsSubmitting(false);
     }

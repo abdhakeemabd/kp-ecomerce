@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://z71mwq0q-8000.inc1.devtunnels.ms';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
 
 // Create axios instance
 const api = axios.create({
@@ -48,9 +48,9 @@ export const deliveryAPI = {
 
 // Predictions API
 export const predictionsAPI = {
-  getAll: () => api.get('/api/v1/predictions'),
-  create: (data) => api.post('/api/v1/predictions', data),
-  delete: (id) => api.delete(`/api/v1/predictions/${id}`),
+  getAll: () => api.get('/api/v1/predictions/'),
+  create: (data) => api.post('/api/v1/predictions/', data),
+  delete: (id) => api.delete(`/api/v1/predictions/${id}/`),
 };
 
 // Analytics/Reports API

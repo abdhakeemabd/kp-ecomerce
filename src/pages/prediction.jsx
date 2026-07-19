@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Trophy, CheckCircle, Plus, Minus, ChevronRight, Menu, X, Gift, ClipboardList, User } from 'lucide-react';
 import { FaFacebook, FaTwitter, FaInstagram, FaYoutube } from 'react-icons/fa';
+import { ChevronDown, Shield, Zap, ChevronLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import { db, isFirebaseConfigured } from '../config/firebase';
+import { collection, addDoc } from 'firebase/firestore';
 
 import Logo from '../assets/images/logo/logo.png';
 import BannerImg from '../assets/images/banner/banner.png';
@@ -141,20 +144,8 @@ const PredictionPage = () => {
     
     try {
       setIsSubmitting(true);
-      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://z71mwq0q-8000.inc1.devtunnels.ms';
-      await axios.post(`${API_BASE_URL}/api/v1/predictions/`, {
-        ...formData,
-        finalWinner: getWinner()
-      }).catch(err => {
-        console.warn("Backend not available, saving offline mock");
-      });
-
-      submittedPhones.push(fullPhone);
-      localStorage.setItem('predictedPhones', JSON.stringify(submittedPhones));
       
-      const allPredictions = JSON.parse(localStorage.getItem('predictionsData') || '[]');
-      allPredictions.push({
-        id: `pred_${Date.now()}`,
+      const predictionData = {
         name: formData.name,
         phone: fullPhone,
         team1: formData.team1,
@@ -166,6 +157,28 @@ const PredictionPage = () => {
         isDraw: formData.score1 === formData.score2,
         winner: getWinner(),
         date: new Date().toISOString()
+      };
+
+      if (isFirebaseConfigured && db) {
+        try {
+          await addDoc(collection(db, "predictions"), predictionData);
+        } catch (firebaseErr) {
+          console.error("Firebase push failed", firebaseErr);
+        }
+      } else {
+        const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://z71mwq0q-8000.inc1.devtunnels.ms';
+        await axios.post(`${API_BASE_URL}/api/v1/predictions/`, predictionData).catch(err => {
+          console.warn("Backend not available, saving offline mock");
+        });
+      }
+
+      submittedPhones.push(fullPhone);
+      localStorage.setItem('predictedPhones', JSON.stringify(submittedPhones));
+      
+      const allPredictions = JSON.parse(localStorage.getItem('predictionsData') || '[]');
+      allPredictions.push({
+        id: `pred_${Date.now()}`,
+        ...predictionData
       });
       localStorage.setItem('predictionsData', JSON.stringify(allPredictions));
 

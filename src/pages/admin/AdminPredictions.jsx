@@ -5,6 +5,9 @@ import { BaseTable } from '../../components/shadcn-custom/BaseTable';
 import { BaseDropdown } from '../../components/shadcn-custom/BaseDropdown';
 import { useSearchParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { Download } from 'lucide-react';
+import { initialPredictions } from '../../data/predictions';
+import { predictionsAPI } from '../../utils/api';
 
 const AdminPredictions = () => {
   const [predictions, setPredictions] = useState([]);
@@ -29,30 +32,66 @@ const AdminPredictions = () => {
     }, { replace: true });
   }, [currentPage, setSearchParams]);
 
-  const loadPredictions = () => {
+  const loadPredictions = async () => {
     setLoading(true);
-    setTimeout(() => {
-      try {
-        const rawData = localStorage.getItem('predictionsData');
-        let data = [];
-        if (rawData) {
-          const parsed = JSON.parse(rawData);
-          if (Array.isArray(parsed)) {
-            data = parsed;
-          }
-        }
-        data.sort((a, b) => new Date(b?.date || 0) - new Date(a?.date || 0));
-        setPredictions(data);
-      } catch (err) {
-        console.error('Error parsing predictions:', err);
-        setPredictions([]);
-      } finally {
+    try {
+      // 1. Try fetching from the global backend API
+      const response = await predictionsAPI.getAll();
+      if (response.data && Array.isArray(response.data)) {
+        const serverData = response.data;
+        serverData.sort((a, b) => new Date(b?.date || b?.createdAt || 0) - new Date(a?.date || a?.createdAt || 0));
+        setPredictions(serverData);
+        // Sync to local storage to keep backup updated
+        localStorage.setItem('predictionsData', JSON.stringify(serverData));
         setLoading(false);
+        return;
       }
-    }, 300); // simulate network
+    } catch (apiError) {
+      console.warn("Backend API not reachable, falling back to local storage:", apiError.message);
+    }
+
+    // 2. Fallback to Local Storage if API fails or isn't connected
+    try {
+      const rawData = localStorage.getItem('predictionsData');
+      let data = [...initialPredictions];
+      if (rawData) {
+        const parsed = JSON.parse(rawData);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          data = parsed;
+        }
+      }
+      data.sort((a, b) => new Date(b?.date || 0) - new Date(a?.date || 0));
+      setPredictions(data);
+    } catch (err) {
+      console.error('Error parsing predictions:', err);
+      setPredictions([...initialPredictions]);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleDelete = (id) => {
+  const exportBackup = () => {
+    const dataStr = "export const initialPredictions = " + JSON.stringify(predictions, null, 2) + ";\n";
+    const blob = new Blob([dataStr], { type: 'text/javascript' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `predictions_backup_${new Date().toISOString().split('T')[0]}.js`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    
+    Swal.fire({
+      icon: 'success',
+      title: 'Backup Downloaded',
+      text: 'You have successfully downloaded the predictions backup as a .js file!',
+      timer: 2000,
+      showConfirmButton: false
+    });
+  };
+
+  const handleDelete = async (id) => {
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this prediction!",
@@ -61,9 +100,16 @@ const AdminPredictions = () => {
       confirmButtonColor: '#ef4444',
       cancelButtonColor: '#6b7280',
       confirmButtonText: 'Yes, delete it!'
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
-        const updated = predictions.filter(p => p.id !== id);
+        try {
+          // Attempt API deletion first
+          await predictionsAPI.delete(id);
+        } catch (err) {
+          console.warn("Backend deletion failed, deleting locally only.", err.message);
+        }
+        
+        const updated = predictions.filter(p => p.id !== id && p._id !== id);
         localStorage.setItem('predictionsData', JSON.stringify(updated));
         setPredictions(updated);
         Swal.fire('Deleted!', 'The prediction has been deleted.', 'success');
@@ -123,6 +169,13 @@ const AdminPredictions = () => {
                 </h1>
                 <p className="text-muted-foreground text-sm mt-1">View and manage all user submitted predictions.</p>
               </div>
+              <button 
+                onClick={exportBackup}
+                className="flex items-center px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg shadow transition-colors font-medium text-sm"
+              >
+                <Download size={16} className="mr-2" />
+                Export Backup (.js)
+              </button>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">

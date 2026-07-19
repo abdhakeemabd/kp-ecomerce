@@ -46,6 +46,13 @@ export const deliveryAPI = {
   updateStatus: (id, status) => api.patch(`/deliveries/${id}/status`, { status }),
 };
 
+// Predictions API
+export const predictionsAPI = {
+  getAll: () => api.get('/api/v1/predictions'),
+  create: (data) => api.post('/api/v1/predictions', data),
+  delete: (id) => api.delete(`/api/v1/predictions/${id}`),
+};
+
 // Analytics/Reports API
 export const analyticsAPI = {
   getDailyStats: () => api.get('/analytics/daily'),

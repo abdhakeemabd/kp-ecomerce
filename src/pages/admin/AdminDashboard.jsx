@@ -12,7 +12,7 @@ import {
   ArrowUpRight, ArrowDownRight, Calendar, Filter,
   Navigation, Trophy
 } from 'lucide-react';
-import { productsAPI, ordersAPI, contactAPI } from '../../utils/api';
+import { productsAPI, ordersAPI, contactAPI, predictionsAPI } from '../../utils/api';
 import { BaseTable } from '../../components/shadcn-custom/BaseTable';
 import { BaseDropdown } from '../../components/shadcn-custom/BaseDropdown';
 
@@ -43,10 +43,11 @@ function AdminDashboard() {
   const fetchDashboardData = async () => {
     try {
       setLoading(true);
-      const [products, orders, contacts] = await Promise.allSettled([
+      const [products, orders, contacts, predictions] = await Promise.allSettled([
         productsAPI.getAll(),
         ordersAPI.getAll(),
-        contactAPI.getAll()
+        contactAPI.getAll(),
+        predictionsAPI.getAll()
       ]);
 
       const productsData = products.status === 'fulfilled' ? products.value.data : [];
@@ -69,7 +70,12 @@ function AdminDashboard() {
         contactsData = Array.from(mergedContactsMap.values());
       } catch (e) { console.warn('Local contacts fetch failed'); }
 
-      const predictionsData = JSON.parse(localStorage.getItem('predictionsData') || '[]');
+      let predictionsData = predictions.status === 'fulfilled' ? predictions.value.data : [];
+      if (!Array.isArray(predictionsData) || predictionsData.length === 0) {
+        predictionsData = JSON.parse(localStorage.getItem('predictionsData') || '[]');
+      } else {
+        localStorage.setItem('predictionsData', JSON.stringify(predictionsData));
+      }
       
       const uniqueCustomers = new Set(ordersData.map(o => o.customer_email).filter(Boolean));
 

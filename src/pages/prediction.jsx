@@ -141,8 +141,8 @@ const PredictionPage = () => {
     
     try {
       setIsSubmitting(true);
-      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://z71mwq0q-8000.inc1.devtunnels.ms';
-      await axios.post(`${API_BASE_URL}/api/v1/predictions`, {
+      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+      await axios.post(`${API_BASE_URL}/api/v1/predictions/`, {
         ...formData,
         finalWinner: getWinner()
       }).catch(err => {
@@ -167,8 +167,6 @@ const PredictionPage = () => {
         winner: getWinner(),
         date: new Date().toISOString()
       });
-      localStorage.setItem('predictionsData', JSON.stringify(allPredictions));
-
       localStorage.setItem('predictionsData', JSON.stringify(allPredictions));
 
       setIsModalOpen(false);

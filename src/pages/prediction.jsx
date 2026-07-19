@@ -169,8 +169,6 @@ const PredictionPage = () => {
       });
       localStorage.setItem('predictionsData', JSON.stringify(allPredictions));
 
-      localStorage.setItem('predictionsData', JSON.stringify(allPredictions));
-
       setIsModalOpen(false);
       setIsSuccessModalOpen(true);
 

@@ -46,6 +46,7 @@ const PredictionPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     if (formData.score1 === formData.score2) {
@@ -109,6 +110,8 @@ const PredictionPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
+    if (isSubmitting) return;
+
     if (formData.score1 === formData.score2 && formData.penaltyScore1 === formData.penaltyScore2) {
       Swal.fire({
         icon: 'error',
@@ -137,6 +140,7 @@ const PredictionPage = () => {
     }
     
     try {
+      setIsSubmitting(true);
       const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://z71mwq0q-8000.inc1.devtunnels.ms';
       await axios.post(`${API_BASE_URL}/api/v1/predictions`, {
         ...formData,
@@ -179,6 +183,8 @@ const PredictionPage = () => {
         color: '#fff',
         confirmButtonColor: '#ea580c'
       });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -655,8 +661,8 @@ const PredictionPage = () => {
               
 
 
-              <button type="submit" className="w-full mt-8 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-orange-400 text-white font-bold py-4 rounded-xl shadow-[0_0_20px_rgba(249,115,22,0.4)] hover:shadow-[0_0_30px_rgba(249,115,22,0.6)] transition-all transform hover:-translate-y-1">
-                Confirm Entry
+              <button type="submit" disabled={isSubmitting} className="w-full mt-8 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-orange-400 disabled:from-orange-800 disabled:to-orange-700 disabled:opacity-70 disabled:cursor-not-allowed text-white font-bold py-4 rounded-xl shadow-[0_0_20px_rgba(249,115,22,0.4)] hover:shadow-[0_0_30px_rgba(249,115,22,0.6)] transition-all transform hover:-translate-y-1">
+                {isSubmitting ? 'Submitting...' : 'Confirm Entry'}
               </button>
             </form>
           </div>

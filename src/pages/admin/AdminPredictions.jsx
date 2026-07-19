@@ -8,6 +8,8 @@ import Swal from 'sweetalert2';
 import { Download } from 'lucide-react';
 import { initialPredictions } from '../../data/predictions';
 import { predictionsAPI } from '../../utils/api';
+import { db, isFirebaseConfigured } from '../../config/firebase';
+import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
 
 const AdminPredictions = () => {
   const [predictions, setPredictions] = useState([]);
@@ -34,6 +36,22 @@ const AdminPredictions = () => {
 
   const loadPredictions = async () => {
     setLoading(true);
+    
+    // 0. Try fetching from Firebase if configured
+    if (isFirebaseConfigured && db) {
+      try {
+        const querySnapshot = await getDocs(collection(db, "predictions"));
+        const firebaseData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        firebaseData.sort((a, b) => new Date(b?.date || b?.createdAt || 0) - new Date(a?.date || a?.createdAt || 0));
+        setPredictions(firebaseData);
+        localStorage.setItem('predictionsData', JSON.stringify(firebaseData));
+        setLoading(false);
+        return;
+      } catch (err) {
+        console.warn("Firebase fetch failed, falling back to API", err);
+      }
+    }
+
     try {
       // 1. Try fetching from the global backend API
       const response = await predictionsAPI.getAll();
@@ -102,6 +120,14 @@ const AdminPredictions = () => {
       confirmButtonText: 'Yes, delete it!'
     }).then(async (result) => {
       if (result.isConfirmed) {
+        if (isFirebaseConfigured && db) {
+          try {
+            await deleteDoc(doc(db, "predictions", id.toString()));
+          } catch (err) {
+            console.warn("Firebase delete failed", err);
+          }
+        }
+        
         try {
           // Attempt API deletion first
           await predictionsAPI.delete(id);

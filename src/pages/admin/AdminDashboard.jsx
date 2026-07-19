@@ -15,6 +15,8 @@ import {
 import { productsAPI, ordersAPI, contactAPI, predictionsAPI } from '../../utils/api';
 import { BaseTable } from '../../components/shadcn-custom/BaseTable';
 import { BaseDropdown } from '../../components/shadcn-custom/BaseDropdown';
+import { db, isFirebaseConfigured } from '../../config/firebase';
+import { collection, getDocs } from 'firebase/firestore';
 
 function AdminDashboard() {
   const { adminUser } = useAdmin();
@@ -70,11 +72,23 @@ function AdminDashboard() {
         contactsData = Array.from(mergedContactsMap.values());
       } catch (e) { console.warn('Local contacts fetch failed'); }
 
-      let predictionsData = predictions.status === 'fulfilled' ? predictions.value.data : [];
-      if (!Array.isArray(predictionsData) || predictionsData.length === 0) {
-        predictionsData = JSON.parse(localStorage.getItem('predictionsData') || '[]');
-      } else {
-        localStorage.setItem('predictionsData', JSON.stringify(predictionsData));
+      let predictionsData = [];
+      if (isFirebaseConfigured && db) {
+        try {
+          const querySnapshot = await getDocs(collection(db, "predictions"));
+          predictionsData = querySnapshot.docs.map(doc => doc.data());
+        } catch (e) {
+          console.warn("Firebase fetch failed on Dashboard", e);
+        }
+      }
+      
+      if (predictionsData.length === 0) {
+        predictionsData = predictions.status === 'fulfilled' ? predictions.value.data : [];
+        if (!Array.isArray(predictionsData) || predictionsData.length === 0) {
+          predictionsData = JSON.parse(localStorage.getItem('predictionsData') || '[]');
+        } else {
+          localStorage.setItem('predictionsData', JSON.stringify(predictionsData));
+        }
       }
       
       const uniqueCustomers = new Set(ordersData.map(o => o.customer_email).filter(Boolean));

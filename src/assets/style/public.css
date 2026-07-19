@@ -16,8 +16,9 @@ header .logo {
 .home-banner {
     position: relative;
     padding-top: 80px;
-    height: 90vh;
-    min-height: 650px;
+    padding-bottom: 60px;
+    min-height: max(90vh, 650px);
+    height: auto;
     background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../images/banner/banner.png') no-repeat center center;
     background-size: cover;
     width: 100%;
@@ -29,8 +30,9 @@ header .logo {
 
 @media (max-width:567px) {
     .home-banner {
-        height: 80vh;
-        min-height: 550px;
+        min-height: max(100vh, 650px);
+        padding-top: 100px;
+        padding-bottom: 80px;
         background-position: center;
     }
 }

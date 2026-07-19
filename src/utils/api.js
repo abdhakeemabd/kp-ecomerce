@@ -1,13 +1,12 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://eacyclic-backend.onrender.com';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://z71mwq0q-8000.inc1.devtunnels.ms';
 
 // Create axios instance
 const api = axios.create({
   baseURL: API_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
-    'X-Tunnel-Skip-AntiPhishing-Page': 'True'
   },
 });
 
@@ -47,12 +46,6 @@ export const deliveryAPI = {
   updateStatus: (id, status) => api.patch(`/deliveries/${id}/status`, { status }),
 };
 
-// Predictions API
-export const predictionsAPI = {
-  getAll: () => api.get('/api/v1/predictions/'),
-  create: (data) => api.post('/api/v1/predictions/', data),
-  delete: (id) => api.delete(`/api/v1/predictions/${id}/`),
-};
 
 // Analytics/Reports API
 export const analyticsAPI = {

@@ -12,11 +12,9 @@ import {
   ArrowUpRight, ArrowDownRight, Calendar, Filter,
   Navigation, Trophy
 } from 'lucide-react';
-import { productsAPI, ordersAPI, contactAPI, predictionsAPI } from '../../utils/api';
+import { productsAPI, ordersAPI, contactAPI } from '../../utils/api';
 import { BaseTable } from '../../components/shadcn-custom/BaseTable';
 import { BaseDropdown } from '../../components/shadcn-custom/BaseDropdown';
-import { db, isFirebaseConfigured } from '../../config/firebase';
-import { collection, getDocs } from 'firebase/firestore';
 
 function AdminDashboard() {
   const { adminUser } = useAdmin();
@@ -45,16 +43,22 @@ function AdminDashboard() {
   const fetchDashboardData = async () => {
     try {
       setLoading(true);
-      const [products, orders, contacts, predictions] = await Promise.allSettled([
+      const [products, orders, contacts] = await Promise.allSettled([
         productsAPI.getAll(),
         ordersAPI.getAll(),
-        contactAPI.getAll(),
-        predictionsAPI.getAll()
+        contactAPI.getAll()
       ]);
 
       const productsData = products.status === 'fulfilled' ? products.value.data : [];
       let ordersData = orders.status === 'fulfilled' ? orders.value.data : [];
       let contactsData = contacts.status === 'fulfilled' ? contacts.value.data : [];
+      let predictionsData = [];
+      try {
+        const localPreds = JSON.parse(localStorage.getItem('predictionsData') || '[]');
+        predictionsData = localPreds;
+      } catch (err) {
+        console.warn("Could not parse local predictions data");
+      }
       
       try {
         const localOrders = JSON.parse(localStorage.getItem('adminOrders') || '[]');
@@ -72,24 +76,6 @@ function AdminDashboard() {
         contactsData = Array.from(mergedContactsMap.values());
       } catch (e) { console.warn('Local contacts fetch failed'); }
 
-      let predictionsData = [];
-      if (isFirebaseConfigured && db) {
-        try {
-          const querySnapshot = await getDocs(collection(db, "predictions"));
-          predictionsData = querySnapshot.docs.map(doc => doc.data());
-        } catch (e) {
-          console.warn("Firebase fetch failed on Dashboard", e);
-        }
-      }
-      
-      if (predictionsData.length === 0) {
-        predictionsData = predictions.status === 'fulfilled' ? predictions.value.data : [];
-        if (!Array.isArray(predictionsData) || predictionsData.length === 0) {
-          predictionsData = JSON.parse(localStorage.getItem('predictionsData') || '[]');
-        } else {
-          localStorage.setItem('predictionsData', JSON.stringify(predictionsData));
-        }
-      }
       
       const uniqueCustomers = new Set(ordersData.map(o => o.customer_email).filter(Boolean));
 

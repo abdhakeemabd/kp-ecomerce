@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Trophy, CheckCircle, Plus, Minus, ChevronRight, Menu, X, Gift, ClipboardList, User } from 'lucide-react';
 import { FaFacebook, FaTwitter, FaInstagram, FaYoutube } from 'react-icons/fa';
-import { ChevronDown, Shield, Zap, ChevronLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import axios from 'axios';
-import { db, isFirebaseConfigured } from '../config/firebase';
-import { collection, addDoc } from 'firebase/firestore';
 
 import Logo from '../assets/images/logo/logo.png';
 import BannerImg from '../assets/images/banner/banner.png';
@@ -145,7 +142,15 @@ const PredictionPage = () => {
     try {
       setIsSubmitting(true);
       
-      const predictionData = {
+      // Simulate network request for UX
+      await new Promise(resolve => setTimeout(resolve, 1000));
+
+      submittedPhones.push(fullPhone);
+      localStorage.setItem('predictedPhones', JSON.stringify(submittedPhones));
+      
+      const allPredictions = JSON.parse(localStorage.getItem('predictionsData') || '[]');
+      allPredictions.push({
+        id: `pred_${Date.now()}`,
         name: formData.name,
         phone: fullPhone,
         team1: formData.team1,
@@ -157,36 +162,21 @@ const PredictionPage = () => {
         isDraw: formData.score1 === formData.score2,
         winner: getWinner(),
         date: new Date().toISOString()
-      };
+      });
+      localStorage.setItem('predictionsData', JSON.stringify(allPredictions));
 
-      if (isFirebaseConfigured && db) {
-        try {
-          await addDoc(collection(db, "predictions"), predictionData);
-          setIsModalOpen(false);
-          setIsSuccessModalOpen(true);
-        } catch (firebaseErr) {
-          console.error("Firebase push failed", firebaseErr);
-          Swal.fire('Error', 'Failed to save to Cloud Database.', 'error');
-        }
-      } else {
-        const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://eacyclic-backend.onrender.com';
-        try {
-          await axios.post(`${API_BASE_URL}/api/v1/predictions/`, predictionData, {
-            headers: {
-              'X-Tunnel-Skip-AntiPhishing-Page': 'True'
-            }
-          });
-          setIsModalOpen(false);
-          setIsSuccessModalOpen(true);
-        } catch (err) {
-          console.error("Backend API error:", err);
-          Swal.fire('Connection Error', 'Failed to connect to the backend server. Please ensure the server is online.', 'error');
-        }
-      }
+      setIsModalOpen(false);
+      setIsSuccessModalOpen(true);
 
     } catch (error) {
-      console.error('Error submitting prediction:', error);
-      Swal.fire('Error', 'Something went wrong. Please try again.', 'error');
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong while submitting your prediction.',
+        background: '#111',
+        color: '#fff',
+        confirmButtonColor: '#ea580c'
+      });
     } finally {
       setIsSubmitting(false);
     }

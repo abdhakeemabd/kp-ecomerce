@@ -7,9 +7,6 @@ import { useSearchParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { Download } from 'lucide-react';
 import { initialPredictions } from '../../data/predictions';
-import { predictionsAPI } from '../../utils/api';
-import { db, isFirebaseConfigured } from '../../config/firebase';
-import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
 
 const AdminPredictions = () => {
   const [predictions, setPredictions] = useState([]);
@@ -36,39 +33,6 @@ const AdminPredictions = () => {
 
   const loadPredictions = async () => {
     setLoading(true);
-    
-    // 0. Try fetching from Firebase if configured
-    if (isFirebaseConfigured && db) {
-      try {
-        const querySnapshot = await getDocs(collection(db, "predictions"));
-        const firebaseData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        firebaseData.sort((a, b) => new Date(b?.date || b?.createdAt || 0) - new Date(a?.date || a?.createdAt || 0));
-        setPredictions(firebaseData);
-        localStorage.setItem('predictionsData', JSON.stringify(firebaseData));
-        setLoading(false);
-        return;
-      } catch (err) {
-        console.warn("Firebase fetch failed, falling back to API", err);
-      }
-    }
-
-    try {
-      // 1. Try fetching from the global backend API
-      const response = await predictionsAPI.getAll();
-      if (response.data && Array.isArray(response.data)) {
-        const serverData = response.data;
-        serverData.sort((a, b) => new Date(b?.date || b?.createdAt || 0) - new Date(a?.date || a?.createdAt || 0));
-        setPredictions(serverData);
-        // Sync to local storage to keep backup updated
-        localStorage.setItem('predictionsData', JSON.stringify(serverData));
-        setLoading(false);
-        return;
-      }
-    } catch (apiError) {
-      console.warn("Backend API not reachable, falling back to local storage:", apiError.message);
-    }
-
-    // 2. Fallback to Local Storage if API fails or isn't connected
     try {
       const rawData = localStorage.getItem('predictionsData');
       let data = [...initialPredictions];
@@ -78,11 +42,13 @@ const AdminPredictions = () => {
           data = parsed;
         }
       }
-      data.sort((a, b) => new Date(b?.date || 0) - new Date(a?.date || 0));
+      
+      data.sort((a, b) => new Date(b?.date || b?.createdAt || 0) - new Date(a?.date || a?.createdAt || 0));
       setPredictions(data);
-    } catch (err) {
-      console.error('Error parsing predictions:', err);
-      setPredictions([...initialPredictions]);
+    } catch (error) {
+      console.error('Error loading predictions:', error);
+      Swal.fire('Error', 'Failed to load local predictions.', 'error');
+      setPredictions(initialPredictions);
     } finally {
       setLoading(false);
     }
@@ -120,24 +86,10 @@ const AdminPredictions = () => {
       confirmButtonText: 'Yes, delete it!'
     }).then(async (result) => {
       if (result.isConfirmed) {
-        if (isFirebaseConfigured && db) {
-          try {
-            await deleteDoc(doc(db, "predictions", id.toString()));
-          } catch (err) {
-            console.warn("Firebase delete failed", err);
-          }
-        }
-        
-        try {
-          // Attempt API deletion first
-          await predictionsAPI.delete(id);
-        } catch (err) {
-          console.warn("Backend deletion failed, deleting locally only.", err.message);
-        }
-        
-        const updated = predictions.filter(p => p.id !== id && p._id !== id);
-        localStorage.setItem('predictionsData', JSON.stringify(updated));
-        setPredictions(updated);
+        // Update local state and storage
+        const newPredictions = predictions.filter(p => p.id !== id);
+        setPredictions(newPredictions);
+        localStorage.setItem('predictionsData', JSON.stringify(newPredictions));
         Swal.fire('Deleted!', 'The prediction has been deleted.', 'success');
       }
     });

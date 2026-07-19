@@ -32,10 +32,23 @@ const AdminPredictions = () => {
   const loadPredictions = () => {
     setLoading(true);
     setTimeout(() => {
-      const data = JSON.parse(localStorage.getItem('predictionsData') || '[]');
-      data.sort((a, b) => new Date(b.date) - new Date(a.date));
-      setPredictions(data);
-      setLoading(false);
+      try {
+        const rawData = localStorage.getItem('predictionsData');
+        let data = [];
+        if (rawData) {
+          const parsed = JSON.parse(rawData);
+          if (Array.isArray(parsed)) {
+            data = parsed;
+          }
+        }
+        data.sort((a, b) => new Date(b?.date || 0) - new Date(a?.date || 0));
+        setPredictions(data);
+      } catch (err) {
+        console.error('Error parsing predictions:', err);
+        setPredictions([]);
+      } finally {
+        setLoading(false);
+      }
     }, 300); // simulate network
   };
 
@@ -59,10 +72,14 @@ const AdminPredictions = () => {
   };
 
   const filteredPredictions = predictions.filter(pred => {
+    const name = pred?.name || '';
+    const phone = pred?.phone || '';
+    const winner = pred?.winner || '';
+    
     const matchesSearch = 
-      pred.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-      pred.phone.includes(searchQuery);
-    const matchesTeam = filterTeam === 'all' || pred.winner.toLowerCase() === filterTeam.toLowerCase();
+      name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+      String(phone).includes(searchQuery);
+    const matchesTeam = filterTeam === 'all' || winner.toLowerCase() === filterTeam.toLowerCase();
     return matchesSearch && matchesTeam;
   });
 

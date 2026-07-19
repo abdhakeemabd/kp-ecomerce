@@ -76,12 +76,6 @@ function AdminDashboard() {
         contactsData = Array.from(mergedContactsMap.values());
       } catch (e) { console.warn('Local contacts fetch failed'); }
 
-      let predictionsData = predictions.status === 'fulfilled' ? predictions.value.data : [];
-      if (!Array.isArray(predictionsData) || predictionsData.length === 0) {
-        predictionsData = JSON.parse(localStorage.getItem('predictionsData') || '[]');
-      } else {
-        localStorage.setItem('predictionsData', JSON.stringify(predictionsData));
-      }
       
       const uniqueCustomers = new Set(ordersData.map(o => o.customer_email).filter(Boolean));
 

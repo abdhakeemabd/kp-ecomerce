@@ -141,13 +141,9 @@ const PredictionPage = () => {
     
     try {
       setIsSubmitting(true);
-      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://z71mwq0q-8000.inc1.devtunnels.ms';
-      await axios.post(`${API_BASE_URL}/api/v1/predictions`, {
-        ...formData,
-        finalWinner: getWinner()
-      }).catch(err => {
-        console.warn("Backend not available, saving offline mock");
-      });
+      
+      // Simulate network request for UX
+      await new Promise(resolve => setTimeout(resolve, 1000));
 
       submittedPhones.push(fullPhone);
       localStorage.setItem('predictedPhones', JSON.stringify(submittedPhones));

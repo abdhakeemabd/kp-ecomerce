@@ -12,7 +12,7 @@ import {
   ArrowUpRight, ArrowDownRight, Calendar, Filter,
   Navigation, Trophy
 } from 'lucide-react';
-import { productsAPI, ordersAPI, contactAPI, predictionsAPI } from '../../utils/api';
+import { productsAPI, ordersAPI, contactAPI } from '../../utils/api';
 import { BaseTable } from '../../components/shadcn-custom/BaseTable';
 import { BaseDropdown } from '../../components/shadcn-custom/BaseDropdown';
 
@@ -43,16 +43,22 @@ function AdminDashboard() {
   const fetchDashboardData = async () => {
     try {
       setLoading(true);
-      const [products, orders, contacts, predictions] = await Promise.allSettled([
+      const [products, orders, contacts] = await Promise.allSettled([
         productsAPI.getAll(),
         ordersAPI.getAll(),
-        contactAPI.getAll(),
-        predictionsAPI.getAll()
+        contactAPI.getAll()
       ]);
 
       const productsData = products.status === 'fulfilled' ? products.value.data : [];
       let ordersData = orders.status === 'fulfilled' ? orders.value.data : [];
       let contactsData = contacts.status === 'fulfilled' ? contacts.value.data : [];
+      let predictionsData = [];
+      try {
+        const localPreds = JSON.parse(localStorage.getItem('predictionsData') || '[]');
+        predictionsData = localPreds;
+      } catch (err) {
+        console.warn("Could not parse local predictions data");
+      }
       
       try {
         const localOrders = JSON.parse(localStorage.getItem('adminOrders') || '[]');

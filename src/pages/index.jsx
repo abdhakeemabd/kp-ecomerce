@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import HomeBanner from '../component/home-banner'
 import HomeProduct from '../component/home-product'
@@ -6,6 +6,18 @@ import HomeFeatures from '../component/home-features'
 import SEO from '../component/SEO'
 
 const Home = () => {
+  const [showPredictionModal, setShowPredictionModal] = useState(false);
+
+  useEffect(() => {
+    const hasSeenModal = localStorage.getItem('predictionModalSeen');
+    if (!hasSeenModal) {
+      const timer = setTimeout(() => {
+        setShowPredictionModal(true);
+        localStorage.setItem('predictionModalSeen', 'true');
+      }, 1500);
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   return (
     <main>
@@ -54,6 +66,44 @@ const Home = () => {
       <HomeProduct />
       <HomeFeatures />
       
+      {/* World Cup Prediction Modal */}
+      {showPredictionModal && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-4">
+          <div className="bg-white rounded-2xl w-full max-w-md overflow-hidden shadow-2xl animate-[fadeIn_0.3s_ease-out]">
+            <div className="bg-orange-600 p-5 text-center relative">
+              <button 
+                onClick={() => setShowPredictionModal(false)}
+                className="absolute right-3 top-3 text-white/80 hover:text-white"
+              >
+                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              </button>
+              <h2 className="text-2xl font-bold text-white mb-1">World Cup 2026</h2>
+              <p className="text-orange-100 text-sm">Predict & Win Big!</p>
+            </div>
+            <div className="p-6 text-center">
+              <div className="text-5xl mb-4">🏆</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Who will lift the trophy?</h3>
+              <p className="text-gray-600 text-sm mb-6">
+                Predict the exact score and the ultimate champion. Stand a chance to <span className="font-bold text-green-600 text-base bg-green-50 px-2 py-1 rounded inline-block mt-2">Win a ₹500 Eacyclic Voucher!</span>
+              </p>
+              <div className="flex flex-col gap-3">
+                <Link 
+                  to="/prediction"
+                  className="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 rounded-xl transition-colors text-center"
+                >
+                  Make Your Prediction
+                </Link>
+                <button 
+                  onClick={() => setShowPredictionModal(false)}
+                  className="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-3 rounded-xl transition-colors"
+                >
+                  Maybe Later
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   )
 }

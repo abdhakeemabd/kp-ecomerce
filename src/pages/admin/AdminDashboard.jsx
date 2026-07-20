@@ -22,7 +22,6 @@ function AdminDashboard() {
     totalProducts: 0,
     totalOrders: 0,
     totalCustomers: 0,
-    totalPredictions: 0,
     pendingDeliveries: 0,
     unreadMessages: 0,
     todaySales: 0,
@@ -52,13 +51,6 @@ function AdminDashboard() {
       const productsData = products.status === 'fulfilled' ? products.value.data : [];
       let ordersData = orders.status === 'fulfilled' ? orders.value.data : [];
       let contactsData = contacts.status === 'fulfilled' ? contacts.value.data : [];
-      let predictionsData = [];
-      try {
-        const localPreds = JSON.parse(localStorage.getItem('predictionsData') || '[]');
-        predictionsData = localPreds;
-      } catch (err) {
-        console.warn("Could not parse local predictions data");
-      }
       
       try {
         const localOrders = JSON.parse(localStorage.getItem('adminOrders') || '[]');
@@ -93,7 +85,6 @@ function AdminDashboard() {
         totalProducts: productsData.length || 0,
         totalOrders: ordersData.length || 0,
         totalCustomers: uniqueCustomers.size || 0,
-        totalPredictions: predictionsData.length || 0,
         pendingDeliveries: ordersData.filter(o => o.status === 'pending' || o.status === 'processing').length || 0,
         unreadMessages: contactsData.filter(c => !c.is_read).length || 0,
         todaySales: calculateTotal(todayOrders),
@@ -264,14 +255,6 @@ function AdminDashboard() {
             trend={-2.4} 
             color="text-emerald-500" 
             delay={0.3}
-          />
-          <StatCard 
-            icon={Trophy} 
-            title="Predictions" 
-            value={stats.totalPredictions} 
-            trend={14.5} 
-            color="text-orange-500" 
-            delay={0.4}
           />
           <StatCard 
             icon={MessageSquare} 

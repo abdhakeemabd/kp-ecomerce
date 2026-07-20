@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const CartContext = createContext();
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://z71mwq0q-8000.inc1.devtunnels.ms';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);

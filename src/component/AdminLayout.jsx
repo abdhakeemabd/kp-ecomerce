@@ -4,8 +4,7 @@ import { useAdmin } from '../context/AdminContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   LayoutDashboard, Package, ShoppingCart, Truck, Mail, 
-  LogOut, Sun, Moon, Palette, Menu, X, ChevronRight,
-  User, Settings, Bell, Search, Trophy
+  User, Settings, Bell, Search, X, Menu, LogOut, Palette, Sun, Moon
 } from 'lucide-react';
 
 const NavItem = ({ item, isCollapsed, isActive, navigate, setIsMobileMenuOpen }) => {
@@ -65,7 +64,6 @@ const AdminLayout = ({ children }) => {
     { name: 'Shipped', icon: Truck, path: '/admin/shipped', color: 'text-cyan-500' },
     { name: 'Delivered', icon: Package, path: '/admin/delivery', color: 'text-amber-500' },
     { name: 'Messages', icon: Mail, path: '/admin/contacts', color: 'text-pink-500' },
-    { name: 'Predictions', icon: Trophy, path: '/admin/predictions', color: 'text-orange-500' },
   ];
 
   const themes = [

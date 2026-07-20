@@ -291,7 +291,7 @@ function AdminDashboard() {
             </div>
             
             <div className="h-[300px] w-full">
-              <ResponsiveContainer width="100%" height="100%">
+              <ResponsiveContainer width="100%" height={300}>
                 <AreaChart data={salesData}>
                   <defs>
                     <linearGradient id="colorSales" x1="0" y1="0" x2="0" y2="1">
@@ -342,7 +342,7 @@ function AdminDashboard() {
             </div>
             
             <div className="h-[200px] w-full relative mt-6">
-              <ResponsiveContainer width="100%" height="100%">
+              <ResponsiveContainer width="100%" height={200}>
                 <PieChart>
                   <Pie
                     data={orderStatusData}
